@@ -275,6 +275,37 @@
       scene.title = `전국 ${LEVEL_NAME[allLv]}`;
     }
 
+    // 1-b) 조각 벌리기(explode)와 손으로 옮긴 위치(offsets, 데이터 좌표 단위)
+    const ex = Math.max(0, o.explode || 0);
+    const moved = o.offsets || {};
+    const styles = o.styles || {};
+    const center = ex ? (T ? T.lp : [(bb[0] + bb[2]) / 2, (bb[1] + bb[3]) / 2]) : null;
+    const offOf = (lv, id) => {
+      const m = moved[lv + ":" + id] || [0, 0];
+      if (!center) return m;
+      const lp = D[lv][id].lp;
+      // 대상 안쪽 조각은 서로 가까워서 더 크게 벌린다
+      const k = T && innerIds.length && lv === o.inner ? ex * 2.4 : ex;
+      return [m[0] + (lp[0] - center[0]) * k, m[1] + (lp[1] - center[1]) * k];
+    };
+    const shifted = (lv, id) => {
+      const b = D[lv][id].bb, d = offOf(lv, id);
+      return [b[0] + d[0], b[1] + d[1], b[2] + d[0], b[3] + d[1]];
+    };
+    const innerMoved = innerIds.some((k) => moved[o.inner + ":" + k]);
+    if (ex || Object.keys(moved).length) {
+      let fit = null;
+      if (P) {
+        if (!(P.fit && picked.length)) fit = bb;
+        for (const k of picked) fit = bbUnion(fit, shifted(P.lv, k));
+      } else if (T) {
+        if (!innerIds.length) fit = shifted(o.target.lv, o.target.id);
+        for (const k of innerIds) fit = bbUnion(fit, shifted(o.inner, k));
+        for (const n of nbs) fit = bbUnion(fit, shifted(o.nbLevel, n.id));
+      } else for (const k of allIds) fit = bbUnion(fit, shifted(allLv, k));
+      if (fit) bb = fit;
+    }
+
     // 2) 보기 범위 (여백 + 비율)
     let [x0, y0, x1, y1] = bb;
     let w = x1 - x0, h = y1 - y0;
@@ -288,16 +319,17 @@
     const W = o.width, s = W / w, H = Math.round(h * s);
     scene.width = W;
     scene.height = H;
+    scene.scale = s; // 데이터 좌표 1 단위 = s px
     const view = [x0, y0, x1, y1];
     const tf = (p) => [(p[0] - x0) * s, (p[1] - y0) * s];
     const minStep = 0.35; // px — 이보다 가까운 점은 생략
-    const project = (f) =>
+    const project = (f, d) =>
       decode(f).map((poly) =>
         poly.map((ring) => {
           const out = [];
           let last = null;
           for (const p of ring) {
-            const q = tf(p);
+            const q = d ? [(p[0] + d[0] - x0) * s, (p[1] + d[1] - y0) * s] : tf(p);
             if (last && Math.abs(q[0] - last[0]) < minStep && Math.abs(q[1] - last[1]) < minStep) continue;
             out.push(q);
             last = q;
@@ -308,8 +340,8 @@
     // 화면에서 점처럼 보이는 아주 작은 섬은 뺀다 (가장 큰 덩어리는 항상 남김)
     const ringArea = (r) => { let a = 0; for (let i = 0, j = r.length - 1; i < r.length; j = i++) a += (r[j][0] + r[i][0]) * (r[j][1] - r[i][1]); return Math.abs(a / 2); };
     const minArea = 3 * (W / 1600) * (W / 1600);
-    const projectClean = (f) => {
-      const polys = project(f);
+    const projectClean = (f, d) => {
+      const polys = project(f, d);
       if (polys.length < 2) return polys;
       const areas = polys.map((p) => ringArea(p[0]));
       const big = areas.indexOf(Math.max(...areas));
@@ -318,7 +350,9 @@
 
     const base = (W / 1600) * (o.lineScale || 1);
     const add = (lv, id, f, fill, stroke, width, group, extra) => {
-      const rings = projectClean(f);
+      const rings = projectClean(f, offOf(lv, id));
+      const st = styles[lv + ":" + id];
+      if (st && st.fill) fill = st.fill;
       if (rings.length) scene.polys.push(Object.assign({ lv, id, name: f.full, rings, fill, stroke, width, group }, extra));
     };
     // 흐린 배경 지역: 화면 사각형으로 잘라서 채움과 경계선을 따로 둔다
@@ -347,7 +381,7 @@
     if (P) {
       // 3') 직접 고른 지역
       const sel = new Set(picked);
-      if (!P.hideOthers) {
+      if (!P.hideOthers && !ex) {
         for (const k in D[P.lv]) {
           const f = D[P.lv][k];
           if (!sel.has(k) && bbHit(f.bb, view)) addContext(P.lv, k, f);
@@ -359,7 +393,7 @@
       // 3) 흐린 배경 지역
       const ctxLv = o.nbLevel || "si";
       const nbSet = new Set(nbs.map((n) => n.id));
-      if (o.context && D[ctxLv]) {
+      if (o.context && D[ctxLv] && !ex) {
         for (const k in D[ctxLv]) {
           const f = D[ctxLv][k];
           if (!bbHit(f.bb, view) || nbSet.has(k)) continue;
@@ -376,10 +410,13 @@
       }
       // 5) 대상 (내부 구분이 있으면 하위 지역들로)
       if (innerIds.length) {
-        innerIds.forEach((k) => add(o.inner, k, D[o.inner][k], C.target, mix(C.target, "#FFFFFF", 0.55), base * 1.0, "inner"));
-        const outline = [];
-        for (const poly of project(T)) outline.push(...poly.map((r) => r.concat([r[0]])));
-        scene.lines.push({ lines: outline, stroke: C.line, width: base * 2.4, group: "target" });
+        const pieces = ex || innerMoved;
+        innerIds.forEach((k) => add(o.inner, k, D[o.inner][k], C.target, pieces ? C.line : mix(C.target, "#FFFFFF", 0.55), base * (pieces ? 1.6 : 1.0), "inner"));
+        if (!pieces) {
+          const outline = [];
+          for (const poly of project(T)) outline.push(...poly.map((r) => r.concat([r[0]])));
+          scene.lines.push({ lines: outline, stroke: C.line, width: base * 2.4, group: "target" });
+        }
       } else {
         add(o.target.lv, o.target.id, T, C.target, C.line, base * 2.0, "target");
       }
@@ -395,16 +432,16 @@
 
     // 대상(또는 고른 지역)을 살짝 띄우는 그림자 — 같은 모양을 아래에 한 번 더 깔고 흐린다
     if (o.shadow) {
-      const lifted = T && innerIds.length
+      const lifted = T && innerIds.length && !ex && !innerMoved
         ? [{ lv: o.target.lv, id: o.target.id, name: T.full, rings: projectClean(T) }]
-        : scene.polys.filter((p) => p.group === "target" || p.group === "picked");
+        : scene.polys.filter((p) => p.group === "target" || p.group === "picked" || p.group === "inner");
       for (const p of lifted) scene.polys.push({ lv: p.lv, id: p.id, name: p.name, rings: p.rings, fill: C.target, stroke: null, width: 0, group: "shadow" });
       scene.shadow = { dy: base * 3, blur: base * 7, color: C.shadow || "#0B1A33", opacity: C.bg && luminance(C.bg) < 0.2 ? 0.55 : 0.28 };
     }
 
     // 6) 시도 경계 덧그리기
     const fineLv = P ? P.lv : T ? (LEVEL_ORDER[o.nbLevel] > 0 || innerIds.length ? o.nbLevel : null) : allLv;
-    if (o.sidoLines && fineLv && fineLv !== "sido") {
+    if (o.sidoLines && fineLv && fineLv !== "sido" && !ex) {
       const lines = [];
       for (const k in D.sido) {
         const f = D.sido[k];
@@ -424,7 +461,10 @@
     const homeSido = T ? T.sido : P && picked.length ? D[P.lv][picked[0]].sido : null;
     const label = (lv, id, fill, size, weight, force) => {
       const f = D[lv][id];
-      const p = tf(f.lp);
+      const st = styles[lv + ":" + id] || {};
+      if (st.hideLabel) return;
+      const d = offOf(lv, id);
+      const p = tf([f.lp[0] + d[0], f.lp[1] + d[1]]);
       if (p[0] < 0 || p[1] < 0 || p[0] > W || p[1] > H) return;
       let sub = [];
       if (o.subLabel) {
@@ -432,7 +472,8 @@
         const sShort = sidoShort(D.sido[f.sido].nm);
         if (homeSido && f.sido !== homeSido && lv !== "sido" && !f.nm.startsWith(sShort)) sub.push(sShort);
       }
-      const main = lv === "sido" && shortSido ? sidoShort(f.nm) : f.nm;
+      const main = st.text || (lv === "sido" && shortSido ? sidoShort(f.nm) : f.nm);
+      if (st.text) force = true;
       const subTxt = sub.join(" · ");
       const ss = size * 0.64;
       const tw = Math.max(textW(main, size), subTxt ? textW(subTxt, ss) : 0);
@@ -528,8 +569,9 @@
       if (!ps.length && !ls.length) continue;
       out.push(g === "shadow" ? `<g id="${gname}" filter="url(#liftShadow)">` : `<g id="${gname}">`);
       for (const p of ps) {
-        if (g === "shadow") { out.push(`<path d="${polyD(p.rings)}" fill="${p.fill}"/>`); continue; }
-        const attrs = opt.interactive ? ` data-lv="${p.lv}" data-id="${p.id}"` : "";
+        const dk = opt.interactive ? ` data-k="${p.lv}:${p.id}"` : "";
+        if (g === "shadow") { out.push(`<path${dk} d="${polyD(p.rings)}" fill="${p.fill}"/>`); continue; }
+        const attrs = opt.interactive ? ` data-lv="${p.lv}" data-id="${p.id}"${dk}` : "";
         const stroke = p.stroke ? ` stroke="${p.stroke}" stroke-width="${num(p.width)}" stroke-linejoin="round"` : "";
         const id = g === "context" ? "" : ` id="${safeId(p.name, used)}"`;
         out.push(
@@ -545,9 +587,10 @@
       out.push(`</g>`);
     }
     if (scene.texts.length) {
-      out.push(`<g id="지명" text-anchor="middle">`);
+      out.push(`<g id="지명" text-anchor="middle"${opt.interactive ? ' pointer-events="none"' : ""}>`);
       for (const t of scene.texts) {
-        const common = `x="${num(t.x)}" y="${num(t.y + t.size * 0.36)}" font-size="${num(t.size)}" font-weight="${t.weight}"`;
+        const dk = opt.interactive ? ` data-k="${t.lv}:${t.id}"` : "";
+        const common = `${dk} x="${num(t.x)}" y="${num(t.y + t.size * 0.36)}" font-size="${num(t.size)}" font-weight="${t.weight}"`;
         if (t.halo)
           out.push(`<text ${common} fill="none" stroke="#FFFFFF" stroke-width="${num(t.size * 0.22)}" stroke-linejoin="round">${esc(t.text)}</text>`);
         out.push(`<text ${common} fill="${t.fill}">${esc(t.text)}</text>`);

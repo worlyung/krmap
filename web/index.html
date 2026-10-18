@@ -155,6 +155,16 @@ details.more[open] summary { margin-bottom: 10px; }
 .clickbar .seg { width: auto; background: var(--panel); }
 .clickbar .seg button { padding: 5px 12px; }
 
+.editbox { background: var(--panel); border-radius: 10px; padding: 10px 12px; }
+.editrow { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-size: 13px; }
+.editrow b { font-size: 13.5px; }
+.ed { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 12.5px; }
+.ed input[type="color"] { width: 38px; height: 28px; border: 1px solid var(--rule); border-radius: 6px; padding: 2px; background: var(--panel); cursor: pointer; }
+.ed input[type="text"] { width: 120px; font: inherit; font-size: 13px; padding: 5px 8px; border: 1px solid var(--rule); border-radius: 6px; background: var(--field); color: var(--ink); }
+#map.editing svg [data-id] { cursor: grab; }
+#map.dragging svg [data-id] { cursor: grabbing; }
+#map svg .sel { stroke: #111827; stroke-width: 3px; stroke-dasharray: 7 5; }
+#map svg .lift { opacity: 0.85; }
 .info { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px 16px; background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius); padding: 14px 16px; box-shadow: var(--shadow); }
 .info h3 { margin: 0 0 8px; font-size: 13px; font-weight: 600; color: var(--muted); }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -267,6 +277,16 @@ details.more[open] summary { margin-bottom: 10px; }
       </section>
 
       <section class="card">
+        <h2>배치 <span class="hint">모양은 그대로 두고 위치만</span></h2>
+        <div class="seg" id="layout">
+          <button data-v="real">실제 위치</button><button data-v="explode">벌려 놓기</button>
+        </div>
+        <div class="slider" id="explodeRow"><span>벌린 간격</span><input type="range" id="explodeAmt" min="0.05" max="0.8" step="0.01" value="0.25" aria-label="벌린 간격"></div>
+        <p class="note">지도 위 <b>하나씩 꾸미기</b>를 누르면 지역마다 끌어서 옮기고, 색과 이름을 따로 바꿀 수 있습니다.</p>
+        <button class="btn sm" id="resetEdits" style="align-self:flex-start">옮기고 꾸민 것 모두 되돌리기</button>
+      </section>
+
+      <section class="card">
         <h2>지역 이름</h2>
         <div class="seg" id="labelMode">
           <button data-v="all">모두 넣기</button><button data-v="none">모두 빼기</button><button data-v="pick">고른 것만</button>
@@ -300,9 +320,20 @@ details.more[open] summary { margin-bottom: 10px; }
             <button data-v="">자동</button><button data-v="1.7778">16:9</button><button data-v="1.3333">4:3</button><button data-v="1">1:1</button>
           </div>
         </div>
-        <div class="clickbar" id="clickBar" hidden>
+        <div class="clickbar" id="clickBar">
           <span>지도를 누르면</span>
-          <div class="seg" id="clickAction"><button data-v="label">이름 넣기·빼기</button><button data-v="main" id="clickMain">지역 고르기</button></div>
+          <div class="seg" id="clickAction"><button data-v="main" id="clickMain">지역 고르기</button><button data-v="label">이름 넣기·빼기</button><button data-v="edit">하나씩 꾸미기</button></div>
+        </div>
+        <div class="editbox" id="editBox" hidden>
+          <p class="note" id="editEmpty">꾸밀 지역을 지도에서 누르세요. 누른 채로 끌면 그 지역만 옮겨집니다.</p>
+          <div class="editrow" id="editForm" hidden>
+            <b id="editName"></b>
+            <label class="ed">색 <input type="color" id="editFill"></label>
+            <label class="ed">이름 <input type="text" id="editText" maxlength="20"></label>
+            <label class="chk"><input type="checkbox" id="editHide"> 이름 숨기기</label>
+            <button class="btn sm" id="editReset">이 지역 원래대로</button>
+            <button class="btn sm" id="editDone">닫기</button>
+          </div>
         </div>
         <div class="slide" id="slide"><div id="map"><span class="loading">경계 데이터를 불러오는 중입니다…</span></div></div>
       </div>

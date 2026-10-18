@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "korea-map": {
+      "command": "node",
+      "args": ["tools/mcp-server.mjs"]
+    }
+  }
+}

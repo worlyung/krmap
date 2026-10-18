@@ -1,6 +1,6 @@
 # 대한민국 행정구역 지도 (시도 · 시군구 · 읍면동)
 
-[![test](https://github.com/worlyung/-/actions/workflows/test.yml/badge.svg)](https://github.com/worlyung/-/actions/workflows/test.yml)
+[![test](https://github.com/worlyung/krmap/actions/workflows/test.yml/badge.svg)](https://github.com/worlyung/krmap/actions/workflows/test.yml)
 [![code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![data: CC BY 4.0 / KOGL Type 1](https://img.shields.io/badge/data-CC%20BY%204.0%20%2F%20KOGL%20Type%201-green.svg)](NOTICE.md)
 

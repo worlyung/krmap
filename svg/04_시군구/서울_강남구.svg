@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1436" viewBox="0 0 1600 1436" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<title>서울특별시 강남구</title>
+<g id="배경">
+<path d="M0 0L50.6 0 53.4 22.6 123.9 35.8 203.2 97.5 85.7 214.9 34.3 267.8 0 320.9Z" fill="#E7EBF0" fill-rule="evenodd"></path>
+<path d="M203.2 97.5L123.9 35.8 53.4 22.6 50.6 0 756.1 0 747.9 18.2 665.7 197.3 568.8 141.5 537.9 118 455.7 85.7 398.4 87.2 212 90.1Z" fill="#E7EBF0" fill-rule="evenodd"></path>
+<path d="M800.7 263.4L778.7 254.6 665.7 197.3 747.9 18.2 756.1 0 1335 0 1283.8 88.7 1270.6 109.2 1214.8 219.3 1204.5 225.2 1128.1 236.9 1104.7 250.2 1079.7 259 937.3 288.3 872.7 285.4Z" fill="#E7EBF0" fill-rule="evenodd"></path>
+<path d="M0 320.9L34.3 267.8 85.7 214.9 153.3 295.7 182.6 408.7 194.4 493.9 207.6 489.5 247.2 595.2 247.2 596.7 288.3 702.4 338.2 840.4 369.1 918.2 464.5 906.4 498.3 1001.9 511.5 1041.5 589.3 1135.5 570.2 1151.6 634.8 1183.9 725.9 1178.1 739.1 1114.9 869.7 1082.6 885.9 1114.9 928.5 1079.7 1032.7 1076.8 1023.9 1114.9 1045.9 1156 1176.6 1302.9 1150.2 1382.1 1109.5 1436 403.5 1436 391.1 1361.6 360.3 1304.3 377.9 1258.8 314.8 1232.4 313.3 1264.7 264.8 1345.4 192.9 1383.6 135.6 1396.8 69.6 1395.4 0 1281.7Z" fill="#E7EBF0" fill-rule="evenodd"></path>
+<path d="M1251.5 778.7L1183.9 742 1103.2 715.6 1015.1 684.7 909.4 653.9 878.5 637.8 836 590.8 822.8 510 818.4 505.6 802.2 347.1 800.7 263.4 872.7 285.4 937.3 288.3 1079.7 259 1104.7 250.2 1128.1 236.9 1204.5 225.2 1214.8 219.3 1270.6 109.2 1283.8 88.7 1335 0 1448 0 1470.2 7.9 1530.4 47.5 1505.5 135.6 1477.6 217.9 1600 287.8 1600 1194.4 1570.1 1182.5 1551 1182.5 1514.3 1242.7 1492.3 1157.5 1368.9 953.4 1385.1 943.2 1332.2 849.2Z" fill="#E7EBF0" fill-rule="evenodd"></path>
+<path d="M1600 0L1600 287.8 1477.6 217.9 1505.5 135.6 1530.4 47.5 1470.2 7.9 1448 0Z" fill="#E7EBF0" fill-rule="evenodd"></path>
+<path d="M1600 1436L1109.5 1436 1150.2 1382.1 1176.6 1302.9 1201.6 1345.4 1269.1 1332.2 1305.8 1285.2 1380.7 1301.4 1442.3 1349.8 1451.2 1291.1 1514.3 1242.7 1551 1182.5 1570.1 1182.5 1600 1194.4Z" fill="#E7EBF0" fill-rule="evenodd"></path>
+<path d="M0 1436L0 1281.7 69.6 1395.4 135.6 1396.8 192.9 1383.6 264.8 1345.4 313.3 1264.7 314.8 1232.4 377.9 1258.8 360.3 1304.3 391.1 1361.6 403.5 1436Z" fill="#E7EBF0" fill-rule="evenodd"></path>
+<path d="M50.6 0L53.4 22.6 123.9 35.8 203.2 97.5 85.7 214.9 34.3 267.8 0 320.9" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M756.1 0L747.9 18.2 665.7 197.3 568.8 141.5 537.9 118 455.7 85.7 398.4 87.2 212 90.1 203.2 97.5 123.9 35.8 53.4 22.6 50.6 0" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M1335 0L1283.8 88.7 1270.6 109.2 1214.8 219.3 1204.5 225.2 1128.1 236.9 1104.7 250.2 1079.7 259 937.3 288.3 872.7 285.4 800.7 263.4 778.7 254.6 665.7 197.3 747.9 18.2 756.1 0" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M0 320.9L34.3 267.8 85.7 214.9 153.3 295.7 182.6 408.7 194.4 493.9 207.6 489.5 247.2 595.2 247.2 596.7 288.3 702.4 338.2 840.4 369.1 918.2 464.5 906.4 498.3 1001.9 511.5 1041.5 589.3 1135.5 570.2 1151.6 634.8 1183.9 725.9 1178.1 739.1 1114.9 869.7 1082.6 885.9 1114.9 928.5 1079.7 1032.7 1076.8 1023.9 1114.9 1045.9 1156 1176.6 1302.9 1150.2 1382.1 1109.5 1436M403.5 1436L391.1 1361.6 360.3 1304.3 377.9 1258.8 314.8 1232.4 313.3 1264.7 264.8 1345.4 192.9 1383.6 135.6 1396.8 69.6 1395.4 0 1281.7" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M1600 1194.4L1570.1 1182.5 1551 1182.5 1514.3 1242.7 1492.3 1157.5 1368.9 953.4 1385.1 943.2 1332.2 849.2 1251.5 778.7 1183.9 742 1103.2 715.6 1015.1 684.7 909.4 653.9 878.5 637.8 836 590.8 822.8 510 818.4 505.6 802.2 347.1 800.7 263.4 872.7 285.4 937.3 288.3 1079.7 259 1104.7 250.2 1128.1 236.9 1204.5 225.2 1214.8 219.3 1270.6 109.2 1283.8 88.7 1335 0M1448 0L1470.2 7.9 1530.4 47.5 1505.5 135.6 1477.6 217.9 1600 287.8" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M1600 287.8L1477.6 217.9 1505.5 135.6 1530.4 47.5 1470.2 7.9 1448 0" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M1109.5 1436L1150.2 1382.1 1176.6 1302.9 1201.6 1345.4 1269.1 1332.2 1305.8 1285.2 1380.7 1301.4 1442.3 1349.8 1451.2 1291.1 1514.3 1242.7 1551 1182.5 1570.1 1182.5 1600 1194.4" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M0 1281.7L69.6 1395.4 135.6 1396.8 192.9 1383.6 264.8 1345.4 313.3 1264.7 314.8 1232.4 377.9 1258.8 360.3 1304.3 391.1 1361.6 403.5 1436" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g id="대상_내부">
+<path id="서울특별시_강남구_신사동" d="M295.7 351.5L303 236.9 259 176.7 212 90.1 203.2 97.5 85.7 214.9 153.3 295.7 182.6 408.7Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 신사동</title></path>
+<path id="서울특별시_강남구_논현1동" d="M369.1 549.7L295.7 351.5 182.6 408.7 194.4 493.9 207.6 489.5 247.2 595.2Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 논현1동</title></path>
+<path id="서울특별시_강남구_논현2동" d="M439.6 297.1L295.7 351.5 369.1 549.7 498.3 504.2 466 389.6Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 논현2동</title></path>
+<path id="서울특별시_강남구_압구정동" d="M537.9 118L455.7 85.7 398.4 87.2 212 90.1 259 176.7 303 236.9 295.7 351.5 439.6 297.1 461.6 217.9 499.8 229.6Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 압구정동</title></path>
+<path id="서울특별시_강남구_청담동" d="M665.7 197.3L568.8 141.5 537.9 118 499.8 229.6 461.6 217.9 439.6 297.1 466 389.6 583.4 364.7 674.5 344.1 730.3 317.7 778.7 254.6Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 청담동</title></path>
+<path id="서울특별시_강남구_삼성1동" d="M800.7 263.4L778.7 254.6 730.3 317.7 674.5 344.1 583.4 364.7 665.7 559.9 818.4 505.6 802.2 347.1Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 삼성1동</title></path>
+<path id="서울특별시_강남구_삼성2동" d="M665.7 559.9L583.4 364.7 466 389.6 498.3 504.2 549.7 564.4 542.3 606.9 565.8 599.6Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 삼성2동</title></path>
+<path id="서울특별시_강남구_대치1동" d="M778.7 834.5L718.5 690.6 651 717 609.9 720 612.8 731.7 662.7 872.7 692.1 855.1Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 대치1동</title></path>
+<path id="서울특별시_강남구_대치2동" d="M822.8 510L818.4 505.6 665.7 559.9 718.5 690.6 778.7 834.5 860.9 786.1 887.4 752.3 890.3 690.6 909.4 653.9 878.5 637.8 836 590.8Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 대치2동</title></path>
+<path id="서울특별시_강남구_대치4동" d="M718.5 690.6L665.7 559.9 565.8 599.6 609.9 720 651 717Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 대치4동</title></path>
+<path id="서울특별시_강남구_역삼1동" d="M542.3 606.9L549.7 564.4 498.3 504.2 369.1 549.7 247.2 595.2 247.2 596.7 288.3 702.4 338.2 840.4 458.6 794.9 410.2 659.8Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 역삼1동</title></path>
+<path id="서울특별시_강남구_역삼2동" d="M609.9 720L565.8 599.6 542.3 606.9 410.2 659.8 458.6 794.9 535 764 612.8 731.7Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 역삼2동</title></path>
+<path id="서울특별시_강남구_도곡1동" d="M464.5 906.4L501.2 899.1 574.6 860.9 535 764 458.6 794.9 338.2 840.4 369.1 918.2Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 도곡1동</title></path>
+<path id="서울특별시_강남구_도곡2동" d="M662.7 872.7L612.8 731.7 535 764 574.6 860.9 501.2 899.1 464.5 906.4 498.3 1001.9 599.6 918.2 661.3 872.7Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 도곡2동</title></path>
+<path id="서울특별시_강남구_개포1동" d="M919.7 938.7L907.9 897.6 843.3 957.8 768.4 1013.6 680.3 919.7 661.3 872.7 599.6 918.2 626 979.9 689.1 1063.5 739.1 1114.9 869.7 1082.6 885.9 1114.9 928.5 1079.7 893.2 1059.1 872.7 1019.5Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 개포1동</title></path>
+<path id="서울특별시_강남구_개포2동" d="M932.9 883L918.2 793.4 872.7 813.9 860.9 786.1 778.7 834.5 692.1 855.1 662.7 872.7 661.3 872.7 680.3 919.7 768.4 1013.6 843.3 957.8 907.9 897.6 919.7 938.7Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 개포2동</title></path>
+<path id="서울특별시_강남구_개포3동" d="M1015.1 684.7L909.4 653.9 890.3 690.6 887.4 752.3 860.9 786.1 872.7 813.9 918.2 793.4 932.9 883 990.1 858 962.2 775.8 1103.2 715.6Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 개포3동</title></path>
+<path id="서울특별시_강남구_개포4동" d="M739.1 1114.9L689.1 1063.5 626 979.9 599.6 918.2 498.3 1001.9 511.5 1041.5 589.3 1135.5 570.2 1151.6 634.8 1183.9 725.9 1178.1Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 개포4동</title></path>
+<path id="서울특별시_강남구_세곡동" d="M1368.9 953.4L1298.5 956.4 1260.3 919.7 1200.1 963.7 1191.3 1031.2 1134 1044.5 1032.7 1076.8 1023.9 1114.9 1045.9 1156 1176.6 1302.9 1201.6 1345.4 1269.1 1332.2 1305.8 1285.2 1380.7 1301.4 1442.3 1349.8 1451.2 1291.1 1514.3 1242.7 1492.3 1157.5Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 세곡동</title></path>
+<path id="서울특별시_강남구_일원본동" d="M1134 1044.5L1135.5 1007.8 1160.4 953.4 1150.2 883 1106.1 815.4 990.1 858 932.9 883 919.7 938.7 872.7 1019.5 893.2 1059.1 928.5 1079.7 1032.7 1076.8Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 일원본동</title></path>
+<path id="서울특별시_강남구_일원1동" d="M1183.9 742L1103.2 715.6 962.2 775.8 990.1 858 1106.1 815.4 1251.5 778.7Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 일원1동</title></path>
+<path id="서울특별시_강남구_수서동" d="M1332.2 849.2L1251.5 778.7 1106.1 815.4 1150.2 883 1160.4 953.4 1135.5 1007.8 1134 1044.5 1191.3 1031.2 1200.1 963.7 1260.3 919.7 1298.5 956.4 1368.9 953.4 1385.1 943.2Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 강남구 수서동</title></path>
+</g>
+<g id="대상">
+<path d="M725.9 1178.1L634.8 1183.9 570.2 1151.6 589.3 1135.5 511.5 1041.5 498.3 1001.9 464.5 906.4 369.1 918.2 338.2 840.4 288.3 702.4 247.2 596.7 247.2 595.2 207.6 489.5 194.4 493.9 182.6 408.7 153.3 295.7 85.7 214.9 203.2 97.5 212 90.1 398.4 87.2 455.7 85.7 537.9 118 568.8 141.5 665.7 197.3 778.7 254.6 800.7 263.4 802.2 347.1 818.4 505.6 822.8 510 836 590.8 878.5 637.8 909.4 653.9 1015.1 684.7 1103.2 715.6 1183.9 742 1251.5 778.7 1332.2 849.2 1385.1 943.2 1368.9 953.4 1492.3 1157.5 1514.3 1242.7 1451.2 1291.1 1442.3 1349.8 1380.7 1301.4 1305.8 1285.2 1269.1 1332.2 1201.6 1345.4 1176.6 1302.9 1045.9 1156 1023.9 1114.9 1032.7 1076.8 928.5 1079.7 885.9 1114.9 869.7 1082.6 739.1 1114.9 725.9 1178.1" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g id="시도경계">
+<path d="M1600 1194.4L1570.1 1182.5 1551 1182.5 1514.3 1242.7 1451.2 1291.1 1442.3 1349.8 1380.7 1301.4 1305.8 1285.2 1269.1 1332.2 1201.6 1345.4 1176.6 1302.9 1150.2 1382.1 1109.5 1436M403.5 1436L391.1 1361.6 360.3 1304.3 377.9 1258.8 314.8 1232.4 313.3 1264.7 264.8 1345.4 192.9 1383.6 135.6 1396.8 69.6 1395.4 0 1281.7M0 1281.7L69.6 1395.4 135.6 1396.8 192.9 1383.6 264.8 1345.4 313.3 1264.7 314.8 1232.4 377.9 1258.8 360.3 1304.3 391.1 1361.6 403.5 1436M1109.5 1436L1150.2 1382.1 1176.6 1302.9 1201.6 1345.4 1269.1 1332.2 1305.8 1285.2 1380.7 1301.4 1442.3 1349.8 1451.2 1291.1 1514.3 1242.7 1551 1182.5 1570.1 1182.5 1600 1194.4" fill="none" stroke="#4A5868" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g id="지명" text-anchor="middle">
+<text x="1302.9" y="1138.6" font-size="20.8" font-weight="500" fill="#FFFFFF">세곡동</text>
+<text x="1031.2" y="968.3" font-size="20.8" font-weight="500" fill="#FFFFFF">일원본동</text>
+<text x="584.9" y="273.8" font-size="20.8" font-weight="500" fill="#FFFFFF">청담동</text>
+<text x="342.7" y="645.3" font-size="20.8" font-weight="500" fill="#FFFFFF">역삼1동</text>
+<text x="379.4" y="190.1" font-size="20.8" font-weight="500" fill="#FFFFFF">압구정동</text>
+<text x="808.1" y="698.1" font-size="20.8" font-weight="500" fill="#FFFFFF">대치2동</text>
+<text x="715.6" y="438.2" font-size="20.8" font-weight="500" fill="#FFFFFF">삼성1동</text>
+<text x="219.3" y="262" font-size="20.8" font-weight="500" fill="#FFFFFF">신사동</text>
+<text x="821.3" y="1047.5" font-size="20.8" font-weight="500" fill="#FFFFFF">개포1동</text>
+<text x="1232.4" y="862.5" font-size="20.8" font-weight="500" fill="#FFFFFF">수서동</text>
+<text x="775.8" y="919.8" font-size="20.8" font-weight="500" fill="#FFFFFF">개포2동</text>
+<text x="598.1" y="1054.9" font-size="20.8" font-weight="500" fill="#FFFFFF">개포4동</text>
+<text x="392.6" y="411.8" font-size="20.8" font-weight="500" fill="#FFFFFF">논현2동</text>
+<text x="554.1" y="473.5" font-size="20.8" font-weight="500" fill="#FFFFFF">삼성2동</text>
+<text x="260.4" y="457.3" font-size="20.8" font-weight="500" fill="#FFFFFF">논현1동</text>
+<text x="511.5" y="704" font-size="20.8" font-weight="500" fill="#FFFFFF">역삼2동</text>
+<text x="940.2" y="733.3" font-size="20.8" font-weight="500" fill="#FFFFFF">개포3동</text>
+<text x="593.7" y="802.3" font-size="20.8" font-weight="500" fill="#FFFFFF">도곡2동</text>
+<text x="482.1" y="852.3" font-size="20.8" font-weight="500" fill="#FFFFFF">도곡1동</text>
+<text x="1084.1" y="780.3" font-size="20.8" font-weight="500" fill="#FFFFFF">일원1동</text>
+<text x="695" y="790.6" font-size="20.8" font-weight="500" fill="#FFFFFF">대치1동</text>
+<text x="642.2" y="652.6" font-size="20.8" font-weight="500" fill="#FFFFFF">대치4동</text>
+</g>
+</svg>

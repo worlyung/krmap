@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="933" viewBox="0 0 1600 933" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<title>서울특별시 중구</title>
+<g id="배경">
+<path d="M10.3 0L1441.1 0 1442.4 85.7 1343.2 105.6 1313.4 125.4 1139.8 137.8 1077.8 140.3 966.2 142.8 730.6 177.5 636.3 177.5 428 150.2 390.8 145.2 251.9 177.5 202.3 242 180 217.2 46 43.6Z" fill="#E7EBF0" fill-rule="evenodd"></path>
+<path d="M0 933L0 857.9 21.2 797.5 120.4 713.2 103.1 633.8 237 529.7 249.4 569.3 323.8 556.9 415.6 604.1 609 576.8 661.1 638.8 760.3 678.5 777.7 705.8 824.8 755.4 894.2 683.4 1020.7 671 1043.1 745.4 1033.1 785.1 1115 847.1 1125.7 933Z" fill="#E7EBF0" fill-rule="evenodd"></path>
+<path d="M1125.7 933L1115 847.1 1162.1 735.5 1216.7 683.4 1286.1 599.1 1310.9 517.3 1355.6 480.1 1353.1 477.6 1430 467.7 1439.9 388.3 1504.4 326.3 1514.3 271.7 1447.3 266.8 1442.4 85.7 1596.1 137.8 1600 137.1 1600 933Z" fill="#E7EBF0" fill-rule="evenodd"></path>
+<path d="M1600 0L1600 137.1 1596.1 137.8 1442.4 85.7 1441.1 0Z" fill="#E7EBF0" fill-rule="evenodd"></path>
+<path d="M0 0L10.3 0 46 43.6 180 217.2 202.3 242 264.3 346.1 98.1 420.5 85.7 432.9 23.7 492.5 0 477.2Z" fill="#E7EBF0" fill-rule="evenodd"></path>
+<path d="M0 477.2L23.7 492.5 85.7 432.9 103.1 633.8 120.4 713.2 21.2 797.5 0 857.9Z" fill="#E7EBF0" fill-rule="evenodd"></path>
+<path d="M1441.1 0L1442.4 85.7 1343.2 105.6 1313.4 125.4 1139.8 137.8 1077.8 140.3 966.2 142.8 730.6 177.5 636.3 177.5 428 150.2 390.8 145.2 251.9 177.5 202.3 242 180 217.2 46 43.6 10.3 0" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M0 857.9L21.2 797.5 120.4 713.2 103.1 633.8 237 529.7 249.4 569.3 323.8 556.9 415.6 604.1 609 576.8 661.1 638.8 760.3 678.5 777.7 705.8 824.8 755.4 894.2 683.4 1020.7 671 1043.1 745.4 1033.1 785.1 1115 847.1 1125.7 933" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M1125.7 933L1115 847.1 1162.1 735.5 1216.7 683.4 1286.1 599.1 1310.9 517.3 1355.6 480.1 1353.1 477.6 1430 467.7 1439.9 388.3 1504.4 326.3 1514.3 271.7 1447.3 266.8 1442.4 85.7 1596.1 137.8 1600 137.1" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M1600 137.1L1596.1 137.8 1442.4 85.7 1441.1 0" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M10.3 0L46 43.6 180 217.2 202.3 242 264.3 346.1 98.1 420.5 85.7 432.9 23.7 492.5 0 477.2" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M0 477.2L23.7 492.5 85.7 432.9 103.1 633.8 120.4 713.2 21.2 797.5 0 857.9" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g id="대상_내부">
+<path id="서울특별시_중구_소공동" d="M514.8 353.6L549.5 239.5 455.3 254.4 390.8 145.2 251.9 177.5 202.3 242 264.3 346.1 301.5 413.1 361 408.1Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 중구 소공동</title></path>
+<path id="서울특별시_중구_회현동" d="M606.5 561.9L566.9 549.5 559.4 460.2 514.8 353.6 361 408.1 301.5 413.1 256.8 455.3 237 529.7 249.4 569.3 323.8 556.9 415.6 604.1 609 576.8Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 중구 회현동</title></path>
+<path id="서울특별시_중구_명동" d="M428 150.2L390.8 145.2 455.3 254.4 549.5 239.5 514.8 353.6 559.4 460.2 566.9 549.5 606.5 561.9 718.2 323.8 681 259.3 730.6 177.5 636.3 177.5Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 중구 명동</title></path>
+<path id="서울특별시_중구_필동" d="M787.6 321.3L718.2 323.8 606.5 561.9 609 576.8 661.1 638.8 760.3 678.5 805 616.5 871.9 646.2 896.7 564.4 983.5 519.7 1013.3 457.7 936.4 423 956.2 326.3 814.9 366Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 중구 필동</title></path>
+<path id="서울특별시_중구_장충동" d="M1139.8 323.8L1043.1 336.2 956.2 326.3 936.4 423 1013.3 457.7 983.5 519.7 896.7 564.4 871.9 646.2 805 616.5 760.3 678.5 777.7 705.8 824.8 755.4 894.2 683.4 1020.7 671 1028.2 571.8 1087.7 509.8 1144.7 398.2 1134.8 351.1Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 중구 장충동</title></path>
+<path id="서울특별시_중구_광희동" d="M1139.8 323.8L1186.9 192.4 1139.8 137.8 1077.8 140.3 1040.6 162.6 1000.9 259.3 963.7 244.4 822.3 264.3 787.6 321.3 814.9 366 956.2 326.3 1043.1 336.2Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 중구 광희동</title></path>
+<path id="서울특별시_중구_을지로동" d="M787.6 321.3L822.3 264.3 963.7 244.4 1000.9 259.3 1040.6 162.6 1077.8 140.3 966.2 142.8 730.6 177.5 681 259.3 718.2 323.8Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 중구 을지로동</title></path>
+<path id="서울특별시_중구_신당동" d="M1325.8 254.4L1313.4 125.4 1139.8 137.8 1186.9 192.4 1139.8 323.8 1134.8 351.1 1211.7 390.8 1241.5 378.4 1278.7 294Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 중구 신당동</title></path>
+<path id="서울특별시_중구_다산동" d="M1211.7 390.8L1134.8 351.1 1144.7 398.2 1087.7 509.8 1028.2 571.8 1020.7 671 1043.1 745.4 1077.8 738 1169.5 529.7Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 중구 다산동</title></path>
+<path id="서울특별시_중구_약수동" d="M1286.1 599.1L1201.8 574.3 1169.5 529.7 1077.8 738 1043.1 745.4 1033.1 785.1 1115 847.1 1162.1 735.5 1216.7 683.4Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 중구 약수동</title></path>
+<path id="서울특별시_중구_청구동" d="M1353.1 477.6L1241.5 378.4 1211.7 390.8 1169.5 529.7 1201.8 574.3 1286.1 599.1 1310.9 517.3 1355.6 480.1Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 중구 청구동</title></path>
+<path id="서울특별시_중구_신당5동" d="M1447.3 266.8L1325.8 254.4 1278.7 294 1340.7 313.9 1439.9 388.3 1504.4 326.3 1514.3 271.7Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 중구 신당5동</title></path>
+<path id="서울특별시_중구_동화동" d="M1439.9 388.3L1340.7 313.9 1278.7 294 1241.5 378.4 1353.1 477.6 1430 467.7Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 중구 동화동</title></path>
+<path id="서울특별시_중구_황학동" d="M1447.3 266.8L1442.4 85.7 1343.2 105.6 1313.4 125.4 1325.8 254.4Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 중구 황학동</title></path>
+<path id="서울특별시_중구_중림동" d="M301.5 413.1L264.3 346.1 98.1 420.5 85.7 432.9 103.1 633.8 237 529.7 256.8 455.3Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 중구 중림동</title></path>
+</g>
+<g id="대상">
+<path d="M894.2 683.4L824.8 755.4 777.7 705.8 760.3 678.5 661.1 638.8 609 576.8 415.6 604.1 323.8 556.9 249.4 569.3 237 529.7 103.1 633.8 85.7 432.9 98.1 420.5 264.3 346.1 202.3 242 251.9 177.5 390.8 145.2 428 150.2 636.3 177.5 730.6 177.5 966.2 142.8 1077.8 140.3 1139.8 137.8 1313.4 125.4 1343.2 105.6 1442.4 85.7 1447.3 266.8 1514.3 271.7 1504.4 326.3 1439.9 388.3 1430 467.7 1353.1 477.6 1355.6 480.1 1310.9 517.3 1286.1 599.1 1216.7 683.4 1162.1 735.5 1115 847.1 1033.1 785.1 1043.1 745.4 1020.7 671 894.2 683.4" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g id="시도경계">
+</g>
+<g id="지명" text-anchor="middle">
+<text x="777.7" y="499.9" font-size="20.8" font-weight="500" fill="#FFFFFF">필동</text>
+<text x="606.5" y="356.1" font-size="20.8" font-weight="500" fill="#FFFFFF">명동</text>
+<text x="1067.9" y="405.7" font-size="20.8" font-weight="500" fill="#FFFFFF">장충동</text>
+<text x="457.7" y="497.5" font-size="20.8" font-weight="500" fill="#FFFFFF">회현동</text>
+<text x="343.7" y="276.7" font-size="20.8" font-weight="500" fill="#FFFFFF">소공동</text>
+<text x="1085.2" y="259.4" font-size="20.8" font-weight="500" fill="#FFFFFF">광희동</text>
+<text x="755.4" y="264.3" font-size="20.8" font-weight="500" fill="#FFFFFF">을지로동</text>
+<text x="1253.9" y="224.7" font-size="20.8" font-weight="500" fill="#FFFFFF">신당동</text>
+<text x="170" y="485.1" font-size="20.8" font-weight="500" fill="#FFFFFF">중림동</text>
+<text x="1077.8" y="616.5" font-size="20.8" font-weight="500" fill="#FFFFFF">다산동</text>
+<text x="1184.4" y="641.3" font-size="20.8" font-weight="500" fill="#FFFFFF">약수동</text>
+<text x="1256.3" y="490" font-size="20.8" font-weight="500" fill="#FFFFFF">청구동</text>
+<text x="1353.1" y="405.7" font-size="20.8" font-weight="500" fill="#FFFFFF">동화동</text>
+<text x="1382.8" y="197.4" font-size="20.8" font-weight="500" fill="#FFFFFF">황학동</text>
+<text x="1434.9" y="321.4" font-size="20.8" font-weight="500" fill="#FFFFFF">신당5동</text>
+</g>
+</svg>

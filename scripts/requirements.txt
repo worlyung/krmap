@@ -1,0 +1,4 @@
+admdongkor
+geopandas
+shapely>=2.0
+pyarrow

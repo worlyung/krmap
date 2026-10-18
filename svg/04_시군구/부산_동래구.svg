@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1208" viewBox="0 0 1600 1208" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>부산광역시 동래구</title>
 <g id="배경">
-<path d="M0 1208L0 753.7 85.7 779.4 161.6 879.1 148.6 935.5 250.5 1104.6 432.6 1121.9 443.1 1208Z" fill="#E7EBF0" fill-rule="evenodd"></path>
-<path d="M0 0L182.1 0 224.5 25 384.9 14.2 395.7 105.2 378.4 157.3 322 278.6 226.6 419.6 228.8 465.1 222.3 534.4 202.8 577.8 107.4 692.7 85.7 779.4 0 753.7Z" fill="#E7EBF0" fill-rule="evenodd"></path>
-<path d="M1600 1208L1571.8 1208 1564.1 1154.4 1503.4 1011.4 1496.9 965.8 1475.3 885.6 1479.6 798.9 1514.3 690.5 1462.3 675.4 1414.6 625.5 1386.4 475.9 1390.7 456.4 1451.4 406.5 1562 365.4 1527.3 254.8 1525.1 176.8 1555.5 120.4 1600 93.5Z" fill="#E7EBF0" fill-rule="evenodd"></path>
-<path d="M1067.7 365.4L1035.2 328.5 887.8 296 931.2 207.1 890 200.6 824.9 139.9 742.6 98.7 621.2 100.9 521.4 124.7 497.6 85.7 395.7 105.2 384.9 14.2 224.5 25 182.1 0 1600 0 1600 93.5 1555.5 120.4 1525.1 176.8 1527.3 254.8 1562 365.4 1451.4 406.5 1390.7 456.4 1386.4 475.9 1288.8 471.6 1236.8 428.2 1137.1 384.9 1074.2 354.5Z" fill="#E7EBF0" fill-rule="evenodd"></path>
-<path d="M443.1 1208L432.6 1121.9 250.5 1104.6 148.6 935.5 161.6 879.1 263.5 926.8 322 920.3 404.4 944.2 497.6 920.3 486.8 885.6 532.3 874.8 625.5 848.8 684 777.2 755.6 744.7 803.3 746.9 909.5 855.3 1011.4 883.5 1104.6 907.3 1182.6 922.5 1206.5 929 1360.4 950.7 1403.7 968 1496.9 1121.9 1464.8 1208 1331.8 1208 1269.3 1182.6 1180.5 1208Z" fill="#E7EBF0" fill-rule="evenodd"></path>
-<path d="M1180.5 1208L1269.3 1182.6 1331.8 1208 1464.8 1208 1496.9 1121.9 1503.4 1011.4 1564.1 1154.4 1571.8 1208Z" fill="#E7EBF0" fill-rule="evenodd"></path>
+<path d="M0 1208L0 753.7 85.7 779.4 161.6 879.1 148.6 935.5 250.5 1104.6 432.6 1121.9 443.1 1208Z" fill="#EDF0F4" fill-rule="evenodd"></path>
+<path d="M0 0L182.1 0 224.5 25 384.9 14.2 395.7 105.2 378.4 157.3 322 278.6 226.6 419.6 228.8 465.1 222.3 534.4 202.8 577.8 107.4 692.7 85.7 779.4 0 753.7Z" fill="#EDF0F4" fill-rule="evenodd"></path>
+<path d="M1600 1208L1571.8 1208 1564.1 1154.4 1503.4 1011.4 1496.9 965.8 1475.3 885.6 1479.6 798.9 1514.3 690.5 1462.3 675.4 1414.6 625.5 1386.4 475.9 1390.7 456.4 1451.4 406.5 1562 365.4 1527.3 254.8 1525.1 176.8 1555.5 120.4 1600 93.5Z" fill="#EDF0F4" fill-rule="evenodd"></path>
+<path d="M1067.7 365.4L1035.2 328.5 887.8 296 931.2 207.1 890 200.6 824.9 139.9 742.6 98.7 621.2 100.9 521.4 124.7 497.6 85.7 395.7 105.2 384.9 14.2 224.5 25 182.1 0 1600 0 1600 93.5 1555.5 120.4 1525.1 176.8 1527.3 254.8 1562 365.4 1451.4 406.5 1390.7 456.4 1386.4 475.9 1288.8 471.6 1236.8 428.2 1137.1 384.9 1074.2 354.5Z" fill="#EDF0F4" fill-rule="evenodd"></path>
+<path d="M443.1 1208L432.6 1121.9 250.5 1104.6 148.6 935.5 161.6 879.1 263.5 926.8 322 920.3 404.4 944.2 497.6 920.3 486.8 885.6 532.3 874.8 625.5 848.8 684 777.2 755.6 744.7 803.3 746.9 909.5 855.3 1011.4 883.5 1104.6 907.3 1182.6 922.5 1206.5 929 1360.4 950.7 1403.7 968 1496.9 1121.9 1464.8 1208 1331.8 1208 1269.3 1182.6 1180.5 1208Z" fill="#EDF0F4" fill-rule="evenodd"></path>
+<path d="M1180.5 1208L1269.3 1182.6 1331.8 1208 1464.8 1208 1496.9 1121.9 1503.4 1011.4 1564.1 1154.4 1571.8 1208Z" fill="#EDF0F4" fill-rule="evenodd"></path>
 <path d="M0 753.7L85.7 779.4 161.6 879.1 148.6 935.5 250.5 1104.6 432.6 1121.9 443.1 1208" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
 <path d="M182.1 0L224.5 25 384.9 14.2 395.7 105.2 378.4 157.3 322 278.6 226.6 419.6 228.8 465.1 222.3 534.4 202.8 577.8 107.4 692.7 85.7 779.4 0 753.7" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
 <path d="M1571.8 1208L1564.1 1154.4 1503.4 1011.4 1496.9 965.8 1475.3 885.6 1479.6 798.9 1514.3 690.5 1462.3 675.4 1414.6 625.5 1386.4 475.9 1390.7 456.4 1451.4 406.5 1562 365.4 1527.3 254.8 1525.1 176.8 1555.5 120.4 1600 93.5" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
@@ -15,19 +15,19 @@
 <path d="M1180.5 1208L1269.3 1182.6 1331.8 1208M1464.8 1208L1496.9 1121.9 1503.4 1011.4 1564.1 1154.4 1571.8 1208" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="대상_내부">
-<path id="부산광역시_동래구_수민동" d="M1041.7 733.9L974.5 707.9 937.7 632 877 623.3 859.6 679.7 766.4 681.9 803.3 746.9 909.5 855.3 1011.4 883.5 1104.6 907.3 1182.6 922.5 1143.6 816.3Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 수민동</title></path>
-<path id="부산광역시_동래구_복산동" d="M1037.4 484.6L1002.7 473.7 911.6 521.4 859.6 599.5 877 623.3 937.7 632 974.5 707.9 1041.7 733.9 1100.2 612.5 1106.7 567Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 복산동</title></path>
-<path id="부산광역시_동래구_명륜동" d="M1067.7 365.4L1035.2 328.5 887.8 296 768.6 445.6 772.9 632 762.1 668.8 766.4 681.9 859.6 679.7 877 623.3 859.6 599.5 911.6 521.4 1002.7 473.7 1037.4 484.6 1039.5 408.7Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 명륜동</title></path>
-<path id="부산광역시_동래구_온천1동" d="M931.2 207.1L890 200.6 824.9 139.9 742.6 98.7 621.2 100.9 521.4 124.7 497.6 85.7 395.7 105.2 378.4 157.3 608.2 330.7 645 376.2 733.9 397.9 768.6 445.6 887.8 296Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 온천1동</title></path>
-<path id="부산광역시_동래구_온천2동" d="M768.6 445.6L733.9 397.9 645 376.2 608.2 330.7 378.4 157.3 322 278.6 226.6 419.6 228.8 465.1 280.8 475.9 456.4 467.2 514.9 514.9 772.9 632Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 온천2동</title></path>
-<path id="부산광역시_동래구_온천3동" d="M772.9 632L514.9 514.9 456.4 467.2 280.8 475.9 228.8 465.1 222.3 534.4 378.4 660.2 395.7 688.4 449.9 660.2 508.4 692.7 573.5 723 725.2 666.7 762.1 668.8Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 온천3동</title></path>
-<path id="부산광역시_동래구_사직1동" d="M508.4 692.7L449.9 660.2 395.7 688.4 376.2 716.5 423.9 837.9 471.6 824.9 486.8 885.6 532.3 874.8 491.1 720.9Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 사직1동</title></path>
-<path id="부산광역시_동래구_사직2동" d="M395.7 688.4L378.4 660.2 222.3 534.4 202.8 577.8 107.4 692.7 85.7 779.4 161.6 879.1 263.5 926.8 322 920.3 404.4 944.2 497.6 920.3 486.8 885.6 471.6 824.9 423.9 837.9 376.2 716.5Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 사직2동</title></path>
-<path id="부산광역시_동래구_사직3동" d="M762.1 668.8L725.2 666.7 573.5 723 508.4 692.7 491.1 720.9 532.3 874.8 625.5 848.8 684 777.2 755.6 744.7 803.3 746.9 766.4 681.9Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 사직3동</title></path>
-<path id="부산광역시_동래구_안락1동" d="M1182.6 660.2L1100.2 612.5 1041.7 733.9 1143.6 816.3 1182.6 922.5 1206.5 929 1282.3 703.5 1193.5 686.2Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 안락1동</title></path>
-<path id="부산광역시_동래구_안락2동" d="M1514.3 690.5L1462.3 675.4 1447.1 712.2 1282.3 703.5 1206.5 929 1360.4 950.7 1403.7 968 1496.9 1121.9 1503.4 1011.4 1496.9 965.8 1475.3 885.6 1479.6 798.9Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 안락2동</title></path>
-<path id="부산광역시_동래구_명장1동" d="M1386.4 475.9L1288.8 471.6 1256.3 551.8 1182.6 660.2 1193.5 686.2 1282.3 703.5 1447.1 712.2 1462.3 675.4 1414.6 625.5Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 명장1동</title></path>
-<path id="부산광역시_동래구_명장2동" d="M1137.1 384.9L1074.2 354.5 1067.7 365.4 1039.5 408.7 1037.4 484.6 1106.7 567 1100.2 612.5 1182.6 660.2 1256.3 551.8 1288.8 471.6 1236.8 428.2Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 명장2동</title></path>
+<path id="부산광역시_동래구_수민동" d="M1041.7 733.9L974.5 707.9 937.7 632 877 623.3 859.6 679.7 766.4 681.9 803.3 746.9 909.5 855.3 1011.4 883.5 1104.6 907.3 1182.6 922.5 1143.6 816.3Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 수민동</title></path>
+<path id="부산광역시_동래구_복산동" d="M1037.4 484.6L1002.7 473.7 911.6 521.4 859.6 599.5 877 623.3 937.7 632 974.5 707.9 1041.7 733.9 1100.2 612.5 1106.7 567Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 복산동</title></path>
+<path id="부산광역시_동래구_명륜동" d="M1067.7 365.4L1035.2 328.5 887.8 296 768.6 445.6 772.9 632 762.1 668.8 766.4 681.9 859.6 679.7 877 623.3 859.6 599.5 911.6 521.4 1002.7 473.7 1037.4 484.6 1039.5 408.7Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 명륜동</title></path>
+<path id="부산광역시_동래구_온천1동" d="M931.2 207.1L890 200.6 824.9 139.9 742.6 98.7 621.2 100.9 521.4 124.7 497.6 85.7 395.7 105.2 378.4 157.3 608.2 330.7 645 376.2 733.9 397.9 768.6 445.6 887.8 296Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 온천1동</title></path>
+<path id="부산광역시_동래구_온천2동" d="M768.6 445.6L733.9 397.9 645 376.2 608.2 330.7 378.4 157.3 322 278.6 226.6 419.6 228.8 465.1 280.8 475.9 456.4 467.2 514.9 514.9 772.9 632Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 온천2동</title></path>
+<path id="부산광역시_동래구_온천3동" d="M772.9 632L514.9 514.9 456.4 467.2 280.8 475.9 228.8 465.1 222.3 534.4 378.4 660.2 395.7 688.4 449.9 660.2 508.4 692.7 573.5 723 725.2 666.7 762.1 668.8Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 온천3동</title></path>
+<path id="부산광역시_동래구_사직1동" d="M508.4 692.7L449.9 660.2 395.7 688.4 376.2 716.5 423.9 837.9 471.6 824.9 486.8 885.6 532.3 874.8 491.1 720.9Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 사직1동</title></path>
+<path id="부산광역시_동래구_사직2동" d="M395.7 688.4L378.4 660.2 222.3 534.4 202.8 577.8 107.4 692.7 85.7 779.4 161.6 879.1 263.5 926.8 322 920.3 404.4 944.2 497.6 920.3 486.8 885.6 471.6 824.9 423.9 837.9 376.2 716.5Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 사직2동</title></path>
+<path id="부산광역시_동래구_사직3동" d="M762.1 668.8L725.2 666.7 573.5 723 508.4 692.7 491.1 720.9 532.3 874.8 625.5 848.8 684 777.2 755.6 744.7 803.3 746.9 766.4 681.9Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 사직3동</title></path>
+<path id="부산광역시_동래구_안락1동" d="M1182.6 660.2L1100.2 612.5 1041.7 733.9 1143.6 816.3 1182.6 922.5 1206.5 929 1282.3 703.5 1193.5 686.2Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 안락1동</title></path>
+<path id="부산광역시_동래구_안락2동" d="M1514.3 690.5L1462.3 675.4 1447.1 712.2 1282.3 703.5 1206.5 929 1360.4 950.7 1403.7 968 1496.9 1121.9 1503.4 1011.4 1496.9 965.8 1475.3 885.6 1479.6 798.9Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 안락2동</title></path>
+<path id="부산광역시_동래구_명장1동" d="M1386.4 475.9L1288.8 471.6 1256.3 551.8 1182.6 660.2 1193.5 686.2 1282.3 703.5 1447.1 712.2 1462.3 675.4 1414.6 625.5Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 명장1동</title></path>
+<path id="부산광역시_동래구_명장2동" d="M1137.1 384.9L1074.2 354.5 1067.7 365.4 1039.5 408.7 1037.4 484.6 1106.7 567 1100.2 612.5 1182.6 660.2 1256.3 551.8 1288.8 471.6 1236.8 428.2Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동래구 명장2동</title></path>
 </g>
 <g id="대상">
 <path d="M755.6 744.7L684 777.2 625.5 848.8 532.3 874.8 486.8 885.6 497.6 920.3 404.4 944.2 322 920.3 263.5 926.8 161.6 879.1 85.7 779.4 107.4 692.7 202.8 577.8 222.3 534.4 228.8 465.1 226.6 419.6 322 278.6 378.4 157.3 395.7 105.2 497.6 85.7 521.4 124.7 621.2 100.9 742.6 98.7 824.9 139.9 890 200.6 931.2 207.1 887.8 296 1035.2 328.5 1067.7 365.4 1074.2 354.5 1137.1 384.9 1236.8 428.2 1288.8 471.6 1386.4 475.9 1414.6 625.5 1462.3 675.4 1514.3 690.5 1479.6 798.9 1475.3 885.6 1496.9 965.8 1503.4 1011.4 1496.9 1121.9 1403.7 968 1360.4 950.7 1206.5 929 1182.6 922.5 1104.6 907.3 1011.4 883.5 909.5 855.3 803.3 746.9 755.6 744.7" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
@@ -35,18 +35,18 @@
 <g id="시도경계">
 </g>
 <g id="지명" text-anchor="middle">
-<text x="428.2" y="355.5" font-size="20.8" font-weight="500" fill="#FFFFFF">온천2동</text>
-<text x="738.2" y="260.1" font-size="20.8" font-weight="500" fill="#FFFFFF">온천1동</text>
-<text x="241.8" y="754.4" font-size="20.8" font-weight="500" fill="#FFFFFF">사직2동</text>
-<text x="419.6" y="574.5" font-size="20.8" font-weight="500" fill="#FFFFFF">온천3동</text>
-<text x="1369" y="830.2" font-size="20.8" font-weight="500" fill="#FFFFFF">안락2동</text>
-<text x="926.8" y="411.9" font-size="20.8" font-weight="500" fill="#FFFFFF">명륜동</text>
-<text x="961.5" y="793.4" font-size="20.8" font-weight="500" fill="#FFFFFF">수민동</text>
-<text x="1178.3" y="509.4" font-size="20.8" font-weight="500" fill="#FFFFFF">명장2동</text>
-<text x="1317" y="622.1" font-size="20.8" font-weight="500" fill="#FFFFFF">명장1동</text>
-<text x="1002.7" y="583.1" font-size="20.8" font-weight="500" fill="#FFFFFF">복산동</text>
-<text x="1186.9" y="763" font-size="20.8" font-weight="500" fill="#FFFFFF">안락1동</text>
-<text x="588.6" y="797.7" font-size="20.8" font-weight="500" fill="#FFFFFF">사직3동</text>
-<text x="441.2" y="739.2" font-size="20.8" font-weight="500" fill="#FFFFFF">사직1동</text>
+<text x="428.2" y="357.2" font-size="25.6" font-weight="500" fill="#FFFFFF">온천2동</text>
+<text x="738.2" y="261.8" font-size="25.6" font-weight="500" fill="#FFFFFF">온천1동</text>
+<text x="241.8" y="756.1" font-size="25.6" font-weight="500" fill="#FFFFFF">사직2동</text>
+<text x="419.6" y="576.2" font-size="25.6" font-weight="500" fill="#FFFFFF">온천3동</text>
+<text x="1369" y="832" font-size="25.6" font-weight="500" fill="#FFFFFF">안락2동</text>
+<text x="926.8" y="413.6" font-size="25.6" font-weight="500" fill="#FFFFFF">명륜동</text>
+<text x="961.5" y="795.1" font-size="25.6" font-weight="500" fill="#FFFFFF">수민동</text>
+<text x="1178.3" y="511.1" font-size="25.6" font-weight="500" fill="#FFFFFF">명장2동</text>
+<text x="1317" y="623.9" font-size="25.6" font-weight="500" fill="#FFFFFF">명장1동</text>
+<text x="1002.7" y="584.9" font-size="25.6" font-weight="500" fill="#FFFFFF">복산동</text>
+<text x="1186.9" y="764.8" font-size="25.6" font-weight="500" fill="#FFFFFF">안락1동</text>
+<text x="588.6" y="799.5" font-size="25.6" font-weight="500" fill="#FFFFFF">사직3동</text>
+<text x="441.2" y="740.9" font-size="25.6" font-weight="500" fill="#FFFFFF">사직1동</text>
 </g>
 </svg>

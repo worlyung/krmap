@@ -24,16 +24,16 @@
   }
 
   const DEFAULT_COLORS = {
-    target: "#2F5BD3",
-    neighbor: "#BCCDF2",
-    context: "#E7EBF0",
+    target: "#3361E0",
+    neighbor: "#C9D6F6",
+    context: "#EDF0F4",
     line: "#FFFFFF",
-    sidoLine: "#4A5868",
-    text: "#1B2430",
+    sidoLine: "#9AA6B5",
+    text: "#1E2633",
     bg: null,
   };
   // 이웃끼리 겹치지 않게 칠할 부드러운 색 (PPT 배경 위에서 무난한 톤)
-  const DISTINCT = ["#F4B9A0", "#F7D58B", "#B9DFA6", "#9FD6D2", "#AFC8F2", "#CDB8EF", "#F1B4CF", "#DCCAA8", "#B8D4E6", "#E9C4A2"];
+  const DISTINCT = ["#F7C6B3", "#F8DFA0", "#C9E5AE", "#A8DCD1", "#B6CCF4", "#D3C4EF", "#F2BFD5", "#E3D1B5", "#BADDEB", "#F1CDA6"];
 
   function decode(f) {
     if (!f._p) {
@@ -305,17 +305,27 @@
           return out;
         }).filter((r) => r.length >= 3)
       ).filter((p) => p.length);
+    // 화면에서 점처럼 보이는 아주 작은 섬은 뺀다 (가장 큰 덩어리는 항상 남김)
+    const ringArea = (r) => { let a = 0; for (let i = 0, j = r.length - 1; i < r.length; j = i++) a += (r[j][0] + r[i][0]) * (r[j][1] - r[i][1]); return Math.abs(a / 2); };
+    const minArea = 3 * (W / 1600) * (W / 1600);
+    const projectClean = (f) => {
+      const polys = project(f);
+      if (polys.length < 2) return polys;
+      const areas = polys.map((p) => ringArea(p[0]));
+      const big = areas.indexOf(Math.max(...areas));
+      return polys.filter((p, i) => i === big || areas[i] >= minArea);
+    };
 
     const base = (W / 1600) * (o.lineScale || 1);
     const add = (lv, id, f, fill, stroke, width, group, extra) => {
-      const rings = project(f);
+      const rings = projectClean(f);
       if (rings.length) scene.polys.push(Object.assign({ lv, id, name: f.full, rings, fill, stroke, width, group }, extra));
     };
     // 흐린 배경 지역: 화면 사각형으로 잘라서 채움과 경계선을 따로 둔다
     const addContext = (lv, k, f) => {
       const rings = [];
       const outl = [];
-      for (const poly of project(f)) {
+      for (const poly of projectClean(f)) {
         const cp = poly.map((r) => clipRing(r, 0, 0, W, H)).filter(Boolean);
         if (cp.length) rings.push(cp);
         for (const r of poly) outl.push(...clipOutline(r, 0, 0, W, H));
@@ -383,6 +393,15 @@
       }
     }
 
+    // 대상(또는 고른 지역)을 살짝 띄우는 그림자 — 같은 모양을 아래에 한 번 더 깔고 흐린다
+    if (o.shadow) {
+      const lifted = T && innerIds.length
+        ? [{ lv: o.target.lv, id: o.target.id, name: T.full, rings: projectClean(T) }]
+        : scene.polys.filter((p) => p.group === "target" || p.group === "picked");
+      for (const p of lifted) scene.polys.push({ lv: p.lv, id: p.id, name: p.name, rings: p.rings, fill: C.target, stroke: null, width: 0, group: "shadow" });
+      scene.shadow = { dy: base * 3, blur: base * 7, color: C.shadow || "#0B1A33", opacity: C.bg && luminance(C.bg) < 0.2 ? 0.55 : 0.28 };
+    }
+
     // 6) 시도 경계 덧그리기
     const fineLv = P ? P.lv : T ? (LEVEL_ORDER[o.nbLevel] > 0 || innerIds.length ? o.nbLevel : null) : allLv;
     if (o.sidoLines && fineLv && fineLv !== "sido") {
@@ -392,11 +411,13 @@
         if (!bbHit(f.bb, view)) continue;
         for (const poly of project(f)) for (const r of poly) lines.push(...clipOutline(r, 0, 0, W, H));
       }
-      scene.lines.push({ lines, stroke: C.sidoLine, width: base * 2.2, group: "sido" });
+      scene.lines.push({ lines, stroke: C.sidoLine, width: base * 1.7, group: "sido" });
     }
 
     // 7) 글자
-    const fs = (W / 1600) * 26 * o.fontScale;
+    const fs = (W / 1600) * 32 * o.fontScale;
+    // 넓은 지도(전국 등)에서는 시도 이름을 줄여 쓴다: 충청남도 → 충남
+    const shortSido = o.shortSido === "auto" ? (x1 - x0) * 10 > 250000 : !!o.shortSido;
     const placed = [];
     const overlaps = (b) => placed.some((p) => b[0] < p[2] && b[2] > p[0] && b[1] < p[3] && b[3] > p[1]);
     const textW = (t, size) => [...t].reduce((a, ch) => a + (/[ㄱ-힣]/.test(ch) ? 1 : 0.58), 0) * size;
@@ -411,9 +432,9 @@
         const sShort = sidoShort(D.sido[f.sido].nm);
         if (homeSido && f.sido !== homeSido && lv !== "sido" && !f.nm.startsWith(sShort)) sub.push(sShort);
       }
-      const main = lv === "sido" && o.shortSido ? sidoShort(f.nm) : f.nm;
+      const main = lv === "sido" && shortSido ? sidoShort(f.nm) : f.nm;
       const subTxt = sub.join(" · ");
-      const ss = size * 0.62;
+      const ss = size * 0.64;
       const tw = Math.max(textW(main, size), subTxt ? textW(subTxt, ss) : 0);
       const th = size + (subTxt ? ss * 1.15 : 0);
       if (!force) {
@@ -426,12 +447,12 @@
       const color = textOn(fill, C.text);
       const y0t = p[1] - th / 2;
       scene.texts.push({ lv, id, x: p[0], y: y0t + size * 0.5, text: main, size, weight, fill: color, halo: o.halo });
-      if (subTxt) scene.texts.push({ lv, id, x: p[0], y: y0t + size + ss * 0.65, text: subTxt, size: ss, weight: 400, fill: color, halo: o.halo, sub: true });
+      if (subTxt) scene.texts.push({ lv, id, x: p[0], y: y0t + size + ss * 0.7, text: subTxt, size: ss, weight: 500, fill: mix(color, fill, 0.38), halo: o.halo, sub: true });
     };
     const style = (p) => {
       switch (p.group) {
-        case "target": return [fs * 1.25, 700];
-        case "neighbor": return [fs * (p.ring === 2 ? 0.8 : 0.95), 600];
+        case "target": return [fs * 1.3, 700];
+        case "neighbor": return [fs * (p.ring === 2 ? 0.82 : 1.0), 600];
         case "picked": return [fs * (p.lv === "sido" ? 1.0 : p.lv === "emd" ? 0.6 : 0.85), 600];
         case "all": return [allLv === "sido" ? fs * 0.9 : allLv === "emd" ? fs * 0.3 : fs * 0.45, allLv === "sido" ? 700 : 500];
         default: return [fs * 0.8, 500];
@@ -481,7 +502,7 @@
   }
 
   const GROUPS = [
-    ["context", "배경"], ["all", "지역"], ["neighbor", "주변"], ["picked", "선택"], ["inner", "대상_내부"], ["target", "대상"], ["sido", "시도경계"],
+    ["context", "배경"], ["all", "지역"], ["neighbor", "주변"], ["shadow", "그림자"], ["picked", "선택"], ["inner", "대상_내부"], ["target", "대상"], ["sido", "시도경계"],
   ];
 
   function toSVG(scene, opt) {
@@ -493,13 +514,21 @@
       `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" font-family="${esc(FONT)}">`
     );
     out.push(`<title>${esc(scene.title)}</title>`);
+    if (scene.shadow) {
+      const sh = scene.shadow;
+      out.push(
+        `<defs><filter id="liftShadow" x="-10%" y="-10%" width="120%" height="125%" color-interpolation-filters="sRGB">` +
+          `<feDropShadow dx="0" dy="${num(sh.dy)}" stdDeviation="${num(sh.blur)}" flood-color="${sh.color}" flood-opacity="${sh.opacity}"/></filter></defs>`
+      );
+    }
     if (scene.bg) out.push(`<rect id="바탕" x="0" y="0" width="${W}" height="${H}" fill="${scene.bg}"/>`);
     for (const [g, gname] of GROUPS) {
       const ps = scene.polys.filter((p) => p.group === g);
       const ls = scene.lines.filter((l) => l.group === g);
       if (!ps.length && !ls.length) continue;
-      out.push(`<g id="${gname}">`);
+      out.push(g === "shadow" ? `<g id="${gname}" filter="url(#liftShadow)">` : `<g id="${gname}">`);
       for (const p of ps) {
+        if (g === "shadow") { out.push(`<path d="${polyD(p.rings)}" fill="${p.fill}"/>`); continue; }
         const attrs = opt.interactive ? ` data-lv="${p.lv}" data-id="${p.id}"` : "";
         const stroke = p.stroke ? ` stroke="${p.stroke}" stroke-width="${num(p.width)}" stroke-linejoin="round"` : "";
         const id = g === "context" ? "" : ` id="${safeId(p.name, used)}"`;

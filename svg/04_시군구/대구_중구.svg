@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1213" viewBox="0 0 1600 1213" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>대구광역시 중구</title>
 <g id="배경">
-<path d="M1231.7 198L1340.1 97.3 1397.9 0 1600 0 1600 564 1514.3 554.2 1413.6 314.1 1355.6 267.7Z" fill="#E7EBF0" fill-rule="evenodd"></path>
-<path d="M0 0L324.3 0 298.6 101.2 221.2 85.7 143.8 318 186.4 407 279.3 372.2 275.4 472.9 221.2 569.6 85.7 693.5 97.3 805.8 0 837.7Z" fill="#E7EBF0" fill-rule="evenodd"></path>
-<path d="M92 1213L112.8 918.1 403.2 1076.8 453.5 1072.9 577.4 1057.5 817.4 1061.3 1088.4 1115.5 1301.4 1127.1 1287.5 1213Z" fill="#E7EBF0" fill-rule="evenodd"></path>
-<path d="M324.3 0L1397.9 0 1340.1 97.3 1231.7 198 1355.6 267.7 1212.3 318 1042 275.4 817.4 256.1 817.4 213.5 589 163.1 298.6 101.2Z" fill="#E7EBF0" fill-rule="evenodd"></path>
-<path d="M1600 1213L1287.5 1213 1301.4 1127.1 1289.7 1014.9 1320.7 848.4 1336.2 829 1460.1 670.3 1506.5 565.8 1514.3 554.2 1600 564Z" fill="#E7EBF0" fill-rule="evenodd"></path>
-<path d="M0 1213L0 837.7 97.3 805.8 112.8 918.1 92 1213Z" fill="#E7EBF0" fill-rule="evenodd"></path>
+<path d="M1231.7 198L1340.1 97.3 1397.9 0 1600 0 1600 564 1514.3 554.2 1413.6 314.1 1355.6 267.7Z" fill="#EDF0F4" fill-rule="evenodd"></path>
+<path d="M0 0L324.3 0 298.6 101.2 221.2 85.7 143.8 318 186.4 407 279.3 372.2 275.4 472.9 221.2 569.6 85.7 693.5 97.3 805.8 0 837.7Z" fill="#EDF0F4" fill-rule="evenodd"></path>
+<path d="M92 1213L112.8 918.1 403.2 1076.8 453.5 1072.9 577.4 1057.5 817.4 1061.3 1088.4 1115.5 1301.4 1127.1 1287.5 1213Z" fill="#EDF0F4" fill-rule="evenodd"></path>
+<path d="M324.3 0L1397.9 0 1340.1 97.3 1231.7 198 1355.6 267.7 1212.3 318 1042 275.4 817.4 256.1 817.4 213.5 589 163.1 298.6 101.2Z" fill="#EDF0F4" fill-rule="evenodd"></path>
+<path d="M1600 1213L1287.5 1213 1301.4 1127.1 1289.7 1014.9 1320.7 848.4 1336.2 829 1460.1 670.3 1506.5 565.8 1514.3 554.2 1600 564Z" fill="#EDF0F4" fill-rule="evenodd"></path>
+<path d="M0 1213L0 837.7 97.3 805.8 112.8 918.1 92 1213Z" fill="#EDF0F4" fill-rule="evenodd"></path>
 <path d="M1600 564L1514.3 554.2 1413.6 314.1 1355.6 267.7 1231.7 198 1340.1 97.3 1397.9 0" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
 <path d="M324.3 0L298.6 101.2 221.2 85.7 143.8 318 186.4 407 279.3 372.2 275.4 472.9 221.2 569.6 85.7 693.5 97.3 805.8 0 837.7" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
 <path d="M92 1213L112.8 918.1 403.2 1076.8 453.5 1072.9 577.4 1057.5 817.4 1061.3 1088.4 1115.5 1301.4 1127.1 1287.5 1213" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
@@ -15,18 +15,18 @@
 <path d="M0 837.7L97.3 805.8 112.8 918.1 92 1213" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="대상_내부">
-<path id="대구광역시_중구_동인동" d="M1514.3 554.2L1413.6 314.1 1355.6 267.7 1212.3 318 1042 275.4 991.6 558 1460.1 670.3 1506.5 565.8Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 동인동</title></path>
-<path id="대구광역시_중구_삼덕동" d="M991.6 558L832.9 608.4 999.4 751.6 1336.2 829 1460.1 670.3Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 삼덕동</title></path>
-<path id="대구광역시_중구_성내1동" d="M1042 275.4L817.4 256.1 774.8 488.3 771 650.9 879.4 914.2 1026.5 891 999.4 751.6 832.9 608.4 991.6 558Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 성내1동</title></path>
-<path id="대구광역시_중구_성내2동" d="M817.4 256.1L817.4 213.5 589 163.1 550.3 484.5 387.7 465.1 383.8 697.4 573.5 631.6 678 654.8 771 650.9 774.8 488.3Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 성내2동</title></path>
-<path id="대구광역시_중구_성내3동" d="M298.6 101.2L221.2 85.7 143.8 318 186.4 407 279.3 372.2 372.2 345.1 387.7 465.1 550.3 484.5 589 163.1Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 성내3동</title></path>
-<path id="대구광역시_중구_대신동" d="M387.7 465.1L372.2 345.1 279.3 372.2 275.4 472.9 221.2 569.6 85.7 693.5 97.3 805.8 360.6 716.8 383.8 697.4Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 대신동</title></path>
-<path id="대구광역시_중구_남산1동" d="M771 650.9L678 654.8 778.7 701.3 747.7 860 666.4 829 577.4 1057.5 817.4 1061.3 879.4 914.2Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 남산1동</title></path>
-<path id="대구광역시_중구_남산2동" d="M678 654.8L573.5 631.6 383.8 697.4 360.6 716.8 387.7 825.2 546.4 771 666.4 829 747.7 860 778.7 701.3Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 남산2동</title></path>
-<path id="대구광역시_중구_남산3동" d="M666.4 829L546.4 771 387.7 825.2 403.2 1076.8 453.5 1072.9 577.4 1057.5Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 남산3동</title></path>
-<path id="대구광역시_중구_남산4동" d="M387.7 825.2L360.6 716.8 97.3 805.8 112.8 918.1 403.2 1076.8Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 남산4동</title></path>
-<path id="대구광역시_중구_대봉1동" d="M1336.2 829L999.4 751.6 1026.5 891 1088.4 1115.5 1301.4 1127.1 1289.7 1014.9 1320.7 848.4Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 대봉1동</title></path>
-<path id="대구광역시_중구_대봉2동" d="M1088.4 1115.5L1026.5 891 879.4 914.2 817.4 1061.3Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 대봉2동</title></path>
+<path id="대구광역시_중구_동인동" d="M1514.3 554.2L1413.6 314.1 1355.6 267.7 1212.3 318 1042 275.4 991.6 558 1460.1 670.3 1506.5 565.8Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 동인동</title></path>
+<path id="대구광역시_중구_삼덕동" d="M991.6 558L832.9 608.4 999.4 751.6 1336.2 829 1460.1 670.3Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 삼덕동</title></path>
+<path id="대구광역시_중구_성내1동" d="M1042 275.4L817.4 256.1 774.8 488.3 771 650.9 879.4 914.2 1026.5 891 999.4 751.6 832.9 608.4 991.6 558Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 성내1동</title></path>
+<path id="대구광역시_중구_성내2동" d="M817.4 256.1L817.4 213.5 589 163.1 550.3 484.5 387.7 465.1 383.8 697.4 573.5 631.6 678 654.8 771 650.9 774.8 488.3Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 성내2동</title></path>
+<path id="대구광역시_중구_성내3동" d="M298.6 101.2L221.2 85.7 143.8 318 186.4 407 279.3 372.2 372.2 345.1 387.7 465.1 550.3 484.5 589 163.1Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 성내3동</title></path>
+<path id="대구광역시_중구_대신동" d="M387.7 465.1L372.2 345.1 279.3 372.2 275.4 472.9 221.2 569.6 85.7 693.5 97.3 805.8 360.6 716.8 383.8 697.4Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 대신동</title></path>
+<path id="대구광역시_중구_남산1동" d="M771 650.9L678 654.8 778.7 701.3 747.7 860 666.4 829 577.4 1057.5 817.4 1061.3 879.4 914.2Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 남산1동</title></path>
+<path id="대구광역시_중구_남산2동" d="M678 654.8L573.5 631.6 383.8 697.4 360.6 716.8 387.7 825.2 546.4 771 666.4 829 747.7 860 778.7 701.3Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 남산2동</title></path>
+<path id="대구광역시_중구_남산3동" d="M666.4 829L546.4 771 387.7 825.2 403.2 1076.8 453.5 1072.9 577.4 1057.5Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 남산3동</title></path>
+<path id="대구광역시_중구_남산4동" d="M387.7 825.2L360.6 716.8 97.3 805.8 112.8 918.1 403.2 1076.8Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 남산4동</title></path>
+<path id="대구광역시_중구_대봉1동" d="M1336.2 829L999.4 751.6 1026.5 891 1088.4 1115.5 1301.4 1127.1 1289.7 1014.9 1320.7 848.4Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 대봉1동</title></path>
+<path id="대구광역시_중구_대봉2동" d="M1088.4 1115.5L1026.5 891 879.4 914.2 817.4 1061.3Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>대구광역시 중구 대봉2동</title></path>
 </g>
 <g id="대상">
 <path d="M403.2 1076.8L112.8 918.1 97.3 805.8 85.7 693.5 221.2 569.6 275.4 472.9 279.3 372.2 186.4 407 143.8 318 221.2 85.7 298.6 101.2 589 163.1 817.4 213.5 817.4 256.1 1042 275.4 1212.3 318 1355.6 267.7 1413.6 314.1 1514.3 554.2 1506.5 565.8 1460.1 670.3 1336.2 829 1320.7 848.4 1289.7 1014.9 1301.4 1127.1 1088.4 1115.5 817.4 1061.3 577.4 1057.5 453.5 1072.9 403.2 1076.8" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
@@ -34,17 +34,17 @@
 <g id="시도경계">
 </g>
 <g id="지명" text-anchor="middle">
-<text x="1293.6" y="468.7" font-size="20.8" font-weight="500" fill="#FFFFFF">동인동</text>
-<text x="685.8" y="356.5" font-size="20.8" font-weight="500" fill="#FFFFFF">성내2동</text>
-<text x="310.3" y="236.4" font-size="20.8" font-weight="500" fill="#FFFFFF">성내3동</text>
-<text x="894.9" y="461" font-size="20.8" font-weight="500" fill="#FFFFFF">성내1동</text>
-<text x="1038.1" y="670.1" font-size="20.8" font-weight="500" fill="#FFFFFF">삼덕동</text>
-<text x="1169.7" y="944.9" font-size="20.8" font-weight="500" fill="#FFFFFF">대봉1동</text>
-<text x="287" y="646.8" font-size="20.8" font-weight="500" fill="#FFFFFF">대신동</text>
-<text x="275.4" y="879.1" font-size="20.8" font-weight="500" fill="#FFFFFF">남산4동</text>
-<text x="712.9" y="952.7" font-size="20.8" font-weight="500" fill="#FFFFFF">남산1동</text>
-<text x="507.7" y="914" font-size="20.8" font-weight="500" fill="#FFFFFF">남산3동</text>
-<text x="662.6" y="739.7" font-size="20.8" font-weight="500" fill="#FFFFFF">남산2동</text>
-<text x="960.7" y="1003" font-size="20.8" font-weight="500" fill="#FFFFFF">대봉2동</text>
+<text x="1293.6" y="470.5" font-size="25.6" font-weight="500" fill="#FFFFFF">동인동</text>
+<text x="685.8" y="358.2" font-size="25.6" font-weight="500" fill="#FFFFFF">성내2동</text>
+<text x="310.3" y="238.2" font-size="25.6" font-weight="500" fill="#FFFFFF">성내3동</text>
+<text x="894.9" y="462.7" font-size="25.6" font-weight="500" fill="#FFFFFF">성내1동</text>
+<text x="1038.1" y="671.8" font-size="25.6" font-weight="500" fill="#FFFFFF">삼덕동</text>
+<text x="1169.7" y="946.7" font-size="25.6" font-weight="500" fill="#FFFFFF">대봉1동</text>
+<text x="287" y="648.6" font-size="25.6" font-weight="500" fill="#FFFFFF">대신동</text>
+<text x="275.4" y="880.8" font-size="25.6" font-weight="500" fill="#FFFFFF">남산4동</text>
+<text x="712.9" y="954.4" font-size="25.6" font-weight="500" fill="#FFFFFF">남산1동</text>
+<text x="507.7" y="915.7" font-size="25.6" font-weight="500" fill="#FFFFFF">남산3동</text>
+<text x="662.6" y="741.5" font-size="25.6" font-weight="500" fill="#FFFFFF">남산2동</text>
+<text x="960.7" y="1004.7" font-size="25.6" font-weight="500" fill="#FFFFFF">대봉2동</text>
 </g>
 </svg>

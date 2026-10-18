@@ -15,6 +15,7 @@ PPT에 넣을 지도를 바로 뽑아 쓰기 위한 대한민국 행정구역 �
 - **색 그룹 · 범례 · 제목**: 본사·지사처럼 그룹을 만들어 지도에서 눌러 칠하고, 범례와 제목·부제·출처를 지도에 넣습니다.
 - **작업 저장 · 불러오기 · 되돌리기**, 이미지 클립보드 복사(PPT에 바로 붙여넣기).
 - **SVG / PNG / PPTX**로 저장. PPTX는 지역 하나하나가 PowerPoint 도형이라 색·선을 바로 바꿀 수 있습니다.
+- **자동화**: 명령줄 `krmap` 과 MCP 서버로 Claude Code · Codex 같은 에이전트가 같은 지도를 만듭니다 ([아래](#3-자동화-명령줄--mcp--claude-code--codex)).
 
 ## 1. 웹 도구 (`web/`)
 
@@ -72,7 +73,23 @@ PPT에 넣을 지도를 바로 뽑아 쓰기 위한 대한민국 행정구역 �
 
 SVG 안의 지역 `<path>`에는 `id="대전광역시_유성구"`처럼 이름이 붙어 있고, 그룹은 `배경 / 주변 / 대상 / 대상_내부 / 시도경계 / 지명`으로 나뉘어 있습니다.
 
-## 3. 데이터 다시 만들기 (`scripts/`)
+## 3. 자동화: 명령줄 · MCP · Claude Code · Codex
+
+웹 도구와 같은 그리기 코드를 Node 에서 돌려 설정(JSON) 하나로 SVG · PNG · PPTX 를 만듭니다. 자세한 설정은 [docs/automation.md](docs/automation.md).
+
+```bash
+npm install && npm test
+node tools/krmap.mjs render --region 대전광역시 --stat "60세 이상 비율" --stat-labels pop --title "대전 주변 고령 인구" --source
+node tools/krmap.mjs render --regions 충청남도 --unit 시군구 --layout 육각 --data 여론조사.csv --poll --format pptx
+node tools/krmap.mjs stats --in 경기도 --unit 시군구 --indicators pop,old60R --json
+```
+
+- **Claude Code**: 이 폴더에서 열면 `.mcp.json` 의 `korea-map` MCP 서버와 `korea-map` 스킬을 씁니다. "대전이랑 주변 시군 고령 인구 지도 PPT로 만들어줘" 처럼 말하면 됩니다.
+  다른 폴더에서도: `claude mcp add korea-map --scope user -- node /절대/경로/tools/mcp-server.mjs`
+- **Codex**: `~/.codex/config.toml` 에 `[mcp_servers.korea-map]` `command = "node"` `args = ["/절대/경로/tools/mcp-server.mjs"]`. 저장소 안에서는 `AGENTS.md` 를 읽고 명령줄을 씁니다.
+- MCP 도구: `find_region`, `list_neighbors`, `list_indicators`, `get_stats`, `locate_pins`, `render_map`(미리보기 그림 포함), `map_spec_reference`.
+
+## 4. 데이터 다시 만들기 (`scripts/`)
 
 기본 통계는 `data/mois/`에 둔 행정안전부 주민등록 인구통계 월간 CSV(연령별인구현황, 주민등록인구및세대현황)에서 만듭니다. 새 달 파일을 [주민등록 인구통계](https://jumin.mois.go.kr/)에서 받아 넣고 `python scripts/build_stats.py`를 돌리면 `web/data/stats.js`가 갱신됩니다.
 

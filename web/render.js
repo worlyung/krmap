@@ -482,6 +482,17 @@
     const s0 = o.width / w;
     y0 -= headPx / s0;
     y1 += footPx / s0;
+    // 범례 자리: 지도 옆(왼쪽·오른쪽)에 따로 비워 두어 지역을 가리지 않게 한다
+    const lgOn = o.legend && o.legend.items && o.legend.items.length && o.legend.pos !== "none";
+    if (lgOn) {
+      const tw0 = (t, size) => [...String(t)].reduce((a, ch) => a + (/[ㄱ-힣]/.test(ch) ? 1 : 0.58), 0) * size;
+      const ls = fs * 0.62;
+      const bw = Math.max(o.legend.title ? tw0(o.legend.title, ls * 1.05) : 0, ls * 1.75 + Math.max(...o.legend.items.map((it) => tw0(it.label, ls)))) + ls * 1.8;
+      const room = bw + fs * 0.9 * 1.6;
+      const e = (room * w) / Math.max(o.width - room, 1);
+      if ((o.legend.pos || "br")[1] === "l") x0 -= e; else x1 += e;
+      w = x1 - x0;
+    }
     h = y1 - y0;
     if (o.aspect) {
       if (w / h < o.aspect) { const nw = h * o.aspect; x0 -= (nw - w) / 2; x1 = x0 + nw; w = nw; }

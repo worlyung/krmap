@@ -1,0 +1,23 @@
+{
+  "name": "korea-admin-map",
+  "version": "1.0.0",
+  "description": "대한민국 행정구역(시도·시군구·읍면동) 지도를 SVG·PNG·PPTX로 만드는 도구 — 웹 도구, 명령줄(krmap), MCP 서버",
+  "private": true,
+  "bin": {
+    "krmap": "tools/krmap.mjs"
+  },
+  "scripts": {
+    "krmap": "node tools/krmap.mjs",
+    "mcp": "node tools/mcp-server.mjs",
+    "test": "node tools/test.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.30.1",
+    "@resvg/resvg-js": "2.6.2",
+    "pptxgenjs": "4.0.1",
+    "zod": "3.25.76"
+  }
+}

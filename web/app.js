@@ -7,61 +7,11 @@
   const ORDER = R.LEVEL_ORDER;
   const LV_KO = { sido: "시도", si: "시군구", sgg: "구", emd: "읍면동" };
 
-  // 색 테마: 대상 · 주변 · 나머지 · 경계선 · 시도 경계 · 글자 · 바탕
-  const PRESETS = [
-    { name: "코발트", target: "#3361E0", neighbor: "#C9D6F6", context: "#EDF0F4", line: "#FFFFFF", sidoLine: "#9AA6B5", text: "#1E2633", bg: "#FFFFFF" },
-    { name: "코랄", target: "#EF5B4C", neighbor: "#F9D3CB", context: "#F3EFEC", line: "#FFFFFF", sidoLine: "#B9A9A2", text: "#2D211E", bg: "#FFFFFF" },
-    { name: "에메랄드", target: "#0F9F84", neighbor: "#BEE6DB", context: "#EDF2F0", line: "#FFFFFF", sidoLine: "#93ABA4", text: "#16302A", bg: "#FFFFFF" },
-    { name: "라벤더", target: "#6A4CD6", neighbor: "#DAD0F6", context: "#F0EEF6", line: "#FFFFFF", sidoLine: "#A69EBD", text: "#231D3A", bg: "#FFFFFF" },
-    { name: "먹", target: "#262B33", neighbor: "#C5CAD1", context: "#EEF0F2", line: "#FFFFFF", sidoLine: "#9AA0A8", text: "#1C1F24", bg: "#FFFFFF" },
-    { name: "미드나잇", target: "#F2B33D", neighbor: "#2E4A75", context: "#1B283B", line: "#0F1A2B", sidoLine: "#5D7393", text: "#EAF0F8", bg: "#0F1A2B", fillBg: true },
-  ];
-
-  const S = {
-    mode: "around", // around(주변 지역) | pick(영역 직접 고르기) | all(전국)
-    sido17: false,
-    splitGu: false,
-    // around
-    target: { lv: "sido", id: "30" },
-    depth: 1,
-    nbLevel: "si",
-    inner: "",
-    context: true,
-    // pick
-    pick: { lv: "sido", ids: [], fit: true, hideOthers: false },
-    // all
-    allLv: "sido",
-    // 이름
-    labelMode: "all", // all | none | pick
-    labelPick: new Set(), // "lv:id"
-    clickAction: "main", // main | label | edit
-    // 배치 · 하나씩 꾸미기
-    layout: "real", // real | explode | square | hex
-    explodeAmt: 0.25,
-    tileGap: 0.1,
-    // 제목 · 데이터 · 그룹 · 범례
-    heading: { title: "", subtitle: "", note: false },
-    data: { source: "", text: "", file: "", palette: "blue", steps: 5, method: "quantile", showValues: true, by: null, labels: null },
-    pins: { text: "", items: [], shape: "pin", color: "#E5484D", size: 1, labels: true, byCat: true, online: true },
-    groups: [], // [{id, name, color}] — 지역의 styles[key].group 으로 연결
-    activeGroup: null,
-    legend: { title: "", pos: "br" },
-    panel: "region",
-    offsets: {}, // "lv:id" → [dx, dy] (데이터 좌표)
-    styles: {}, // "lv:id" → {fill, text, hideLabel}
-    editKey: null,
-    subLabel: true,
-    halo: false,
-    fontScale: 1,
-    // 모양
-    sidoLines: true,
-    lineScale: 1,
-    colors: Object.assign({}, PRESETS[0]),
-    distinct: false,
-    shadow: true,
-    fillBg: false,
-    aspect: null,
-  };
+  const St = window.KRMapState;
+  const PRESETS = St.PRESETS;
+  const S = St.defaultState();
+  // 기본 통계·큰 CSV·읍면동 로드 상태와 계산 캐시 (지도 설정은 S, 나머지는 ctx)
+  const ctx = St.createContext();
 
   let D = null; // 병합된 데이터 {meta, sido, si, sgg, emd?, nb, sido17, nb17}
   let emdState = "none"; // none | loading | ready
@@ -96,11 +46,7 @@
     s.onerror = () => { emdState = "none"; toast("읍면동 데이터를 불러오지 못했습니다. 새로고침해 보세요."); };
     document.head.appendChild(s);
   }
-  function needsEmd() {
-    if (S.mode === "pick") return S.pick.lv === "emd";
-    if (S.mode === "all") return S.allLv === "emd";
-    return S.nbLevel === "emd" || S.inner === "emd" || S.target.lv === "emd";
-  }
+  const needsEmd = () => St.needsEmd(S);
 
   function buildIndex() {
     index = [];
@@ -112,7 +58,7 @@
   }
 
   // ---------- 단위 바꾸기 ----------
-  const eff = (lv) => (lv === "si" && S.splitGu ? "sgg" : lv);
+  const eff = (lv) => St.eff(S, lv);
   /** 한 지역을 다른 단위의 지역 목록으로: 더 잘게면 안쪽 지역들, 더 크게면 소속 지역 */
   function convert(lv, id, to) {
     if (lv === to) return [id];
@@ -135,166 +81,23 @@
     return [...out];
   }
 
-  // ---------- 상태 → 렌더 옵션 ----------
-  function innerFor(target) {
-    if (!S.inner) return null;
-    const lv = eff(S.inner);
-    if (ORDER[lv] <= ORDER[target.lv]) return null;
-    if (lv === "sgg" && !(target.lv === "sido" || (target.lv === "si" && D.si[target.id].gu))) return null;
-    return lv;
-  }
-  function sceneOpts(width) {
-    const o = {
-      sidoLines: S.sidoLines,
-      labelMode: S.labelMode,
-      labelPick: S.labelPick,
-      subLabel: S.subLabel,
-      halo: S.halo,
-      fontScale: S.fontScale,
-      lineScale: S.lineScale,
-      distinct: S.distinct,
-      shadow: S.shadow,
-      shortSido: "auto",
-      explode: S.layout === "explode" ? S.explodeAmt : 0,
-      tiles: S.layout === "square" || S.layout === "hex" ? S.layout : null,
-      tileGap: S.tileGap,
-      offsets: S.offsets,
-      styles: S.styles,
-      aspect: S.aspect,
-      width: width || 1600,
-      colors: Object.assign({}, S.colors, { bg: S.fillBg ? S.colors.bg : null }),
-    };
-    Object.assign(o, extras());
-    if (S.mode === "pick") {
-      o.pick = { lv: eff(S.pick.lv), ids: S.pick.ids, fit: S.pick.fit, hideOthers: S.pick.hideOthers };
-    } else if (S.mode === "all") {
-      o.target = null;
-      o.inner = eff(S.allLv);
-    } else {
-      Object.assign(o, { target: S.target, depth: S.depth, nbLevel: eff(S.nbLevel), inner: innerFor(S.target), context: S.context });
-    }
-    return o;
-  }
-
-  // ---------- 데이터 색칠 · 색 그룹 · 범례 · 제목 ----------
-  /** 지금 지도에 그려지는 단위들 (붙여넣은 이름을 여기서 찾는다) */
-  function drawnLevels() {
-    if (S.mode === "pick") return [eff(S.pick.lv)];
-    if (S.mode === "all") return [eff(S.allLv)];
-    return [...new Set([eff(S.nbLevel), S.target.lv, innerFor(S.target)].filter(Boolean))];
-  }
-  /** 지금 지도에서 칠해질 수 있는 지역 key */
-  function visibleKeys() {
-    const out = new Set();
-    if (S.mode === "pick") {
-      const lv = eff(S.pick.lv);
-      const ids = S.pick.hideOthers || S.pick.fit ? S.pick.ids : Object.keys(D[lv] || {});
-      ids.forEach((id) => out.add(lv + ":" + id));
-    } else if (S.mode === "all") {
-      const lv = eff(S.allLv);
-      Object.keys(D[lv] || {}).forEach((id) => out.add(lv + ":" + id));
-    } else {
-      const t = S.target, inner = innerFor(t), nbLv = eff(S.nbLevel);
-      if (inner && D[inner]) R.featuresInside(D, t.lv, t.id, inner).forEach((id) => out.add(inner + ":" + id));
-      else out.add(t.lv + ":" + t.id);
-      if (S.depth) R.neighborsOf(D, t.lv, t.id, nbLv, S.depth).forEach((n) => out.add(nbLv + ":" + n.id));
-    }
-    return out;
-  }
-  // 큰 CSV 파일은 되돌리기 기록·자동 저장에 넣지 않고 따로 둔다
-  let bigText = "";
-  const dataSource = () => (S.data.file ? bigText : S.data.text);
-  let dsCache = { key: null, ds: null, ver: 0 };
-  let statsDs = null;
-  function dataset() {
-    const src = S.data.source;
-    let key, make;
-    if (src === "stats") {
-      if (!window.KRMAP.stats) return null;
-      key = "stats";
-      make = () => (statsDs = statsDs || X.fromStats(window.KRMAP.stats));
-    } else if (src === "pins") {
-      const items = S.pins.items.filter((it) => it.keys);
-      if (!items.length) return null;
-      key = "pins:" + JSON.stringify(items.map((it) => it.keys));
-      make = () => X.fromPins(items);
-    } else if (src === "table") {
-      const t = dataSource();
-      if (!t || !t.trim()) return null;
-      key = t;
-      make = () => X.analyze(X.readTable(t));
-    } else return null;
-    if (dsCache.key !== key) dsCache = { key, ds: make(), ver: dsCache.ver + 1 };
-    return dsCache.ds;
-  }
-  let dataCache = { sig: null, res: null };
-  function dataResult() {
-    const ds = dataset();
-    if (!ds) return null;
-    const lv = drawnLevels();
-    if (lv.includes("emd") && emdState !== "ready") return null;
-    const only = visibleKeys();
-    const opt = { by: S.data.by, labels: S.data.labels, palette: S.data.palette, steps: S.data.steps, method: S.data.method, only };
-    const sig = JSON.stringify([Object.assign({}, opt, { only: [...only].sort() }), lv, S.sido17, dsCache.ver, emdState]);
-    if (dataCache.sig !== sig) dataCache = { sig, res: X.build(D, lv, null, opt, R.sidoShort, ds) };
-    return dataCache.res;
-  }
-  function extras() {
-    const fills = {}, values = {};
-    let items = [];
-    const dr = dataResult();
-    if (dr) {
-      Object.assign(fills, dr.fills);
-      if (S.data.showValues) Object.assign(values, dr.values);
-      items = dr.legend.items.slice();
-    }
-    const cats = pinCats();
-    if (cats.length && S.pins.byCat) items = items.concat(cats.map((c) => ({ color: c.color, label: c.name })));
-    if (S.groups.length) {
-      const used = new Set();
-      for (const k in S.styles) {
-        const g = S.groups.find((x) => x.id === S.styles[k].group);
-        if (g) { fills[k] = g.color; used.add(g.id); }
-      }
-      items = items.concat(S.groups.filter((g) => used.has(g.id)).map((g) => ({ color: g.color, label: g.name || "그룹" })));
-    }
-    return {
-      fills,
-      values,
-      legend: items.length ? { title: S.legend.title || (dr && dr.legend.title) || "", items, pos: S.legend.pos } : null,
-      heading: { title: S.heading.title, subtitle: S.heading.subtitle, note: S.heading.note ? sourceNote() : "" },
-      pins: S.pins.items.filter((it) => it.x != null).map((it) => ({
-        x: it.x, y: it.y, keys: it.keys, label: it.name,
-        color: S.pins.byCat && it.cat ? (cats.find((c) => c.name === it.cat) || {}).color : S.pins.color,
-      })),
-      pinStyle: { shape: S.pins.shape, size: S.pins.size, labels: S.pins.labels, color: S.pins.color },
-    };
-  }
-  const PIN_COLORS = ["#E5484D", "#F59E0B", "#10B981", "#8B5CF6", "#EC4899", "#06B6D4", "#84CC16", "#78716C"];
-  function pinCats() {
-    const names = [...new Set(S.pins.items.filter((it) => it.cat && it.x != null).map((it) => it.cat))];
-    return names.length > 1 || (names.length === 1 && S.pins.items.some((it) => !it.cat)) ? names.map((n, i) => ({ name: n, color: PIN_COLORS[i % PIN_COLORS.length] })) : names.map((n) => ({ name: n, color: S.pins.color }));
-  }
-  function sourceNote() {
-    const parts = [`경계: 통계청 SGIS(${ver()})`];
-    if (S.data.source === "stats" && window.KRMAP.stats) parts.push(`인구: 행정안전부 주민등록 인구통계(${window.KRMAP.stats.meta.month})`);
-    if (S.pins.items.some((it) => it.q === "인터넷 검색")) parts.push("지점 위치: © OpenStreetMap");
-    return "출처: " + parts.join(", ");
-  }
+  // ---------- 상태 → 렌더 옵션 (state.js 와 같은 계산) ----------
+  const syncCtx = () => { ctx.stats = window.KRMAP.stats || null; ctx.emdReady = emdState === "ready"; return ctx; };
+  const innerFor = (t) => St.innerFor(D, S, t);
+  const sceneOpts = (width) => St.sceneOptions(D, S, syncCtx(), width);
+  const drawnLevels = () => St.drawnLevels(D, S);
+  const visibleKeys = () => St.visibleKeys(D, S);
+  const dataSource = () => St.dataText(S, ctx);
+  const dataset = () => St.dataset(D, S, syncCtx());
+  const dataResult = () => St.dataResult(D, S, syncCtx());
+  const pinCats = () => St.pinCats(S);
+  const sourceNote = () => St.sourceNote(D, S, syncCtx());
 
   // ---------- 되돌리기 · 자동 저장 · 작업 파일 ----------
   const STORE = "krmap.work.v1";
-  const snapshot = () => JSON.stringify(Object.assign({}, S, { labelPick: [...S.labelPick], editKey: null }));
+  const snapshot = () => St.serialize(S);
   function restore(json) {
-    const o = typeof json === "string" ? JSON.parse(json) : json;
-    for (const k of Object.keys(S)) {
-      if (!(k in o)) continue;
-      if (k === "labelPick") S.labelPick = new Set(o.labelPick || []);
-      else if (S[k] && typeof S[k] === "object" && !Array.isArray(S[k]) && o[k] && typeof o[k] === "object") S[k] = Object.assign({}, S[k], o[k]);
-      else S[k] = o[k];
-    }
-    S.editKey = null;
-    if (S.data.source == null || (S.data.source === "" && (S.data.text || S.data.file) && !("source" in (o.data || {})))) S.data.source = S.data.text || S.data.file ? "table" : "";
+    St.mergeState(S, typeof json === "string" ? JSON.parse(json) : json);
     R.useSido17(D, S.sido17);
     buildIndex();
   }
@@ -729,7 +532,7 @@
       return;
     }
     if (!S.data.source) { el.className = "note"; el.textContent = "기본 통계(인구·세대·연령), 내 표·파일(통계·여론조사), 지점 수 중에서 골라 지도를 칠합니다."; return; }
-    if (S.data.file && !bigText) {
+    if (S.data.file && !ctx.bigText) {
       el.className = "note warn";
       el.textContent = `파일(${S.data.file})은 브라우저에 남지 않습니다. 다시 열어 주세요.`;
       return;
@@ -757,7 +560,7 @@
     const ds = dr && dr.ds;
     box.hidden = !ds || !ds.columns.length;
     if (box.hidden) return;
-    const sig = JSON.stringify([dsCache.ver, S.data.by, S.data.labels, dr.by]);
+    const sig = JSON.stringify([ctx.dsCache.ver, S.data.by, S.data.labels, dr.by]);
     if (box._sig === sig) return;
     box._sig = sig;
     const by = dr.by || {};
@@ -948,7 +751,7 @@
     $("hSub").addEventListener("input", (e) => { S.heading.subtitle = e.target.value; later(200); });
     $("hNote").addEventListener("change", (e) => { S.heading.note = e.target.checked; render(); });
     $("legTitle").addEventListener("input", (e) => { S.legend.title = e.target.value; later(200); });
-    $("dataText").addEventListener("input", (e) => { S.data.text = e.target.value; S.data.file = ""; bigText = ""; });
+    $("dataText").addEventListener("input", (e) => { S.data.text = e.target.value; S.data.file = ""; ctx.bigText = ""; });
     const newData = () => { S.data.by = null; S.data.labels = null; };
     $("dataApply").onclick = () => {
       S.data.source = "table";
@@ -960,7 +763,7 @@
       const dr = dataResult();
       if (dr && dr.matched) toast(`지도에서 ${Object.keys(dr.fills).length}곳을 칠했습니다`);
     };
-    $("dataClear").onclick = () => { S.data.text = ""; S.data.file = ""; bigText = ""; $("dataText").value = ""; newData(); render(); };
+    $("dataClear").onclick = () => { S.data.text = ""; S.data.file = ""; ctx.bigText = ""; $("dataText").value = ""; newData(); render(); };
     // 예시: 지금 보이는 지역 이름으로 무작위 숫자 표를 만든다 (열 이름에 "(예시)"를 붙여 실제 통계와 헷갈리지 않게)
     document.querySelectorAll("[data-sample]").forEach((btn) => (btn.onclick = () => {
       const lv = drawnLevels()[0];
@@ -982,7 +785,7 @@
       } else {
         text = "지역\t값(예시)\n" + ids.map((id) => `${nm(id)}\t${rnd(20, 200)}`).join("\n");
       }
-      S.data.text = text; S.data.file = ""; bigText = "";
+      S.data.text = text; S.data.file = ""; ctx.bigText = "";
       $("dataText").value = text;
       $("dataApply").click();
     }));
@@ -998,10 +801,10 @@
       const lines = text.split(/\r?\n/).filter((l) => l.trim()).length;
       S.data.source = "table";
       if (text.length > 150000) {
-        bigText = text; S.data.file = f.name; S.data.text = "";
+        ctx.bigText = text; S.data.file = f.name; S.data.text = "";
         $("dataText").value = `[파일] ${f.name} — ${lines.toLocaleString("ko-KR")}줄 (지우기를 누르면 직접 붙여넣을 수 있습니다)`;
       } else {
-        S.data.text = text; S.data.file = ""; bigText = "";
+        S.data.text = text; S.data.file = ""; ctx.bigText = "";
         $("dataText").value = text;
       }
       newData();
@@ -1059,7 +862,7 @@
       else if (k === "y") { e.preventDefault(); stepHistory(1); }
     });
     $("saveWork").onclick = () => {
-      const body = JSON.stringify({ app: "행정구역 지도 추출기", version: 1, saved: new Date().toISOString(), state: JSON.parse(snapshot()), fileText: S.data.file ? bigText : undefined }, null, 1);
+      const body = JSON.stringify({ app: "행정구역 지도 추출기", version: 1, saved: new Date().toISOString(), state: JSON.parse(snapshot()), fileText: S.data.file ? ctx.bigText : undefined }, null, 1);
       saveFile("지도작업_" + baseName(lastScene || { title: "지도" }) + ".json", body, "application/json");
     };
     $("loadWork").onclick = () => $("loadFile").click();
@@ -1069,9 +872,9 @@
       if (!f) return;
       try {
         const o = JSON.parse(await f.text());
-        bigText = o.fileText || "";
+        ctx.bigText = o.fileText || "";
         restore(o.state || o);
-        if (S.data.file && bigText) $("dataText").value = `[파일] ${S.data.file}`;
+        if (S.data.file && ctx.bigText) $("dataText").value = `[파일] ${S.data.file}`;
         render();
         toast("작업을 불러왔습니다");
       } catch (err) {
@@ -1294,62 +1097,7 @@
     btn.disabled = true;
     try {
       await loadPptx();
-      const pptx = new window.PptxGenJS();
-      pptx.layout = "LAYOUT_WIDE"; // 13.333 x 7.5 in
-      pptx.title = scene.title;
-      const slide = pptx.addSlide();
-      const SW = 13.333, SH = 7.5, M = 0.35;
-      const k = Math.min((SW - 2 * M) / scene.width, (SH - 2 * M - 0.2) / scene.height); // px → inch
-      const ox = (SW - scene.width * k) / 2, oy = (SH - 0.2 - scene.height * k) / 2;
-      const hex = (c) => c.replace("#", "").toUpperCase();
-      const r3 = (v) => Math.round(v * 10000) / 10000;
-      if (scene.bg) slide.background = { color: hex(scene.bg) };
-
-      const shape = (rings, closed, opt) => {
-        let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
-        for (const r of rings) for (const p of r) { x0 = Math.min(x0, p[0]); y0 = Math.min(y0, p[1]); x1 = Math.max(x1, p[0]); y1 = Math.max(y1, p[1]); }
-        if (!isFinite(x0)) return;
-        const points = [];
-        for (const r of rings) {
-          r.forEach((p, i) => points.push({ x: r3((p[0] - x0) * k), y: r3((p[1] - y0) * k), moveTo: i === 0 }));
-          if (closed) points.push({ close: true });
-        }
-        slide.addShape(pptx.ShapeType.custGeom, Object.assign({
-          x: r3(ox + x0 * k), y: r3(oy + y0 * k), w: Math.max(r3((x1 - x0) * k), 0.01), h: Math.max(r3((y1 - y0) * k), 0.01), points,
-        }, opt));
-      };
-      const ORDERG = ["context", "all", "neighbor", "shadow", "picked", "inner", "target", "sido", "pin", "legend"];
-      const sh = scene.shadow;
-      for (const g of ORDERG) {
-        for (const p of scene.polys.filter((q) => q.group === g)) {
-          shape([].concat(...p.rings), true, {
-            fill: { color: hex(p.fill) },
-            line: p.stroke ? { color: hex(p.stroke), width: Math.max(p.width * k * 72, 0.25) } : { type: "none" },
-            objectName: g === "shadow" ? "그림자 " + p.name : p.name,
-            shadow: g === "shadow" && sh
-              ? { type: "outer", angle: 90, blur: Math.round(sh.blur * k * 72 * 2), offset: Math.round(sh.dy * k * 72 * 10) / 10, color: hex(sh.color), opacity: sh.opacity }
-              : undefined,
-          });
-        }
-        for (const l of scene.lines.filter((q) => q.group === g)) {
-          if (!l.lines.length) continue;
-          shape(l.lines, false, { line: { color: hex(l.stroke), width: Math.max(l.width * k * 72, 0.25) }, objectName: g === "sido" ? "시도 경계" : "경계선" });
-        }
-      }
-      for (const t of scene.texts) {
-        const w = (t.text.length + 1) * t.size * k * 1.1, h = t.size * k * 1.5;
-        const left = t.anchor === "start";
-        slide.addText(t.text, {
-          x: r3(ox + t.x * k - (left ? 0 : w / 2)), y: r3(oy + t.y * k - h / 2), w: r3(w), h: r3(h), align: left ? "left" : "center",
-          fontFace: "맑은 고딕", fontSize: Math.max(Math.round(t.size * k * 72 * 10) / 10, 4), bold: t.weight >= 600,
-          color: hex(t.fill), valign: "middle", margin: 0,
-          outline: t.halo ? { color: "FFFFFF", size: Math.max(t.size * k * 72 * 0.08, 0.5) } : undefined,
-          objectName: "지명 " + t.text,
-        });
-      }
-      if (!S.heading.note) slide.addText(`${sourceNote()} · github.com/vuski/admdongkor`, {
-        x: SW - 6.2, y: SH - 0.32, w: 6, h: 0.22, fontFace: "맑은 고딕", fontSize: 7, color: "8A96A3", align: "right", margin: 0,
-      });
+      const pptx = window.KRMapPptx.buildPptx(window.PptxGenJS, scene, { footnote: S.heading.note ? "" : `${sourceNote()} · github.com/vuski/admdongkor` });
       const blob = await pptx.write({ outputType: "blob" });
       await saveFile(baseName(scene) + ".pptx", blob, "application/vnd.openxmlformats-officedocument.presentationml.presentation");
     } catch (e) {

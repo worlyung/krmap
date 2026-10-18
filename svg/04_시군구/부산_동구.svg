@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1637" viewBox="0 0 1600 1637" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<title>부산광역시 동구</title>
+<g id="배경">
+<path d="M61.1 1637L61.6 1635.4 180.9 1545.9 199.6 1568.2 248.1 1463.8 236.9 1355.7 166 1310.9 236.9 1284.8 386.1 1337 404.7 1359.4 580 1501.1 639.6 1523.5 732.9 1549.6 686.2 1637Z" fill="#EDF0F4" fill-rule="evenodd"></path>
+<path d="M0 1637L0 510.9 87.7 598.6 121.3 673.2 154.8 800 113.8 1228.9 166 1310.9 236.9 1355.7 248.1 1463.8 199.6 1568.2 180.9 1545.9 61.6 1635.4 61.1 1637Z" fill="#EDF0F4" fill-rule="evenodd"></path>
+<path d="M0 0L1546.6 0 1527.2 5.7 1509.1 0 1407.9 0 1407.9 180.9 1452.6 270.4 1206.5 248.1 1016.3 236.9 990.2 199.6 770.2 87.7 647.1 91.4 598.6 154.8 580 311.5 535.2 367.4 442 456.9 341.3 449.4 184.7 539 158.6 550.1 87.7 598.6 0 510.9Z" fill="#EDF0F4" fill-rule="evenodd"></path>
+<path d="M1600 0L1600 1637 1577.6 1637 1600 1569.9 1600 1079.5 1493.6 1034.9 1527.2 841 1489.9 759 1489.9 744.1 1512.3 453.2 1452.6 270.4 1407.9 180.9 1407.9 0 1509.1 0 1527.2 5.7 1546.6 0Z" fill="#EDF0F4" fill-rule="evenodd"></path>
+<path d="M61.1 1637L61.6 1635.4 180.9 1545.9 199.6 1568.2 248.1 1463.8 236.9 1355.7 166 1310.9 236.9 1284.8 386.1 1337 404.7 1359.4 580 1501.1 639.6 1523.5 732.9 1549.6 686.2 1637" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M0 510.9L87.7 598.6 121.3 673.2 154.8 800 113.8 1228.9 166 1310.9 236.9 1355.7 248.1 1463.8 199.6 1568.2 180.9 1545.9 61.6 1635.4 61.1 1637" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M1546.6 0L1527.2 5.7 1509.1 0M1407.9 0L1407.9 180.9 1452.6 270.4 1206.5 248.1 1016.3 236.9 990.2 199.6 770.2 87.7 647.1 91.4 598.6 154.8 580 311.5 535.2 367.4 442 456.9 341.3 449.4 184.7 539 158.6 550.1 87.7 598.6 0 510.9" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M1577.6 1637L1600 1569.9M1600 1079.5L1493.6 1034.9 1527.2 841 1489.9 759 1489.9 744.1 1512.3 453.2 1452.6 270.4 1407.9 180.9 1407.9 0M1509.1 0L1527.2 5.7 1546.6 0" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g id="대상_내부">
+<path id="부산광역시_동구_초량1동" d="M624.7 1370.6L553.9 1359.4 516.6 1232.6 386.1 1337 404.7 1359.4 580 1501.1 639.6 1523.5 676.9 1407.9Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동구 초량1동</title></path>
+<path id="부산광역시_동구_초량2동" d="M624.7 1370.6L680.7 1255 576.2 1143.1 296.6 1221.4 236.9 1284.8 386.1 1337 516.6 1232.6 553.9 1359.4Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동구 초량2동</title></path>
+<path id="부산광역시_동구_초량3동" d="M971.5 1016.3L1012.6 747.8 893.2 878.3 788.8 919.3 725.4 1068.5 550.1 993.9 576.2 1143.1 680.7 1255 624.7 1370.6 676.9 1407.9 639.6 1523.5 732.9 1549.6 811.2 1344.5 975.3 1452.6 1008.8 1407.9 867.1 1303.4Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동구 초량3동</title></path>
+<path id="부산광역시_동구_초량6동" d="M471.8 919.3L423.3 811.2 158.6 706.8 121.3 673.2 154.8 800 113.8 1228.9 166 1310.9 236.9 1284.8 296.6 1221.4 576.2 1143.1 550.1 993.9Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동구 초량6동</title></path>
+<path id="부산광역시_동구_수정1동" d="M788.8 919.3L658.3 897 471.8 919.3 550.1 993.9 725.4 1068.5Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동구 수정1동</title></path>
+<path id="부산광역시_동구_수정2동" d="M442 456.9L341.3 449.4 184.7 539 326.4 591.2 583.7 785.1 803.7 841 788.8 919.3 893.2 878.3 1012.6 747.8 837.3 662 785.1 721.7 635.9 628.5Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동구 수정2동</title></path>
+<path id="부산광역시_동구_수정4동" d="M788.8 919.3L803.7 841 583.7 785.1 326.4 591.2 184.7 539 158.6 550.1 87.7 598.6 121.3 673.2 158.6 706.8 423.3 811.2 471.8 919.3 658.3 897Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동구 수정4동</title></path>
+<path id="부산광역시_동구_수정5동" d="M859.7 389.8L751.5 333.8 535.2 367.4 442 456.9 635.9 628.5 785.1 721.7 837.3 662 807.5 583.7 874.6 464.4Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동구 수정5동</title></path>
+<path id="부산광역시_동구_좌천동" d="M1202.8 497.9L1023.8 456.9 956.6 483 859.7 389.8 874.6 464.4 807.5 583.7 837.3 662 1012.6 747.8 1184.1 568.8Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동구 좌천동</title></path>
+<path id="부산광역시_동구_범일1동" d="M1206.5 248.1L1016.3 236.9 990.2 199.6 770.2 87.7 647.1 91.4 598.6 154.8 580 311.5 535.2 367.4 751.5 333.8 859.7 389.8 956.6 483 1023.8 456.9 1202.8 497.9Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동구 범일1동</title></path>
+<path id="부산광역시_동구_범일2동" d="M1452.6 270.4L1206.5 248.1 1202.8 497.9 1184.1 568.8 1288.5 568.8 1310.9 762.7 1489.9 744.1 1512.3 453.2Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동구 범일2동</title></path>
+<path id="부산광역시_동구_범일5동" d="M1489.9 744.1L1310.9 762.7 1288.5 568.8 1184.1 568.8 1012.6 747.8 971.5 1016.3 1064.8 926.8 1154.3 941.7 1150.6 1038.7 1061 1131.9 1180.4 1243.8 1475 855.9 1489.9 759Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>부산광역시 동구 범일5동</title></path>
+</g>
+<g id="대상">
+<path d="M580 1501.1L404.7 1359.4 386.1 1337 236.9 1284.8 166 1310.9 113.8 1228.9 154.8 800 121.3 673.2 87.7 598.6 158.6 550.1 184.7 539 341.3 449.4 442 456.9 535.2 367.4 580 311.5 598.6 154.8 647.1 91.4 770.2 87.7 990.2 199.6 1016.3 236.9 1206.5 248.1 1452.6 270.4 1512.3 453.2 1489.9 744.1 1489.9 759 1475 855.9 1180.4 1243.8 1061 1131.9 1150.6 1038.7 1154.3 941.7 1064.8 926.8 971.5 1016.3 867.1 1303.4 1008.8 1407.9 975.3 1452.6 811.2 1344.5 732.9 1549.6 639.6 1523.5 580 1501.1" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g id="시도경계">
+<path d="M1577.6 1637L1600 1569.9M1600 1079.5L1493.6 1034.9 1527.2 841 1489.9 759 1475 855.9 1180.4 1243.8 1061 1131.9 1150.6 1038.7 1154.3 941.7 1064.8 926.8 971.5 1016.3 867.1 1303.4 1008.8 1407.9 975.3 1452.6 811.2 1344.5 732.9 1549.6 686.2 1637" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g id="지명" text-anchor="middle">
+<text x="1169.2" y="809.2" font-size="25.6" font-weight="500" fill="#FFFFFF">범일5동</text>
+<text x="315.2" y="1029.2" font-size="25.6" font-weight="500" fill="#FFFFFF">초량6동</text>
+<text x="792.5" y="1171" font-size="25.6" font-weight="500" fill="#FFFFFF">초량3동</text>
+<text x="714.2" y="227.5" font-size="25.6" font-weight="500" fill="#FFFFFF">범일1동</text>
+<text x="870.9" y="783.1" font-size="25.6" font-weight="500" fill="#FFFFFF">수정2동</text>
+<text x="1355.7" y="443.7" font-size="25.6" font-weight="500" fill="#FFFFFF">범일2동</text>
+<text x="255.5" y="660" font-size="25.6" font-weight="500" fill="#FFFFFF">수정4동</text>
+<text x="699.3" y="496" font-size="25.6" font-weight="500" fill="#FFFFFF">수정5동</text>
+<text x="979" y="604.1" font-size="25.6" font-weight="500" fill="#FFFFFF">좌천동</text>
+<text x="594.9" y="1294" font-size="25.6" font-weight="500" fill="#FFFFFF">초량2동</text>
+<text x="576.2" y="1432" font-size="25.6" font-weight="500" fill="#FFFFFF">초량1동</text>
+<text x="680.7" y="980.8" font-size="25.6" font-weight="500" fill="#FFFFFF">수정1동</text>
+</g>
+</svg>

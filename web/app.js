@@ -40,7 +40,7 @@
     tileGap: 0.1,
     // 제목 · 데이터 · 그룹 · 범례
     heading: { title: "", subtitle: "", note: false },
-    data: { text: "", palette: "blue", steps: 5, method: "quantile", showValues: true },
+    data: { text: "", file: "", palette: "blue", steps: 5, method: "quantile", showValues: true, by: null, labels: null },
     groups: [], // [{id, name, color}] — 지역의 styles[key].group 으로 연결
     activeGroup: null,
     legend: { title: "", pos: "br" },
@@ -181,13 +181,44 @@
     if (S.mode === "all") return [eff(S.allLv)];
     return [...new Set([eff(S.nbLevel), S.target.lv, innerFor(S.target)].filter(Boolean))];
   }
+  /** 지금 지도에서 칠해질 수 있는 지역 key */
+  function visibleKeys() {
+    const out = new Set();
+    if (S.mode === "pick") {
+      const lv = eff(S.pick.lv);
+      const ids = S.pick.hideOthers || S.pick.fit ? S.pick.ids : Object.keys(D[lv] || {});
+      ids.forEach((id) => out.add(lv + ":" + id));
+    } else if (S.mode === "all") {
+      const lv = eff(S.allLv);
+      Object.keys(D[lv] || {}).forEach((id) => out.add(lv + ":" + id));
+    } else {
+      const t = S.target, inner = innerFor(t), nbLv = eff(S.nbLevel);
+      if (inner && D[inner]) R.featuresInside(D, t.lv, t.id, inner).forEach((id) => out.add(inner + ":" + id));
+      else out.add(t.lv + ":" + t.id);
+      if (S.depth) R.neighborsOf(D, t.lv, t.id, nbLv, S.depth).forEach((n) => out.add(nbLv + ":" + n.id));
+    }
+    return out;
+  }
+  // 큰 CSV 파일은 되돌리기 기록·자동 저장에 넣지 않고 따로 둔다
+  let bigText = "";
+  const dataSource = () => (S.data.file ? bigText : S.data.text);
+  let dsCache = { text: null, ds: null, ver: 0 };
+  function dataset() {
+    const t = dataSource();
+    if (!t || !t.trim()) return null;
+    if (dsCache.text !== t) dsCache = { text: t, ds: X.analyze(X.readTable(t)), ver: dsCache.ver + 1 };
+    return dsCache.ds;
+  }
   let dataCache = { sig: null, res: null };
   function dataResult() {
-    if (!S.data.text.trim()) return null;
+    const ds = dataset();
+    if (!ds) return null;
     const lv = drawnLevels();
     if (lv.includes("emd") && emdState !== "ready") return null;
-    const sig = JSON.stringify([S.data, lv, S.sido17]);
-    if (dataCache.sig !== sig) dataCache = { sig, res: X.build(D, lv, S.data.text, S.data, R.sidoShort) };
+    const only = visibleKeys();
+    const opt = { by: S.data.by, labels: S.data.labels, palette: S.data.palette, steps: S.data.steps, method: S.data.method, only };
+    const sig = JSON.stringify([Object.assign({}, opt, { only: [...only].sort() }), lv, S.sido17, dsCache.ver, emdState]);
+    if (dataCache.sig !== sig) dataCache = { sig, res: X.build(D, lv, null, opt, R.sidoShort, ds) };
     return dataCache.res;
   }
   function extras() {
@@ -210,7 +241,7 @@
     return {
       fills,
       values,
-      legend: items.length ? { title: S.legend.title, items, pos: S.legend.pos } : null,
+      legend: items.length ? { title: S.legend.title || (dr && dr.legend.title) || "", items, pos: S.legend.pos } : null,
       heading: { title: S.heading.title, subtitle: S.heading.subtitle, note: S.heading.note ? `출처: 통계청 SGIS 행정구역 경계(${ver()})` : "" },
     };
   }
@@ -417,7 +448,7 @@
     setVal("hTitle", S.heading.title);
     setVal("hSub", S.heading.subtitle);
     setVal("legTitle", S.legend.title);
-    setVal("dataText", S.data.text);
+    if (!S.data.file) setVal("dataText", S.data.text);
     $("hNote").checked = S.heading.note;
     $("dataSteps").value = String(S.data.steps);
     $("dataMethod").value = S.data.method;
@@ -631,17 +662,74 @@
   function renderDataReport() {
     const el = $("dataReport");
     const dr = dataResult();
-    if (!S.data.text.trim()) {
+    renderDataCols(dr);
+    if (S.data.file && !bigText) {
+      el.className = "note warn";
+      el.textContent = `파일(${S.data.file})은 브라우저에 남지 않습니다. 다시 열어 주세요.`;
+      return;
+    }
+    if (!dataSource().trim()) {
       el.className = "note";
-      el.textContent = "숫자면 크기에 따라 단계별로, 글자(예: 본사·지사)면 분류별로 칠합니다. 지금 지도에 그려진 단위(시도·시군구·읍면동)에 맞춰 이름을 찾습니다.";
+      el.textContent = "숫자는 크기에 따라 단계별로, 글자(본사·지사 등)는 분류별로, 후보별 지지율은 1위 색으로 칠합니다. 지금 지도 단위(시도·시군구·읍면동)에 맞춰 이름이나 행정기관코드로 지역을 찾습니다.";
       return;
     }
     if (!dr) { el.textContent = "읍면동을 불러오는 중입니다…"; return; }
-    const parts = [`${dr.matched}곳을 칠했습니다` + (dr.kind === "cat" ? " (분류)" : dr.kind === "num" ? " (숫자 단계)" : "")];
+    const what = { cat: "분류별", num: "숫자 단계", win: "1위 색" }[dr.kind] || "";
+    const shown = Object.keys(dr.fills).length;
+    const parts = [(S.data.file ? `${S.data.file}: ` : "") + `지도에서 ${shown}곳을 칠했습니다` + (what ? ` (${what})` : "") + (dr.matched > shown ? ` · 표에서 찾은 지역 ${dr.matched}곳` : "")];
+    if (dr.ds.note) parts.push(dr.ds.note);
+    if (/\(예시\)/.test(dataSource())) parts.push("예시 숫자는 무작위입니다. 실제 통계가 아닙니다");
     if (dr.ambiguous.length) parts.push(`같은 이름이 여러 곳: ${dr.ambiguous.slice(0, 6).join(", ")} — "대전 중구"처럼 시도를 붙여 주세요`);
     if (dr.unmatched.length) parts.push(`못 찾은 이름 ${dr.unmatched.length}개: ${dr.unmatched.slice(0, 6).join(", ")}${dr.unmatched.length > 6 ? " …" : ""}`);
     el.textContent = parts.join(" · ");
     el.className = "note" + (dr.unmatched.length || dr.ambiguous.length ? " warn" : "");
+  }
+  /** 색칠 기준 · 비율 · 1위 항목 · 이름 아래 값 고르기 */
+  function renderDataCols(dr) {
+    const box = $("dataCols");
+    const ds = dr && dr.ds;
+    box.hidden = !ds || !ds.columns.length;
+    if (box.hidden) return;
+    const sig = JSON.stringify([dsCache.ver, S.data.by, S.data.labels, dr.by]);
+    if (box._sig === sig) return;
+    box._sig = sig;
+    const by = dr.by || {};
+    const nums = ds.columns.filter((c) => c.kind !== "text");
+    const sel = $("dataBy");
+    sel.innerHTML =
+      ds.columns.map((c) => `<option value="col:${c.id}">${c.name}${c.kind === "text" ? " (분류)" : ""}</option>`).join("") +
+      (nums.length >= 2 ? `<option value="ratio">두 값의 비율 (A ÷ B)</option><option value="win">여론조사 1위 (항목 중 가장 큰 값)</option>` : "");
+    sel.value = by.t === "col" ? "col:" + by.c : by.t || "";
+    $("ratioRow").hidden = by.t !== "ratio";
+    $("winRow").hidden = by.t !== "win";
+    const opts = nums.map((c) => `<option value="${c.id}">${c.name}</option>`).join("");
+    if (by.t === "ratio") {
+      $("ratioA").innerHTML = opts; $("ratioB").innerHTML = opts;
+      $("ratioA").value = by.a; $("ratioB").value = by.b;
+    }
+    const chipRow = (el, items, isOn, onClick) => {
+      el.innerHTML = "";
+      for (const c of items) {
+        const b = document.createElement("button");
+        b.className = "chip sm";
+        b.textContent = c.name;
+        b.setAttribute("aria-pressed", isOn(c) ? "true" : "false");
+        b.onclick = () => onClick(c);
+        el.appendChild(b);
+      }
+    };
+    if (by.t === "win") chipRow($("winCols"), nums, (c) => by.cols.includes(c.id), (c) => {
+      const cols = by.cols.includes(c.id) ? by.cols.filter((x) => x !== c.id) : by.cols.concat(c.id);
+      if (cols.length >= 2) { S.data.by = { t: "win", cols }; render(); } else toast("1위를 가리려면 두 항목 이상이 필요합니다");
+    });
+    const current = S.data.labels || (by.t === "col" ? [by.c] : []);
+    chipRow($("labelCols"), ds.columns, (c) => current.includes(c.id), (c) => {
+      let next = current.includes(c.id) ? current.filter((x) => x !== c.id) : current.concat(c.id);
+      if (next.length > 3) next = next.slice(-3);
+      S.data.labels = next;
+      if (!S.data.showValues) S.data.showValues = true;
+      render();
+    });
   }
   function renderGroups() {
     const el = $("groupList");
@@ -686,30 +774,81 @@
     $("hSub").addEventListener("input", (e) => { S.heading.subtitle = e.target.value; later(200); });
     $("hNote").addEventListener("change", (e) => { S.heading.note = e.target.checked; render(); });
     $("legTitle").addEventListener("input", (e) => { S.legend.title = e.target.value; later(200); });
-    $("dataText").addEventListener("input", (e) => { S.data.text = e.target.value; });
+    $("dataText").addEventListener("input", (e) => { S.data.text = e.target.value; S.data.file = ""; bigText = ""; });
+    const newData = () => { S.data.by = null; S.data.labels = null; };
     $("dataApply").onclick = () => {
-      S.data.text = $("dataText").value;
+      if (!S.data.file) S.data.text = $("dataText").value;
+      newData();
       if (S.legend.pos === "none") S.legend.pos = "br";
       if (S.labelMode === "none") S.labelMode = "all";
       render();
       const dr = dataResult();
-      if (dr && dr.matched) toast(`${dr.matched}곳을 칠했습니다`);
+      if (dr && dr.matched) toast(`지도에서 ${Object.keys(dr.fills).length}곳을 칠했습니다`);
     };
-    $("dataClear").onclick = () => { S.data.text = ""; $("dataText").value = ""; render(); };
-    $("dataSample").onclick = () => {
-      // 지금 보이는 지역 이름으로 예시 표를 만든다
+    $("dataClear").onclick = () => { S.data.text = ""; S.data.file = ""; bigText = ""; $("dataText").value = ""; newData(); render(); };
+    // 예시: 지금 보이는 지역 이름으로 무작위 숫자 표를 만든다 (열 이름에 "(예시)"를 붙여 실제 통계와 헷갈리지 않게)
+    document.querySelectorAll("[data-sample]").forEach((btn) => (btn.onclick = () => {
       const lv = drawnLevels()[0];
-      const keys = lastScene ? [...new Set(lastScene.polys.filter((p) => p.group !== "context" && p.group !== "shadow" && p.group !== "legend" && p.lv === lv).map((p) => p.id))] : [];
-      const ids = keys.length ? keys : Object.keys(D[lv]);
-      const text = "지역\t값(예시)\n" + ids.slice(0, 60).map((id) => {
-        const f = D[lv][id];
-        const nm = lv === "sido" ? f.nm : R.sidoShort(D.sido[f.sido].nm) + " " + (f.city && lv === "sgg" ? f.city + " " : "") + f.nm;
-        return nm + "\t" + Math.round(20 + Math.random() * 180);
-      }).join("\n");
-      S.data.text = text;
+      const keys = lastScene ? [...new Set(lastScene.polys.filter((p) => !/context|shadow|legend/.test(p.group) && p.lv === lv).map((p) => p.id))] : [];
+      const ids = (keys.length ? keys : Object.keys(D[lv])).slice(0, 80);
+      const nm = (id) => { const f = D[lv][id]; return lv === "sido" ? f.nm : R.sidoShort(D.sido[f.sido].nm) + " " + (f.city && lv === "sgg" ? f.city + " " : "") + f.nm; };
+      const rnd = (a, b) => Math.round(a + Math.random() * (b - a));
+      let text;
+      if (btn.dataset.sample === "stat") {
+        text = "지역\t총인구(예시)\t청년 19~34세(예시)\t노인 65세 이상(예시)\n" + ids.map((id) => {
+          const p = rnd(30000, 600000), y = Math.round(p * (0.12 + Math.random() * 0.14)), o = Math.round(p * (0.12 + Math.random() * 0.25));
+          return `${nm(id)}\t${p}\t${y}\t${o}`;
+        }).join("\n");
+      } else if (btn.dataset.sample === "poll") {
+        text = "지역\t후보 A(예시)\t후보 B(예시)\t후보 C(예시)\n" + ids.map((id) => {
+          const a = rnd(25, 55), b = rnd(25, 55), c = Math.max(0, 100 - a - b - rnd(0, 10));
+          return `${nm(id)}\t${a}%\t${b}%\t${c}%`;
+        }).join("\n");
+      } else {
+        text = "지역\t값(예시)\n" + ids.map((id) => `${nm(id)}\t${rnd(20, 200)}`).join("\n");
+      }
+      S.data.text = text; S.data.file = ""; bigText = "";
       $("dataText").value = text;
       $("dataApply").click();
+    }));
+    $("dataFile").onclick = () => $("dataFileInput").click();
+    $("dataFileInput").onchange = async (e) => {
+      const f = e.target.files && e.target.files[0];
+      e.target.value = "";
+      if (!f) return;
+      const buf = await f.arrayBuffer();
+      // 행정안전부 CSV 는 EUC-KR(CP949)인 경우가 많다: UTF-8 로 깨지면 EUC-KR 로 다시 읽는다
+      let text = new TextDecoder("utf-8").decode(buf);
+      if (text.includes("\uFFFD")) { try { text = new TextDecoder("euc-kr").decode(buf); } catch (err) { /* 그대로 */ } }
+      const lines = text.split(/\r?\n/).filter((l) => l.trim()).length;
+      if (text.length > 150000) {
+        bigText = text; S.data.file = f.name; S.data.text = "";
+        $("dataText").value = `[파일] ${f.name} — ${lines.toLocaleString("ko-KR")}줄 (지우기를 누르면 직접 붙여넣을 수 있습니다)`;
+      } else {
+        S.data.text = text; S.data.file = ""; bigText = "";
+        $("dataText").value = text;
+      }
+      newData();
+      if (S.legend.pos === "none") S.legend.pos = "br";
+      render();
+      const dr = dataResult();
+      toast(dr && dr.matched ? `지도에서 ${Object.keys(dr.fills).length}곳을 칠했습니다` : "파일에서 지역을 찾지 못했습니다. 지역 이름이나 행정기관코드 열이 있는지 확인해 주세요");
     };
+    $("dataBy").onchange = (e) => {
+      const v = e.target.value, ds = dataset();
+      const nums = ds.columns.filter((c) => c.kind !== "text");
+      if (v.startsWith("col:")) S.data.by = { t: "col", c: v.slice(4) };
+      else if (v === "ratio") {
+        const total = nums.find((c) => /총인구|인구$|합계|전체/.test(c.name)) || nums[nums.length - 1];
+        const part = nums.find((c) => c !== total && c.kind === "count") || nums[0];
+        S.data.by = { t: "ratio", a: part.id, b: total.id };
+      } else if (v === "win") S.data.by = { t: "win", cols: nums.map((c) => c.id) };
+      S.data.labels = null;
+      render();
+    };
+    const ratio = () => { S.data.by = { t: "ratio", a: $("ratioA").value, b: $("ratioB").value }; render(); };
+    $("ratioA").onchange = ratio;
+    $("ratioB").onchange = ratio;
     const pal = $("palettes");
     for (const [k, p] of Object.entries(X.PALETTES)) {
       const b = document.createElement("button");
@@ -744,7 +883,7 @@
       else if (k === "y") { e.preventDefault(); stepHistory(1); }
     });
     $("saveWork").onclick = () => {
-      const body = JSON.stringify({ app: "행정구역 지도 추출기", version: 1, saved: new Date().toISOString(), state: JSON.parse(snapshot()) }, null, 1);
+      const body = JSON.stringify({ app: "행정구역 지도 추출기", version: 1, saved: new Date().toISOString(), state: JSON.parse(snapshot()), fileText: S.data.file ? bigText : undefined }, null, 1);
       saveFile("지도작업_" + baseName(lastScene || { title: "지도" }) + ".json", body, "application/json");
     };
     $("loadWork").onclick = () => $("loadFile").click();
@@ -754,7 +893,9 @@
       if (!f) return;
       try {
         const o = JSON.parse(await f.text());
+        bigText = o.fileText || "";
         restore(o.state || o);
+        if (S.data.file && bigText) $("dataText").value = `[파일] ${S.data.file}`;
         render();
         toast("작업을 불러왔습니다");
       } catch (err) {

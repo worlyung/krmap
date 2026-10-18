@@ -195,6 +195,9 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
 .pal { border: 1px solid var(--rule); background: var(--panel); border-radius: 8px; padding: 4px; cursor: pointer; display: flex; flex-direction: column; gap: 3px; font: inherit; font-size: 11px; color: var(--muted); }
 .pal.on { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); color: var(--ink); }
 .pal i { display: block; height: 12px; border-radius: 3px; }
+.datacols { display: flex; flex-direction: column; gap: 8px; }
+.field.half { width: auto; flex: 1 1 0; min-width: 0; }
+.chip.sm { font-size: 12px; padding: 3px 9px; }
 .groups { display: flex; flex-direction: column; gap: 6px; }
 .grp { display: grid; grid-template-columns: auto 34px minmax(0, 1fr) auto auto; gap: 8px; align-items: center; padding: 4px 6px; border-radius: 8px; border: 1px solid transparent; }
 .grp.on { border-color: var(--accent); background: var(--accent-soft); }
@@ -360,14 +363,33 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
       </section>
 
       <section class="card">
-        <h2>데이터로 색칠 <span class="hint">엑셀 두 칸 복사 → 붙여넣기</span></h2>
-        <textarea class="field" id="dataText" rows="6" spellcheck="false" placeholder="지역명	값&#10;대전 유성구	120&#10;공주시	45&#10;세종	80" aria-label="지역별 데이터"></textarea>
+        <h2>데이터로 색칠 <span class="hint">엑셀 표 붙여넣기 · CSV 열기</span></h2>
+        <textarea class="field" id="dataText" rows="6" spellcheck="false" placeholder="지역	인구	청년	노인&#10;대전 유성구	360000	98000	36000&#10;공주시	100000	15000	29000&#10;&#10;첫 줄에 열 이름을 넣으면 열마다 골라 칠할 수 있습니다." aria-label="지역별 데이터"></textarea>
         <div class="row">
           <button class="btn sm primary" id="dataApply">색칠하기</button>
-          <button class="btn sm" id="dataSample">예시 넣기</button>
+          <button class="btn sm" id="dataFile">CSV 파일 열기</button>
+          <input type="file" id="dataFileInput" accept=".csv,.tsv,.txt,text/csv,text/plain" hidden>
           <button class="btn sm" id="dataClear">지우기</button>
         </div>
-        <p class="note" id="dataReport">숫자면 크기에 따라 단계별로, 글자(예: 본사·지사)면 분류별로 칠합니다. 지금 지도에 그려진 단위(시도·시군구·읍면동)에 맞춰 이름을 찾습니다.</p>
+        <div class="row"><span class="note">예시로 해 보기:</span>
+          <button class="btn sm" data-sample="stat">인구 통계</button><button class="btn sm" data-sample="poll">여론조사</button><button class="btn sm" data-sample="simple">값 하나</button>
+        </div>
+        <p class="note" id="dataReport"></p>
+        <div class="datacols" id="dataCols" hidden>
+          <span class="lbl">색칠 기준</span>
+          <select class="field" id="dataBy" aria-label="색칠 기준"></select>
+          <div class="row" id="ratioRow" hidden>
+            <select class="field half" id="ratioA" aria-label="나눌 값"></select><span>÷</span><select class="field half" id="ratioB" aria-label="나누는 값"></select><span class="note">× 100</span>
+          </div>
+          <div id="winRow" hidden><span class="lbl">1위를 겨룰 항목</span><div class="chips" id="winCols"></div></div>
+          <span class="lbl">이름 아래 보일 값 <span class="note">(3개까지)</span></span>
+          <div class="chips" id="labelCols"></div>
+        </div>
+        <details class="more">
+          <summary>공식 인구 자료로 칠하기 (총인구·청년·노인)</summary>
+          <p class="note">행정안전부 <b>연령별 인구현황</b> CSV를 그대로 열면 나이 열을 알아보고 총인구, 청년(19~34세), 노인(65세 이상), 유소년(0~14세), 비율, 노령화지수를 계산합니다. 행정기관코드로 지역을 찾고, 읍면동 숫자는 시군구·시도로 더해 지금 지도 단위에 맞춥니다.</p>
+          <p class="note">받는 곳: <a href="https://jumin.mois.go.kr/" target="_blank" rel="noopener">주민등록 인구통계</a> → 연령별 인구현황 (행정구역 '전체', 1세 단위, CSV) 또는 <a href="https://www.data.go.kr/data/15097972/fileData.do" target="_blank" rel="noopener">공공데이터포털 행정동 성별·연령별 주민등록 인구수</a></p>
+        </details>
         <span class="lbl">색 단계</span>
         <div class="palettes" id="palettes"></div>
         <div class="row">

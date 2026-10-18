@@ -666,7 +666,8 @@
       let main = st.text || (tile ? tileName(lv, f) : lv === "sido" && shortSido ? sidoShort(f.nm) : f.nm);
       const lines = [];
       const val = values[K(lv, id)];
-      if (val != null && val !== "") lines.push({ text: String(val), k: 0.78, weight: 700 });
+      const vals = Array.isArray(val) ? val : val != null && val !== "" ? [val] : [];
+      vals.forEach((v, i) => lines.push({ text: String(v), k: i ? 0.66 : 0.78, weight: i ? 600 : 700 }));
       if (o.subLabel && !tile) {
         const sub = [];
         if (lv === "sgg" && f.city) sub.push(f.city);

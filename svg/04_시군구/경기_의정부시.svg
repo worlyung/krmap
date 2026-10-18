@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1317" viewBox="0 0 1600 1317" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1317" viewBox="0 0 1600 1317" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>경기도 의정부시</title>
 <g id="배경">
 <path d="M0 1317L0 1314.2 6.5 1311.2 47.8 1267.6 102.5 1252 149.3 1257.6 149.3 1300 173.3 1317Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -38,20 +38,20 @@
 <path d="M0 1314.2L6.5 1311.2 47.8 1267.6 102.5 1252 149.3 1257.6 147.1 1202.9 154.9 1135.9 185 1090.2 210.7 1090.2 224.1 1055.6 260.9 1055.6 313.4 1075.7 344.6 1062.3 355.8 1081.3 373.7 1156 387.1 1171.7 420.5 1166.1 477.5 1127 510.9 1163.8 542.2 1144.9 551.1 1150.4 566.7 1230.8 604.7 1202.9 661.6 1210.7 708.5 1196.2 745.3 1144.9 782.1 1141.5 829 1115.8 865.8 1120.3 891.5 1138.2 903.8 1185 942.9 1198.4 980.8 1199.6 1010.9 1224.1 1015.4 1246.4 980.8 1297.8 974.8 1317M974.8 1317L980.8 1297.8 1015.4 1246.4 1010.9 1224.1 980.8 1199.6 942.9 1198.4 903.8 1185 891.5 1138.2 865.8 1120.3 829 1115.8 782.1 1141.5 745.3 1144.9 708.5 1196.2 661.6 1210.7 604.7 1202.9 566.7 1230.8 551.1 1150.4 542.2 1144.9 510.9 1163.8 477.5 1127 420.5 1166.1 387.1 1171.7 373.7 1156 355.8 1081.3 344.6 1062.3 313.4 1075.7 260.9 1055.6 224.1 1055.6 210.7 1090.2 185 1090.2 154.9 1135.9 147.1 1202.9 149.3 1257.6 102.5 1252 47.8 1267.6 6.5 1311.2 0 1314.2" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="974.1" y="288" font-size="25.6" font-weight="500" fill="#FFFFFF">자금동</text>
-<text  x="1163.8" y="708.8" font-size="25.6" font-weight="500" fill="#FFFFFF">고산동</text>
-<text  x="709.6" y="972.2" font-size="25.6" font-weight="500" fill="#FFFFFF">장암동</text>
-<text  x="1217.4" y="391.8" font-size="25.6" font-weight="500" fill="#FFFFFF">송산3동</text>
-<text  x="435" y="975.5" font-size="25.6" font-weight="500" fill="#FFFFFF">호원1동</text>
-<text  x="239.7" y="609.4" font-size="25.6" font-weight="500" fill="#FFFFFF">흥선동</text>
-<text  x="861.4" y="664.1" font-size="25.6" font-weight="500" fill="#FFFFFF">송산1동</text>
-<text  x="176.1" y="428.6" font-size="25.6" font-weight="500" fill="#FFFFFF">가능동</text>
-<text  x="406" y="313.7" font-size="25.6" font-weight="500" fill="#FFFFFF">녹양동</text>
-<text  x="464.1" y="778" font-size="25.6" font-weight="500" fill="#FFFFFF">호원2동</text>
-<text  x="698.4" y="682" font-size="25.6" font-weight="500" fill="#FFFFFF">신곡1동</text>
-<text  x="419.4" y="641.8" font-size="25.6" font-weight="500" fill="#FFFFFF">의정부2동</text>
-<text  x="724.1" y="528" font-size="25.6" font-weight="500" fill="#FFFFFF">신곡2동</text>
-<text  x="562.3" y="536.9" font-size="25.6" font-weight="500" fill="#FFFFFF">의정부1동</text>
-<text  x="992" y="583.8" font-size="25.6" font-weight="500" fill="#FFFFFF">송산2동</text>
+<text  x="974.1" y="287.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">자금동</text>
+<text  x="1163.8" y="708.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">고산동</text>
+<text  x="709.6" y="971.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">장암동</text>
+<text  x="1217.4" y="391.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">송산3동</text>
+<text  x="435" y="975.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">호원1동</text>
+<text  x="239.7" y="609.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">흥선동</text>
+<text  x="861.4" y="663.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">송산1동</text>
+<text  x="176.1" y="428.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">가능동</text>
+<text  x="406" y="313.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">녹양동</text>
+<text  x="464.1" y="777.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">호원2동</text>
+<text  x="698.4" y="681.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">신곡1동</text>
+<text  x="419.4" y="641.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">의정부2동</text>
+<text  x="724.1" y="527.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">신곡2동</text>
+<text  x="562.3" y="536.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">의정부1동</text>
+<text  x="992" y="583.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">송산2동</text>
 </g>
 </svg>

@@ -10,13 +10,13 @@
 })(typeof self !== "undefined" ? self : this, function () {
   // 순차 색 단계 (밝은 → 진한). "색각 친화" 는 색약인 사람도 구분하기 쉬운 viridis 계열.
   const PALETTES = {
-    blue: { name: "파랑", stops: ["#EEF3FD", "#9DB8F2", "#3361E0", "#1A2F86"] },
-    green: { name: "초록", stops: ["#ECF7F2", "#97D3B6", "#1E9468", "#0B4D36"] },
-    orange: { name: "주황", stops: ["#FEF3E7", "#F8C08A", "#E8742B", "#8E3A0C"] },
-    red: { name: "빨강", stops: ["#FDEDEC", "#F4A3A0", "#D9413B", "#7C1A17"] },
-    purple: { name: "보라", stops: ["#F2EFFB", "#C2B4EE", "#6A4CD6", "#33207A"] },
+    blue: { name: "파랑", stops: ["#DCE7FB", "#9DB8F2", "#3361E0", "#1A2F86"] },
+    green: { name: "초록", stops: ["#D9F0E5", "#97D3B6", "#1E9468", "#0B4D36"] },
+    orange: { name: "주황", stops: ["#FDE4CC", "#F8C08A", "#E8742B", "#8E3A0C"] },
+    red: { name: "빨강", stops: ["#FADAD7", "#F4A3A0", "#D9413B", "#7C1A17"] },
+    purple: { name: "보라", stops: ["#E4DEF8", "#C2B4EE", "#6A4CD6", "#33207A"] },
     viridis: { name: "색각 친화", stops: ["#FDE725", "#5EC962", "#21918C", "#3B528B", "#440154"] },
-    diverge: { name: "파랑↔빨강", stops: ["#2B59C3", "#9DB4E8", "#F2F2F2", "#F0A39B", "#C9352B"] },
+    diverge: { name: "파랑↔빨강", stops: ["#1F56B3", "#8FB3EC", "#EEEDEA", "#F0A196", "#C23A2E"] },
   };
   // 분류·후보용 뚜렷한 색
   const CATEGORY = ["#3361E0", "#E5484D", "#14A37F", "#F2B33D", "#8B5CF6", "#E0559A", "#4BB3D9", "#8C6D46", "#7A8899", "#B9C93A", "#D9653B", "#2E8A99"];
@@ -412,13 +412,39 @@
     }
     out.kind = "num";
     const nums = vals.map(([, v]) => +v).filter((v) => isFinite(v));
-    const { lo, hi, cuts } = breaks(nums, Math.max(2, Math.min(9, opt.steps || 5)), opt.method);
-    const colors = ramp(opt.palette, cuts.length + 1);
-    for (const [k, v] of vals) if (isFinite(+v)) out.fills[k] = colors[classOf(+v, cuts)];
+    const steps = Math.max(2, Math.min(9, opt.steps || 5));
     const isP = by.t === "ratio" || (col && col.kind === "pct");
     const f = (x) => (isP ? pct(x) : col && col.kind === "index" ? fmt(x) : compact(x));
-    const edges = [lo, ...cuts, hi];
-    out.legend.items = colors.map((c, i) => ({ color: c, label: lo === hi ? f(lo) : i === colors.length - 1 ? `${f(edges[i])} 이상` : `${f(edges[i])} ~ ${f(edges[i + 1])} 미만` }));
+    const bare = (x) => String(f(x)).replace(/%$/, ""); // "18.1 ~ 24.0%" 처럼 단위는 뒤에 한 번만
+    const range = (a, b) => `${bare(a)} ~ ${f(b)}`;
+    const lo0 = Math.min(...nums), hi0 = Math.max(...nums);
+    if (opt.palette === "diverge" && lo0 < 0 && hi0 > 0) {
+      // 증감처럼 부호가 갈리는 값: 0 을 가운데(회색)로 두고 음수는 파랑, 양수는 빨강 쪽 단계로 따로 나눈다
+      const k = Math.max(1, Math.floor(steps / 2));
+      const neg = breaks(nums.filter((v) => v < 0), k, opt.method), pos = breaks(nums.filter((v) => v > 0), k, opt.method);
+      const colors = ramp("diverge", 2 * k + 1);
+      const nc = neg.cuts.length + 1, pc = pos.cuts.length + 1;
+      const negColor = (i) => colors[k - nc + i], posColor = (i) => colors[k + 1 + i];
+      for (const [kk, v] of vals) {
+        const x = +v;
+        if (!isFinite(x)) continue;
+        out.fills[kk] = x < 0 ? negColor(classOf(x, neg.cuts)) : x > 0 ? posColor(classOf(x, pos.cuts)) : colors[k];
+      }
+      const ne = [neg.lo, ...neg.cuts, 0], pe = [0, ...pos.cuts, pos.hi];
+      for (let i = 0; i < nc; i++) out.legend.items.push({ color: negColor(i), label: i === 0 && nc > 1 ? `${f(ne[1])} 미만` : range(ne[i], ne[i + 1]) });
+      if (nums.includes(0)) out.legend.items.push({ color: colors[k], label: "0 (변화 없음)" });
+      for (let i = 0; i < pc; i++) out.legend.items.push({ color: posColor(i), label: i === pc - 1 && pc > 1 ? `${f(pe[i])} 이상` : range(pe[i], pe[i + 1]) });
+    } else {
+      const { lo, hi, cuts } = breaks(nums, steps, opt.method);
+      const colors = ramp(opt.palette, cuts.length + 1);
+      for (const [k, v] of vals) if (isFinite(+v)) out.fills[k] = colors[classOf(+v, cuts)];
+      const edges = [lo, ...cuts, hi];
+      const n = colors.length;
+      out.legend.items = colors.map((c, i) => ({
+        color: c,
+        label: lo === hi ? f(lo) : n === 1 ? range(lo, hi) : i === 0 ? `${f(edges[1])} 미만` : i === n - 1 ? `${f(edges[i])} 이상` : range(edges[i], edges[i + 1]),
+      }));
+    }
     out.legend.title = by.t === "ratio" ? `${(ds.columns.find((c) => c.id === by.a) || {}).name} ÷ ${(ds.columns.find((c) => c.id === by.b) || {}).name}` : col.name;
     return out;
   }

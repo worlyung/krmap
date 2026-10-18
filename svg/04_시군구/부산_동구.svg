@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1637" viewBox="0 0 1600 1637" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1637" viewBox="0 0 1600 1637" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>부산광역시 동구</title>
 <g id="배경">
 <path d="M61.1 1637L61.6 1635.4 180.9 1545.9 199.6 1568.2 248.1 1463.8 236.9 1355.7 166 1310.9 236.9 1284.8 386.1 1337 404.7 1359.4 580 1501.1 639.6 1523.5 732.9 1549.6 686.2 1637Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -31,17 +31,17 @@
 <path d="M1577.6 1637L1600 1569.9M1600 1079.5L1493.6 1034.9 1527.2 841 1489.9 759 1475 855.9 1180.4 1243.8 1061 1131.9 1150.6 1038.7 1154.3 941.7 1064.8 926.8 971.5 1016.3 867.1 1303.4 1008.8 1407.9 975.3 1452.6 811.2 1344.5 732.9 1549.6 686.2 1637" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="1169.2" y="809.2" font-size="25.6" font-weight="500" fill="#FFFFFF">범일5동</text>
-<text  x="315.2" y="1029.2" font-size="25.6" font-weight="500" fill="#FFFFFF">초량6동</text>
-<text  x="792.5" y="1171" font-size="25.6" font-weight="500" fill="#FFFFFF">초량3동</text>
-<text  x="714.2" y="227.5" font-size="25.6" font-weight="500" fill="#FFFFFF">범일1동</text>
-<text  x="870.9" y="783.1" font-size="25.6" font-weight="500" fill="#FFFFFF">수정2동</text>
-<text  x="1355.7" y="443.7" font-size="25.6" font-weight="500" fill="#FFFFFF">범일2동</text>
-<text  x="255.5" y="660" font-size="25.6" font-weight="500" fill="#FFFFFF">수정4동</text>
-<text  x="699.3" y="496" font-size="25.6" font-weight="500" fill="#FFFFFF">수정5동</text>
-<text  x="979" y="604.1" font-size="25.6" font-weight="500" fill="#FFFFFF">좌천동</text>
-<text  x="594.9" y="1294" font-size="25.6" font-weight="500" fill="#FFFFFF">초량2동</text>
-<text  x="576.2" y="1432" font-size="25.6" font-weight="500" fill="#FFFFFF">초량1동</text>
-<text  x="680.7" y="980.8" font-size="25.6" font-weight="500" fill="#FFFFFF">수정1동</text>
+<text  x="1169.2" y="809" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">범일5동</text>
+<text  x="315.2" y="1029" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">초량6동</text>
+<text  x="792.5" y="1170.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">초량3동</text>
+<text  x="714.2" y="227.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">범일1동</text>
+<text  x="870.9" y="782.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">수정2동</text>
+<text  x="1355.7" y="443.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">범일2동</text>
+<text  x="255.5" y="659.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">수정4동</text>
+<text  x="699.3" y="495.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">수정5동</text>
+<text  x="979" y="603.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">좌천동</text>
+<text  x="594.9" y="1293.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">초량2동</text>
+<text  x="576.2" y="1431.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">초량1동</text>
+<text  x="680.7" y="980.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">수정1동</text>
 </g>
 </svg>

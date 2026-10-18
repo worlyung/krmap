@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1854" viewBox="0 0 1600 1854" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1854" viewBox="0 0 1600 1854" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>부산광역시 남구</title>
 <g id="배경">
 <path d="M0 628.5L127.5 640.1 165.2 755.3 151 938.7 151 948.1 141.6 1009.3 0 1195.7Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -40,22 +40,22 @@
 <path d="M1600 379.2L1545.4 452 1340.8 717.7 1286.7 748.3 1143.3 778.8 1253.8 844.7 1246.7 915.2 1333.7 816.5 1378.4 995.2 1430.1 1122.1 1477.2 1180.9 1484.2 1324.3 1500.7 1430.1 1413.7 1648.8 1411.3 1728.8 1242 1698.2 1183.3 1625.3 1131.5 1674.7 1093.9 1644.1 999.9 1740.5 896.4 1754.6 854.1 1726.4 790.6 1733.5 769.4 1512.4 633.1 1526.5 637.8 1618.2 367.4 1622.9 200.4 1519.5 254.5 1357.3 336.8 1279.7 303.9 1227.9 318 1138.6 252.2 1115.1 226.3 1152.7 153.4 1122.1 174.6 999.9 151 948.1 141.6 1009.3 0 1195.7M0 1690.9L5.3 1688.8 101.7 1752.3 231 1822.8 258 1854M1600 276.1L1470.1 329.7 1409 334.4 1392.5 278 1319.6 292.1 1260.9 346.2 1209.1 452 1267.9 503.7 1270.3 663.6 1223.2 670.7 1148 755.3 1284.4 734.2 1333.7 705.9 1536 445 1600 359.1M1600 117.7L1575.9 87.6 1547.7 101.7 1600 170.5" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="680.1" y="310.7" font-size="25.6" font-weight="500" fill="#FFFFFF">대연3동</text>
-<text  x="814.1" y="1354.7" font-size="25.6" font-weight="500" fill="#FFFFFF">용당동</text>
-<text  x="449.7" y="1444.1" font-size="25.6" font-weight="500" fill="#FFFFFF">감만1동</text>
-<text  x="1310.2" y="1477" font-size="25.6" font-weight="500" fill="#FFFFFF">용호2동</text>
-<text  x="1293.8" y="1159.6" font-size="25.6" font-weight="500" fill="#FFFFFF">용호3동</text>
-<text  x="416.7" y="1065.5" font-size="25.6" font-weight="500" fill="#FFFFFF">우암동</text>
-<text  x="1079.8" y="1082" font-size="25.6" font-weight="500" fill="#FFFFFF">용호1동</text>
-<text  x="705.9" y="701.1" font-size="25.6" font-weight="500" fill="#FFFFFF">대연5동</text>
-<text  x="1089.2" y="1568.7" font-size="25.6" font-weight="500" fill="#FFFFFF">용호4동</text>
-<text  x="419.1" y="489.4" font-size="25.6" font-weight="500" fill="#FFFFFF">문현1동</text>
-<text  x="703.6" y="1011.4" font-size="25.6" font-weight="500" fill="#FFFFFF">대연4동</text>
-<text  x="771.8" y="863.3" font-size="25.6" font-weight="500" fill="#FFFFFF">대연1동</text>
-<text  x="245.1" y="844.5" font-size="25.6" font-weight="500" fill="#FFFFFF">문현4동</text>
-<text  x="513.1" y="734" font-size="25.6" font-weight="500" fill="#FFFFFF">대연6동</text>
-<text  x="306.2" y="694" font-size="25.6" font-weight="500" fill="#FFFFFF">문현3동</text>
-<text  x="165.2" y="552.9" font-size="25.6" font-weight="500" fill="#FFFFFF">문현2동</text>
-<text  x="593.1" y="1154.9" font-size="25.6" font-weight="500" fill="#FFFFFF">감만2동</text>
+<text  x="680.1" y="310.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">대연3동</text>
+<text  x="814.1" y="1354.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">용당동</text>
+<text  x="449.7" y="1443.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">감만1동</text>
+<text  x="1310.2" y="1476.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">용호2동</text>
+<text  x="1293.8" y="1159.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">용호3동</text>
+<text  x="416.7" y="1065.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">우암동</text>
+<text  x="1079.8" y="1081.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">용호1동</text>
+<text  x="705.9" y="700.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">대연5동</text>
+<text  x="1089.2" y="1568.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">용호4동</text>
+<text  x="419.1" y="489.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">문현1동</text>
+<text  x="703.6" y="1011.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">대연4동</text>
+<text  x="771.8" y="863.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">대연1동</text>
+<text  x="245.1" y="844.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">문현4동</text>
+<text  x="513.1" y="733.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">대연6동</text>
+<text  x="306.2" y="693.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">문현3동</text>
+<text  x="165.2" y="552.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">문현2동</text>
+<text  x="593.1" y="1154.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">감만2동</text>
 </g>
 </svg>

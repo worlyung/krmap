@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1634" viewBox="0 0 1600 1634" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1634" viewBox="0 0 1600 1634" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>경기도 군포시</title>
 <g id="배경">
 <path d="M1600 1634L1034.1 1634 1039.9 1596.6 1068.5 1596.6 1166.1 1634 1354.2 1634 1378.2 1596.6 1485.6 1621.7 1532.2 1573.3 1569.7 1498.1 1575.1 1401.5 1593 1344.2 1600 1340.4 1600 1249.8 1580.5 1199.2 1600 1150.4Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -30,17 +30,17 @@
 <path d="M1270.8 1100.7L1263.6 1167 1233.2 1254.7 1133 1211.7 1082.8 1227.8 988 1319.1 996.9 1399.7 1038.1 1482 1000.5 1517.8 875.2 1528.6 844.8 1546.5 758.8 1544.7 746.3 1446.2 764.2 1354.9 742.7 1338.8 715.9 1346 647.8 1226 606.7 1224.3 440.2 1272.6 384.7 1260.1 323.8 1297.7 250.4 1238.6 171.7 1265.4 109 1236.8 87.5 1131.2 107.2 1057.8 152 1004.1 218.2 984.4 311.3 855.5 325.6 787.5 320.3 724.8 343.5 671.1 395.4 633.5 429.4 547.6 479.6 501.1 542.2 526.1 588.8 522.5 612 488.5 633.5 468.8 655 397.2 710.5 304.1 744.5 209.3 760.6 157.4 803.6 130.5 830.4 128.7 864.4 137.7 953.9 114.4 1079.3 128.7 1161.6 152 1179.5 134.1 1172.3 87.5 1243.9 128.7 1265.4 155.6 1251.1 189.6 1247.5 193.2 1270.8 268.3 1322.7 322 1378.2 343.5 1428.3 348.9 1508.9 438.4 1482 540.4 1512.5 561.9 1464.1 655 1446.2 721.2 1435.5 778.5 1385.4 843 1335.2 830.4 1290.5 869.8 1279.7 1039.9 1278 1047 1270.8 1100.7" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="544" y="988.2" font-size="25.6" font-weight="500" fill="#FFFFFF">대야동</text>
-<text  x="977.2" y="1147.5" font-size="25.6" font-weight="500" fill="#FFFFFF">송부동</text>
-<text  x="1369.3" y="564" font-size="25.6" font-weight="500" fill="#FFFFFF">군포1동</text>
-<text  x="1141.9" y="816.4" font-size="25.6" font-weight="500" fill="#FFFFFF">군포2동</text>
-<text  x="810.7" y="628.4" font-size="25.6" font-weight="500" fill="#FFFFFF">수리동</text>
-<text  x="905.6" y="286.5" font-size="25.6" font-weight="500" fill="#FFFFFF">광정동</text>
-<text  x="769.6" y="383.2" font-size="25.6" font-weight="500" fill="#FFFFFF">궁내동</text>
-<text  x="1011.2" y="197" font-size="25.6" font-weight="500" fill="#FFFFFF">산본2동</text>
-<text  x="1251.1" y="379.6" font-size="25.6" font-weight="500" fill="#FFFFFF">금정동</text>
-<text  x="1013" y="632" font-size="25.6" font-weight="500" fill="#FFFFFF">오금동</text>
-<text  x="1133" y="476.3" font-size="25.6" font-weight="500" fill="#FFFFFF">재궁동</text>
-<text  x="1159.8" y="231" font-size="25.6" font-weight="500" fill="#FFFFFF">산본1동</text>
+<text  x="544" y="988" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">대야동</text>
+<text  x="977.2" y="1147.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">송부동</text>
+<text  x="1369.3" y="563.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">군포1동</text>
+<text  x="1141.9" y="816.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">군포2동</text>
+<text  x="810.7" y="628.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">수리동</text>
+<text  x="905.6" y="286.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">광정동</text>
+<text  x="769.6" y="382.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">궁내동</text>
+<text  x="1011.2" y="196.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">산본2동</text>
+<text  x="1251.1" y="379.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">금정동</text>
+<text  x="1013" y="631.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">오금동</text>
+<text  x="1133" y="476" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">재궁동</text>
+<text  x="1159.8" y="230.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">산본1동</text>
 </g>
 </svg>

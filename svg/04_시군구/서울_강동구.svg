@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1687" viewBox="0 0 1600 1687" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1687" viewBox="0 0 1600 1687" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>서울특별시 강동구</title>
 <g id="배경">
 <path d="M0 561.3L79.5 561.3 101.2 596 172.8 585.2 175 719.7 146.8 810.9 90.4 956.3 0 1112.5Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -40,24 +40,24 @@
 <path d="M0 561.3L79.5 561.3 101.2 596 172.8 585.2 229.3 559.1 335.6 457.1 556.9 357.3 780.5 361.6 852.1 357.3 923.7 305.2 1103.8 166.3 1186.3 107.7 1225.3 105.6 1327.3 90.4 1357.7 120.7 1362.1 205.4 1425 342.1 1431.5 405 1477.1 530.9 1477.1 591.7 1468.4 734.9 1509.6 904.2 1422.8 884.6 1327.3 915 1119 923.7 1064.8 1004 999.7 1082.1 932.4 1188.5 925.9 1299.1 852.1 1388.1 819.5 1472.7 782.6 1477.1 758.8 1596.4 760.9 1631.2 743.5 1687M743.5 1687L760.9 1631.2 758.8 1596.4 782.6 1477.1 819.5 1472.7 852.1 1388.1 925.9 1299.1 932.4 1188.5 999.7 1082.1 1064.8 1004 1119 923.7 1327.3 915 1422.8 884.6 1509.6 904.2 1468.4 734.9 1477.1 591.7 1477.1 530.9 1431.5 405 1425 342.1 1362.1 205.4 1357.7 120.7 1327.3 90.4 1225.3 105.6 1186.3 107.7 1103.8 166.3 923.7 305.2 852.1 357.3 780.5 361.6 556.9 357.3 335.6 457.1 229.3 559.1 172.8 585.2 101.2 596 79.5 561.3 0 561.3" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="1132" y="457.7" font-size="25.6" font-weight="500" fill="#FFFFFF">고덕2동</text>
-<text  x="324.7" y="670.3" font-size="25.6" font-weight="500" fill="#FFFFFF">암사2동</text>
-<text  x="1262.2" y="214.6" font-size="25.6" font-weight="500" fill="#FFFFFF">강일동</text>
-<text  x="322.6" y="935.1" font-size="25.6" font-weight="500" fill="#FFFFFF">천호2동</text>
-<text  x="1142.9" y="794" font-size="25.6" font-weight="500" fill="#FFFFFF">상일제1동</text>
-<text  x="663.3" y="509.7" font-size="25.6" font-weight="500" fill="#FFFFFF">암사3동</text>
-<text  x="810.9" y="1026.2" font-size="25.6" font-weight="500" fill="#FFFFFF">길동</text>
-<text  x="815.2" y="1271.5" font-size="25.6" font-weight="500" fill="#FFFFFF">둔촌2동</text>
-<text  x="895.5" y="596.5" font-size="25.6" font-weight="500" fill="#FFFFFF">고덕1동</text>
-<text  x="1383.8" y="731.1" font-size="25.6" font-weight="500" fill="#FFFFFF">상일제2동</text>
-<text  x="910.7" y="874.3" font-size="25.6" font-weight="500" fill="#FFFFFF">명일2동</text>
-<text  x="674.1" y="1449.4" font-size="25.6" font-weight="500" fill="#FFFFFF">둔촌1동</text>
-<text  x="548.3" y="776.7" font-size="25.6" font-weight="500" fill="#FFFFFF">암사1동</text>
-<text  x="654.6" y="896" font-size="25.6" font-weight="500" fill="#FFFFFF">천호1동</text>
-<text  x="418.1" y="1332.2" font-size="25.6" font-weight="500" fill="#FFFFFF">성내1동</text>
-<text  x="415.9" y="1178.1" font-size="25.6" font-weight="500" fill="#FFFFFF">성내2동</text>
-<text  x="530.9" y="1390.8" font-size="25.6" font-weight="500" fill="#FFFFFF">성내3동</text>
-<text  x="806.5" y="761.5" font-size="25.6" font-weight="500" fill="#FFFFFF">명일1동</text>
-<text  x="526.6" y="1071.8" font-size="25.6" font-weight="500" fill="#FFFFFF">천호3동</text>
+<text  x="1132" y="457.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">고덕2동</text>
+<text  x="324.7" y="670.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">암사2동</text>
+<text  x="1262.2" y="214.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">강일동</text>
+<text  x="322.6" y="934.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">천호2동</text>
+<text  x="1142.9" y="793.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">상일제1동</text>
+<text  x="663.3" y="509.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">암사3동</text>
+<text  x="810.9" y="1026" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">길동</text>
+<text  x="815.2" y="1271.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">둔촌2동</text>
+<text  x="895.5" y="596.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">고덕1동</text>
+<text  x="1383.8" y="730.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">상일제2동</text>
+<text  x="910.7" y="874.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">명일2동</text>
+<text  x="674.1" y="1449.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">둔촌1동</text>
+<text  x="548.3" y="776.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">암사1동</text>
+<text  x="654.6" y="895.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">천호1동</text>
+<text  x="418.1" y="1332" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">성내1동</text>
+<text  x="415.9" y="1177.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">성내2동</text>
+<text  x="530.9" y="1390.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">성내3동</text>
+<text  x="806.5" y="761.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">명일1동</text>
+<text  x="526.6" y="1071.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">천호3동</text>
 </g>
 </svg>

@@ -1044,10 +1044,25 @@
     const scene = D && freshScene();
     if (scene) saveFile(baseName(scene) + ".svg", R.toSVG(scene), "image/svg+xml");
   }
-  function sceneToPng(scene, scale) {
+  // 그림으로 바꿀 때는 SVG 가 페이지 글꼴을 못 쓰므로 프리텐다드를 SVG 안에 넣는다 (못 읽으면 컴퓨터 글꼴로)
+  let fontCss = null;
+  function embeddedFonts() {
+    if (fontCss) return fontCss;
+    const b64 = (buf) => { const u = new Uint8Array(buf); let t = ""; for (let i = 0; i < u.length; i += 0x8000) t += String.fromCharCode.apply(null, u.subarray(i, i + 0x8000)); return btoa(t); };
+    const ws = [[400, "Regular"], [500, "Medium"], [600, "SemiBold"], [700, "Bold"]];
+    fontCss = Promise.all(ws.map(([w, n]) => fetch(`vendor/fonts/Pretendard-${n}.subset.woff2`)
+      .then((r) => (r.ok ? r.arrayBuffer() : Promise.reject(new Error(r.status))))
+      .then((buf) => `@font-face{font-family:Pretendard;font-weight:${w};src:url(data:font/woff2;base64,${b64(buf)}) format("woff2")}`)))
+      .then((list) => list.join(""), () => "");
+    return fontCss;
+  }
+  async function sceneToPng(scene, scale) {
+    const css = await embeddedFonts();
+    let svg = R.toSVG(scene);
+    if (css) svg = svg.replace(/^(<svg[^>]*>)/, `$1<defs><style>${css}</style></defs>`);
     return new Promise((ok, fail) => {
       const img = new Image();
-      const url = URL.createObjectURL(new Blob([R.toSVG(scene)], { type: "image/svg+xml" }));
+      const url = URL.createObjectURL(new Blob([svg], { type: "image/svg+xml" }));
       img.onload = () => {
         const c = document.createElement("canvas");
         c.width = Math.round(scene.width * scale);

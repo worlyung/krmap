@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1661" viewBox="0 0 1600 1661" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1661" viewBox="0 0 1600 1661" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>서울특별시 송파구</title>
 <g id="배경">
 <path d="M0 0L97 0 44.6 111.2 27.6 148.8 0 208.8Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -52,31 +52,32 @@
 <path d="M1600 61L1541.7 63.4 1499 126.6 1447.8 188 1394.9 271.7 1389.8 358.7 1331.8 428.7 1306.1 495.3 1277.1 498.7 1258.3 592.6 1260.1 619.9 1243 674.5 1205.4 681.4 1191.8 754.8 1205.4 811.1 1254.9 831.6 1304.4 852.1 1342 829.9 1388.1 862.3 1393.2 862.3 1437.6 879.4 1454.7 857.2 1511 922.1 1490.5 968.1 1490.5 1017.7 1490.5 1021.1 1488.8 1024.5 1454.7 1101.3 1453 1120.1 1335.2 1193.5 1302.7 1260.1 1297.6 1345.4 1251.5 1343.7 1237.9 1405.2 1074 1389.8 1075.7 1514.4 1043.3 1526.4 983.5 1502.5 961.3 1502.5 918.6 1572.4 845.2 1628.8 840.4 1661M789.1 1661L763.3 1640.7 676.2 1622 645.7 1661M536.9 1661L526 1642.4 519.8 1661M519.8 1661L526 1642.4 536.9 1661M645.7 1661L676.2 1622 763.3 1640.7 789.1 1661M840.4 1661L845.2 1628.8 918.6 1572.4 961.3 1502.5 983.5 1502.5 1043.3 1526.4 1075.7 1514.4 1074 1389.8 1237.9 1405.2 1251.5 1343.7 1297.6 1345.4 1302.7 1260.1 1335.2 1193.5 1453 1120.1 1454.7 1101.3 1488.8 1024.5 1490.5 1021.1 1490.5 1017.7 1490.5 968.1 1511 922.1 1454.7 857.2 1437.6 879.4 1393.2 862.3 1388.1 862.3 1342 829.9 1304.4 852.1 1254.9 831.6 1205.4 811.1 1191.8 754.8 1205.4 681.4 1243 674.5 1260.1 619.9 1258.3 592.6 1277.1 498.7 1306.1 495.3 1331.8 428.7 1389.8 358.7 1394.9 271.7 1447.8 188 1499 126.6 1541.7 63.4 1600 61" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="916.9" y="536.9" font-size="25.6" font-weight="500" fill="#FFFFFF">오륜동</text>
-<text  x="310.9" y="577.9" font-size="25.6" font-weight="500" fill="#FFFFFF">잠실2동</text>
-<text  x="1215.7" y="1247.1" font-size="25.6" font-weight="500" fill="#FFFFFF">위례동</text>
-<text  x="852.1" y="1245.4" font-size="25.6" font-weight="500" fill="#FFFFFF">문정2동</text>
-<text  x="739.4" y="354.3" font-size="25.6" font-weight="500" fill="#FFFFFF">풍납2동</text>
-<text  x="1123.5" y="857.9" font-size="25.6" font-weight="500" fill="#FFFFFF">오금동</text>
-<text  x="538" y="728.1" font-size="25.6" font-weight="500" fill="#FFFFFF">잠실3동</text>
-<text  x="713.8" y="1008.1" font-size="25.6" font-weight="500" fill="#FFFFFF">가락1동</text>
-<text  x="580.6" y="538.6" font-size="25.6" font-weight="500" fill="#FFFFFF">잠실6동</text>
-<text  x="1043.3" y="1279.5" font-size="25.6" font-weight="500" fill="#FFFFFF">장지동</text>
-<text  x="341.7" y="801.5" font-size="25.6" font-weight="500" fill="#FFFFFF">잠실본동</text>
-<text  x="882.8" y="980.8" font-size="25.6" font-weight="500" fill="#FFFFFF">가락본동</text>
-<text  x="807.7" y="192.1" font-size="25.6" font-weight="500" fill="#FFFFFF">풍납1동</text>
-<text  x="457.7" y="892" font-size="25.6" font-weight="500" fill="#FFFFFF">삼전동</text>
-<text  x="1342" y="921" font-size="25.6" font-weight="500" fill="#FFFFFF">마천2동</text>
-<text  x="1034.7" y="985.9" font-size="25.6" font-weight="500" fill="#FFFFFF">가락2동</text>
-<text  x="625" y="859.6" font-size="25.6" font-weight="500" fill="#FFFFFF">석촌동</text>
-<text  x="722.3" y="535.2" font-size="25.6" font-weight="500" fill="#FFFFFF">잠실4동</text>
-<text  x="790.6" y="663.3" font-size="25.6" font-weight="500" fill="#FFFFFF">방이2동</text>
-<text  x="747.9" y="782.8" font-size="25.6" font-weight="500" fill="#FFFFFF">송파1동</text>
-<text  x="973.3" y="1151.5" font-size="25.6" font-weight="500" fill="#FFFFFF">문정1동</text>
-<text  x="189.7" y="781" font-size="25.6" font-weight="500" fill="#FFFFFF">잠실7동</text>
-<text  x="860.6" y="847.6" font-size="25.6" font-weight="500" fill="#FFFFFF">송파2동</text>
-<text  x="922.1" y="738.4" font-size="25.6" font-weight="500" fill="#FFFFFF">방이1동</text>
-<text  x="1212.3" y="1032" font-size="25.6" font-weight="500" fill="#FFFFFF">거여1동</text>
-<text  x="1434.2" y="1016.6" font-size="25.6" font-weight="500" fill="#FFFFFF">마천1동</text>
+<text  x="916.9" y="536.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">오륜동</text>
+<text  x="310.9" y="577.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">잠실2동</text>
+<text  x="1215.7" y="1246.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">위례동</text>
+<text  x="852.1" y="1245.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">문정2동</text>
+<text  x="739.4" y="354.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">풍납2동</text>
+<text  x="1123.5" y="857.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">오금동</text>
+<text  x="538" y="727.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">잠실3동</text>
+<text  x="713.8" y="1007.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">가락1동</text>
+<text  x="580.6" y="538.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">잠실6동</text>
+<text  x="1043.3" y="1279.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">장지동</text>
+<text  x="341.7" y="801.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">잠실본동</text>
+<text  x="882.8" y="980.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">가락본동</text>
+<text  x="807.7" y="191.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">풍납1동</text>
+<text  x="457.7" y="891.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">삼전동</text>
+<text  x="1342" y="920.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">마천2동</text>
+<text  x="1034.7" y="985.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">가락2동</text>
+<text  x="625" y="859.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">석촌동</text>
+<text  x="722.3" y="535" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">잠실4동</text>
+<text  x="790.6" y="663" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">방이2동</text>
+<text  x="747.9" y="782.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">송파1동</text>
+<text  x="973.3" y="1151.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">문정1동</text>
+<text  x="189.7" y="780.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">잠실7동</text>
+<text  x="860.6" y="847.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">송파2동</text>
+<text  x="922.1" y="738.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">방이1동</text>
+<text  x="1212.3" y="1031.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">거여1동</text>
+<text  x="1434.2" y="1016.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">마천1동</text>
+<text  x="1306.1" y="1052.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">거여2동</text>
 </g>
 </svg>

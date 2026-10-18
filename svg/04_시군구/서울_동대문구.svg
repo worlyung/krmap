@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1690" viewBox="0 0 1600 1690" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1690" viewBox="0 0 1600 1690" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>서울특별시 동대문구</title>
 <g id="배경">
 <path d="M0 1024.9L90.5 1013.3 93.4 1216.4 0 1235.1Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -37,20 +37,20 @@
 <path d="M740.5 1280.2L575.1 1175.8 430 1193.2 322.7 1268.6 273.3 1277.3 93.4 1216.4 90.5 1013.3 122.5 975.6 253 862.4 430 633.2 432.9 589.6 499.7 589.6 543.2 444.5 612.8 406.8 720.2 430 816 255.9 833.4 311.1 1039.4 244.3 1056.8 195 1097.4 139.9 1259.9 90.5 1338.3 93.4 1352.8 163.1 1355.7 276.2 1288.9 383.6 1283.1 476.5 1300.5 554.8 1309.2 604.1 1384.7 784 1474.6 926.2 1503.7 1059.7 1509.5 1219.3 1436.9 1387.6 1341.2 1599.4 1114.8 1550.1 972.7 1500.8 949.4 1477.5 740.5 1280.2" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="1199" y="1460.6" font-size="25.6" font-weight="500" fill="#FFFFFF">장안1동</text>
-<text  x="1216.4" y="741" font-size="25.6" font-weight="500" fill="#FFFFFF">휘경2동</text>
-<text  x="615.7" y="598.8" font-size="25.6" font-weight="500" fill="#FFFFFF">청량리동</text>
-<text  x="447.4" y="868.7" font-size="25.6" font-weight="500" fill="#FFFFFF">제기동</text>
-<text  x="786.9" y="1005.1" font-size="25.6" font-weight="500" fill="#FFFFFF">전농1동</text>
-<text  x="1358.6" y="1074.7" font-size="25.6" font-weight="500" fill="#FFFFFF">장안2동</text>
-<text  x="1016.2" y="413.1" font-size="25.6" font-weight="500" fill="#FFFFFF">이문1동</text>
-<text  x="1077.1" y="967.4" font-size="25.6" font-weight="500" fill="#FFFFFF">전농2동</text>
-<text  x="183.4" y="1089.2" font-size="25.6" font-weight="500" fill="#FFFFFF">신설동</text>
-<text  x="850.8" y="1260.4" font-size="25.6" font-weight="500" fill="#FFFFFF">답십리1동</text>
-<text  x="1074.2" y="1202.4" font-size="25.6" font-weight="500" fill="#FFFFFF">답십리2동</text>
-<text  x="830.5" y="575.6" font-size="25.6" font-weight="500" fill="#FFFFFF">회기동</text>
-<text  x="1233.8" y="236.1" font-size="25.6" font-weight="500" fill="#FFFFFF">이문2동</text>
-<text  x="502.6" y="1106.6" font-size="25.6" font-weight="500" fill="#FFFFFF">용두동</text>
-<text  x="1170" y="543.7" font-size="25.6" font-weight="500" fill="#FFFFFF">휘경1동</text>
+<text  x="1199" y="1460.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">장안1동</text>
+<text  x="1216.4" y="740.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">휘경2동</text>
+<text  x="615.7" y="598.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">청량리동</text>
+<text  x="447.4" y="868.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">제기동</text>
+<text  x="786.9" y="1004.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">전농1동</text>
+<text  x="1358.6" y="1074.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">장안2동</text>
+<text  x="1016.2" y="412.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">이문1동</text>
+<text  x="1077.1" y="967.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">전농2동</text>
+<text  x="183.4" y="1089" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">신설동</text>
+<text  x="850.8" y="1260.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">답십리1동</text>
+<text  x="1074.2" y="1202.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">답십리2동</text>
+<text  x="830.5" y="575.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">회기동</text>
+<text  x="1233.8" y="235.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">이문2동</text>
+<text  x="502.6" y="1106.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">용두동</text>
+<text  x="1170" y="543.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">휘경1동</text>
 </g>
 </svg>

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2059" viewBox="0 0 1600 2059" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2059" viewBox="0 0 1600 2059" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>부산광역시 사하구</title>
 <g id="배경">
 <path d="M1600 573.5L1595.1 549.1 1600 523.7Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -35,21 +35,21 @@
 <path d="M879.1 1887.7L862.1 1948.9 800.9 1947.2 836.6 1863.9 879.1 1887.7M1600 1034.7L1598.5 1032.2 1549.2 1050.9 1522 1096.8 1540.7 1137.6 1600 1196.9M1600 1361.9L1525.4 1425.1 1525.4 1496.5 1445.5 1510.1 1406.3 1316.2 1454 1307.7 1360.4 1159.7 1341.7 1022 1333.2 967.5 1350.2 909.7 1312.8 904.6 1227.8 936.9 1164.8 921.6 1159.7 993 1197.1 1076.4 1176.7 1112.1 1202.2 1158 1203.9 1306 1300.9 1591.7 1232.9 1588.3 1134.2 1581.5 1132.5 1506.7 1095.1 1411.4 1039 1379.1 930.1 1433.6 857 1440.4 868.9 1501.6 969.2 1505 1013.5 1532.2 1003.2 1605.3 906.3 1603.6 863.8 1583.2 809.4 1613.8 811.1 1661.5 862.1 1688.7 816.2 1746.5 834.9 1787.3 785.5 1816.2 753.2 1894.5 710.7 1811.1 705.6 1772 731.1 1712.5 731.1 1639.4 634.2 1607 591.6 1511.8 610.4 1484.6 545.7 1202.2 537.2 1154.6 511.7 1042.4 319.5 1042.4 231.1 930.1 110.3 756.6 57.6 771.9 0 796.8" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="355.2" y="738.6" font-size="25.6" font-weight="500" fill="#FFFFFF">하단1동</text>
-<text  x="722.6" y="1415.6" font-size="25.6" font-weight="500" fill="#FFFFFF">다대1동</text>
-<text  x="552.5" y="361" font-size="25.6" font-weight="500" fill="#FFFFFF">하단2동</text>
-<text  x="1059.4" y="347.4" font-size="25.6" font-weight="500" fill="#FFFFFF">당리동</text>
-<text  x="1101.9" y="1175.7" font-size="25.6" font-weight="500" fill="#FFFFFF">구평동</text>
-<text  x="647.8" y="859.4" font-size="25.6" font-weight="500" fill="#FFFFFF">신평2동</text>
-<text  x="661.4" y="1077.1" font-size="25.6" font-weight="500" fill="#FFFFFF">장림1동</text>
-<text  x="872.3" y="1112.8" font-size="25.6" font-weight="500" fill="#FFFFFF">장림2동</text>
-<text  x="1280.5" y="835.6" font-size="25.6" font-weight="500" fill="#FFFFFF">감천1동</text>
-<text  x="977.7" y="1313.5" font-size="25.6" font-weight="500" fill="#FFFFFF">다대2동</text>
-<text  x="880.8" y="806.7" font-size="25.6" font-weight="500" fill="#FFFFFF">신평1동</text>
-<text  x="1324.7" y="524.3" font-size="25.6" font-weight="500" fill="#FFFFFF">괴정2동</text>
-<text  x="1209" y="612.8" font-size="25.6" font-weight="500" fill="#FFFFFF">괴정3동</text>
-<text  x="1096.8" y="723.3" font-size="25.6" font-weight="500" fill="#FFFFFF">괴정1동</text>
-<text  x="1402.9" y="743.7" font-size="25.6" font-weight="500" fill="#FFFFFF">감천2동</text>
-<text  x="986.2" y="672.3" font-size="25.6" font-weight="500" fill="#FFFFFF">괴정4동</text>
+<text  x="355.2" y="738.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">하단1동</text>
+<text  x="722.6" y="1415.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">다대1동</text>
+<text  x="552.5" y="360.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">하단2동</text>
+<text  x="1059.4" y="347.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">당리동</text>
+<text  x="1101.9" y="1175.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">구평동</text>
+<text  x="647.8" y="859.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">신평2동</text>
+<text  x="661.4" y="1076.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">장림1동</text>
+<text  x="872.3" y="1112.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">장림2동</text>
+<text  x="1280.5" y="835.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">감천1동</text>
+<text  x="977.7" y="1313.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">다대2동</text>
+<text  x="880.8" y="806.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">신평1동</text>
+<text  x="1324.7" y="524.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">괴정2동</text>
+<text  x="1209" y="612.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">괴정3동</text>
+<text  x="1096.8" y="723.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">괴정1동</text>
+<text  x="1402.9" y="743.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">감천2동</text>
+<text  x="986.2" y="672.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">괴정4동</text>
 </g>
 </svg>

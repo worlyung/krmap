@@ -32,7 +32,13 @@
     // 이름
     labelMode: "all", // all | none | pick
     labelPick: new Set(), // "lv:id"
-    clickAction: "label",
+    clickAction: "main", // main | label | edit
+    // 배치 · 하나씩 꾸미기
+    layout: "real", // real | explode
+    explodeAmt: 0.25,
+    offsets: {}, // "lv:id" → [dx, dy] (데이터 좌표)
+    styles: {}, // "lv:id" → {fill, text, hideLabel}
+    editKey: null,
     subLabel: true,
     halo: false,
     fontScale: 1,
@@ -138,6 +144,9 @@
       distinct: S.distinct,
       shadow: S.shadow,
       shortSido: "auto",
+      explode: S.layout === "explode" ? S.explodeAmt : 0,
+      offsets: S.offsets,
+      styles: S.styles,
       aspect: S.aspect,
       width: width || 1600,
       colors: Object.assign({}, S.colors, { bg: S.fillBg ? S.colors.bg : null }),
@@ -168,6 +177,7 @@
     $("slide").style.background = S.fillBg ? S.colors.bg : "#FFFFFF";
     renderInfo(scene);
     renderLabelPick(scene);
+    renderEditor();
     try {
       const h = S.mode === "around" ? `#${S.target.lv}-${S.target.id}` : `#${S.mode}`;
       history.replaceState(null, "", h);
@@ -296,8 +306,10 @@
     $("sido17").checked = S.sido17;
     $("sido17").closest("label").hidden = !D.sido17;
     $("labelHint").hidden = S.labelMode !== "pick";
-    $("clickBar").hidden = S.labelMode !== "pick";
     $("clickMain").textContent = S.mode === "pick" ? "영역 넣기·빼기" : "그 지역으로 이동";
+    ["layout"].forEach((id) => $(id)._sync());
+    $("explodeRow").hidden = S.layout !== "explode";
+    $("map").classList.toggle("editing", S.clickAction === "edit");
     $("cTargetLbl").firstChild.textContent = S.mode === "pick" ? "고른 지역" : S.mode === "all" ? "강조" : "대상";
     $("cNeighborLbl").firstChild.textContent = S.mode === "all" ? "지역" : "주변";
     $("cTarget").value = S.colors.target;
@@ -404,7 +416,18 @@
       if (v === "pick") S.clickAction = "label";
       S.labelMode = v;
     });
-    seg("clickAction", () => S.clickAction, (v) => (S.clickAction = v));
+    seg("clickAction", () => S.clickAction, (v) => {
+      if (v === "label" && S.labelMode !== "pick") {
+        if (!S.labelPick.size && lastScene) for (const t of lastScene.texts) if (!t.sub) S.labelPick.add(t.lv + ":" + t.id);
+        S.labelMode = "pick";
+      }
+      if (v !== "edit") S.editKey = null;
+      S.clickAction = v;
+    });
+    seg("layout", () => S.layout, (v) => (S.layout = v));
+    $("explodeAmt").addEventListener("input", (e) => { S.explodeAmt = +e.target.value; clearTimeout(bindControls._t); bindControls._t = setTimeout(render, 40); });
+    $("resetEdits").onclick = () => { S.offsets = {}; S.styles = {}; S.editKey = null; render(); };
+    bindEditor();
 
     const chk = (id, set) => $(id).addEventListener("change", (e) => { set(e.target.checked); render(); });
     chk("splitGu", (v) => {
@@ -471,6 +494,7 @@
       const p = e.target.closest("[data-id]");
       if (!p) return;
       const lv = p.dataset.lv, id = p.dataset.id;
+      if (S.clickAction === "edit") return; // 끌기·선택은 pointer 이벤트에서
       if (S.labelMode === "pick" && S.clickAction === "label") return toggleLabel(lv + ":" + id);
       if (S.mode === "pick") return togglePick(id);
       setTarget({ lv, id });
@@ -481,6 +505,80 @@
     $("dlPptx").onclick = exportPPTX;
     $("copyList").onclick = copyList;
     bindSearch();
+  }
+
+  // ---------- 하나씩 꾸미기 ----------
+  function regionOf(key) {
+    const [lv, id] = key.split(":");
+    return D[lv] && D[lv][id] ? { lv, id, f: D[lv][id] } : null;
+  }
+  function renderEditor() {
+    $("editBox").hidden = S.clickAction !== "edit";
+    if (S.clickAction !== "edit") return;
+    const r = S.editKey && regionOf(S.editKey);
+    $("editEmpty").hidden = !!r;
+    $("editForm").hidden = !r;
+    if (!r) return;
+    const st = S.styles[S.editKey] || {};
+    const poly = lastScene && lastScene.polys.find((p) => p.lv + ":" + p.id === S.editKey && p.group !== "shadow");
+    $("editName").textContent = r.f.full;
+    $("editFill").value = st.fill || (poly ? poly.fill : "#888888");
+    if (document.activeElement !== $("editText")) $("editText").value = st.text || "";
+    $("editText").placeholder = r.f.nm;
+    $("editHide").checked = !!st.hideLabel;
+    $("map").querySelectorAll(`[data-k="${S.editKey}"][data-id]`).forEach((el) => el.classList.add("sel"));
+  }
+  function setStyle(patch) {
+    const k = S.editKey;
+    if (!k) return;
+    const st = Object.assign({}, S.styles[k], patch);
+    for (const p in st) if (st[p] === "" || st[p] === false || st[p] == null) delete st[p];
+    if (Object.keys(st).length) S.styles[k] = st;
+    else delete S.styles[k];
+  }
+  function bindEditor() {
+    let t;
+    $("editFill").addEventListener("input", (e) => { setStyle({ fill: e.target.value.toUpperCase() }); clearTimeout(t); t = setTimeout(render, 50); });
+    $("editText").addEventListener("input", (e) => { setStyle({ text: e.target.value.trim() }); clearTimeout(t); t = setTimeout(render, 200); });
+    $("editHide").addEventListener("change", (e) => { setStyle({ hideLabel: e.target.checked }); render(); });
+    $("editReset").onclick = () => { delete S.styles[S.editKey]; delete S.offsets[S.editKey]; render(); };
+    $("editDone").onclick = () => { S.editKey = null; render(); };
+
+    // 끌어서 옮기기: 끄는 동안은 transform 으로만 움직이고, 놓을 때 위치를 저장한 뒤 다시 그린다
+    const map = $("map");
+    let drag = null;
+    map.addEventListener("pointerdown", (e) => {
+      if (S.clickAction !== "edit" || !lastScene) return;
+      const p = e.target.closest("[data-id]");
+      if (!p || p.closest("#배경")) return;
+      const key = p.dataset.k;
+      const svg = map.querySelector("svg");
+      drag = { key, x: e.clientX, y: e.clientY, moved: false, els: [...svg.querySelectorAll(`[data-k="${key}"]`)], k: lastScene.width / svg.getBoundingClientRect().width };
+      map.setPointerCapture(e.pointerId);
+      e.preventDefault();
+    });
+    map.addEventListener("pointermove", (e) => {
+      if (!drag) return;
+      const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      if (!drag.moved && Math.hypot(dx, dy) < 4) return;
+      if (!drag.moved) { drag.moved = true; map.classList.add("dragging"); drag.els.forEach((el) => el.parentNode.appendChild(el)); }
+      drag.els.forEach((el) => el.setAttribute("transform", `translate(${dx * drag.k} ${dy * drag.k})`));
+    });
+    const end = (e) => {
+      if (!drag) return;
+      const d = drag;
+      drag = null;
+      map.classList.remove("dragging");
+      if (d.moved) {
+        const f = d.k / lastScene.scale; // 화면 px → 데이터 좌표
+        const old = S.offsets[d.key] || [0, 0];
+        S.offsets[d.key] = [old[0] + (e.clientX - d.x) * f, old[1] + (e.clientY - d.y) * f];
+      }
+      S.editKey = d.key;
+      render();
+    };
+    map.addEventListener("pointerup", end);
+    map.addEventListener("pointercancel", () => { drag = null; map.classList.remove("dragging"); render(); });
   }
 
   // ---------- 검색 ----------

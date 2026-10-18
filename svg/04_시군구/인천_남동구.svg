@@ -45,25 +45,25 @@
 <path d="M1099.3 0L1133.4 8 1191.4 33.5 1199.9 78.8 1238.1 109.9 1248 142.5 1282 149.5 1324.5 167.9 1355.6 221.7 1408 213.2 1440.5 228.8 1484.4 223.2 1487.3 223.2 1507.1 318 1475.9 446.8 1504.3 497.8 1485.8 553 1403.7 560.1 1365.5 674.7 1392.4 771 1395.3 857.3 1382.5 894.1 1345.7 932.4 1300.4 945.1 1265 936.6 1249.4 932.4 1174.4 994.6 1190 1062.6 1167.3 1082.4 1133.4 1194.2 1133.4 1228.2 1072.5 1321.6 1047 1341.5 979.1 1400.9 955 1417.9 833.3 1566.5 758.2 1641.6 717.2 1641.6 694.5 1672.7 618.3 1734M742.6 1734L870.1 1572.2 908.3 1559.5 1030 1620.3 1004.6 1552.4 966.3 1531.1 940.9 1549.5 916.8 1518.4 955 1417.9 979.1 1400.9 1047 1341.5 1072.5 1321.6 1133.4 1228.2 1133.4 1194.2 1167.3 1082.4 1190 1062.6 1174.4 994.6 1249.4 932.4 1265 936.6 1300.4 945.1 1345.7 932.4 1382.5 894.1 1395.3 857.3 1392.4 771 1365.5 674.7 1403.7 560.1 1485.8 553 1504.3 497.8 1475.9 446.8 1507.1 318 1487.3 223.2 1484.4 223.2 1440.5 228.8 1408 213.2 1355.6 221.7 1324.5 167.9 1282 149.5 1248 142.5 1238.1 109.9 1199.9 78.8 1191.4 33.5 1133.4 8 1099.3 0" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="1236.7" y="499.9" font-size="25.6" font-weight="500" fill="#FFFFFF">장수서창동</text>
-<text x="408.6" y="1401.6" font-size="25.6" font-weight="500" fill="#FFFFFF">논현고잔동</text>
-<text x="776.6" y="941.6" font-size="25.6" font-weight="500" fill="#FFFFFF">남촌도림동</text>
-<text x="1007.4" y="1214.8" font-size="25.6" font-weight="500" fill="#FFFFFF">논현1동</text>
-<text x="654.9" y="1265.7" font-size="25.6" font-weight="500" fill="#FFFFFF">논현2동</text>
-<text x="629.4" y="631.6" font-size="25.6" font-weight="500" fill="#FFFFFF">구월1동</text>
-<text x="1086.7" y="944.4" font-size="25.6" font-weight="500" fill="#FFFFFF">서창2동</text>
-<text x="1008.8" y="681.1" font-size="25.6" font-weight="500" fill="#FFFFFF">만수6동</text>
-<text x="691.7" y="256.4" font-size="25.6" font-weight="500" fill="#FFFFFF">간석3동</text>
-<text x="970.6" y="315.9" font-size="25.6" font-weight="500" fill="#FFFFFF">만수2동</text>
-<text x="797.9" y="599" font-size="25.6" font-weight="500" fill="#FFFFFF">구월4동</text>
-<text x="482.2" y="327.2" font-size="25.6" font-weight="500" fill="#FFFFFF">간석4동</text>
-<text x="528.9" y="410.7" font-size="25.6" font-weight="500" fill="#FFFFFF">간석1동</text>
-<text x="973.4" y="449" font-size="25.6" font-weight="500" fill="#FFFFFF">만수4동</text>
-<text x="846" y="298.9" font-size="25.6" font-weight="500" fill="#FFFFFF">만수3동</text>
-<text x="714.4" y="441.9" font-size="25.6" font-weight="500" fill="#FFFFFF">구월2동</text>
-<text x="468" y="580.6" font-size="25.6" font-weight="500" fill="#FFFFFF">구월3동</text>
-<text x="926.7" y="552.3" font-size="25.6" font-weight="500" fill="#FFFFFF">만수1동</text>
-<text x="646.4" y="369.7" font-size="25.6" font-weight="500" fill="#FFFFFF">간석2동</text>
-<text x="837.5" y="471.6" font-size="25.6" font-weight="500" fill="#FFFFFF">만수5동</text>
+<text  x="1236.7" y="499.9" font-size="25.6" font-weight="500" fill="#FFFFFF">장수서창동</text>
+<text  x="408.6" y="1401.6" font-size="25.6" font-weight="500" fill="#FFFFFF">논현고잔동</text>
+<text  x="776.6" y="941.6" font-size="25.6" font-weight="500" fill="#FFFFFF">남촌도림동</text>
+<text  x="1007.4" y="1214.8" font-size="25.6" font-weight="500" fill="#FFFFFF">논현1동</text>
+<text  x="654.9" y="1265.7" font-size="25.6" font-weight="500" fill="#FFFFFF">논현2동</text>
+<text  x="629.4" y="631.6" font-size="25.6" font-weight="500" fill="#FFFFFF">구월1동</text>
+<text  x="1086.7" y="944.4" font-size="25.6" font-weight="500" fill="#FFFFFF">서창2동</text>
+<text  x="1008.8" y="681.1" font-size="25.6" font-weight="500" fill="#FFFFFF">만수6동</text>
+<text  x="691.7" y="256.4" font-size="25.6" font-weight="500" fill="#FFFFFF">간석3동</text>
+<text  x="970.6" y="315.9" font-size="25.6" font-weight="500" fill="#FFFFFF">만수2동</text>
+<text  x="797.9" y="599" font-size="25.6" font-weight="500" fill="#FFFFFF">구월4동</text>
+<text  x="482.2" y="327.2" font-size="25.6" font-weight="500" fill="#FFFFFF">간석4동</text>
+<text  x="528.9" y="410.7" font-size="25.6" font-weight="500" fill="#FFFFFF">간석1동</text>
+<text  x="973.4" y="449" font-size="25.6" font-weight="500" fill="#FFFFFF">만수4동</text>
+<text  x="846" y="298.9" font-size="25.6" font-weight="500" fill="#FFFFFF">만수3동</text>
+<text  x="714.4" y="441.9" font-size="25.6" font-weight="500" fill="#FFFFFF">구월2동</text>
+<text  x="468" y="580.6" font-size="25.6" font-weight="500" fill="#FFFFFF">구월3동</text>
+<text  x="926.7" y="552.3" font-size="25.6" font-weight="500" fill="#FFFFFF">만수1동</text>
+<text  x="646.4" y="369.7" font-size="25.6" font-weight="500" fill="#FFFFFF">간석2동</text>
+<text  x="837.5" y="471.6" font-size="25.6" font-weight="500" fill="#FFFFFF">만수5동</text>
 </g>
 </svg>

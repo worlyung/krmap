@@ -34,20 +34,20 @@
 <path d="M1600 811L1549.3 861.6 1514.3 861.6 1494.9 888.2 903.9 1363.2 435 1364.4 436.2 1305.2 85.7 1300.4 85.7 1202.5 329.9 1203.7 379.4 1197.6 518.4 946.2 426.5 876.1 361.3 769.8 362.5 509.9 363.7 383 225.9 383 155.8 339.5 153.4 152.2 345.6 234.4 378.2 235.6 378.2 196.9 403.6 134.1 414.5 91.8 350.4 53.1 377 3.5 439.8 38.6 458 3.5 450.9 0M315.8 0L273 82.1 232 82.1 224.7 42.2 187.2 42.2 187.6 0M1227.8 1450L1225.4 1421.2 1166.2 1398.3 1197.6 1290.7 1246 1299.2 1356 1260.5 1327 1214.6 1501 984.9 1600 859.3" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="1038.1" y="983.3" font-size="25.6" font-weight="500" fill="#FFFFFF">송도3동</text>
-<text x="497.8" y="347.5" font-size="25.6" font-weight="500" fill="#FFFFFF">송도5동</text>
-<text x="497.8" y="744" font-size="25.6" font-weight="500" fill="#FFFFFF">송도4동</text>
-<text x="674.3" y="945.8" font-size="25.6" font-weight="500" fill="#FFFFFF">송도1동</text>
-<text x="891.9" y="495" font-size="25.6" font-weight="500" fill="#FFFFFF">동춘1동</text>
-<text x="704.5" y="608.6" font-size="25.6" font-weight="500" fill="#FFFFFF">송도2동</text>
-<text x="1291.9" y="235.1" font-size="25.6" font-weight="500" fill="#FFFFFF">선학동</text>
-<text x="964.4" y="324.6" font-size="25.6" font-weight="500" fill="#FFFFFF">청학동</text>
-<text x="786.7" y="348.7" font-size="25.6" font-weight="500" fill="#FFFFFF">옥련1동</text>
-<text x="780.7" y="223" font-size="25.6" font-weight="500" fill="#FFFFFF">옥련2동</text>
-<text x="1102.2" y="279.8" font-size="25.6" font-weight="500" fill="#FFFFFF">연수1동</text>
-<text x="1028.4" y="585.6" font-size="25.6" font-weight="500" fill="#FFFFFF">동춘2동</text>
-<text x="1140.8" y="451.5" font-size="25.6" font-weight="500" fill="#FFFFFF">연수2동</text>
-<text x="1198.8" y="346.3" font-size="25.6" font-weight="500" fill="#FFFFFF">연수3동</text>
-<text x="1093.7" y="508.3" font-size="25.6" font-weight="500" fill="#FFFFFF">동춘3동</text>
+<text  x="1038.1" y="983.3" font-size="25.6" font-weight="500" fill="#FFFFFF">송도3동</text>
+<text  x="497.8" y="347.5" font-size="25.6" font-weight="500" fill="#FFFFFF">송도5동</text>
+<text  x="497.8" y="744" font-size="25.6" font-weight="500" fill="#FFFFFF">송도4동</text>
+<text  x="674.3" y="945.8" font-size="25.6" font-weight="500" fill="#FFFFFF">송도1동</text>
+<text  x="891.9" y="495" font-size="25.6" font-weight="500" fill="#FFFFFF">동춘1동</text>
+<text  x="704.5" y="608.6" font-size="25.6" font-weight="500" fill="#FFFFFF">송도2동</text>
+<text  x="1291.9" y="235.1" font-size="25.6" font-weight="500" fill="#FFFFFF">선학동</text>
+<text  x="964.4" y="324.6" font-size="25.6" font-weight="500" fill="#FFFFFF">청학동</text>
+<text  x="786.7" y="348.7" font-size="25.6" font-weight="500" fill="#FFFFFF">옥련1동</text>
+<text  x="780.7" y="223" font-size="25.6" font-weight="500" fill="#FFFFFF">옥련2동</text>
+<text  x="1102.2" y="279.8" font-size="25.6" font-weight="500" fill="#FFFFFF">연수1동</text>
+<text  x="1028.4" y="585.6" font-size="25.6" font-weight="500" fill="#FFFFFF">동춘2동</text>
+<text  x="1140.8" y="451.5" font-size="25.6" font-weight="500" fill="#FFFFFF">연수2동</text>
+<text  x="1198.8" y="346.3" font-size="25.6" font-weight="500" fill="#FFFFFF">연수3동</text>
+<text  x="1093.7" y="508.3" font-size="25.6" font-weight="500" fill="#FFFFFF">동춘3동</text>
 </g>
 </svg>

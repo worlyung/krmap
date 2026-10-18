@@ -42,26 +42,26 @@
 <path d="M0 697.9L6.7 689.2 0 684.5" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="305.2" y="1231.6" font-size="25.6" font-weight="500" fill="#FFFFFF">학익1동</text>
-<text x="704.5" y="349.5" font-size="25.6" font-weight="500" fill="#FFFFFF">도화2·3동</text>
-<text x="259.1" y="939.8" font-size="25.6" font-weight="500" fill="#FFFFFF">용현5동</text>
-<text x="1130.3" y="1244.8" font-size="25.6" font-weight="500" fill="#FFFFFF">문학동</text>
-<text x="704.5" y="904.7" font-size="25.6" font-weight="500" fill="#FFFFFF">용현1·4동</text>
-<text x="1057.8" y="452.6" font-size="25.6" font-weight="500" fill="#FFFFFF">주안5동</text>
-<text x="860.3" y="626" font-size="25.6" font-weight="500" fill="#FFFFFF">도화1동</text>
-<text x="1257.5" y="823.5" font-size="25.6" font-weight="500" fill="#FFFFFF">주안4동</text>
-<text x="851.6" y="808.1" font-size="25.6" font-weight="500" fill="#FFFFFF">주안2동</text>
-<text x="1356.3" y="1126.3" font-size="25.6" font-weight="500" fill="#FFFFFF">관교동</text>
-<text x="425.9" y="509.7" font-size="25.6" font-weight="500" fill="#FFFFFF">숭의1·3동</text>
-<text x="967.9" y="1132.9" font-size="25.6" font-weight="500" fill="#FFFFFF">학익2동</text>
-<text x="612.4" y="615" font-size="25.6" font-weight="500" fill="#FFFFFF">숭의4동</text>
-<text x="1163.2" y="977.1" font-size="25.6" font-weight="500" fill="#FFFFFF">주안8동</text>
-<text x="1106.1" y="645.7" font-size="25.6" font-weight="500" fill="#FFFFFF">주안1동</text>
-<text x="1290.5" y="656.7" font-size="25.6" font-weight="500" fill="#FFFFFF">주안6동</text>
-<text x="401.7" y="790.6" font-size="25.6" font-weight="500" fill="#FFFFFF">용현2동</text>
-<text x="452.2" y="656.7" font-size="25.6" font-weight="500" fill="#FFFFFF">숭의2동</text>
-<text x="1027.1" y="1003.4" font-size="25.6" font-weight="500" fill="#FFFFFF">주안7동</text>
-<text x="899.8" y="955.1" font-size="25.6" font-weight="500" fill="#FFFFFF">주안3동</text>
-<text x="546.5" y="799.3" font-size="25.6" font-weight="500" fill="#FFFFFF">용현3동</text>
+<text  x="305.2" y="1231.6" font-size="25.6" font-weight="500" fill="#FFFFFF">학익1동</text>
+<text  x="704.5" y="349.5" font-size="25.6" font-weight="500" fill="#FFFFFF">도화2·3동</text>
+<text  x="259.1" y="939.8" font-size="25.6" font-weight="500" fill="#FFFFFF">용현5동</text>
+<text  x="1130.3" y="1244.8" font-size="25.6" font-weight="500" fill="#FFFFFF">문학동</text>
+<text  x="704.5" y="904.7" font-size="25.6" font-weight="500" fill="#FFFFFF">용현1·4동</text>
+<text  x="1057.8" y="452.6" font-size="25.6" font-weight="500" fill="#FFFFFF">주안5동</text>
+<text  x="860.3" y="626" font-size="25.6" font-weight="500" fill="#FFFFFF">도화1동</text>
+<text  x="1257.5" y="823.5" font-size="25.6" font-weight="500" fill="#FFFFFF">주안4동</text>
+<text  x="851.6" y="808.1" font-size="25.6" font-weight="500" fill="#FFFFFF">주안2동</text>
+<text  x="1356.3" y="1126.3" font-size="25.6" font-weight="500" fill="#FFFFFF">관교동</text>
+<text  x="425.9" y="509.7" font-size="25.6" font-weight="500" fill="#FFFFFF">숭의1·3동</text>
+<text  x="967.9" y="1132.9" font-size="25.6" font-weight="500" fill="#FFFFFF">학익2동</text>
+<text  x="612.4" y="615" font-size="25.6" font-weight="500" fill="#FFFFFF">숭의4동</text>
+<text  x="1163.2" y="977.1" font-size="25.6" font-weight="500" fill="#FFFFFF">주안8동</text>
+<text  x="1106.1" y="645.7" font-size="25.6" font-weight="500" fill="#FFFFFF">주안1동</text>
+<text  x="1290.5" y="656.7" font-size="25.6" font-weight="500" fill="#FFFFFF">주안6동</text>
+<text  x="401.7" y="790.6" font-size="25.6" font-weight="500" fill="#FFFFFF">용현2동</text>
+<text  x="452.2" y="656.7" font-size="25.6" font-weight="500" fill="#FFFFFF">숭의2동</text>
+<text  x="1027.1" y="1003.4" font-size="25.6" font-weight="500" fill="#FFFFFF">주안7동</text>
+<text  x="899.8" y="955.1" font-size="25.6" font-weight="500" fill="#FFFFFF">주안3동</text>
+<text  x="546.5" y="799.3" font-size="25.6" font-weight="500" fill="#FFFFFF">용현3동</text>
 </g>
 </svg>

@@ -49,21 +49,21 @@
 <path d="M321.2 0L329.1 32.3 308.7 27.7 286.3 34.8 237.4 36.9 224.7 55.7 209.4 74 193.7 99 192.1 124.9 174.8 145.8 167.2 165.7 158.5 166.7 152.9 194.7 153.4 202.8 148.4 219.1 137.2 221.2 133.1 243 137.2 259.8 151.9 266 166.7 272.1 177.9 265.4 191.6 275.1 193.2 275.1 206.4 280.2 211.5 273.6 228.3 292.9 222.2 306.7 222.2 321.4 222.2 322.5 221.7 323.5 211.5 346.4 211 352 175.8 373.9 166.2 393.7 164.6 419.2 150.9 418.7 146.8 437 98 432.4 98.5 469.6 88.8 473.2 71 466 64.4 466 51.6 486.9 29.7 503.7 26.7 524.1 5.3 507.3 0 506.1M0 506.1L5.3 507.3 26.7 524.1 29.7 503.7 51.6 486.9 64.4 466 71 466 88.8 473.2 98.5 469.6 98 432.4 146.8 437 150.9 418.7 164.6 419.2 166.2 393.7 175.8 373.9 211 352 211.5 346.4 221.7 323.5 222.2 322.5 222.2 321.4 222.2 306.7 228.3 292.9 211.5 273.6 206.4 280.2 193.2 275.1 191.6 275.1 177.9 265.4 166.7 272.1 151.9 266 137.2 259.8 133.1 243 137.2 221.2 148.4 219.1 153.4 202.8 152.9 194.7 158.5 166.7 167.2 165.7 174.8 145.8 192.1 124.9 193.7 99 209.4 74 224.7 55.7 237.4 36.9 286.3 34.8 308.7 27.7 329.1 32.3 321.2 0" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="1245.5" y="1075" font-size="25.6" font-weight="500" fill="#FFFFFF">곤지암읍</text>
-<text x="1033.7" y="542.4" font-size="25.6" font-weight="500" fill="#FFFFFF">퇴촌면</text>
-<text x="934.9" y="860.6" font-size="25.6" font-weight="500" fill="#FFFFFF">초월읍</text>
-<text x="927.3" y="1371.8" font-size="25.6" font-weight="500" fill="#FFFFFF">도척면</text>
-<text x="1022" y="231.4" font-size="25.6" font-weight="500" fill="#FFFFFF">남종면</text>
-<text x="479.3" y="509.9" font-size="25.6" font-weight="500" fill="#FFFFFF">남한산성면</text>
-<text x="388.6" y="874.4" font-size="25.6" font-weight="500" fill="#FFFFFF">광남1동</text>
-<text x="544.9" y="690.6" font-size="25.6" font-weight="500" fill="#FFFFFF">탄벌동</text>
-<text x="416.1" y="1085.7" font-size="25.6" font-weight="500" fill="#FFFFFF">오포1동</text>
-<text x="667.1" y="1060.7" font-size="25.6" font-weight="500" fill="#FFFFFF">오포2동</text>
-<text x="271" y="1028.6" font-size="25.6" font-weight="500" fill="#FFFFFF">신현동</text>
-<text x="265.4" y="1129.4" font-size="25.6" font-weight="500" fill="#FFFFFF">능평동</text>
-<text x="672.2" y="720.6" font-size="25.6" font-weight="500" fill="#FFFFFF">송정동</text>
-<text x="725.7" y="856.1" font-size="25.6" font-weight="500" fill="#FFFFFF">쌍령동</text>
-<text x="643.7" y="826.5" font-size="25.6" font-weight="500" fill="#FFFFFF">경안동</text>
-<text x="530.2" y="960.9" font-size="25.6" font-weight="500" fill="#FFFFFF">광남2동</text>
+<text  x="1245.5" y="1075" font-size="25.6" font-weight="500" fill="#FFFFFF">곤지암읍</text>
+<text  x="1033.7" y="542.4" font-size="25.6" font-weight="500" fill="#FFFFFF">퇴촌면</text>
+<text  x="934.9" y="860.6" font-size="25.6" font-weight="500" fill="#FFFFFF">초월읍</text>
+<text  x="927.3" y="1371.8" font-size="25.6" font-weight="500" fill="#FFFFFF">도척면</text>
+<text  x="1022" y="231.4" font-size="25.6" font-weight="500" fill="#FFFFFF">남종면</text>
+<text  x="479.3" y="509.9" font-size="25.6" font-weight="500" fill="#FFFFFF">남한산성면</text>
+<text  x="388.6" y="874.4" font-size="25.6" font-weight="500" fill="#FFFFFF">광남1동</text>
+<text  x="544.9" y="690.6" font-size="25.6" font-weight="500" fill="#FFFFFF">탄벌동</text>
+<text  x="416.1" y="1085.7" font-size="25.6" font-weight="500" fill="#FFFFFF">오포1동</text>
+<text  x="667.1" y="1060.7" font-size="25.6" font-weight="500" fill="#FFFFFF">오포2동</text>
+<text  x="271" y="1028.6" font-size="25.6" font-weight="500" fill="#FFFFFF">신현동</text>
+<text  x="265.4" y="1129.4" font-size="25.6" font-weight="500" fill="#FFFFFF">능평동</text>
+<text  x="672.2" y="720.6" font-size="25.6" font-weight="500" fill="#FFFFFF">송정동</text>
+<text  x="725.7" y="856.1" font-size="25.6" font-weight="500" fill="#FFFFFF">쌍령동</text>
+<text  x="643.7" y="826.5" font-size="25.6" font-weight="500" fill="#FFFFFF">경안동</text>
+<text  x="530.2" y="960.9" font-size="25.6" font-weight="500" fill="#FFFFFF">광남2동</text>
 </g>
 </svg>

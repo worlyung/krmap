@@ -48,26 +48,26 @@
 <path d="M1600 780.7L1514.3 833.6 1414.4 891.7 1278.3 1044.1 1227.5 1046 1193 1058.7 1124 1084.1 1114.9 1180.3 977 1223.9 935.2 1211.1 864.4 1223.9 810 1252.9 753.7 1245.6 710.1 1272.9 697.4 1189.4 657.5 1134.9 581.3 1085.9 588.5 1035.1 552.2 987.9 428.8 1109.5 379.8 1193 334.4 1189.4 272.7 1240.2 240 1307.4 160.1 1309.2 120.2 1263.8 96.6 1242 80.3 1227.5 62.1 1095 27.6 1071.4 0 949.5M0 949.5L27.6 1071.4 62.1 1095 80.3 1227.5 96.6 1242 120.2 1263.8 160.1 1309.2 240 1307.4 272.7 1240.2 334.4 1189.4 379.8 1193 428.8 1109.5 552.2 987.9 588.5 1035.1 581.3 1085.9 657.5 1134.9 697.4 1189.4 710.1 1272.9 753.7 1245.6 810 1252.9 864.4 1223.9 935.2 1211.1 977 1223.9 1114.9 1180.3 1124 1084.1 1193 1058.7 1227.5 1046 1278.3 1044.1 1414.4 891.7 1514.3 833.6 1600 780.7" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="879" y="1011.6" font-size="25.6" font-weight="500" fill="#FFFFFF">대학동</text>
-<text x="1354.5" y="726.6" font-size="25.6" font-weight="500" fill="#FFFFFF">남현동</text>
-<text x="586.7" y="851.9" font-size="25.6" font-weight="500" fill="#FFFFFF">삼성동</text>
-<text x="1100.4" y="793.8" font-size="25.6" font-weight="500" fill="#FFFFFF">낙성대동</text>
-<text x="365.3" y="432.6" font-size="25.6" font-weight="500" fill="#FFFFFF">미성동</text>
-<text x="855.4" y="441.6" font-size="25.6" font-weight="500" fill="#FFFFFF">청룡동</text>
-<text x="430.6" y="581.4" font-size="25.6" font-weight="500" fill="#FFFFFF">난곡동</text>
-<text x="388.9" y="766.6" font-size="25.6" font-weight="500" fill="#FFFFFF">난향동</text>
-<text x="657.5" y="202" font-size="25.6" font-weight="500" fill="#FFFFFF">보라매동</text>
-<text x="1026" y="350.9" font-size="25.6" font-weight="500" fill="#FFFFFF">행운동</text>
-<text x="706.5" y="516.1" font-size="25.6" font-weight="500" fill="#FFFFFF">서림동</text>
-<text x="786.4" y="267.4" font-size="25.6" font-weight="500" fill="#FFFFFF">은천동</text>
-<text x="1173" y="550.5" font-size="25.6" font-weight="500" fill="#FFFFFF">인헌동</text>
-<text x="902.6" y="209.3" font-size="25.6" font-weight="500" fill="#FFFFFF">성현동</text>
-<text x="260" y="320" font-size="25.6" font-weight="500" fill="#FFFFFF">조원동</text>
-<text x="619.4" y="361.8" font-size="25.6" font-weight="500" fill="#FFFFFF">서원동</text>
-<text x="394.3" y="274.6" font-size="25.6" font-weight="500" fill="#FFFFFF">신사동</text>
-<text x="535.9" y="425.3" font-size="25.6" font-weight="500" fill="#FFFFFF">신원동</text>
-<text x="535.9" y="265.6" font-size="25.6" font-weight="500" fill="#FFFFFF">신림동</text>
-<text x="913.5" y="320" font-size="25.6" font-weight="500" fill="#FFFFFF">중앙동</text>
-<text x="1049.6" y="191.1" font-size="25.6" font-weight="500" fill="#FFFFFF">청림동</text>
+<text  x="879" y="1011.6" font-size="25.6" font-weight="500" fill="#FFFFFF">대학동</text>
+<text  x="1354.5" y="726.6" font-size="25.6" font-weight="500" fill="#FFFFFF">남현동</text>
+<text  x="586.7" y="851.9" font-size="25.6" font-weight="500" fill="#FFFFFF">삼성동</text>
+<text  x="1100.4" y="793.8" font-size="25.6" font-weight="500" fill="#FFFFFF">낙성대동</text>
+<text  x="365.3" y="432.6" font-size="25.6" font-weight="500" fill="#FFFFFF">미성동</text>
+<text  x="855.4" y="441.6" font-size="25.6" font-weight="500" fill="#FFFFFF">청룡동</text>
+<text  x="430.6" y="581.4" font-size="25.6" font-weight="500" fill="#FFFFFF">난곡동</text>
+<text  x="388.9" y="766.6" font-size="25.6" font-weight="500" fill="#FFFFFF">난향동</text>
+<text  x="657.5" y="202" font-size="25.6" font-weight="500" fill="#FFFFFF">보라매동</text>
+<text  x="1026" y="350.9" font-size="25.6" font-weight="500" fill="#FFFFFF">행운동</text>
+<text  x="706.5" y="516.1" font-size="25.6" font-weight="500" fill="#FFFFFF">서림동</text>
+<text  x="786.4" y="267.4" font-size="25.6" font-weight="500" fill="#FFFFFF">은천동</text>
+<text  x="1173" y="550.5" font-size="25.6" font-weight="500" fill="#FFFFFF">인헌동</text>
+<text  x="902.6" y="209.3" font-size="25.6" font-weight="500" fill="#FFFFFF">성현동</text>
+<text  x="260" y="320" font-size="25.6" font-weight="500" fill="#FFFFFF">조원동</text>
+<text  x="619.4" y="361.8" font-size="25.6" font-weight="500" fill="#FFFFFF">서원동</text>
+<text  x="394.3" y="274.6" font-size="25.6" font-weight="500" fill="#FFFFFF">신사동</text>
+<text  x="535.9" y="425.3" font-size="25.6" font-weight="500" fill="#FFFFFF">신원동</text>
+<text  x="535.9" y="265.6" font-size="25.6" font-weight="500" fill="#FFFFFF">신림동</text>
+<text  x="913.5" y="320" font-size="25.6" font-weight="500" fill="#FFFFFF">중앙동</text>
+<text  x="1049.6" y="191.1" font-size="25.6" font-weight="500" fill="#FFFFFF">청림동</text>
 </g>
 </svg>

@@ -48,24 +48,24 @@
 <path d="M1600 1516.3L1544.2 1517.5 1499.1 1466.4 1472.5 1441.8 1454.1 1425.4 1433.6 1276 1394.7 1249.4 1359.9 1095.8 1280.1 1102 1220.7 1013.9 1202.3 925.9 1263.7 870.6 1228.9 821.5 1210.5 794.9 1120.4 657.7 1030.3 483.7 999.6 395.7 999.6 356.8 1013.9 348.6 1024.2 276.9 979.1 270.8 899.3 127.5 876.8 176.6 805.1 221.7 715 326.1 684.3 340.4 629.1 408 600.4 430.5 534.9 414.1 502.1 428.4 483.7 592.2 307.7 573.8 258.5 528.7 236 520.6 180.7 553.3 129.5 536.9 70.2 559.5 8.8 551.3 0 591.6M0 486.9L14.9 457.1 12.9 342.5 66.1 311.7 78.4 272.8 35.4 219.6 0 202.3M0 38.3L21 27.2 30 0M30 0L21 27.2 0 38.3M0 202.3L35.4 219.6 78.4 272.8 66.1 311.7 12.9 342.5 14.9 457.1 0 486.9M0 591.6L8.8 551.3 70.2 559.5 129.5 536.9 180.7 553.3 236 520.6 258.5 528.7 307.7 573.8 483.7 592.2 502.1 428.4 534.9 414.1 600.4 430.5 629.1 408 684.3 340.4 715 326.1 805.1 221.7 876.8 176.6 899.3 127.5 979.1 270.8 1024.2 276.9 1013.9 348.6 999.6 356.8 999.6 395.7 1030.3 483.7 1120.4 657.7 1210.5 794.9 1228.9 821.5 1263.7 870.6 1202.3 925.9 1220.7 1013.9 1280.1 1102 1359.9 1095.8 1394.7 1249.4 1433.6 1276 1454.1 1425.4 1472.5 1441.8 1499.1 1466.4 1544.2 1517.5 1600 1516.3" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="627" y="1602.5" font-size="25.6" font-weight="500" fill="#FFFFFF">학온동</text>
-<text x="864.5" y="1006.8" font-size="25.6" font-weight="500" fill="#FFFFFF">하안1동</text>
-<text x="1018" y="1516.5" font-size="25.6" font-weight="500" fill="#FFFFFF">소하2동</text>
-<text x="1314.9" y="1360.9" font-size="25.6" font-weight="500" fill="#FFFFFF">소하1동</text>
-<text x="1099.9" y="1901.4" font-size="25.6" font-weight="500" fill="#FFFFFF">일직동</text>
-<text x="315.8" y="834.8" font-size="25.6" font-weight="500" fill="#FFFFFF">광명6동</text>
-<text x="563.5" y="863.5" font-size="25.6" font-weight="500" fill="#FFFFFF">광명7동</text>
-<text x="944.3" y="568.7" font-size="25.6" font-weight="500" fill="#FFFFFF">철산3동</text>
-<text x="901.3" y="390.6" font-size="25.6" font-weight="500" fill="#FFFFFF">철산2동</text>
-<text x="1128.6" y="935.1" font-size="25.6" font-weight="500" fill="#FFFFFF">하안3동</text>
-<text x="1102" y="759.1" font-size="25.6" font-weight="500" fill="#FFFFFF">하안4동</text>
-<text x="909.5" y="263.6" font-size="25.6" font-weight="500" fill="#FFFFFF">철산1동</text>
-<text x="995.5" y="814.3" font-size="25.6" font-weight="500" fill="#FFFFFF">하안2동</text>
-<text x="534.9" y="570.7" font-size="25.6" font-weight="500" fill="#FFFFFF">광명5동</text>
-<text x="745.7" y="359.9" font-size="25.6" font-weight="500" fill="#FFFFFF">광명1동</text>
-<text x="813.3" y="691.5" font-size="25.6" font-weight="500" fill="#FFFFFF">철산4동</text>
-<text x="635.2" y="454" font-size="25.6" font-weight="500" fill="#FFFFFF">광명3동</text>
-<text x="627" y="521.6" font-size="25.6" font-weight="500" fill="#FFFFFF">광명4동</text>
-<text x="684.3" y="404.9" font-size="25.6" font-weight="500" fill="#FFFFFF">광명2동</text>
+<text  x="627" y="1602.5" font-size="25.6" font-weight="500" fill="#FFFFFF">학온동</text>
+<text  x="864.5" y="1006.8" font-size="25.6" font-weight="500" fill="#FFFFFF">하안1동</text>
+<text  x="1018" y="1516.5" font-size="25.6" font-weight="500" fill="#FFFFFF">소하2동</text>
+<text  x="1314.9" y="1360.9" font-size="25.6" font-weight="500" fill="#FFFFFF">소하1동</text>
+<text  x="1099.9" y="1901.4" font-size="25.6" font-weight="500" fill="#FFFFFF">일직동</text>
+<text  x="315.8" y="834.8" font-size="25.6" font-weight="500" fill="#FFFFFF">광명6동</text>
+<text  x="563.5" y="863.5" font-size="25.6" font-weight="500" fill="#FFFFFF">광명7동</text>
+<text  x="944.3" y="568.7" font-size="25.6" font-weight="500" fill="#FFFFFF">철산3동</text>
+<text  x="901.3" y="390.6" font-size="25.6" font-weight="500" fill="#FFFFFF">철산2동</text>
+<text  x="1128.6" y="935.1" font-size="25.6" font-weight="500" fill="#FFFFFF">하안3동</text>
+<text  x="1102" y="759.1" font-size="25.6" font-weight="500" fill="#FFFFFF">하안4동</text>
+<text  x="909.5" y="263.6" font-size="25.6" font-weight="500" fill="#FFFFFF">철산1동</text>
+<text  x="995.5" y="814.3" font-size="25.6" font-weight="500" fill="#FFFFFF">하안2동</text>
+<text  x="534.9" y="570.7" font-size="25.6" font-weight="500" fill="#FFFFFF">광명5동</text>
+<text  x="745.7" y="359.9" font-size="25.6" font-weight="500" fill="#FFFFFF">광명1동</text>
+<text  x="813.3" y="691.5" font-size="25.6" font-weight="500" fill="#FFFFFF">철산4동</text>
+<text  x="635.2" y="454" font-size="25.6" font-weight="500" fill="#FFFFFF">광명3동</text>
+<text  x="627" y="521.6" font-size="25.6" font-weight="500" fill="#FFFFFF">광명4동</text>
+<text  x="684.3" y="404.9" font-size="25.6" font-weight="500" fill="#FFFFFF">광명2동</text>
 </g>
 </svg>

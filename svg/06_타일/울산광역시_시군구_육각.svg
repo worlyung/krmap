@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1294" viewBox="0 0 1400 1294" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<title>울산광역시 중구 외 4곳</title>
+<g id="선택">
+<path id="울산광역시_중구" d="M700 441L878.3 544 878.3 749.9 700 852.8 521.7 749.9 521.7 544Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>울산광역시 중구</title></path>
+<path id="울산광역시_남구" d="M501.9 784.2L680.2 887.1 680.2 1093 501.9 1196 323.6 1093 323.6 887.1Z" fill="#F8DFA0" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>울산광역시 남구</title></path>
+<path id="울산광역시_동구" d="M1096.2 441L1274.5 544 1274.5 749.9 1096.2 852.8 917.9 749.9 917.9 544Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>울산광역시 동구</title></path>
+<path id="울산광역시_북구" d="M898.1 97.9L1076.4 200.8 1076.4 406.7 898.1 509.7 719.8 406.7 719.8 200.8Z" fill="#C9E5AE" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>울산광역시 북구</title></path>
+<path id="울산광역시_울주군" d="M303.8 441L482.1 544 482.1 749.9 303.8 852.8 125.5 749.9 125.5 544Z" fill="#A8DCD1" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>울산광역시 울주군</title></path>
+</g>
+<g id="지명" text-anchor="middle">
+<text  x="303.8" y="658.5" font-size="32.2" font-weight="600" fill="#1E2633">울주</text>
+<text  x="898.1" y="315.4" font-size="32.2" font-weight="600" fill="#1E2633">북구</text>
+<text  x="501.9" y="1001.7" font-size="32.2" font-weight="600" fill="#1E2633">남구</text>
+<text  x="1096.2" y="658.5" font-size="32.2" font-weight="600" fill="#1E2633">동구</text>
+<text  x="700" y="658.5" font-size="32.2" font-weight="600" fill="#1E2633">중구</text>
+</g>
+</svg>

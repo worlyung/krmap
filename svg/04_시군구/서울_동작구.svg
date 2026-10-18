@@ -34,23 +34,21 @@
 <g id="대상">
 <path d="M85.7 774.3L139.1 692.2 192.5 614 232.6 545.4 272.6 530.1 373.7 490.1 385.2 429 463.4 190.6 459.5 144.8 474.8 118.1 593.1 125.8 699.9 120 871.5 85.7 999.3 137.2 1075.6 190.6 1144.3 240.2 1283.5 308.9 1384.6 327.9 1401.8 415.7 1514.3 493.9 1512.4 503.4 1462.8 480.5 1430.4 541.6 1426.5 657.9 1415.1 774.3 1415.1 785.7 1407.5 965 1327.4 959.3 1218.7 984.1 1214.8 959.3 1132.8 896.3 1066.1 812.4 1079.4 776.2 1064.2 619.8 1026 595 978.3 640.7 944 652.2 831.5 591.2 764.7 629.3 734.2 625.5 698 654.1 692.2 638.8 535.8 587.3 493.9 566.4 442.4 671.3 350.8 678.9 301.2 696.1 255.5 728.5 131.5 774.3 85.7 774.3" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
-<g id="시도경계">
-</g>
 <g id="지명" text-anchor="middle">
-<text x="1293" y="497.4" font-size="25.6" font-weight="500" fill="#FFFFFF">사당2동</text>
-<text x="1064.2" y="369.6" font-size="25.6" font-weight="500" fill="#FFFFFF">흑석동</text>
-<text x="835.3" y="213.2" font-size="25.6" font-weight="500" fill="#FFFFFF">노량진1동</text>
-<text x="532" y="291.4" font-size="25.6" font-weight="500" fill="#FFFFFF">대방동</text>
-<text x="944" y="560.3" font-size="25.6" font-weight="500" fill="#FFFFFF">상도1동</text>
-<text x="375.6" y="600.4" font-size="25.6" font-weight="500" fill="#FFFFFF">신대방2동</text>
-<text x="753.3" y="548.9" font-size="25.6" font-weight="500" fill="#FFFFFF">상도4동</text>
-<text x="1201.5" y="676.7" font-size="25.6" font-weight="500" fill="#FFFFFF">사당3동</text>
-<text x="757.1" y="400.1" font-size="25.6" font-weight="500" fill="#FFFFFF">상도2동</text>
-<text x="583.5" y="552.7" font-size="25.6" font-weight="500" fill="#FFFFFF">상도3동</text>
-<text x="236.4" y="672.8" font-size="25.6" font-weight="500" fill="#FFFFFF">신대방1동</text>
-<text x="1140.5" y="802.5" font-size="25.6" font-weight="500" fill="#FFFFFF">사당5동</text>
-<text x="1352.2" y="907.4" font-size="25.6" font-weight="500" fill="#FFFFFF">사당1동</text>
-<text x="678.9" y="283.8" font-size="25.6" font-weight="500" fill="#FFFFFF">노량진2동</text>
-<text x="1247.3" y="865.5" font-size="25.6" font-weight="500" fill="#FFFFFF">사당4동</text>
+<text  x="1293" y="497.4" font-size="25.6" font-weight="500" fill="#FFFFFF">사당2동</text>
+<text  x="1064.2" y="369.6" font-size="25.6" font-weight="500" fill="#FFFFFF">흑석동</text>
+<text  x="835.3" y="213.2" font-size="25.6" font-weight="500" fill="#FFFFFF">노량진1동</text>
+<text  x="532" y="291.4" font-size="25.6" font-weight="500" fill="#FFFFFF">대방동</text>
+<text  x="944" y="560.3" font-size="25.6" font-weight="500" fill="#FFFFFF">상도1동</text>
+<text  x="375.6" y="600.4" font-size="25.6" font-weight="500" fill="#FFFFFF">신대방2동</text>
+<text  x="753.3" y="548.9" font-size="25.6" font-weight="500" fill="#FFFFFF">상도4동</text>
+<text  x="1201.5" y="676.7" font-size="25.6" font-weight="500" fill="#FFFFFF">사당3동</text>
+<text  x="757.1" y="400.1" font-size="25.6" font-weight="500" fill="#FFFFFF">상도2동</text>
+<text  x="583.5" y="552.7" font-size="25.6" font-weight="500" fill="#FFFFFF">상도3동</text>
+<text  x="236.4" y="672.8" font-size="25.6" font-weight="500" fill="#FFFFFF">신대방1동</text>
+<text  x="1140.5" y="802.5" font-size="25.6" font-weight="500" fill="#FFFFFF">사당5동</text>
+<text  x="1352.2" y="907.4" font-size="25.6" font-weight="500" fill="#FFFFFF">사당1동</text>
+<text  x="678.9" y="283.8" font-size="25.6" font-weight="500" fill="#FFFFFF">노량진2동</text>
+<text  x="1247.3" y="865.5" font-size="25.6" font-weight="500" fill="#FFFFFF">사당4동</text>
 </g>
 </svg>

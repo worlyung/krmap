@@ -49,23 +49,23 @@
 <path d="M37.8 1953L14.2 1885.5 14.2 1843.6 29.7 1834.8 40.7 1757.7 0 1752.1M0 1752.1L40.7 1757.7 29.7 1834.8 14.2 1843.6 14.2 1885.5 37.8 1953" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="1142.7" y="821.3" font-size="25.6" font-weight="500" fill="#FFFFFF">여의동</text>
-<text x="353.7" y="378.3" font-size="25.6" font-weight="500" fill="#FFFFFF">양평2동</text>
-<text x="417.6" y="1114.5" font-size="25.6" font-weight="500" fill="#FFFFFF">문래동</text>
-<text x="532.2" y="737.6" font-size="25.6" font-weight="500" fill="#FFFFFF">당산2동</text>
-<text x="688.7" y="973.4" font-size="25.6" font-weight="500" fill="#FFFFFF">영등포동</text>
-<text x="479.3" y="1542.1" font-size="25.6" font-weight="500" fill="#FFFFFF">대림3동</text>
-<text x="292" y="878.6" font-size="25.6" font-weight="500" fill="#FFFFFF">양평1동</text>
-<text x="761.4" y="1149.7" font-size="25.6" font-weight="500" fill="#FFFFFF">영등포본동</text>
-<text x="882.7" y="1260" font-size="25.6" font-weight="500" fill="#FFFFFF">신길1동</text>
-<text x="468.3" y="902.9" font-size="25.6" font-weight="500" fill="#FFFFFF">당산1동</text>
-<text x="746" y="1539.9" font-size="25.6" font-weight="500" fill="#FFFFFF">신길6동</text>
-<text x="532.2" y="1744.9" font-size="25.6" font-weight="500" fill="#FFFFFF">대림2동</text>
-<text x="622.6" y="1460.5" font-size="25.6" font-weight="500" fill="#FFFFFF">신길5동</text>
-<text x="510.2" y="1279.8" font-size="25.6" font-weight="500" fill="#FFFFFF">도림동</text>
-<text x="893.7" y="1392.2" font-size="25.6" font-weight="500" fill="#FFFFFF">신길7동</text>
-<text x="627" y="1645.7" font-size="25.6" font-weight="500" fill="#FFFFFF">대림1동</text>
-<text x="682.1" y="1319.5" font-size="25.6" font-weight="500" fill="#FFFFFF">신길3동</text>
-<text x="787.9" y="1337.1" font-size="25.6" font-weight="500" fill="#FFFFFF">신길4동</text>
+<text  x="1142.7" y="821.3" font-size="25.6" font-weight="500" fill="#FFFFFF">여의동</text>
+<text  x="353.7" y="378.3" font-size="25.6" font-weight="500" fill="#FFFFFF">양평2동</text>
+<text  x="417.6" y="1114.5" font-size="25.6" font-weight="500" fill="#FFFFFF">문래동</text>
+<text  x="532.2" y="737.6" font-size="25.6" font-weight="500" fill="#FFFFFF">당산2동</text>
+<text  x="688.7" y="973.4" font-size="25.6" font-weight="500" fill="#FFFFFF">영등포동</text>
+<text  x="479.3" y="1542.1" font-size="25.6" font-weight="500" fill="#FFFFFF">대림3동</text>
+<text  x="292" y="878.6" font-size="25.6" font-weight="500" fill="#FFFFFF">양평1동</text>
+<text  x="761.4" y="1149.7" font-size="25.6" font-weight="500" fill="#FFFFFF">영등포본동</text>
+<text  x="882.7" y="1260" font-size="25.6" font-weight="500" fill="#FFFFFF">신길1동</text>
+<text  x="468.3" y="902.9" font-size="25.6" font-weight="500" fill="#FFFFFF">당산1동</text>
+<text  x="746" y="1539.9" font-size="25.6" font-weight="500" fill="#FFFFFF">신길6동</text>
+<text  x="532.2" y="1744.9" font-size="25.6" font-weight="500" fill="#FFFFFF">대림2동</text>
+<text  x="622.6" y="1460.5" font-size="25.6" font-weight="500" fill="#FFFFFF">신길5동</text>
+<text  x="510.2" y="1279.8" font-size="25.6" font-weight="500" fill="#FFFFFF">도림동</text>
+<text  x="893.7" y="1392.2" font-size="25.6" font-weight="500" fill="#FFFFFF">신길7동</text>
+<text  x="627" y="1645.7" font-size="25.6" font-weight="500" fill="#FFFFFF">대림1동</text>
+<text  x="682.1" y="1319.5" font-size="25.6" font-weight="500" fill="#FFFFFF">신길3동</text>
+<text  x="787.9" y="1337.1" font-size="25.6" font-weight="500" fill="#FFFFFF">신길4동</text>
 </g>
 </svg>

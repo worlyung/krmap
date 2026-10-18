@@ -35,26 +35,24 @@
 <g id="대상">
 <path d="M931.2 1177.8L868.4 1179.2 868.4 1224.9 807.1 1214.9 653.2 1260.5 614.7 1310.4 574.7 1287.6 543.4 1351.8 487.8 1353.2 463.5 1394.5 340.9 1464.4 291 1423 235.4 1455.8 212.6 1447.3 157 1386 118.5 1438.7 85.7 1354.6 91.4 1307.6 122.8 1276.2 164.1 1277.6 119.9 1126.5 132.8 1119.4 204 1126.5 211.2 1056.6 299.6 1059.5 302.4 986.8 355.2 938.3 370.9 901.2 335.2 858.5 329.5 812.8 365.2 771.5 399.4 762.9 467.8 677.4 462.1 549.1 452.1 520.6 413.6 473.5 412.2 345.2 405.1 299.6 446.4 248.2 512 216.9 573.3 205.5 581.9 101.4 591.8 85.7 644.6 118.5 867 182.7 1001 192.6 1070.9 198.3 1069.5 211.2 1100.8 204 1183.5 225.4 1233.4 355.2 1261.9 366.6 1291.9 368 1378.8 417.9 1413.1 457.8 1478.6 514.9 1514.3 554.8 1455.8 566.2 1424.5 544.8 1396 499.2 1338.9 503.5 1310.4 516.3 1314.7 523.4 1209.2 581.9 1194.9 591.8 1226.3 663.1 1166.4 711.6 1170.7 733 1197.8 754.4 1220.6 820 1210.6 847 1230.6 985.3 1222 1059.5 1156.4 1080.9 1058.1 1032.4 986.8 1076.6 968.2 1120.8 998.2 1156.4 938.3 1159.3 931.2 1177.8" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
-<g id="시도경계">
-</g>
 <g id="지명" text-anchor="middle">
-<text x="543.4" y="1071.5" font-size="25.6" font-weight="500" fill="#FFFFFF">서창동</text>
-<text x="517.7" y="340.2" font-size="25.6" font-weight="500" fill="#FFFFFF">유덕동</text>
-<text x="1083.7" y="910.4" font-size="25.6" font-weight="500" fill="#FFFFFF">풍암동</text>
-<text x="678.8" y="491.3" font-size="25.6" font-weight="500" fill="#FFFFFF">치평동</text>
-<text x="862.7" y="753.6" font-size="25.6" font-weight="500" fill="#FFFFFF">금호1동</text>
-<text x="845.6" y="612.5" font-size="25.6" font-weight="500" fill="#FFFFFF">상무2동</text>
-<text x="889.8" y="441.4" font-size="25.6" font-weight="500" fill="#FFFFFF">상무1동</text>
-<text x="805.7" y="891.9" font-size="25.6" font-weight="500" fill="#FFFFFF">금호2동</text>
-<text x="820" y="223.2" font-size="25.6" font-weight="500" fill="#FFFFFF">동천동</text>
-<text x="1149.3" y="308.8" font-size="25.6" font-weight="500" fill="#FFFFFF">광천동</text>
-<text x="1005.3" y="710.8" font-size="25.6" font-weight="500" fill="#FFFFFF">화정4동</text>
-<text x="1222" y="437.1" font-size="25.6" font-weight="500" fill="#FFFFFF">농성1동</text>
-<text x="1119.4" y="454.2" font-size="25.6" font-weight="500" fill="#FFFFFF">화정1동</text>
-<text x="1157.9" y="641" font-size="25.6" font-weight="500" fill="#FFFFFF">화정2동</text>
-<text x="1062.3" y="586.8" font-size="25.6" font-weight="500" fill="#FFFFFF">화정3동</text>
-<text x="1370.3" y="475.6" font-size="25.6" font-weight="500" fill="#FFFFFF">양동</text>
-<text x="1210.6" y="544" font-size="25.6" font-weight="500" fill="#FFFFFF">농성2동</text>
-<text x="1327.5" y="427.1" font-size="25.6" font-weight="500" fill="#FFFFFF">양3동</text>
+<text  x="543.4" y="1071.5" font-size="25.6" font-weight="500" fill="#FFFFFF">서창동</text>
+<text  x="517.7" y="340.2" font-size="25.6" font-weight="500" fill="#FFFFFF">유덕동</text>
+<text  x="1083.7" y="910.4" font-size="25.6" font-weight="500" fill="#FFFFFF">풍암동</text>
+<text  x="678.8" y="491.3" font-size="25.6" font-weight="500" fill="#FFFFFF">치평동</text>
+<text  x="862.7" y="753.6" font-size="25.6" font-weight="500" fill="#FFFFFF">금호1동</text>
+<text  x="845.6" y="612.5" font-size="25.6" font-weight="500" fill="#FFFFFF">상무2동</text>
+<text  x="889.8" y="441.4" font-size="25.6" font-weight="500" fill="#FFFFFF">상무1동</text>
+<text  x="805.7" y="891.9" font-size="25.6" font-weight="500" fill="#FFFFFF">금호2동</text>
+<text  x="820" y="223.2" font-size="25.6" font-weight="500" fill="#FFFFFF">동천동</text>
+<text  x="1149.3" y="308.8" font-size="25.6" font-weight="500" fill="#FFFFFF">광천동</text>
+<text  x="1005.3" y="710.8" font-size="25.6" font-weight="500" fill="#FFFFFF">화정4동</text>
+<text  x="1222" y="437.1" font-size="25.6" font-weight="500" fill="#FFFFFF">농성1동</text>
+<text  x="1119.4" y="454.2" font-size="25.6" font-weight="500" fill="#FFFFFF">화정1동</text>
+<text  x="1157.9" y="641" font-size="25.6" font-weight="500" fill="#FFFFFF">화정2동</text>
+<text  x="1062.3" y="586.8" font-size="25.6" font-weight="500" fill="#FFFFFF">화정3동</text>
+<text  x="1370.3" y="475.6" font-size="25.6" font-weight="500" fill="#FFFFFF">양동</text>
+<text  x="1210.6" y="544" font-size="25.6" font-weight="500" fill="#FFFFFF">농성2동</text>
+<text  x="1327.5" y="427.1" font-size="25.6" font-weight="500" fill="#FFFFFF">양3동</text>
 </g>
 </svg>

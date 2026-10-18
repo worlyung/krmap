@@ -36,16 +36,16 @@
 <path d="M0 739.4L0.2 739.2 0 738.9M0 724.1L4.9 703.2 11.2 696.6 13.4 674.9 11.2 663.8 15.2 652.8 36.2 628.9 24.4 614.2 16.7 611.3 3.1 613.1 0 612M0 612L3.1 613.1 16.7 611.3 24.4 614.2 36.2 628.9 15.2 652.8 11.2 663.8 13.4 674.9 11.2 696.6 4.9 703.2 0 724.1M0 738.9L0.2 739.2 0 739.4" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="227.3" y="1244.1" font-size="25.6" font-weight="500" fill="#FFFFFF">시천면</text>
-<text x="852.4" y="1258.8" font-size="25.6" font-weight="500" fill="#FFFFFF">단성면</text>
-<text x="491.1" y="1077.7" font-size="25.6" font-weight="500" fill="#FFFFFF">삼장면</text>
-<text x="520.5" y="741.8" font-size="25.6" font-weight="500" fill="#FFFFFF">금서면</text>
-<text x="1048.2" y="1028.4" font-size="25.6" font-weight="500" fill="#FFFFFF">신안면</text>
-<text x="812.3" y="816" font-size="25.6" font-weight="500" fill="#FFFFFF">산청읍</text>
-<text x="1088.7" y="774.5" font-size="25.6" font-weight="500" fill="#FFFFFF">신등면</text>
-<text x="623.1" y="361.4" font-size="25.6" font-weight="500" fill="#FFFFFF">생초면</text>
-<text x="934" y="521.7" font-size="25.6" font-weight="500" fill="#FFFFFF">차황면</text>
-<text x="1343.7" y="997.2" font-size="25.6" font-weight="500" fill="#FFFFFF">생비량면</text>
-<text x="793.2" y="382" font-size="25.6" font-weight="500" fill="#FFFFFF">오부면</text>
+<text  x="227.3" y="1244.1" font-size="25.6" font-weight="500" fill="#FFFFFF">시천면</text>
+<text  x="852.4" y="1258.8" font-size="25.6" font-weight="500" fill="#FFFFFF">단성면</text>
+<text  x="491.1" y="1077.7" font-size="25.6" font-weight="500" fill="#FFFFFF">삼장면</text>
+<text  x="520.5" y="741.8" font-size="25.6" font-weight="500" fill="#FFFFFF">금서면</text>
+<text  x="1048.2" y="1028.4" font-size="25.6" font-weight="500" fill="#FFFFFF">신안면</text>
+<text  x="812.3" y="816" font-size="25.6" font-weight="500" fill="#FFFFFF">산청읍</text>
+<text  x="1088.7" y="774.5" font-size="25.6" font-weight="500" fill="#FFFFFF">신등면</text>
+<text  x="623.1" y="361.4" font-size="25.6" font-weight="500" fill="#FFFFFF">생초면</text>
+<text  x="934" y="521.7" font-size="25.6" font-weight="500" fill="#FFFFFF">차황면</text>
+<text  x="1343.7" y="997.2" font-size="25.6" font-weight="500" fill="#FFFFFF">생비량면</text>
+<text  x="793.2" y="382" font-size="25.6" font-weight="500" fill="#FFFFFF">오부면</text>
 </g>
 </svg>

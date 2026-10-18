@@ -37,19 +37,19 @@
 <path d="M0 583L52.4 554.8 33.3 481 66.7 438.1 85.7 333.3 61.9 204.8 100 188.1 92.9 138.1 104.8 100 87.8 0M87.8 0L104.8 100 92.9 138.1 100 188.1 61.9 204.8 85.7 333.3 66.7 438.1 33.3 481 52.4 554.8 0 583" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="695.2" y="1071.1" font-size="25.6" font-weight="500" fill="#FFFFFF">연희동</text>
-<text x="926.2" y="1287.8" font-size="25.6" font-weight="500" fill="#FFFFFF">신촌동</text>
-<text x="690.5" y="754.5" font-size="25.6" font-weight="500" fill="#FFFFFF">홍은2동</text>
-<text x="1026.2" y="790.2" font-size="25.6" font-weight="500" fill="#FFFFFF">홍제1동</text>
-<text x="1069" y="256.8" font-size="25.6" font-weight="500" fill="#FFFFFF">홍은1동</text>
-<text x="1178.6" y="1235.4" font-size="25.6" font-weight="500" fill="#FFFFFF">충현동</text>
-<text x="1161.9" y="506.8" font-size="25.6" font-weight="500" fill="#FFFFFF">홍제3동</text>
-<text x="1250" y="1071.1" font-size="25.6" font-weight="500" fill="#FFFFFF">천연동</text>
-<text x="497.6" y="906.8" font-size="25.6" font-weight="500" fill="#FFFFFF">남가좌2동</text>
-<text x="309.5" y="811.6" font-size="25.6" font-weight="500" fill="#FFFFFF">북가좌2동</text>
-<text x="1190.5" y="740.2" font-size="25.6" font-weight="500" fill="#FFFFFF">홍제2동</text>
-<text x="197.6" y="940.2" font-size="25.6" font-weight="500" fill="#FFFFFF">북가좌1동</text>
-<text x="395.2" y="1044.9" font-size="25.6" font-weight="500" fill="#FFFFFF">남가좌1동</text>
-<text x="1271.4" y="1375.9" font-size="25.6" font-weight="500" fill="#FFFFFF">북아현동</text>
+<text  x="695.2" y="1071.1" font-size="25.6" font-weight="500" fill="#FFFFFF">연희동</text>
+<text  x="926.2" y="1287.8" font-size="25.6" font-weight="500" fill="#FFFFFF">신촌동</text>
+<text  x="690.5" y="754.5" font-size="25.6" font-weight="500" fill="#FFFFFF">홍은2동</text>
+<text  x="1026.2" y="790.2" font-size="25.6" font-weight="500" fill="#FFFFFF">홍제1동</text>
+<text  x="1069" y="256.8" font-size="25.6" font-weight="500" fill="#FFFFFF">홍은1동</text>
+<text  x="1178.6" y="1235.4" font-size="25.6" font-weight="500" fill="#FFFFFF">충현동</text>
+<text  x="1161.9" y="506.8" font-size="25.6" font-weight="500" fill="#FFFFFF">홍제3동</text>
+<text  x="1250" y="1071.1" font-size="25.6" font-weight="500" fill="#FFFFFF">천연동</text>
+<text  x="497.6" y="906.8" font-size="25.6" font-weight="500" fill="#FFFFFF">남가좌2동</text>
+<text  x="309.5" y="811.6" font-size="25.6" font-weight="500" fill="#FFFFFF">북가좌2동</text>
+<text  x="1190.5" y="740.2" font-size="25.6" font-weight="500" fill="#FFFFFF">홍제2동</text>
+<text  x="197.6" y="940.2" font-size="25.6" font-weight="500" fill="#FFFFFF">북가좌1동</text>
+<text  x="395.2" y="1044.9" font-size="25.6" font-weight="500" fill="#FFFFFF">남가좌1동</text>
+<text  x="1271.4" y="1375.9" font-size="25.6" font-weight="500" fill="#FFFFFF">북아현동</text>
 </g>
 </svg>

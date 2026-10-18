@@ -36,22 +36,22 @@
 <path d="M1124.2 2898L1095.4 2887.7 1057.9 2799.6 1033.4 2776.7 953.4 2762 932.2 2722.9 888.1 2742.5 782 2665.7 726.5 2636.4 764.1 2566.2 713.5 2484.6 671 2461.7 636.8 2385 612.3 2296.8 564.9 2277.2 426.2 2247.9 429.5 2190.7 463.7 2159.7 475.2 2099.3 426.2 2040.6 408.2 1918.1 437.6 1874.1 465.4 1771.2 440.9 1686.3 377.2 1634.1 276 1578.6 200.9 1565.6 179.7 1606.4 117.7 1627.6 58.9 1619.4 34.4 1704.3 23 1748.4 39.3 1901.8 76.9 1937.7 85 2084.6 47.5 2256 62.2 2288.7 18.1 2386.6 65.5 2447 86.7 2510.7 24.6 2536.8 10 2620 0 2624M1600 2458.5L1590 2466.6 1600 2537.1M1600 2607.9L1488.8 2638 1470.9 2696.8 1386 2750.6 1431.7 2819.2 1408.9 2858.4 1343.6 2895.9 1340.8 2898M0 2624L10 2620 24.6 2536.8 86.7 2510.7 65.5 2447 18.1 2386.6 62.2 2288.7 47.5 2256 85 2084.6 76.9 1937.7 39.3 1901.8 23 1748.4 34.4 1704.3 58.9 1619.4 117.7 1627.6 179.7 1606.4 200.9 1565.6 276 1578.6 377.2 1634.1 440.9 1686.3 465.4 1771.2 437.6 1874.1 408.2 1918.1 426.2 2040.6 475.2 2099.3 463.7 2159.7 429.5 2190.7 426.2 2247.9 564.9 2277.2 612.3 2296.8 636.8 2385 671 2461.7 713.5 2484.6 764.1 2566.2 726.5 2636.4 782 2665.7 888.1 2742.5 932.2 2722.9 953.4 2762 1033.4 2776.7 1057.9 2799.6 1095.4 2887.7 1124.2 2898M1340.8 2898L1343.6 2895.9 1408.9 2858.4 1431.7 2819.2 1386 2750.6 1470.9 2696.8 1488.8 2638 1600 2607.9M1600 2537.1L1590 2466.6 1600 2458.5" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="684.1" y="1419.7" font-size="25.6" font-weight="500" fill="#FFFFFF">산성동</text>
-<text x="1224.4" y="1014.9" font-size="25.6" font-weight="500" fill="#FFFFFF">석교동</text>
-<text x="739.6" y="794.5" font-size="25.6" font-weight="500" fill="#FFFFFF">문화1동</text>
-<text x="942" y="835.3" font-size="25.6" font-weight="500" fill="#FFFFFF">대사동</text>
-<text x="896.3" y="500.7" font-size="25.6" font-weight="500" fill="#FFFFFF">은행선화동</text>
-<text x="726.5" y="309.7" font-size="25.6" font-weight="500" fill="#FFFFFF">중촌동</text>
-<text x="659.6" y="954.5" font-size="25.6" font-weight="500" fill="#FFFFFF">문화2동</text>
-<text x="974.7" y="662.3" font-size="25.6" font-weight="500" fill="#FFFFFF">대흥동</text>
-<text x="1087.3" y="868" font-size="25.6" font-weight="500" fill="#FFFFFF">부사동</text>
-<text x="486.6" y="637.8" font-size="25.6" font-weight="500" fill="#FFFFFF">태평2동</text>
-<text x="760.8" y="590.5" font-size="25.6" font-weight="500" fill="#FFFFFF">용두동</text>
-<text x="754.3" y="474.6" font-size="25.6" font-weight="500" fill="#FFFFFF">목동</text>
-<text x="599.2" y="719.4" font-size="25.6" font-weight="500" fill="#FFFFFF">유천2동</text>
-<text x="695.5" y="641.1" font-size="25.6" font-weight="500" fill="#FFFFFF">오류동</text>
-<text x="522.5" y="806" font-size="25.6" font-weight="500" fill="#FFFFFF">유천1동</text>
-<text x="582.9" y="608.4" font-size="25.6" font-weight="500" fill="#FFFFFF">태평1동</text>
-<text x="1087.3" y="663.9" font-size="25.6" font-weight="500" fill="#FFFFFF">문창동</text>
+<text  x="684.1" y="1419.7" font-size="25.6" font-weight="500" fill="#FFFFFF">산성동</text>
+<text  x="1224.4" y="1014.9" font-size="25.6" font-weight="500" fill="#FFFFFF">석교동</text>
+<text  x="739.6" y="794.5" font-size="25.6" font-weight="500" fill="#FFFFFF">문화1동</text>
+<text  x="942" y="835.3" font-size="25.6" font-weight="500" fill="#FFFFFF">대사동</text>
+<text  x="896.3" y="500.7" font-size="25.6" font-weight="500" fill="#FFFFFF">은행선화동</text>
+<text  x="726.5" y="309.7" font-size="25.6" font-weight="500" fill="#FFFFFF">중촌동</text>
+<text  x="659.6" y="954.5" font-size="25.6" font-weight="500" fill="#FFFFFF">문화2동</text>
+<text  x="974.7" y="662.3" font-size="25.6" font-weight="500" fill="#FFFFFF">대흥동</text>
+<text  x="1087.3" y="868" font-size="25.6" font-weight="500" fill="#FFFFFF">부사동</text>
+<text  x="486.6" y="637.8" font-size="25.6" font-weight="500" fill="#FFFFFF">태평2동</text>
+<text  x="760.8" y="590.5" font-size="25.6" font-weight="500" fill="#FFFFFF">용두동</text>
+<text  x="754.3" y="474.6" font-size="25.6" font-weight="500" fill="#FFFFFF">목동</text>
+<text  x="599.2" y="719.4" font-size="25.6" font-weight="500" fill="#FFFFFF">유천2동</text>
+<text  x="695.5" y="641.1" font-size="25.6" font-weight="500" fill="#FFFFFF">오류동</text>
+<text  x="522.5" y="806" font-size="25.6" font-weight="500" fill="#FFFFFF">유천1동</text>
+<text  x="582.9" y="608.4" font-size="25.6" font-weight="500" fill="#FFFFFF">태평1동</text>
+<text  x="1087.3" y="663.9" font-size="25.6" font-weight="500" fill="#FFFFFF">문창동</text>
 </g>
 </svg>

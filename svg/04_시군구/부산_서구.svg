@@ -36,18 +36,18 @@
 <path d="M1600 2618.6L1487.2 2340.2 1495.3 2259.3 1600 2307.5M1600 2152L1576.1 2130 1293.2 2190.6 1260.8 2287.6 1293.2 2586.8 1317.4 2655.5 1285.1 2837.4 1248.7 3067.8 1180 3112.3 1115.3 2999.1 998.1 3043.6 933.4 3152.7 977.9 3249.7 1119.4 3391.2 1171.9 3686.3 1151.7 3755 941.5 3932.9 941.5 4102.7 751.5 4135 658.5 3674.2 771.7 3654 549.4 3302.3 504.9 2974.8 484.7 2845.5 525.1 2708 436.2 2695.9 234.1 2772.7 84.5 2736.3 72.4 2906.1 161.3 3104.2 112.8 3189.1 173.4 3298.2 177.5 3649.9 407.9 4329.1 246.2 4321 11.7 4304.8 7.7 4126.9 0 4107.4" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="723.2" y="663.7" font-size="25.6" font-weight="500" fill="#FFFFFF">서대신4동</text>
-<text x="921.3" y="3501.5" font-size="25.6" font-weight="500" fill="#FFFFFF">암남동</text>
-<text x="1091.1" y="1100.3" font-size="25.6" font-weight="500" fill="#FFFFFF">동대신3동</text>
-<text x="642.3" y="1387.3" font-size="25.6" font-weight="500" fill="#FFFFFF">서대신3동</text>
-<text x="844.5" y="2021.9" font-size="25.6" font-weight="500" fill="#FFFFFF">아미동</text>
-<text x="779.8" y="1637.9" font-size="25.6" font-weight="500" fill="#FFFFFF">서대신1동</text>
-<text x="1127.4" y="2664.7" font-size="25.6" font-weight="500" fill="#FFFFFF">남부민2동</text>
-<text x="1167.9" y="2401.9" font-size="25.6" font-weight="500" fill="#FFFFFF">남부민1동</text>
-<text x="1240.6" y="1363" font-size="25.6" font-weight="500" fill="#FFFFFF">동대신2동</text>
-<text x="961.7" y="2244.3" font-size="25.6" font-weight="500" fill="#FFFFFF">초장동</text>
-<text x="1006.2" y="1779.4" font-size="25.6" font-weight="500" fill="#FFFFFF">부민동</text>
-<text x="1208.3" y="2203.9" font-size="25.6" font-weight="500" fill="#FFFFFF">충무동</text>
-<text x="1095.1" y="1597.5" font-size="25.6" font-weight="500" fill="#FFFFFF">동대신1동</text>
+<text  x="723.2" y="663.7" font-size="25.6" font-weight="500" fill="#FFFFFF">서대신4동</text>
+<text  x="921.3" y="3501.5" font-size="25.6" font-weight="500" fill="#FFFFFF">암남동</text>
+<text  x="1091.1" y="1100.3" font-size="25.6" font-weight="500" fill="#FFFFFF">동대신3동</text>
+<text  x="642.3" y="1387.3" font-size="25.6" font-weight="500" fill="#FFFFFF">서대신3동</text>
+<text  x="844.5" y="2021.9" font-size="25.6" font-weight="500" fill="#FFFFFF">아미동</text>
+<text  x="779.8" y="1637.9" font-size="25.6" font-weight="500" fill="#FFFFFF">서대신1동</text>
+<text  x="1127.4" y="2664.7" font-size="25.6" font-weight="500" fill="#FFFFFF">남부민2동</text>
+<text  x="1167.9" y="2401.9" font-size="25.6" font-weight="500" fill="#FFFFFF">남부민1동</text>
+<text  x="1240.6" y="1363" font-size="25.6" font-weight="500" fill="#FFFFFF">동대신2동</text>
+<text  x="961.7" y="2244.3" font-size="25.6" font-weight="500" fill="#FFFFFF">초장동</text>
+<text  x="1006.2" y="1779.4" font-size="25.6" font-weight="500" fill="#FFFFFF">부민동</text>
+<text  x="1208.3" y="2203.9" font-size="25.6" font-weight="500" fill="#FFFFFF">충무동</text>
+<text  x="1095.1" y="1597.5" font-size="25.6" font-weight="500" fill="#FFFFFF">동대신1동</text>
 </g>
 </svg>

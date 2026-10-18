@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1070" viewBox="0 0 1600 1070" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>서울특별시 동작구</title>
 <g id="배경">
-<path d="M1384.6 327.9L1283.5 308.9 1144.3 240.2 1075.6 190.6 999.3 137.2 871.5 85.7 872.4 0 1600 0 1600 166.8 1562 190.6 1478 324.1 1396 326Z" fill="#E7EBF0" fill-rule="evenodd"></path>
-<path d="M0 722.2L85.7 774.3 20.9 871.5 13.2 902 0 904.2Z" fill="#E7EBF0" fill-rule="evenodd"></path>
-<path d="M0 1070L0 904.2 13.2 902 20.9 871.5 41.8 894.4 194.4 860.1 190.6 919.2 230.7 945.9 215.4 1010.8 167.7 1037.5 184.2 1070Z" fill="#E7EBF0" fill-rule="evenodd"></path>
-<path d="M0 722.2L0 0 872.4 0 871.5 85.7 699.9 120 593.1 125.8 474.8 118.1 459.5 144.8 463.4 190.6 385.2 429 373.7 490.1 272.6 530.1 232.6 545.4 192.5 614 139.1 692.2 85.7 774.3Z" fill="#E7EBF0" fill-rule="evenodd"></path>
-<path d="M184.2 1070L167.7 1037.5 215.4 1010.8 230.7 945.9 190.6 919.2 194.4 860.1 41.8 894.4 20.9 871.5 85.7 774.3 131.5 774.3 255.5 728.5 301.2 696.1 350.8 678.9 442.4 671.3 493.9 566.4 535.8 587.3 692.2 638.8 698 654.1 734.2 625.5 764.7 629.3 831.5 591.2 944 652.2 978.3 640.7 1026 595 1064.2 619.8 1079.4 776.2 1066.1 812.4 1132.8 896.3 1214.8 959.3 1218.7 984.1 1327.4 959.3 1407.5 965 1420.8 1041.3 1438.6 1070Z" fill="#E7EBF0" fill-rule="evenodd"></path>
-<path d="M1438.6 1070L1420.8 1041.3 1407.5 965 1415.1 785.7 1415.1 774.3 1426.5 657.9 1430.4 541.6 1462.8 480.5 1512.4 503.4 1514.3 493.9 1401.8 415.7 1384.6 327.9 1396 326 1478 324.1 1562 190.6 1600 166.8 1600 1070Z" fill="#E7EBF0" fill-rule="evenodd"></path>
+<path d="M1384.6 327.9L1283.5 308.9 1144.3 240.2 1075.6 190.6 999.3 137.2 871.5 85.7 872.4 0 1600 0 1600 166.8 1562 190.6 1478 324.1 1396 326Z" fill="#EDF0F4" fill-rule="evenodd"></path>
+<path d="M0 722.2L85.7 774.3 20.9 871.5 13.2 902 0 904.2Z" fill="#EDF0F4" fill-rule="evenodd"></path>
+<path d="M0 1070L0 904.2 13.2 902 20.9 871.5 41.8 894.4 194.4 860.1 190.6 919.2 230.7 945.9 215.4 1010.8 167.7 1037.5 184.2 1070Z" fill="#EDF0F4" fill-rule="evenodd"></path>
+<path d="M0 722.2L0 0 872.4 0 871.5 85.7 699.9 120 593.1 125.8 474.8 118.1 459.5 144.8 463.4 190.6 385.2 429 373.7 490.1 272.6 530.1 232.6 545.4 192.5 614 139.1 692.2 85.7 774.3Z" fill="#EDF0F4" fill-rule="evenodd"></path>
+<path d="M184.2 1070L167.7 1037.5 215.4 1010.8 230.7 945.9 190.6 919.2 194.4 860.1 41.8 894.4 20.9 871.5 85.7 774.3 131.5 774.3 255.5 728.5 301.2 696.1 350.8 678.9 442.4 671.3 493.9 566.4 535.8 587.3 692.2 638.8 698 654.1 734.2 625.5 764.7 629.3 831.5 591.2 944 652.2 978.3 640.7 1026 595 1064.2 619.8 1079.4 776.2 1066.1 812.4 1132.8 896.3 1214.8 959.3 1218.7 984.1 1327.4 959.3 1407.5 965 1420.8 1041.3 1438.6 1070Z" fill="#EDF0F4" fill-rule="evenodd"></path>
+<path d="M1438.6 1070L1420.8 1041.3 1407.5 965 1415.1 785.7 1415.1 774.3 1426.5 657.9 1430.4 541.6 1462.8 480.5 1512.4 503.4 1514.3 493.9 1401.8 415.7 1384.6 327.9 1396 326 1478 324.1 1562 190.6 1600 166.8 1600 1070Z" fill="#EDF0F4" fill-rule="evenodd"></path>
 <path d="M1600 166.8L1562 190.6 1478 324.1 1396 326 1384.6 327.9 1283.5 308.9 1144.3 240.2 1075.6 190.6 999.3 137.2 871.5 85.7 872.4 0" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
 <path d="M0 722.2L85.7 774.3 20.9 871.5 13.2 902 0 904.2" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
 <path d="M0 904.2L13.2 902 20.9 871.5 41.8 894.4 194.4 860.1 190.6 919.2 230.7 945.9 215.4 1010.8 167.7 1037.5 184.2 1070" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
@@ -15,21 +15,21 @@
 <path d="M1438.6 1070L1420.8 1041.3 1407.5 965 1415.1 785.7 1415.1 774.3 1426.5 657.9 1430.4 541.6 1462.8 480.5 1512.4 503.4 1514.3 493.9 1401.8 415.7 1384.6 327.9 1396 326 1478 324.1 1562 190.6 1600 166.8" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="대상_내부">
-<path id="서울특별시_동작구_노량진1동" d="M999.3 137.2L871.5 85.7 699.9 120 738 263.1 718.9 333.7 831.5 320.3 883 297.4 944 299.3 1075.6 190.6Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 노량진1동</title></path>
-<path id="서울특별시_동작구_노량진2동" d="M718.9 333.7L738 263.1 699.9 120 593.1 125.8 614 183 629.3 310.8 696.1 347Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 노량진2동</title></path>
-<path id="서울특별시_동작구_상도1동" d="M944 299.3L883 297.4 883 326 816.2 413.8 841 476.7 831.5 591.2 944 652.2 978.3 640.7 1026 595 1064.2 619.8 1081.3 587.3 1094.7 577.8 1064.2 509.1 987.9 476.7 942.1 375.6Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 상도1동</title></path>
-<path id="서울특별시_동작구_상도2동" d="M841 476.7L816.2 413.8 883 326 883 297.4 831.5 320.3 718.9 333.7 696.1 347 629.3 310.8 585.4 373.7 646.5 390.9 703.7 451.9Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 상도2동</title></path>
-<path id="서울특별시_동작구_상도3동" d="M646.5 390.9L585.4 373.7 511 396.6 514.9 484.3 533.9 505.3 535.8 587.3 692.2 638.8 698 654.1 734.2 625.5 635 533.9 572.1 448.1Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 상도3동</title></path>
-<path id="서울특별시_동작구_상도4동" d="M841 476.7L703.7 451.9 646.5 390.9 572.1 448.1 635 533.9 734.2 625.5 764.7 629.3 831.5 591.2Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 상도4동</title></path>
-<path id="서울특별시_동작구_흑석동" d="M1283.5 308.9L1144.3 240.2 1075.6 190.6 944 299.3 942.1 375.6 987.9 476.7 1064.2 509.1 1077.5 516.8 1193.9 389 1243.4 373.7Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 흑석동</title></path>
-<path id="서울특별시_동작구_사당1동" d="M1415.1 785.7L1365.5 795.2 1308.3 818.1 1306.4 856.3 1214.8 959.3 1218.7 984.1 1327.4 959.3 1407.5 965Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 사당1동</title></path>
-<path id="서울특별시_동작구_사당2동" d="M1384.6 327.9L1283.5 308.9 1243.4 373.7 1193.9 389 1077.5 516.8 1064.2 509.1 1094.7 577.8 1129 606.4 1180.5 591.2 1253 606.4 1274 667.4 1365.5 795.2 1415.1 785.7 1415.1 774.3 1426.5 657.9 1430.4 541.6 1462.8 480.5 1512.4 503.4 1514.3 493.9 1401.8 415.7Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 사당2동</title></path>
-<path id="서울특별시_동작구_사당3동" d="M1365.5 795.2L1274 667.4 1253 606.4 1180.5 591.2 1129 606.4 1094.7 577.8 1081.3 587.3 1150 717 1226.3 785.7 1308.3 818.1Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 사당3동</title></path>
-<path id="서울특별시_동작구_사당4동" d="M1308.3 818.1L1226.3 785.7 1205.3 841 1132.8 896.3 1214.8 959.3 1306.4 856.3Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 사당4동</title></path>
-<path id="서울특별시_동작구_사당5동" d="M1226.3 785.7L1150 717 1081.3 587.3 1064.2 619.8 1079.4 776.2 1066.1 812.4 1132.8 896.3 1205.3 841Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 사당5동</title></path>
-<path id="서울특별시_동작구_대방동" d="M593.1 125.8L474.8 118.1 459.5 144.8 463.4 190.6 385.2 429 373.7 490.1 404.2 503.4 471 478.6 514.9 484.3 511 396.6 585.4 373.7 629.3 310.8 614 183Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 대방동</title></path>
-<path id="서울특별시_동작구_신대방1동" d="M301.2 696.1L272.6 530.1 232.6 545.4 192.5 614 139.1 692.2 85.7 774.3 131.5 774.3 255.5 728.5Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 신대방1동</title></path>
-<path id="서울특별시_동작구_신대방2동" d="M514.9 484.3L471 478.6 404.2 503.4 373.7 490.1 272.6 530.1 301.2 696.1 350.8 678.9 442.4 671.3 493.9 566.4 535.8 587.3 533.9 505.3Z" fill="#2F5BD3" fill-rule="evenodd" stroke="#A1B5EB" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 신대방2동</title></path>
+<path id="서울특별시_동작구_노량진1동" d="M999.3 137.2L871.5 85.7 699.9 120 738 263.1 718.9 333.7 831.5 320.3 883 297.4 944 299.3 1075.6 190.6Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 노량진1동</title></path>
+<path id="서울특별시_동작구_노량진2동" d="M718.9 333.7L738 263.1 699.9 120 593.1 125.8 614 183 629.3 310.8 696.1 347Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 노량진2동</title></path>
+<path id="서울특별시_동작구_상도1동" d="M944 299.3L883 297.4 883 326 816.2 413.8 841 476.7 831.5 591.2 944 652.2 978.3 640.7 1026 595 1064.2 619.8 1081.3 587.3 1094.7 577.8 1064.2 509.1 987.9 476.7 942.1 375.6Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 상도1동</title></path>
+<path id="서울특별시_동작구_상도2동" d="M841 476.7L816.2 413.8 883 326 883 297.4 831.5 320.3 718.9 333.7 696.1 347 629.3 310.8 585.4 373.7 646.5 390.9 703.7 451.9Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 상도2동</title></path>
+<path id="서울특별시_동작구_상도3동" d="M646.5 390.9L585.4 373.7 511 396.6 514.9 484.3 533.9 505.3 535.8 587.3 692.2 638.8 698 654.1 734.2 625.5 635 533.9 572.1 448.1Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 상도3동</title></path>
+<path id="서울특별시_동작구_상도4동" d="M841 476.7L703.7 451.9 646.5 390.9 572.1 448.1 635 533.9 734.2 625.5 764.7 629.3 831.5 591.2Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 상도4동</title></path>
+<path id="서울특별시_동작구_흑석동" d="M1283.5 308.9L1144.3 240.2 1075.6 190.6 944 299.3 942.1 375.6 987.9 476.7 1064.2 509.1 1077.5 516.8 1193.9 389 1243.4 373.7Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 흑석동</title></path>
+<path id="서울특별시_동작구_사당1동" d="M1415.1 785.7L1365.5 795.2 1308.3 818.1 1306.4 856.3 1214.8 959.3 1218.7 984.1 1327.4 959.3 1407.5 965Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 사당1동</title></path>
+<path id="서울특별시_동작구_사당2동" d="M1384.6 327.9L1283.5 308.9 1243.4 373.7 1193.9 389 1077.5 516.8 1064.2 509.1 1094.7 577.8 1129 606.4 1180.5 591.2 1253 606.4 1274 667.4 1365.5 795.2 1415.1 785.7 1415.1 774.3 1426.5 657.9 1430.4 541.6 1462.8 480.5 1512.4 503.4 1514.3 493.9 1401.8 415.7Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 사당2동</title></path>
+<path id="서울특별시_동작구_사당3동" d="M1365.5 795.2L1274 667.4 1253 606.4 1180.5 591.2 1129 606.4 1094.7 577.8 1081.3 587.3 1150 717 1226.3 785.7 1308.3 818.1Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 사당3동</title></path>
+<path id="서울특별시_동작구_사당4동" d="M1308.3 818.1L1226.3 785.7 1205.3 841 1132.8 896.3 1214.8 959.3 1306.4 856.3Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 사당4동</title></path>
+<path id="서울특별시_동작구_사당5동" d="M1226.3 785.7L1150 717 1081.3 587.3 1064.2 619.8 1079.4 776.2 1066.1 812.4 1132.8 896.3 1205.3 841Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 사당5동</title></path>
+<path id="서울특별시_동작구_대방동" d="M593.1 125.8L474.8 118.1 459.5 144.8 463.4 190.6 385.2 429 373.7 490.1 404.2 503.4 471 478.6 514.9 484.3 511 396.6 585.4 373.7 629.3 310.8 614 183Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 대방동</title></path>
+<path id="서울특별시_동작구_신대방1동" d="M301.2 696.1L272.6 530.1 232.6 545.4 192.5 614 139.1 692.2 85.7 774.3 131.5 774.3 255.5 728.5Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 신대방1동</title></path>
+<path id="서울특별시_동작구_신대방2동" d="M514.9 484.3L471 478.6 404.2 503.4 373.7 490.1 272.6 530.1 301.2 696.1 350.8 678.9 442.4 671.3 493.9 566.4 535.8 587.3 533.9 505.3Z" fill="#3361E0" fill-rule="evenodd" stroke="#A3B8F1" stroke-width="1" stroke-linejoin="round"><title>서울특별시 동작구 신대방2동</title></path>
 </g>
 <g id="대상">
 <path d="M85.7 774.3L139.1 692.2 192.5 614 232.6 545.4 272.6 530.1 373.7 490.1 385.2 429 463.4 190.6 459.5 144.8 474.8 118.1 593.1 125.8 699.9 120 871.5 85.7 999.3 137.2 1075.6 190.6 1144.3 240.2 1283.5 308.9 1384.6 327.9 1401.8 415.7 1514.3 493.9 1512.4 503.4 1462.8 480.5 1430.4 541.6 1426.5 657.9 1415.1 774.3 1415.1 785.7 1407.5 965 1327.4 959.3 1218.7 984.1 1214.8 959.3 1132.8 896.3 1066.1 812.4 1079.4 776.2 1064.2 619.8 1026 595 978.3 640.7 944 652.2 831.5 591.2 764.7 629.3 734.2 625.5 698 654.1 692.2 638.8 535.8 587.3 493.9 566.4 442.4 671.3 350.8 678.9 301.2 696.1 255.5 728.5 131.5 774.3 85.7 774.3" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
@@ -37,20 +37,20 @@
 <g id="시도경계">
 </g>
 <g id="지명" text-anchor="middle">
-<text x="1293" y="495.6" font-size="20.8" font-weight="500" fill="#FFFFFF">사당2동</text>
-<text x="1064.2" y="367.9" font-size="20.8" font-weight="500" fill="#FFFFFF">흑석동</text>
-<text x="835.3" y="211.5" font-size="20.8" font-weight="500" fill="#FFFFFF">노량진1동</text>
-<text x="532" y="289.7" font-size="20.8" font-weight="500" fill="#FFFFFF">대방동</text>
-<text x="944" y="558.6" font-size="20.8" font-weight="500" fill="#FFFFFF">상도1동</text>
-<text x="375.6" y="598.6" font-size="20.8" font-weight="500" fill="#FFFFFF">신대방2동</text>
-<text x="753.3" y="547.1" font-size="20.8" font-weight="500" fill="#FFFFFF">상도4동</text>
-<text x="1201.5" y="674.9" font-size="20.8" font-weight="500" fill="#FFFFFF">사당3동</text>
-<text x="757.1" y="398.4" font-size="20.8" font-weight="500" fill="#FFFFFF">상도2동</text>
-<text x="583.5" y="551" font-size="20.8" font-weight="500" fill="#FFFFFF">상도3동</text>
-<text x="236.4" y="671.1" font-size="20.8" font-weight="500" fill="#FFFFFF">신대방1동</text>
-<text x="1140.5" y="800.8" font-size="20.8" font-weight="500" fill="#FFFFFF">사당5동</text>
-<text x="1352.2" y="905.7" font-size="20.8" font-weight="500" fill="#FFFFFF">사당1동</text>
-<text x="678.9" y="282" font-size="20.8" font-weight="500" fill="#FFFFFF">노량진2동</text>
-<text x="1247.3" y="863.8" font-size="20.8" font-weight="500" fill="#FFFFFF">사당4동</text>
+<text x="1293" y="497.4" font-size="25.6" font-weight="500" fill="#FFFFFF">사당2동</text>
+<text x="1064.2" y="369.6" font-size="25.6" font-weight="500" fill="#FFFFFF">흑석동</text>
+<text x="835.3" y="213.2" font-size="25.6" font-weight="500" fill="#FFFFFF">노량진1동</text>
+<text x="532" y="291.4" font-size="25.6" font-weight="500" fill="#FFFFFF">대방동</text>
+<text x="944" y="560.3" font-size="25.6" font-weight="500" fill="#FFFFFF">상도1동</text>
+<text x="375.6" y="600.4" font-size="25.6" font-weight="500" fill="#FFFFFF">신대방2동</text>
+<text x="753.3" y="548.9" font-size="25.6" font-weight="500" fill="#FFFFFF">상도4동</text>
+<text x="1201.5" y="676.7" font-size="25.6" font-weight="500" fill="#FFFFFF">사당3동</text>
+<text x="757.1" y="400.1" font-size="25.6" font-weight="500" fill="#FFFFFF">상도2동</text>
+<text x="583.5" y="552.7" font-size="25.6" font-weight="500" fill="#FFFFFF">상도3동</text>
+<text x="236.4" y="672.8" font-size="25.6" font-weight="500" fill="#FFFFFF">신대방1동</text>
+<text x="1140.5" y="802.5" font-size="25.6" font-weight="500" fill="#FFFFFF">사당5동</text>
+<text x="1352.2" y="907.4" font-size="25.6" font-weight="500" fill="#FFFFFF">사당1동</text>
+<text x="678.9" y="283.8" font-size="25.6" font-weight="500" fill="#FFFFFF">노량진2동</text>
+<text x="1247.3" y="865.5" font-size="25.6" font-weight="500" fill="#FFFFFF">사당4동</text>
 </g>
 </svg>

@@ -5,12 +5,14 @@
   const ORDER = R.LEVEL_ORDER;
   const LV_KO = { sido: "시도", si: "시군구", sgg: "구", emd: "읍면동" };
 
+  // 색 테마: 대상 · 주변 · 나머지 · 경계선 · 시도 경계 · 글자 · 바탕
   const PRESETS = [
-    { name: "파랑", target: "#2F5BD3", neighbor: "#BCCDF2", context: "#E7EBF0" },
-    { name: "주황", target: "#E0582F", neighbor: "#F7CBB7", context: "#EDEBE8" },
-    { name: "초록", target: "#1E8A5A", neighbor: "#B6E0C8", context: "#E7ECE9" },
-    { name: "보라", target: "#6B4FC8", neighbor: "#D3C8F2", context: "#ECEAF2" },
-    { name: "먹색", target: "#2D3846", neighbor: "#BAC3CE", context: "#EDEFF2" },
+    { name: "코발트", target: "#3361E0", neighbor: "#C9D6F6", context: "#EDF0F4", line: "#FFFFFF", sidoLine: "#9AA6B5", text: "#1E2633", bg: "#FFFFFF" },
+    { name: "코랄", target: "#EF5B4C", neighbor: "#F9D3CB", context: "#F3EFEC", line: "#FFFFFF", sidoLine: "#B9A9A2", text: "#2D211E", bg: "#FFFFFF" },
+    { name: "에메랄드", target: "#0F9F84", neighbor: "#BEE6DB", context: "#EDF2F0", line: "#FFFFFF", sidoLine: "#93ABA4", text: "#16302A", bg: "#FFFFFF" },
+    { name: "라벤더", target: "#6A4CD6", neighbor: "#DAD0F6", context: "#F0EEF6", line: "#FFFFFF", sidoLine: "#A69EBD", text: "#231D3A", bg: "#FFFFFF" },
+    { name: "먹", target: "#262B33", neighbor: "#C5CAD1", context: "#EEF0F2", line: "#FFFFFF", sidoLine: "#9AA0A8", text: "#1C1F24", bg: "#FFFFFF" },
+    { name: "미드나잇", target: "#F2B33D", neighbor: "#2E4A75", context: "#1B283B", line: "#0F1A2B", sidoLine: "#5D7393", text: "#EAF0F8", bg: "#0F1A2B", fillBg: true },
   ];
 
   const S = {
@@ -39,7 +41,8 @@
     lineScale: 1,
     colors: Object.assign({}, PRESETS[0]),
     distinct: false,
-    whiteBg: false,
+    shadow: true,
+    fillBg: false,
     aspect: null,
   };
 
@@ -133,16 +136,17 @@
       fontScale: S.fontScale,
       lineScale: S.lineScale,
       distinct: S.distinct,
+      shadow: S.shadow,
+      shortSido: "auto",
       aspect: S.aspect,
       width: width || 1600,
-      colors: { target: S.colors.target, neighbor: S.colors.neighbor, context: S.colors.context, bg: S.whiteBg ? "#FFFFFF" : null },
+      colors: Object.assign({}, S.colors, { bg: S.fillBg ? S.colors.bg : null }),
     };
     if (S.mode === "pick") {
       o.pick = { lv: eff(S.pick.lv), ids: S.pick.ids, fit: S.pick.fit, hideOthers: S.pick.hideOthers };
     } else if (S.mode === "all") {
       o.target = null;
       o.inner = eff(S.allLv);
-      o.shortSido = true;
     } else {
       Object.assign(o, { target: S.target, depth: S.depth, nbLevel: eff(S.nbLevel), inner: innerFor(S.target), context: S.context });
     }
@@ -161,7 +165,7 @@
     const scene = R.buildScene(D, sceneOpts(1600));
     lastScene = scene;
     $("map").innerHTML = R.toSVG(scene, { interactive: true });
-    $("slide").classList.toggle("solid", S.whiteBg);
+    $("slide").style.background = S.fillBg ? S.colors.bg : "#FFFFFF";
     renderInfo(scene);
     renderLabelPick(scene);
     try {
@@ -282,7 +286,7 @@
     $("secPick").hidden = S.mode !== "pick";
     $("secAll").hidden = S.mode !== "all";
     $("crumbs").hidden = S.mode !== "around";
-    $("searchLbl").textContent = S.mode === "pick" ? "찾아서 넣기" : "지역 찾기";
+    $("q").placeholder = S.mode === "pick" ? "찾아서 넣기 — 충청남도, 공주시…" : "지역 찾기 — 대전, 유성구, 정자동";
     $("inner").querySelectorAll("button").forEach((b) => {
       const v = b.dataset.v;
       b.disabled = !!(v && ORDER[eff(v)] <= ORDER[S.target.lv]);
@@ -299,10 +303,9 @@
     $("cTarget").value = S.colors.target;
     $("cNeighbor").value = S.colors.neighbor;
     $("cContext").value = S.colors.context;
-    document.querySelectorAll(".sw").forEach((b, i) => {
-      const p = PRESETS[i];
-      b.classList.toggle("on", p.target === S.colors.target && p.neighbor === S.colors.neighbor && p.context === S.colors.context);
-    });
+    $("fillBg").checked = S.fillBg;
+    $("shadow").checked = S.shadow;
+    document.querySelectorAll(".theme").forEach((b, i) => b.classList.toggle("on", PRESETS[i].name === S.colors.name));
     fillSidoSelect();
     renderCrumbs();
   }
@@ -427,12 +430,13 @@
     chk("subLabel", (v) => (S.subLabel = v));
     chk("halo", (v) => (S.halo = v));
     chk("distinct", (v) => (S.distinct = v));
-    chk("whiteBg", (v) => (S.whiteBg = v));
+    chk("shadow", (v) => (S.shadow = v));
+    chk("fillBg", (v) => (S.fillBg = v));
     let t;
     const slider = (id, set) => $(id).addEventListener("input", (e) => { set(+e.target.value); clearTimeout(t); t = setTimeout(render, 60); });
     slider("fontScale", (v) => (S.fontScale = v));
     slider("lineScale", (v) => (S.lineScale = v));
-    const col = (id, key) => $(id).addEventListener("input", (e) => { S.colors[key] = e.target.value.toUpperCase(); clearTimeout(t); t = setTimeout(render, 60); });
+    const col = (id, key) => $(id).addEventListener("input", (e) => { S.colors[key] = e.target.value.toUpperCase(); S.colors.name = null; clearTimeout(t); t = setTimeout(render, 60); });
     col("cTarget", "target");
     col("cNeighbor", "neighbor");
     col("cContext", "context");
@@ -440,11 +444,18 @@
     const ps = $("presets");
     PRESETS.forEach((p) => {
       const b = document.createElement("button");
-      b.className = "sw";
-      b.title = p.name;
-      b.setAttribute("aria-label", `색 조합: ${p.name}`);
-      b.innerHTML = `<i style="background:${p.target}"></i><i style="background:${p.neighbor}"></i>`;
-      b.onclick = () => { S.colors = Object.assign({}, p); render(); };
+      b.className = "theme";
+      b.setAttribute("aria-label", `색 테마: ${p.name}`);
+      b.innerHTML =
+        `<div class="pv" style="background:${p.context}"><i class="n1" style="background:${p.neighbor}"></i>` +
+        `<i class="n2" style="background:${p.neighbor}"></i><i class="t" style="background:${p.target}"></i></div><span>${p.name}</span>`;
+      b.onclick = () => {
+        const wasDark = !!S.colors.fillBg;
+        S.colors = Object.assign({}, p);
+        if (p.fillBg) S.fillBg = true;
+        else if (wasDark) S.fillBg = false;
+        render();
+      };
       ps.appendChild(b);
     });
 
@@ -619,13 +630,17 @@
           x: r3(ox + x0 * k), y: r3(oy + y0 * k), w: Math.max(r3((x1 - x0) * k), 0.01), h: Math.max(r3((y1 - y0) * k), 0.01), points,
         }, opt));
       };
-      const ORDERG = ["context", "all", "neighbor", "picked", "inner", "target", "sido"];
+      const ORDERG = ["context", "all", "neighbor", "shadow", "picked", "inner", "target", "sido"];
+      const sh = scene.shadow;
       for (const g of ORDERG) {
         for (const p of scene.polys.filter((q) => q.group === g)) {
           shape([].concat(...p.rings), true, {
             fill: { color: hex(p.fill) },
             line: p.stroke ? { color: hex(p.stroke), width: Math.max(p.width * k * 72, 0.25) } : { type: "none" },
-            objectName: p.name,
+            objectName: g === "shadow" ? "그림자 " + p.name : p.name,
+            shadow: g === "shadow" && sh
+              ? { type: "outer", angle: 90, blur: Math.round(sh.blur * k * 72 * 2), offset: Math.round(sh.dy * k * 72 * 10) / 10, color: hex(sh.color), opacity: sh.opacity }
+              : undefined,
           });
         }
         for (const l of scene.lines.filter((q) => q.group === g)) {

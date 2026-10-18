@@ -183,7 +183,7 @@ details.more[open] summary { margin-bottom: 10px; }
 .tools { display: flex; gap: 6px; flex-wrap: wrap; margin-right: 8px; }
 .btn.icon { padding: 9px 11px; font-size: 15px; line-height: 1; }
 .btn:disabled { opacity: 0.45; cursor: default; }
-.ptabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius); padding: 4px; box-shadow: var(--shadow); position: sticky; top: 8px; z-index: 4; }
+.ptabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius); padding: 4px; box-shadow: var(--shadow); position: sticky; top: 8px; z-index: 4; }
 .ptabs button { border: 0; background: none; color: var(--muted); font: inherit; font-weight: 600; font-size: 13px; padding: 8px 4px; border-radius: 8px; cursor: pointer; }
 .ptabs button.on { background: var(--accent); color: var(--accent-ink); }
 .pane { display: flex; flex-direction: column; gap: 12px; }
@@ -198,6 +198,15 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
 .datacols { display: flex; flex-direction: column; gap: 8px; }
 .field.half { width: auto; flex: 1 1 0; min-width: 0; }
 .chip.sm { font-size: 12px; padding: 3px 9px; }
+.datasrc { display: flex; flex-direction: column; gap: 8px; }
+.pinlist { display: flex; flex-direction: column; gap: 2px; max-height: 260px; overflow-y: auto; }
+.pinrow { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto auto; gap: 8px; align-items: center; font-size: 12.5px; padding: 3px 4px; border-radius: 6px; }
+.pinrow:hover { background: var(--field); }
+.pinrow i { width: 10px; height: 10px; border-radius: 50%; display: block; }
+.pinrow span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pinrow small { color: var(--muted); font-size: 11px; white-space: nowrap; }
+.pinrow small.bad { color: #B4511E; }
+.pinrow .x { border: 0; background: none; color: var(--faint); cursor: pointer; }
 .groups { display: flex; flex-direction: column; gap: 6px; }
 .grp { display: grid; grid-template-columns: auto 34px minmax(0, 1fr) auto auto; gap: 8px; align-items: center; padding: 4px 6px; border-radius: 8px; border: 1px solid transparent; }
 .grp.on { border-color: var(--accent); background: var(--accent-soft); }
@@ -240,7 +249,7 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
   <div class="app">
     <aside class="panel">
       <nav class="ptabs" id="ptab">
-        <button data-v="region">지역</button><button data-v="look">모양</button><button data-v="data">데이터 · 범례</button>
+        <button data-v="region">지역</button><button data-v="look">모양</button><button data-v="data">데이터</button><button data-v="pins">지점</button>
       </nav>
       <div class="pane" data-pane="region">
       <section class="card">
@@ -363,17 +372,38 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
       </section>
 
       <section class="card">
-        <h2>데이터로 색칠 <span class="hint">엑셀 표 붙여넣기 · CSV 열기</span></h2>
-        <textarea class="field" id="dataText" rows="6" spellcheck="false" placeholder="지역	인구	청년	노인&#10;대전 유성구	360000	98000	36000&#10;공주시	100000	15000	29000&#10;&#10;첫 줄에 열 이름을 넣으면 열마다 골라 칠할 수 있습니다." aria-label="지역별 데이터"></textarea>
-        <div class="row">
-          <button class="btn sm primary" id="dataApply">색칠하기</button>
-          <button class="btn sm" id="dataFile">CSV 파일 열기</button>
-          <input type="file" id="dataFileInput" accept=".csv,.tsv,.txt,text/csv,text/plain" hidden>
-          <button class="btn sm" id="dataClear">지우기</button>
+        <h2>데이터로 색칠</h2>
+        <div class="seg" id="dataSrc" aria-label="칠할 데이터">
+          <button data-v="">끄기</button><button data-v="stats">기본 통계</button><button data-v="table">내 표 · 파일</button><button data-v="pins">지점 수</button>
         </div>
-        <div class="row"><span class="note">예시로 해 보기:</span>
-          <button class="btn sm" data-sample="stat">인구 통계</button><button class="btn sm" data-sample="poll">여론조사</button><button class="btn sm" data-sample="simple">값 하나</button>
+
+        <div class="datasrc" id="srcStats" hidden>
+          <p class="note" id="statsNote"></p>
+          <div class="chips" id="statQuick"></div>
         </div>
+
+        <div class="datasrc" id="srcTable" hidden>
+          <textarea class="field" id="dataText" rows="6" spellcheck="false" placeholder="지역	인구	청년	노인&#10;대전 유성구	360000	98000	36000&#10;공주시	100000	15000	29000&#10;&#10;첫 줄에 열 이름을 넣으면 열마다 골라 칠할 수 있습니다." aria-label="지역별 데이터"></textarea>
+          <div class="row">
+            <button class="btn sm primary" id="dataApply">색칠하기</button>
+            <button class="btn sm" id="dataFile">CSV 파일 열기</button>
+            <input type="file" id="dataFileInput" accept=".csv,.tsv,.txt,text/csv,text/plain" hidden>
+            <button class="btn sm" id="dataClear">지우기</button>
+          </div>
+          <div class="row"><span class="note">예시로 해 보기:</span>
+            <button class="btn sm" data-sample="stat">인구 통계</button><button class="btn sm" data-sample="poll">여론조사</button><button class="btn sm" data-sample="simple">값 하나</button>
+          </div>
+          <details class="more">
+            <summary>1세 단위 공식 인구 자료로 칠하기 (청년 19~34세 · 노인 65세 이상)</summary>
+            <p class="note">행정안전부 <b>연령별 인구현황</b> CSV(1세 단위)를 그대로 열면 총인구, 청년(19~34세), 노인(65세 이상), 유소년(0~14세), 비율, 노령화지수를 계산합니다. 행정기관코드로 지역을 찾고 읍면동 숫자는 시군구·시도로 더합니다.</p>
+            <p class="note">받는 곳: <a href="https://jumin.mois.go.kr/" target="_blank" rel="noopener">주민등록 인구통계</a> → 연령별 인구현황 (행정구역 '전체', 1세 단위, CSV) 또는 <a href="https://www.data.go.kr/data/15097972/fileData.do" target="_blank" rel="noopener">공공데이터포털</a></p>
+          </details>
+        </div>
+
+        <div class="datasrc" id="srcPins" hidden>
+          <p class="note">'지점' 탭에서 찍은 핀이 지역마다 몇 개인지 세어 칠합니다.</p>
+        </div>
+
         <p class="note" id="dataReport"></p>
         <div class="datacols" id="dataCols" hidden>
           <span class="lbl">색칠 기준</span>
@@ -385,18 +415,15 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
           <span class="lbl">이름 아래 보일 값 <span class="note">(3개까지)</span></span>
           <div class="chips" id="labelCols"></div>
         </div>
-        <details class="more">
-          <summary>공식 인구 자료로 칠하기 (총인구·청년·노인)</summary>
-          <p class="note">행정안전부 <b>연령별 인구현황</b> CSV를 그대로 열면 나이 열을 알아보고 총인구, 청년(19~34세), 노인(65세 이상), 유소년(0~14세), 비율, 노령화지수를 계산합니다. 행정기관코드로 지역을 찾고, 읍면동 숫자는 시군구·시도로 더해 지금 지도 단위에 맞춥니다.</p>
-          <p class="note">받는 곳: <a href="https://jumin.mois.go.kr/" target="_blank" rel="noopener">주민등록 인구통계</a> → 연령별 인구현황 (행정구역 '전체', 1세 단위, CSV) 또는 <a href="https://www.data.go.kr/data/15097972/fileData.do" target="_blank" rel="noopener">공공데이터포털 행정동 성별·연령별 주민등록 인구수</a></p>
-        </details>
-        <span class="lbl">색 단계</span>
-        <div class="palettes" id="palettes"></div>
-        <div class="row">
-          <label class="ed">단계 <select id="dataSteps"><option>3</option><option>4</option><option selected>5</option><option>6</option><option>7</option></select></label>
-          <label class="ed">나누는 법 <select id="dataMethod"><option value="quantile">같은 개수씩</option><option value="equal">같은 간격</option></select></label>
+        <div class="datacols" id="dataLook" hidden>
+          <span class="lbl">색 단계</span>
+          <div class="palettes" id="palettes"></div>
+          <div class="row">
+            <label class="ed">단계 <select id="dataSteps"><option>3</option><option>4</option><option selected>5</option><option>6</option><option>7</option></select></label>
+            <label class="ed">나누는 법 <select id="dataMethod"><option value="quantile">같은 개수씩</option><option value="equal">같은 간격</option></select></label>
+          </div>
+          <label class="chk"><input type="checkbox" id="dataValues" checked> 이름 아래 값 보이기</label>
         </div>
-        <label class="chk"><input type="checkbox" id="dataValues" checked> 이름 아래 값 보이기</label>
       </section>
 
       <section class="card">
@@ -411,6 +438,34 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
         <div class="seg" id="legPos" aria-label="범례 위치">
           <button data-v="none">숨김</button><button data-v="tl">왼쪽 위</button><button data-v="tr">오른쪽 위</button><button data-v="bl">왼쪽 아래</button><button data-v="br">오른쪽 아래</button>
         </div>
+      </section>
+      </div>
+
+      <div class="pane" data-pane="pins" hidden>
+      <section class="card">
+        <h2>지점 핀 <span class="hint">주소 또는 위도·경도</span></h2>
+        <textarea class="field" id="pinText" rows="7" spellcheck="false" placeholder="이름	주소	분류(선택)&#10;대전 본사	대전광역시 서구 둔산동 1420	본사&#10;세종 지점	36.4800, 127.2890	지점&#10;수원 매장	경기 수원시 장안구 정자동	매장" aria-label="지점 목록"></textarea>
+        <div class="row">
+          <button class="btn sm primary" id="pinApply">핀 찍기</button>
+          <button class="btn sm" id="pinFile">CSV 파일 열기</button>
+          <input type="file" id="pinFileInput" accept=".csv,.tsv,.txt,text/csv,text/plain" hidden>
+          <button class="btn sm" id="pinSample">예시</button>
+          <button class="btn sm" id="pinClear">지우기</button>
+        </div>
+        <label class="chk"><input type="checkbox" id="pinOnline" checked> 인터넷 주소 검색 쓰기 <span class="note">(OpenStreetMap)</span></label>
+        <p class="note" id="pinReport">한 줄에 지점 하나: 이름, 주소(또는 위도·경도), 분류. 엑셀에서 그대로 복사해도 됩니다. 위도·경도는 구글 지도에서 장소를 마우스 오른쪽으로 누르면 복사할 수 있습니다.</p>
+        <div class="pinlist" id="pinList"></div>
+      </section>
+      <section class="card">
+        <h2>핀 모양</h2>
+        <div class="seg" id="pinShape"><button data-v="pin">물방울</button><button data-v="dot">점</button><button data-v="square">네모</button></div>
+        <div class="row">
+          <label class="ed">색 <input type="color" id="pinColor"></label>
+          <label class="chk"><input type="checkbox" id="pinLabels" checked> 이름 보이기</label>
+          <label class="chk"><input type="checkbox" id="pinByCat" checked> 분류별 색</label>
+        </div>
+        <div class="slider"><span>핀 크기</span><input type="range" id="pinSize" min="0.5" max="2.5" step="0.05" value="1" aria-label="핀 크기"></div>
+        <button class="btn sm" id="pinCount" style="align-self:flex-start">지역별 지점 수로 칠하기</button>
       </section>
       </div>
       <p class="credit" id="credit"></p>
@@ -465,8 +520,10 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
   }
 </script>
 <script src="data/base.js"></script>
+<script src="data/stats.js"></script>
 <script src="render.js"></script>
 <script src="datafill.js"></script>
+<script src="pins.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

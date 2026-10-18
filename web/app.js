@@ -2,6 +2,7 @@
 (function () {
   const R = window.KRMapRender;
   const X = window.KRMapData;
+  const Pn = window.KRMapPins;
   const $ = (id) => document.getElementById(id);
   const ORDER = R.LEVEL_ORDER;
   const LV_KO = { sido: "시도", si: "시군구", sgg: "구", emd: "읍면동" };
@@ -40,7 +41,8 @@
     tileGap: 0.1,
     // 제목 · 데이터 · 그룹 · 범례
     heading: { title: "", subtitle: "", note: false },
-    data: { text: "", file: "", palette: "blue", steps: 5, method: "quantile", showValues: true, by: null, labels: null },
+    data: { source: "", text: "", file: "", palette: "blue", steps: 5, method: "quantile", showValues: true, by: null, labels: null },
+    pins: { text: "", items: [], shape: "pin", color: "#E5484D", size: 1, labels: true, byCat: true, online: true },
     groups: [], // [{id, name, color}] — 지역의 styles[key].group 으로 연결
     activeGroup: null,
     legend: { title: "", pos: "br" },
@@ -202,11 +204,27 @@
   // 큰 CSV 파일은 되돌리기 기록·자동 저장에 넣지 않고 따로 둔다
   let bigText = "";
   const dataSource = () => (S.data.file ? bigText : S.data.text);
-  let dsCache = { text: null, ds: null, ver: 0 };
+  let dsCache = { key: null, ds: null, ver: 0 };
+  let statsDs = null;
   function dataset() {
-    const t = dataSource();
-    if (!t || !t.trim()) return null;
-    if (dsCache.text !== t) dsCache = { text: t, ds: X.analyze(X.readTable(t)), ver: dsCache.ver + 1 };
+    const src = S.data.source;
+    let key, make;
+    if (src === "stats") {
+      if (!window.KRMAP.stats) return null;
+      key = "stats";
+      make = () => (statsDs = statsDs || X.fromStats(window.KRMAP.stats));
+    } else if (src === "pins") {
+      const items = S.pins.items.filter((it) => it.keys);
+      if (!items.length) return null;
+      key = "pins:" + JSON.stringify(items.map((it) => it.keys));
+      make = () => X.fromPins(items);
+    } else if (src === "table") {
+      const t = dataSource();
+      if (!t || !t.trim()) return null;
+      key = t;
+      make = () => X.analyze(X.readTable(t));
+    } else return null;
+    if (dsCache.key !== key) dsCache = { key, ds: make(), ver: dsCache.ver + 1 };
     return dsCache.ds;
   }
   let dataCache = { sig: null, res: null };
@@ -230,6 +248,8 @@
       if (S.data.showValues) Object.assign(values, dr.values);
       items = dr.legend.items.slice();
     }
+    const cats = pinCats();
+    if (cats.length && S.pins.byCat) items = items.concat(cats.map((c) => ({ color: c.color, label: c.name })));
     if (S.groups.length) {
       const used = new Set();
       for (const k in S.styles) {
@@ -242,8 +262,24 @@
       fills,
       values,
       legend: items.length ? { title: S.legend.title || (dr && dr.legend.title) || "", items, pos: S.legend.pos } : null,
-      heading: { title: S.heading.title, subtitle: S.heading.subtitle, note: S.heading.note ? `출처: 통계청 SGIS 행정구역 경계(${ver()})` : "" },
+      heading: { title: S.heading.title, subtitle: S.heading.subtitle, note: S.heading.note ? sourceNote() : "" },
+      pins: S.pins.items.filter((it) => it.x != null).map((it) => ({
+        x: it.x, y: it.y, keys: it.keys, label: it.name,
+        color: S.pins.byCat && it.cat ? (cats.find((c) => c.name === it.cat) || {}).color : S.pins.color,
+      })),
+      pinStyle: { shape: S.pins.shape, size: S.pins.size, labels: S.pins.labels, color: S.pins.color },
     };
+  }
+  const PIN_COLORS = ["#E5484D", "#F59E0B", "#10B981", "#8B5CF6", "#EC4899", "#06B6D4", "#84CC16", "#78716C"];
+  function pinCats() {
+    const names = [...new Set(S.pins.items.filter((it) => it.cat && it.x != null).map((it) => it.cat))];
+    return names.length > 1 || (names.length === 1 && S.pins.items.some((it) => !it.cat)) ? names.map((n, i) => ({ name: n, color: PIN_COLORS[i % PIN_COLORS.length] })) : names.map((n) => ({ name: n, color: S.pins.color }));
+  }
+  function sourceNote() {
+    const parts = [`경계: 통계청 SGIS(${ver()})`];
+    if (S.data.source === "stats" && window.KRMAP.stats) parts.push(`인구: 행정안전부 주민등록 인구통계(${window.KRMAP.stats.meta.month})`);
+    if (S.pins.items.some((it) => it.q === "인터넷 검색")) parts.push("지점 위치: © OpenStreetMap");
+    return "출처: " + parts.join(", ");
   }
 
   // ---------- 되돌리기 · 자동 저장 · 작업 파일 ----------
@@ -258,6 +294,7 @@
       else S[k] = o[k];
     }
     S.editKey = null;
+    if (S.data.source == null || (S.data.source === "" && (S.data.text || S.data.file) && !("source" in (o.data || {})))) S.data.source = S.data.text || S.data.file ? "table" : "";
     R.useSido17(D, S.sido17);
     buildIndex();
   }
@@ -455,6 +492,19 @@
     $("dataValues").checked = S.data.showValues;
     document.querySelectorAll(".pal").forEach((b) => b.classList.toggle("on", b.dataset.v === S.data.palette));
     renderGroups();
+    $("dataSrc")._sync();
+    $("srcStats").hidden = S.data.source !== "stats";
+    document.querySelectorAll("#statQuick .chip").forEach((b) => b.setAttribute("aria-pressed", S.data.source === "stats" && S.data.by && S.data.by.c === b.dataset.id ? "true" : "false"));
+    $("srcTable").hidden = S.data.source !== "table";
+    $("srcPins").hidden = S.data.source !== "pins";
+    $("pinShape")._sync();
+    $("pinColor").value = S.pins.color;
+    $("pinLabels").checked = S.pins.labels;
+    $("pinByCat").checked = S.pins.byCat;
+    $("pinOnline").checked = S.pins.online;
+    $("pinSize").value = String(S.pins.size);
+    if (document.activeElement !== $("pinText")) $("pinText").value = S.pins.text;
+    renderPinList();
     $("map").classList.toggle("editing", S.clickAction === "edit");
     $("cTargetLbl").firstChild.textContent = S.mode === "pick" ? "고른 지역" : S.mode === "all" ? "강조" : "대상";
     $("cNeighborLbl").firstChild.textContent = S.mode === "all" ? "지역" : "주변";
@@ -663,12 +713,28 @@
     const el = $("dataReport");
     const dr = dataResult();
     renderDataCols(dr);
+    $("dataLook").hidden = !dr;
+    if (S.data.source === "stats") {
+      const st = window.KRMAP.stats;
+      $("statsNote").textContent = st ? `행정안전부 주민등록 인구통계 ${st.meta.month}월말 기준 · 시도·시군구 단위. ${st.meta.note}` : "기본 통계를 불러오지 못했습니다.";
+      if (drawnLevels().includes("emd") && dr && !Object.keys(dr.fills).length) {
+        el.className = "note warn";
+        el.textContent = "기본 통계는 시도·시군구 단위까지 있습니다. 지도 단위를 시군구 이상으로 바꿔 주세요.";
+        return;
+      }
+    }
+    if (S.data.source === "pins" && !dr) {
+      el.className = "note";
+      el.textContent = "아직 찍은 핀이 없습니다. '지점' 탭에서 핀을 찍어 주세요.";
+      return;
+    }
+    if (!S.data.source) { el.className = "note"; el.textContent = "기본 통계(인구·세대·연령), 내 표·파일(통계·여론조사), 지점 수 중에서 골라 지도를 칠합니다."; return; }
     if (S.data.file && !bigText) {
       el.className = "note warn";
       el.textContent = `파일(${S.data.file})은 브라우저에 남지 않습니다. 다시 열어 주세요.`;
       return;
     }
-    if (!dataSource().trim()) {
+    if (S.data.source === "table" && !dataSource().trim()) {
       el.className = "note";
       el.textContent = "숫자는 크기에 따라 단계별로, 글자(본사·지사 등)는 분류별로, 후보별 지지율은 1위 색으로 칠합니다. 지금 지도 단위(시도·시군구·읍면동)에 맞춰 이름이나 행정기관코드로 지역을 찾습니다.";
       return;
@@ -679,6 +745,7 @@
     const parts = [(S.data.file ? `${S.data.file}: ` : "") + `지도에서 ${shown}곳을 칠했습니다` + (what ? ` (${what})` : "") + (dr.matched > shown ? ` · 표에서 찾은 지역 ${dr.matched}곳` : "")];
     if (dr.ds.note) parts.push(dr.ds.note);
     if (/\(예시\)/.test(dataSource())) parts.push("예시 숫자는 무작위입니다. 실제 통계가 아닙니다");
+    if (dr.ds.builtin) { el.textContent = parts.join(" · "); el.className = "note"; return; }
     if (dr.ambiguous.length) parts.push(`같은 이름이 여러 곳: ${dr.ambiguous.slice(0, 6).join(", ")} — "대전 중구"처럼 시도를 붙여 주세요`);
     if (dr.unmatched.length) parts.push(`못 찾은 이름 ${dr.unmatched.length}개: ${dr.unmatched.slice(0, 6).join(", ")}${dr.unmatched.length > 6 ? " …" : ""}`);
     el.textContent = parts.join(" · ");
@@ -767,8 +834,115 @@
     else delete S.styles[key];
     render();
   }
+  const QUICK = [["pop", "총인구"], ["young", "20~39세"], ["youngR", "20~39세 비율"], ["old60R", "60세 이상 비율"], ["old70R", "70세 이상 비율"], ["yoyR", "1년 증감률"], ["hh", "세대수"], ["agingI", "고령화 지수"]];
+  function renderPinList() {
+    const el = $("pinList");
+    const sig = JSON.stringify([S.pins.items, S.pins.byCat, S.pins.color]);
+    if (el._sig === sig) return;
+    el._sig = sig;
+    el.innerHTML = "";
+    const cats = pinCats();
+    S.pins.items.forEach((it, i) => {
+      const row = document.createElement("div");
+      row.className = "pinrow";
+      const col = S.pins.byCat && it.cat ? (cats.find((c) => c.name === it.cat) || {}).color : S.pins.color;
+      row.innerHTML = `<i style="background:${it.x != null ? col : "transparent"};border:1px solid ${col}"></i><span></span><small class="${it.x == null ? "bad" : ""}"></small><button class="x" aria-label="이 지점 빼기">✕</button>`;
+      row.children[1].textContent = it.name + (it.cat ? ` · ${it.cat}` : "");
+      row.children[1].title = it.addr || "";
+      const best = it.keys && (it.keys.emd || it.keys.sgg || it.keys.si || it.keys.sido);
+      const reg = best ? (([l, d]) => (D[l] && D[l][d] ? D[l][d].nm : ""))(best.split(":")) : "";
+      row.children[2].textContent = it.q + (reg && it.q !== "못 찾음" ? ` · ${reg}` : "");
+      row.children[3].onclick = () => { S.pins.items.splice(i, 1); render(); };
+      el.appendChild(row);
+    });
+  }
+  function waitEmd() {
+    if (emdState === "ready") return Promise.resolve();
+    return new Promise((ok) => { (window.KRMAP.waiting.emd = window.KRMAP.waiting.emd || []).push(ok); loadEmd(); });
+  }
+  let onlineBlocked = false;
+  async function placePins() {
+    const list = Pn.parse($("pinText").value);
+    S.pins.text = $("pinText").value;
+    if (!list.length) { toast("지점 목록이 비어 있습니다"); return; }
+    const btn = $("pinApply");
+    btn.disabled = true;
+    try {
+      await waitEmd();
+      const idx = Pn.aliasIndex(D, R.sidoShort);
+      const items = [];
+      let online = S.pins.online && !onlineBlocked;
+      for (let n = 0; n < list.length; n++) {
+        const it = list[n];
+        let res = null;
+        if (it.ll) {
+          const [x, y] = Pn.toData(it.ll[0], it.ll[1]);
+          res = { x, y, keys: Pn.locate(D, x, y, R.decode), q: "정확" };
+        } else {
+          if (online) {
+            $("pinReport").textContent = `주소 검색 중… ${n + 1} / ${list.length}`;
+            try {
+              const ll = await Pn.geocodeOnline(it.addr);
+              if (ll) { const [x, y] = Pn.toData(ll[0], ll[1]); const keys = Pn.locate(D, x, y, R.decode); if (keys) res = { x, y, keys, q: "인터넷 검색" }; }
+              await new Promise((r) => setTimeout(r, 1100)); // 이용 규칙: 1초에 한 번
+            } catch (e) {
+              online = false;
+              onlineBlocked = true;
+              toast("이 화면에서는 인터넷 주소 검색이 막혀 있어, 주소 속 동·시군구 이름으로 대략 찍습니다");
+            }
+          }
+          if (!res) {
+            const r = Pn.findRegion(D, it.addr, R.sidoShort, idx);
+            if (r) { const [l, i] = r.key.split(":"); const lp = D[l][i].lp; res = { x: lp[0], y: lp[1], keys: Pn.keysOf(D, r.key), q: r.quality }; }
+          }
+        }
+        items.push(Object.assign({ name: it.name, addr: it.addr, cat: it.cat }, res || { q: "못 찾음" }));
+      }
+      S.pins.items = items;
+      const exact = items.filter((x) => x.q === "정확" || x.q === "인터넷 검색").length, rough = items.filter((x) => x.x != null).length - exact, fail = items.length - exact - rough;
+      $("pinReport").textContent = `${items.length}곳 중 정확 ${exact} · 대략(지역 가운데) ${rough}` + (fail ? ` · 못 찾음 ${fail}` : "") + (rough ? ". 정확히 찍으려면 위도·경도를 넣어 주세요" : "");
+      render();
+    } finally {
+      btn.disabled = false;
+    }
+  }
   function bindExtras() {
     let t;
+    seg("dataSrc", () => S.data.source || "", (v) => { S.data.source = v; S.data.by = null; S.data.labels = null; if (v && S.legend.pos === "none") S.legend.pos = "br"; });
+    const q = $("statQuick");
+    for (const [id, name] of QUICK) {
+      const b = document.createElement("button");
+      b.className = "chip sm";
+      b.textContent = name;
+      b.dataset.id = id;
+      b.onclick = () => { S.data.source = "stats"; S.data.by = { t: "col", c: id }; S.data.labels = null; render(); };
+      q.appendChild(b);
+    }
+    seg("pinShape", () => S.pins.shape, (v) => (S.pins.shape = v));
+    $("pinColor").addEventListener("input", (e) => { S.pins.color = e.target.value.toUpperCase(); clearTimeout(t); t = setTimeout(render, 60); });
+    $("pinLabels").onchange = (e) => { S.pins.labels = e.target.checked; render(); };
+    $("pinByCat").onchange = (e) => { S.pins.byCat = e.target.checked; render(); };
+    $("pinOnline").onchange = (e) => { S.pins.online = e.target.checked; render(); };
+    $("pinSize").addEventListener("input", (e) => { S.pins.size = +e.target.value; clearTimeout(t); t = setTimeout(render, 60); });
+    $("pinText").addEventListener("input", (e) => { S.pins.text = e.target.value; });
+    $("pinApply").onclick = placePins;
+    $("pinClear").onclick = () => { S.pins.items = []; S.pins.text = ""; $("pinText").value = ""; render(); };
+    $("pinCount").onclick = () => { S.data.source = "pins"; S.data.by = null; S.data.labels = null; S.panel = "data"; if (S.legend.pos === "none") S.legend.pos = "br"; render(); };
+    $("pinSample").onclick = () => {
+      $("pinText").value = "이름\t주소\t분류\n대전 본사(예시)\t36.3504, 127.3845\t본사\n세종 지점(예시)\t세종특별자치시 보람동\t지점\n청주 지점(예시)\t충청북도 청주시 상당구 북문로\t지점\n공주 매장(예시)\t충남 공주시 웅진동\t매장\n논산 매장(예시)\t충남 논산시 취암동\t매장";
+      placePins();
+    };
+    $("pinFile").onclick = () => $("pinFileInput").click();
+    $("pinFileInput").onchange = async (e) => {
+      const f = e.target.files && e.target.files[0];
+      e.target.value = "";
+      if (!f) return;
+      const buf = await f.arrayBuffer();
+      let text = new TextDecoder("utf-8").decode(buf);
+      if (text.includes("\uFFFD")) { try { text = new TextDecoder("euc-kr").decode(buf); } catch (err) { /* 그대로 */ } }
+      $("pinText").value = text.replace(/,/g, "\t");
+      placePins();
+    };
     const later = (ms) => { clearTimeout(t); t = setTimeout(render, ms); };
     $("hTitle").addEventListener("input", (e) => { S.heading.title = e.target.value; later(200); });
     $("hSub").addEventListener("input", (e) => { S.heading.subtitle = e.target.value; later(200); });
@@ -777,6 +951,7 @@
     $("dataText").addEventListener("input", (e) => { S.data.text = e.target.value; S.data.file = ""; bigText = ""; });
     const newData = () => { S.data.by = null; S.data.labels = null; };
     $("dataApply").onclick = () => {
+      S.data.source = "table";
       if (!S.data.file) S.data.text = $("dataText").value;
       newData();
       if (S.legend.pos === "none") S.legend.pos = "br";
@@ -821,6 +996,7 @@
       let text = new TextDecoder("utf-8").decode(buf);
       if (text.includes("\uFFFD")) { try { text = new TextDecoder("euc-kr").decode(buf); } catch (err) { /* 그대로 */ } }
       const lines = text.split(/\r?\n/).filter((l) => l.trim()).length;
+      S.data.source = "table";
       if (text.length > 150000) {
         bigText = text; S.data.file = f.name; S.data.text = "";
         $("dataText").value = `[파일] ${f.name} — ${lines.toLocaleString("ko-KR")}줄 (지우기를 누르면 직접 붙여넣을 수 있습니다)`;
@@ -1142,7 +1318,7 @@
           x: r3(ox + x0 * k), y: r3(oy + y0 * k), w: Math.max(r3((x1 - x0) * k), 0.01), h: Math.max(r3((y1 - y0) * k), 0.01), points,
         }, opt));
       };
-      const ORDERG = ["context", "all", "neighbor", "shadow", "picked", "inner", "target", "sido", "legend"];
+      const ORDERG = ["context", "all", "neighbor", "shadow", "picked", "inner", "target", "sido", "pin", "legend"];
       const sh = scene.shadow;
       for (const g of ORDERG) {
         for (const p of scene.polys.filter((q) => q.group === g)) {
@@ -1171,7 +1347,7 @@
           objectName: "지명 " + t.text,
         });
       }
-      if (!S.heading.note) slide.addText(`출처: 통계청 SGIS 행정구역 경계(${ver()}), github.com/vuski/admdongkor`, {
+      if (!S.heading.note) slide.addText(`${sourceNote()} · github.com/vuski/admdongkor`, {
         x: SW - 6.2, y: SH - 0.32, w: 6, h: 0.22, fontFace: "맑은 고딕", fontSize: 7, color: "8A96A3", align: "right", margin: 0,
       });
       const blob = await pptx.write({ outputType: "blob" });
@@ -1239,7 +1415,8 @@
     $("credit").innerHTML =
       `경계: 통계청 SGIS 행정구역 경계(공공누리 제1유형), <a href="https://github.com/vuski/admdongkor" target="_blank" rel="noopener">vuski/admdongkor</a> 가공본 (CC BY 4.0). 기준 시점 ${ver()}` +
       (D.sido17 ? ". 이 시점에는 광주광역시와 전라남도가 전남광주통합특별시로 합쳐져 있습니다(2026.7.1). 17개 시도로 보려면 '지역' 탭의 \"광주·전남 나눠 보기\"를 켜세요." : ".") +
-      " 슬라이드에 쓸 때 출처를 함께 적어 주세요.";
+      (window.KRMAP.stats ? ` 기본 통계: 행정안전부 주민등록 인구통계 ${window.KRMAP.stats.meta.month}월말.` : "") +
+      " 지점 인터넷 주소 검색: © OpenStreetMap 기여자. 슬라이드에 쓸 때 출처를 함께 적어 주세요.";
     render();
     // 검색이 바로 되도록 읍면동은 뒤에서 미리 받아 둔다
     setTimeout(loadEmd, 800);

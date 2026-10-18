@@ -732,6 +732,59 @@
         for (const p of of("all").sort(byArea)) label(p.lv, p.id, p.fill, ...style(p), allLv === "sido" || !!L);
     }
 
+    // 7-b) 지점 핀: [{x, y(데이터 좌표), keys:{sido,si,sgg,emd}, label, color}]
+    const pins = o.pins || [];
+    if (pins.length) {
+      const ps = o.pinStyle || {};
+      const r = fs * 0.72 * (ps.size || 1);
+      const drawn = new Set(scene.polys.filter((p) => p.lv).map((p) => K(p.lv, p.id)));
+      const perTile = {};
+      const circle = (cx, cy, rr, n) => { const out = []; for (let i = 0; i < n; i++) { const a = (i / n) * Math.PI * 2; out.push([cx + rr * Math.cos(a), cy + rr * Math.sin(a)]); } return out; };
+      for (const pin of pins) {
+        const keys = Object.values(pin.keys || {});
+        const home = keys.find((k) => drawn.has(k));
+        let p;
+        if (L) {
+          const tk = keys.find((k) => L.cells[k]);
+          if (!tk) continue;
+          // 타일에서는 그 지역 칸 안에 나란히 놓는다
+          const n = (perTile[tk] = (perTile[tk] || 0) + 1) - 1;
+          const [kl, ki] = tk.split(":");
+          const d = offOf(kl, ki), c = L.cells[tk];
+          const ang = n * 2.4, rad = n ? tileHalf * 0.35 * Math.sqrt(n / 6) : 0;
+          p = tf([c[0] + d[0] + Math.cos(ang) * rad, c[1] + d[1] + Math.sin(ang) * rad - (n ? 0 : tileHalf * 0.25)]);
+        } else {
+          const [kl, ki] = home ? home.split(":") : [null, null];
+          const d = home ? offOf(kl, ki) : [0, 0];
+          p = tf([pin.x + d[0], pin.y + d[1]]);
+          // 같은 자리에 겹친 핀(주소로 대략 찾은 핀 등)은 둥글게 펼친다
+          const at = Math.round(p[0]) + "," + Math.round(p[1]);
+          const n = (perTile[at] = (perTile[at] || 0) + 1) - 1;
+          if (n) { const ang = n * 2.4, rad = r * 1.25 * Math.sqrt(n); p = [p[0] + Math.cos(ang) * rad, p[1] + Math.sin(ang) * rad]; }
+        }
+        if (p[0] < 0 || p[1] < 0 || p[0] > W || p[1] > H) continue;
+        let ring;
+        if (ps.shape === "dot") ring = circle(p[0], p[1], r * 0.75, 24);
+        else if (ps.shape === "square") ring = [[p[0] - r * 0.7, p[1] - r * 0.7], [p[0] + r * 0.7, p[1] - r * 0.7], [p[0] + r * 0.7, p[1] + r * 0.7], [p[0] - r * 0.7, p[1] + r * 0.7]];
+        else {
+          // 물방울 모양 핀: 끝이 정확한 자리를 가리킨다
+          // 원 중심은 끝점 위 1.9r, 끝점에서 그은 두 접선 사이로 원의 위쪽을 돈다 (화면 좌표: y 가 아래로 증가)
+          const cy = p[1] - r * 1.9, beta = Math.acos(1 / 1.9);
+          ring = [[p[0], p[1]]];
+          for (let i = 0; i <= 24; i++) {
+            const a = Math.PI / 2 + beta + ((2 * Math.PI - 2 * beta) * i) / 24;
+            ring.push([p[0] + r * Math.cos(a), cy + r * Math.sin(a)]);
+          }
+        }
+        scene.polys.push({ name: "지점 " + (pin.label || ""), rings: [[ring]], fill: pin.color || ps.color || "#E5484D", stroke: "#FFFFFF", width: base * 1.6, group: "pin" });
+        if (ps.shape !== "dot" && ps.shape !== "square") scene.polys.push({ name: "지점 점", rings: [[circle(p[0], p[1] - r * 1.9, r * 0.38, 16)]], fill: "#FFFFFF", stroke: null, width: 0, group: "pin" });
+        if (ps.labels !== false && pin.label) {
+          const ty = ps.shape === "dot" || ps.shape === "square" ? p[1] : p[1] - r * 1.9;
+          scene.texts.push({ x: p[0] + r * 1.15, y: ty, text: pin.label, size: fs * 0.62 * (ps.labelScale || 1), weight: 700, fill: C.text, halo: true, anchor: "start", role: "pin" });
+        }
+      }
+    }
+
     // 8) 제목 · 부제 · 출처
     const margin = fs * 0.9;
     const muted = mix(C.text, C.bg || "#FFFFFF", 0.4);
@@ -853,6 +906,14 @@
     if (names.length) {
       out.push(`<g id="지명" text-anchor="middle"${opt.interactive ? ' pointer-events="none"' : ""}>`);
       for (const t of names) out.push(textEl(t));
+      out.push(`</g>`);
+    }
+    const pinPolys = scene.polys.filter((p) => p.group === "pin");
+    const pinTexts = scene.texts.filter((t) => t.role === "pin");
+    if (pinPolys.length) {
+      out.push(`<g id="지점"${opt.interactive ? ' pointer-events="none"' : ""}>`);
+      for (const p of pinPolys) out.push(`<path d="${polyD(p.rings)}" fill="${p.fill}"${p.stroke ? ` stroke="${p.stroke}" stroke-width="${num(p.width)}" stroke-linejoin="round"` : ""}/>`);
+      for (const t of pinTexts) out.push(textEl(t));
       out.push(`</g>`);
     }
     const legend = scene.polys.filter((p) => p.group === "legend");

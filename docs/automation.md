@@ -8,7 +8,7 @@ Claude Code · Codex 같은 코딩 에이전트는 MCP 서버를 쓰거나 명�
 ```bash
 git clone <이 저장소> && cd <저장소>
 npm install          # Node 18 이상
-npm test             # 11개 확인 (인터넷 필요 없음)
+npm test             # 13개 확인 (인터넷 필요 없음)
 ```
 
 PNG 의 한글은 `npm install` 로 함께 받는 프리텐다드(Pretendard, SIL OFL)로 그립니다. 다른 글꼴은 `--font 글꼴.ttf`.
@@ -51,6 +51,43 @@ args = ["/절대/경로/tools/mcp-server.mjs"]
 | `map_spec_reference` | 이 문서 |
 
 `render_map` 의 파일은 `out_dir`(기본: 서버를 띄운 폴더의 `out/`)에 저장되고, 결과에 절대 경로가 옵니다.
+
+## 통계 MCP 와 함께 쓰기 (KOSIS 등)
+
+통계청 KOSIS 를 읽는 MCP 서버(예: [Korean Stats MCP · nagyeop/kosis_mcp](https://github.com/nagyeop/kosis_mcp), MIT)를 이 서버와 함께 붙이면,
+에이전트가 숫자를 찾아 바로 지도로 만듭니다. 이 도구는 숫자를 가져오지 않고, 받은 표를 지도에 맞추는 일만 합니다.
+
+1. 통계 MCP 로 지역별 값을 받습니다 — 예: "서울 자치구별 1인 가구 비율", "시도별 합계출산율".
+2. 결과를 `render_map` 의 `data.rows` 로 넘기고, 출처(표 ID · 기준 시점)를 `source` 에 적습니다.
+3. 결과의 `unmatched` 가 비었는지 확인합니다. 이름이 다르면(예: "전라남도" ↔ 2026 통합 이후 "전남광주통합특별시") `sido17: true` 로 나눠 보거나 이름을 고쳐 다시 부릅니다.
+
+```json
+{
+  "regions": ["서울특별시"], "unit": "시군구",
+  "data": {"rows": [{"지역": "종로구", "1인가구비율": 46.1}, {"지역": "중구", "1인가구비율": 45.0}], "by": "1인가구비율"},
+  "title": "서울 자치구별 1인 가구 비율", "source": "통계청 KOSIS, 인구총조사(DT_xxxx, 2025)",
+  "baseColor": "#7A5AF0", "look": "유리"
+}
+```
+
+Claude Code 에 함께 붙이기 (통계 서버는 그 서버 안내대로 설치 · 키 발급):
+
+```bash
+claude mcp add korea-map --scope user -- node /절대/경로/tools/mcp-server.mjs
+claude mcp add kosis --scope user -e KOSIS_API_KEY=발급받은키 -- /절대/경로/kosis-mcp/.venv/bin/kosis-mcp
+```
+
+Codex(`~/.codex/config.toml`):
+
+```toml
+[mcp_servers.korea-map]
+command = "node"
+args = ["/절대/경로/tools/mcp-server.mjs"]
+
+[mcp_servers.kosis]
+command = "/절대/경로/kosis-mcp/.venv/bin/kosis-mcp"
+env = { KOSIS_API_KEY = "발급받은키" }
+```
 
 ## 명령줄
 
@@ -98,6 +135,8 @@ JSON 하나로 지도 한 장을 정합니다. 칸은 전부 고를 수 있고, 
 | `explode` | 벌려 놓는 정도 0~1 |
 | `tileGap` | 타일 사이 틈 0~0.4 |
 | `theme` | `"코발트"` · `"코랄"` · `"에메랄드"` · `"라벤더"` · `"먹"` · `"미드나잇"` |
+| `baseColor` | `"#13A07F"` 처럼 색 하나 → 대상 · 주변 · 바탕 · 글자색과 데이터 색 단계까지 그 색에 맞춰 만듭니다 (OKLCH 로 밝기를 고르게). `darkBase: true` 면 어두운 바탕 |
+| `look` | 디자인 방식: `"기본"` · `"유리"`(글라스모피즘) · `"입체"`(종이 오린 듯 두께) · `"소프트"`(뉴모피즘) · `"네온"`. 대상 색의 색상으로 바탕 그라데이션 · 빛을 만듭니다. 유리는 데이터가 있으면 밝은 유리로 바뀝니다 |
 | `colors` | `{"target": "#...", "neighbor": "#...", ...}` 색 하나하나 바꾸기 |
 | `distinct` | `true` 면 이웃끼리 다른 색 |
 | `shadow` · `sidoLines` · `halo` · `subLabel` · `background` | 켜고 끄기 |
@@ -121,7 +160,7 @@ JSON 하나로 지도 한 장을 정합니다. 칸은 전부 고를 수 있고, 
 | 칸 | 값 |
 |---|---|
 | `title` · `subtitle` | 지도 위 제목 · 부제 |
-| `source` | `true` 면 아래에 출처 문구 |
+| `source` | `true` 면 아래에 출처 문구. 글로 주면 데이터 출처로 앞에 씁니다: `"통계청 KOSIS, 주민등록인구현황(DT_1B04005N, 2026.09.)"` → "출처: 통계청 KOSIS …, 경계: 통계청 SGIS(2026.10.01)" |
 | `legend` | `"tl"` · `"tr"` · `"bl"` · `"br"` · `"none"` (색칠하면 기본 `br`) |
 | `legendTitle` | 범례 제목 |
 
@@ -155,12 +194,13 @@ JSON 하나로 지도 한 장을 정합니다. 칸은 전부 고를 수 있고, 
 "data": {"file": "인구.csv", "ratio": ["청년", "총인구"], "labels": ["청년"]}
 ```
 
+- `rows`: 통계 MCP 가 준 결과를 그대로 `[{"지역": "광진구", "청년비율": 31.2}, …]` 또는 `[["지역", "값"], ["광진구", 31.2]]`. 지역 열(지역 · region · name · 시군구 …)을 맨 앞으로 옮겨 표로 만듭니다
 - `by`: 이 열의 값으로 단계 색 (숫자) 또는 분류 색 (글자)
 - `ratio`: `[A, B]` → A ÷ B × 100
 - `poll`: `true`(숫자 열 전부) 또는 `["후보1", "후보2"]` → 가장 높은 열의 색, 차이가 적을수록 옅게
 - 표가 그리는 단위보다 잘게 나뉘어 있으면(예: 읍면동 표로 시군구 지도) 더해서 씁니다.
 - 행정안전부 연령별 인구 파일(1세 단위)도 그대로 넣으면 연령 열을 알아봅니다.
-- `palette`: `blue` · `green` · `orange` · `red` · `purple` · `viridis` · `diverge` (테마를 정하면 그에 맞춰)
+- `palette`: `blue` · `green` · `orange` · `red` · `purple` · `viridis` · `diverge`, 또는 지금 색 조합에서 만드는 `theme`(한 색 단계) · `themeDiverge`(대상 색 ↔ 짝 색). `baseColor` 를 주면 기본이 `theme`. 어두운 바탕이면 단계가 뒤집혀 큰 값이 밝게 나옵니다
 - `steps`: 단계 수 (기본 5), `method`: `"quantile"` · `"equal"`
 - `showValues: false`: 이름 아래 값 숨기기
 

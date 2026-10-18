@@ -16,17 +16,19 @@
     const pptx = new PptxGenJS();
     pptx.layout = "LAYOUT_WIDE";
     pptx.title = opt.title || list[0].title;
-    list.forEach((scene, i) => addSlide(pptx, scene, Array.isArray(opt.footnote) ? opt.footnote[i] : opt.footnote));
+    // backgrounds[i]: 그라데이션 바탕 그림 ("image/png;base64,…", 슬라이드 비율로 그린 것)
+    list.forEach((scene, i) => addSlide(pptx, scene, Array.isArray(opt.footnote) ? opt.footnote[i] : opt.footnote, opt.backgrounds && opt.backgrounds[i]));
     return pptx;
   }
-  function addSlide(pptx, scene, footnote) {
+  function addSlide(pptx, scene, footnote, bgImage) {
     const slide = pptx.addSlide();
     const SW = 13.333, SH = 7.5, M = 0.35;
     const k = Math.min((SW - 2 * M) / scene.width, (SH - 2 * M - 0.2) / scene.height); // px → inch
     const ox = (SW - scene.width * k) / 2, oy = (SH - 0.2 - scene.height * k) / 2;
     const hex = (c) => c.replace("#", "").toUpperCase();
     const r3 = (v) => Math.round(v * 10000) / 10000;
-    if (scene.bg) slide.background = { color: hex(scene.bg) };
+    if (bgImage) slide.background = { data: bgImage };
+    else if (scene.bg) slide.background = { color: hex(scene.bg) };
 
     const shape = (rings, closed, o) => {
       let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
@@ -41,8 +43,19 @@
         x: r3(ox + x0 * k), y: r3(oy + y0 * k), w: Math.max(r3((x1 - x0) * k), 0.01), h: Math.max(r3((y1 - y0) * k), 0.01), points,
       }, o));
     };
-    const ORDERG = ["context", "all", "neighbor", "shadow", "picked", "inner", "target", "sido", "bubble", "leader", "inset", "pin", "legend"];
+    const ORDERG = ["context", "extrude", "all", "neighbor", "shadow", "picked", "inner", "target", "sido", "bubble", "leader", "inset", "pin", "legend"];
     const sh = scene.shadow;
+    const lineOf = (stroke, width, op) => {
+      const l = { color: hex(stroke), width: Math.max(width * k * 72, 0.25) };
+      if (op != null) l.transparency = Math.round((1 - op) * 100);
+      return l;
+    };
+    // 네온은 같은 색 그림자를 0 거리에 번지게(빛), 소프트는 오른쪽 아래 그늘로
+    const effect = (p) => {
+      if (p.glow && scene.glow) return { type: "outer", angle: 0, offset: 0, blur: Math.max(Math.round(scene.glow.blur * k * 72 * 2.5), 2), color: hex(scene.glow.color), opacity: 0.85 };
+      if (p.soft && scene.soft) return { type: "outer", angle: 45, offset: Math.max(Math.round(scene.soft.d * k * 72 * 10) / 10, 1), blur: Math.max(Math.round(scene.soft.blur * k * 72 * 2), 2), color: hex(scene.soft.dark), opacity: 0.6 };
+      return undefined;
+    };
     for (const g of ORDERG) {
       for (const p of scene.polys.filter((q) => q.group === g)) {
         const fill = { color: hex(p.fill) };
@@ -52,22 +65,22 @@
           const c = p.circle;
           slide.addShape(pptx.ShapeType.ellipse, {
             x: r3(ox + (c.cx - c.r) * k), y: r3(oy + (c.cy - c.r) * k), w: r3(2 * c.r * k), h: r3(2 * c.r * k), fill,
-            line: p.stroke ? { color: hex(p.stroke), width: Math.max(p.width * k * 72, 0.25) } : { type: "none" }, objectName: p.name,
+            line: p.stroke ? lineOf(p.stroke, p.width, p.strokeOpacity) : { type: "none" }, objectName: p.name, shadow: effect(p),
           });
           continue;
         }
         shape([].concat(...p.rings), true, {
           fill,
-          line: p.stroke ? { color: hex(p.stroke), width: Math.max(p.width * k * 72, 0.25) } : { type: "none" },
-          objectName: g === "shadow" ? "그림자 " + p.name : p.name,
+          line: p.stroke ? lineOf(p.stroke, p.width, p.strokeOpacity) : { type: "none" },
+          objectName: g === "shadow" ? "그림자 " + p.name : g === "extrude" ? "입체 " + p.name : p.name,
           shadow: g === "shadow" && sh
             ? { type: "outer", angle: 90, blur: Math.round(sh.blur * k * 72 * 2), offset: Math.round(sh.dy * k * 72 * 10) / 10, color: hex(sh.color), opacity: sh.opacity }
-            : undefined,
+            : effect(p),
         });
       }
       for (const l of scene.lines.filter((q) => q.group === g)) {
         if (!l.lines.length) continue;
-        shape(l.lines, false, { line: { color: hex(l.stroke), width: Math.max(l.width * k * 72, 0.25) }, objectName: g === "sido" ? "시도 경계" : g === "leader" ? "지시선" : g === "inset" ? "확대 범위" : "경계선" });
+        shape(l.lines, false, { line: lineOf(l.stroke, l.width, l.strokeOpacity), shadow: effect(l), objectName: g === "sido" ? "시도 경계" : g === "leader" ? "지시선" : g === "inset" ? "확대 범위" : "경계선" });
       }
     }
     for (const t of scene.texts) {

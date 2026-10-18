@@ -3,9 +3,9 @@
  * state 는 웹 도구의 "작업 저장" 파일에 들어가는 것과 같은 모양이다.
  */
 (function (root, factory) {
-  if (typeof module === "object" && module.exports) module.exports = factory(require("./render.js"), require("./datafill.js"));
-  else root.KRMapState = factory(root.KRMapRender, root.KRMapData);
-})(typeof self !== "undefined" ? self : this, function (R, X) {
+  if (typeof module === "object" && module.exports) module.exports = factory(require("./render.js"), require("./datafill.js"), require("./colors.js"));
+  else root.KRMapState = factory(root.KRMapRender, root.KRMapData, root.KRMapColors);
+})(typeof self !== "undefined" ? self : this, function (R, X, Cl) {
   const ORDER = R.LEVEL_ORDER;
 
   // 색 테마: 대상 · 주변 · 나머지 · 경계선 · 시도 경계 · 글자 · 바탕
@@ -38,7 +38,7 @@
       layout: "real", // real | explode | square | hex
       explodeAmt: 0.25,
       tileGap: 0.1,
-      heading: { title: "", subtitle: "", note: false },
+      heading: { title: "", subtitle: "", note: false, noteText: "" },
       data: { source: "", text: "", file: "", palette: "blue", steps: 5, method: "quantile", showValues: true, by: null, labels: null, symbol: "fill", bubbleScale: 1 },
       pins: { text: "", items: [], shape: "pin", color: "#E5484D", size: 1, labels: true, byCat: true, online: true },
       groups: [], // [{id, name, color}] — 지역의 styles[key].group 으로 연결
@@ -60,6 +60,7 @@
       shadow: true,
       fillBg: false,
       aspect: null,
+      look: "flat", // 디자인: flat(기본) | glass(유리) | paper(입체) | soft(소프트) | neon(네온)
     };
   }
 
@@ -143,13 +144,21 @@
     if (ctx.dsCache.key !== key) ctx.dsCache = { key, ds: make(), ver: ctx.dsCache.ver + 1 };
     return ctx.dsCache.ds;
   }
+  /** 데이터 색: "theme" 은 지금 색 조합의 대상 색으로 만든 단계, "themeDiverge" 는 대상 색 ↔ 반대 색 */
+  function paletteOf(S) {
+    const ls = lookStyle(S);
+    const dark = ls ? !!ls.dark : S.fillBg && Cl.isDark(S.colors.bg);
+    if (S.data.palette === "theme") return Cl.rampStops(S.colors.target, { dark });
+    if (S.data.palette === "themeDiverge") return { stops: Cl.divergingStops(S.colors.target, { dark }), diverge: true };
+    return S.data.palette;
+  }
   function dataResult(D, S, ctx) {
     const ds = dataset(D, S, ctx);
     if (!ds) return null;
     const lv = drawnLevels(D, S);
     if (lv.includes("emd") && !ctx.emdReady) return null;
     const only = visibleKeys(D, S);
-    const opt = { by: S.data.by, labels: S.data.labels, palette: S.data.palette, steps: S.data.steps, method: S.data.method, only };
+    const opt = { by: S.data.by, labels: S.data.labels, palette: paletteOf(S), steps: S.data.steps, method: S.data.method, only };
     const sig = JSON.stringify([Object.assign({}, opt, { only: [...only].sort() }), lv, S.sido17, ctx.dsCache.ver, ctx.emdReady]);
     if (ctx.dataCache.sig !== sig) ctx.dataCache = { sig, res: X.build(D, lv, null, opt, R.sidoShort, ds) };
     return ctx.dataCache.res;
@@ -162,7 +171,9 @@
   }
   const version = (D) => { const m = D.meta.version; return `${m.slice(0, 4)}.${m.slice(4, 6)}.${m.slice(6)}`; };
   function sourceNote(D, S, ctx) {
-    const parts = [`경계: 통계청 SGIS(${version(D)})`];
+    const parts = [];
+    if (S.heading.noteText) parts.push(S.heading.noteText.replace(/^출처\s*[:：]\s*/, ""));
+    parts.push(`경계: 통계청 SGIS(${version(D)})`);
     if (S.data.source === "stats" && ctx.stats) parts.push(`인구: 행정안전부 주민등록 인구통계(${ctx.stats.meta.month})`);
     if (S.pins.items.some((it) => it.q === "인터넷 검색")) parts.push("지점 위치: © OpenStreetMap");
     return "출처: " + parts.join(", ");
@@ -232,6 +243,68 @@
       pinStyle: { shape: S.pins.shape, size: S.pins.size, labels: S.pins.labels, color: S.pins.color },
     };
   }
+  // 디자인 방식: 이름 → 렌더러 look. 한글 이름도 받는다
+  const LOOKS = [
+    { id: "flat", name: "기본" }, { id: "glass", name: "유리" }, { id: "paper", name: "입체" },
+    { id: "soft", name: "소프트" }, { id: "neon", name: "네온" },
+  ];
+  const LOOK_ALIAS = { 기본: "flat", 평면: "flat", 유리: "glass", 글라스: "glass", 글래스: "glass", 글라스모피즘: "glass", 입체: "paper", 종이: "paper", 페이퍼: "paper", 소프트: "soft", 뉴모피즘: "soft", 네온: "neon" };
+  const lookId = (v) => (LOOKS.some((l) => l.id === v) ? v : LOOK_ALIAS[String(v || "").replace(/\s/g, "")] || null);
+  /**
+   * 디자인 방식에 맞춘 색과 배경. 대상 색의 색상(hue)을 그대로 살린다.
+   * 반환: {colors(덮어쓸 색), backdrop(배경 그라데이션·빛 번짐), dark}
+   */
+  function lookStyle(S) {
+    const look = S.look || "flat";
+    if (look === "flat") return null;
+    const [, C0, H] = Cl.lch(S.colors.target);
+    const C = Math.max(C0, 0.1), P = Cl.partnerHue(H), k = Cl.oklch;
+    if (look === "glass" && S.data.source) {
+      // 데이터가 있으면 밝은 유리: 옅은 그라데이션 위라야 데이터 색이 바탕에 묻히지 않는다
+      const mid = k(0.9, 0.035, H);
+      return {
+        dark: false,
+        colors: { target: "#FFFFFF", neighbor: "#FFFFFF", context: "#FFFFFF", line: "#FFFFFF", sidoLine: "#FFFFFF", text: k(0.26, 0.03, H), bg: mid, shadow: k(0.45, 0.05, H) },
+        backdrop: {
+          kind: "linear", angle: 135, mid,
+          stops: [k(0.93, 0.04, H - 18), k(0.87, 0.05, H + 12), k(0.9, 0.045, P)],
+          blobs: [{ x: 0.16, y: 0.22, r: 0.34, color: k(0.95, 0.05, H) }, { x: 0.86, y: 0.82, r: 0.4, color: k(0.9, 0.06, P) }, { x: 0.62, y: 0.08, r: 0.22, color: k(0.97, 0.02, H + 20) }],
+        },
+      };
+    }
+    if (look === "glass") {
+      const mid = k(0.52, C * 0.8, H);
+      return {
+        dark: true,
+        colors: { target: "#FFFFFF", neighbor: "#FFFFFF", context: "#FFFFFF", line: "#FFFFFF", sidoLine: "#FFFFFF", text: "#FFFFFF", bg: mid, shadow: k(0.25, 0.08, H) },
+        backdrop: {
+          kind: "linear", angle: 135, mid,
+          // 기준 색상 → 짝 색상(따뜻한 색 ↔ 파랑 계열)으로만 흘러가게: 엉뚱한 탁한 색이 끼지 않는다
+          stops: [k(0.62, C * 0.8, H - 18), k(0.5, C * 0.9, H + 12), k(0.58, C * 0.7, P)],
+          blobs: [{ x: 0.16, y: 0.22, r: 0.34, color: k(0.8, 0.12, H) }, { x: 0.86, y: 0.82, r: 0.4, color: k(0.74, 0.13, P) }, { x: 0.62, y: 0.08, r: 0.22, color: k(0.88, 0.05, H + 20) }],
+        },
+      };
+    }
+    if (look === "neon") {
+      const mid = k(0.15, 0.035, H);
+      return {
+        dark: true,
+        colors: { target: k(0.3, 0.09, H), neighbor: k(0.23, 0.05, H), context: k(0.19, 0.03, H), line: k(0.8, 0.17, H), sidoLine: k(0.7, 0.14, P), text: k(0.96, 0.02, H), bg: mid, glow: k(0.82, 0.18, H) },
+        backdrop: { kind: "radial", mid, stops: [k(0.26, 0.06, H), mid] },
+      };
+    }
+    if (look === "paper") {
+      const t = Cl.themeFrom(S.colors.target);
+      return { colors: { target: t.target, neighbor: t.neighbor, context: k(0.95, 0.01, H), line: "#FFFFFF", text: t.text, bg: k(0.975, 0.006, H) }, backdrop: { kind: "solid", mid: k(0.975, 0.006, H), stops: [k(0.975, 0.006, H)] } };
+    }
+    // soft (뉴모피즘): 바탕과 같은 색의 지역이 살짝 솟아오른 듯
+    const base = k(0.93, 0.016, H);
+    return {
+      colors: { target: k(0.68, C * 0.75, H), neighbor: base, context: base, line: base, sidoLine: k(0.84, 0.02, H), text: k(0.34, 0.03, H), bg: base, softDark: k(0.72, 0.03, H) },
+      backdrop: { kind: "solid", mid: base, stops: [base] },
+    };
+  }
+
   /** state → render.js buildScene 옵션 */
   function sceneOptions(D, S, ctx, width) {
     const o = {
@@ -256,6 +329,12 @@
       width: width || 1600,
       colors: Object.assign({}, S.colors, { bg: S.fillBg ? S.colors.bg : null }),
     };
+    const ls = lookStyle(S);
+    if (ls) {
+      o.look = S.look;
+      o.backdrop = ls.backdrop;
+      Object.assign(o.colors, ls.colors);
+    }
     Object.assign(o, extras(D, S, ctx));
     if (S.mode === "pick") {
       o.pick = { lv: eff(S, S.pick.lv), ids: S.pick.ids, fit: S.pick.fit, hideOthers: S.pick.hideOthers };
@@ -270,7 +349,7 @@
   }
 
   return {
-    PRESETS, PIN_COLORS, defaultState, mergeState, serialize, createContext,
+    PRESETS, PIN_COLORS, LOOKS, lookId, lookStyle, paletteOf, defaultState, mergeState, serialize, createContext,
     eff, innerFor, needsEmd, drawnLevels, visibleKeys, dataText, dataset, dataResult, bubbleOn, regionTitle, pinCats, sourceNote, extras, sceneOptions, version,
   };
 });

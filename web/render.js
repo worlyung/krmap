@@ -398,7 +398,7 @@
     const C = Object.assign({}, DEFAULT_COLORS, o.colors || {});
     const P = o.pick;
     const T = !P && o.target && D[o.target.lv][o.target.id];
-    const scene = { polys: [], lines: [], texts: [], width: 0, height: 0, bg: C.bg, title: "" };
+    const scene = { polys: [], lines: [], texts: [], width: 0, height: 0, bg: o.backdrop ? o.backdrop.mid : C.bg, backdrop: o.backdrop || null, look: o.look || "flat", title: "" };
     const styles = o.styles || {};
     const fills = o.fills || {};
     const values = o.values || {};
@@ -746,6 +746,40 @@
       if (lines.length) scene.lines.push({ lines, stroke: C.sidoLine, width: base * (L ? 3 : 1.7), group: "sido" });
     }
 
+    // 6-a) 디자인 방식: 유리(반투명 흰 면) · 네온(빛나는 선) · 입체(아래로 두께) · 소프트(빛과 그늘)
+    const look = o.look || "flat";
+    const focusG = /^(target|picked|inner)$/;
+    const regionG = /^(all|neighbor|target|picked|inner)$/;
+    const opacityOf = {};
+    if (look === "glass") {
+      for (const q of scene.polys) {
+        if (q.group === "shadow") { q.fillOpacity = 0.18; continue; } // 띄우기 그림자 판도 비치게
+        if (!/^(context|all|neighbor|target|picked|inner)$/.test(q.group)) continue;
+        const white = String(q.fill).toUpperCase() === "#FFFFFF";
+        q.fillOpacity = white ? (q.group === "context" ? 0.07 : focusG.test(q.group) ? 0.42 : 0.17) : 0.8;
+        if (q.stroke) { q.stroke = "#FFFFFF"; q.strokeOpacity = 0.6; }
+        if (q.lv) opacityOf[K(q.lv, q.id)] = q.fillOpacity;
+      }
+      for (const l of scene.lines) if (/^(context|sido|target)$/.test(l.group)) { l.stroke = "#FFFFFF"; l.strokeOpacity = l.group === "context" ? 0.22 : 0.65; }
+    } else if (look === "neon") {
+      for (const q of scene.polys) if (regionG.test(q.group)) { q.glow = true; if (focusG.test(q.group) && q.stroke) { q.stroke = C.glow || C.line; q.width *= 1.4; } }
+      for (const l of scene.lines) {
+        if (l.group === "sido" || l.group === "target") l.glow = true;
+        else if (l.group === "context") l.stroke = mix(C.line, C.bg || "#000000", 0.65); // 바깥 지역 선은 어둡게
+      }
+      scene.glow = { color: C.glow || C.line, blur: base * 3.5 };
+    } else if (look === "paper") {
+      const regs = scene.polys.filter((q) => regionG.test(q.group));
+      const depth = regs.length > 400 ? [1] : [2, 1];
+      const layers = [];
+      for (const q of regs) for (const k of depth) layers.push({ name: "입체 " + q.name, rings: q.rings.map((poly) => poly.map((r) => r.map(([x, y]) => [x, y + base * 4.5 * k]))), fill: mix(q.fill, C.text, 0.14 + 0.1 * k), stroke: null, width: 0, group: "extrude" });
+      scene.polys.push(...layers);
+    } else if (look === "soft") {
+      for (const q of scene.polys) if (regionG.test(q.group)) q.soft = true;
+      scene.soft = { light: "#FFFFFF", dark: C.softDark || mix(C.bg || "#E8ECF0", "#000000", 0.18), d: base * 4, blur: base * 5 };
+    }
+    const ground = (o.backdrop && o.backdrop.mid) || C.bg || "#FFFFFF";
+
     // 6-b) 원 크기(버블): 큰 원부터 깔고 작은 원을 위에
     const bubbleAt = {};
     const ringOf = (c, r, n) => { const out = []; for (let i = 0; i < n; i++) { const a = (i / n) * Math.PI * 2; out.push([c[0] + r * Math.cos(a), c[1] + r * Math.sin(a)]); } return out; };
@@ -809,6 +843,7 @@
     const sideKeys = sideItems ? new Set(sideItems.map((it) => K(it.lv, it.id))) : null;
     const label = (lv, id, fill, size, weight, force, group) => {
       if (sideKeys && sideKeys.has(K(lv, id))) return; // 양옆 줄에 따로 쓴다
+      if (opacityOf[K(lv, id)] != null) fill = mix(ground, fill, opacityOf[K(lv, id)]); // 반투명 면은 바탕과 섞인 색으로 본다
       if (insetKeys.has(K(lv, id))) return; // 확대 상자 안에 따로 쓴다
       const f = D[lv][id];
       const st = styles[K(lv, id)] || {};
@@ -1145,8 +1180,10 @@
         return [pts];
       };
       const dark = C.bg && luminance(C.bg) < 0.2;
-      const panel = dark ? mix(C.bg, "#FFFFFF", 0.08) : "#FFFFFF";
-      scene.polys.push({ name: "범례", rings: [rect(bx, by, bw, bh, ls * 0.6)], fill: panel, stroke: mix(panel, C.text, 0.1), width: base * 1.2, group: "legend" });
+      const glassy = look === "glass";
+      const panel = glassy ? mix(ground, "#FFFFFF", 0.2) : dark ? mix(C.bg, "#FFFFFF", 0.08) : "#FFFFFF";
+      scene.polys.push(Object.assign({ name: "범례", rings: [rect(bx, by, bw, bh, ls * 0.6)], fill: glassy ? "#FFFFFF" : look === "soft" ? C.bg : panel, stroke: glassy ? "#FFFFFF" : mix(panel, C.text, 0.1), width: base * 1.2, group: "legend" },
+        glassy ? { fillOpacity: 0.18, strokeOpacity: 0.5 } : look === "soft" ? { soft: true, stroke: null } : {}));
       let y = by + pad;
       if (lg.title) {
         scene.texts.push({ x: bx + pad, y: y + ls * 0.55, text: lg.title, size: ls * 1.05, weight: 700, fill: C.text, anchor: "start", role: "legend", track: -0.02 });
@@ -1179,8 +1216,9 @@
     // 10) 확대 상자: 오른쪽 줄에 상자를 쌓고, 본 지도에는 그 범위를 가는 테두리로 표시
     if (insetDefs.length) {
       const paper = C.bg || "#FFFFFF";
-      const panel = C.bg && luminance(C.bg) < 0.2 ? mix(C.bg, "#FFFFFF", 0.06) : "#FFFFFF";
-      const frameInk = mix(C.text, paper, 0.55);
+      const glassy = look === "glass";
+      const panel = glassy ? "#FFFFFF" : C.bg && luminance(C.bg) < 0.2 ? mix(C.bg, "#FFFFFF", 0.06) : "#FFFFFF";
+      const frameInk = glassy ? "#FFFFFF" : mix(C.text, paper, 0.55);
       const rrect = (x, y, rw, rh, rr) => {
         const pts = [];
         const corner = (cx, cy, a0) => { for (let i = 0; i <= 4; i++) { const a = a0 + (Math.PI / 2) * (i / 4); pts.push([cx + rr * Math.cos(a), cy + rr * Math.sin(a)]); } };
@@ -1211,7 +1249,7 @@
         const h = rowH[ri] * kH;
         r.forEach((bx, ci) => {
           const x = colX0 + ci * (bwBox + gapB);
-          scene.polys.push({ name: "확대 " + bx.d.name, rings: [rrect(x, y, bwBox, h, fs * 0.25)], fill: panel, stroke: frameInk, width: base * 1.1, group: "inset" });
+          scene.polys.push(Object.assign({ name: "확대 " + bx.d.name, rings: [rrect(x, y, bwBox, h, fs * 0.25)], fill: panel, stroke: frameInk, width: base * 1.1, group: "inset" }, glassy ? { fillOpacity: 0.16, strokeOpacity: 0.5 } : {}));
           scene.texts.push({ x: x + pad, y: y + pad + titleH * 0.42, text: bx.d.name, size: fs * 0.5, weight: 700, fill: C.text, anchor: "start", track: -0.02 });
           const ax = x + pad, ay = y + pad + titleH, aw = bwBox - pad * 2, ah = h - pad * 2 - titleH;
           const sb = Math.min(aw / bx.wd, ah / bx.hd);
@@ -1219,7 +1257,8 @@
           const T2 = (pt) => [pt[0] * sb + ox, pt[1] * sb + oy];
           for (const id of bx.d.ids) {
             const f = D[allLv][id];
-            scene.polys.push({ lv: allLv, id, name: f.full, rings: decode(f).map((poly) => poly.map((ring) => ring.map(T2))), fill: fillOf[K(allLv, id)] || neutral, stroke: C.line, width: base * 0.9, group: "inset" });
+            const fo = opacityOf[K(allLv, id)];
+            scene.polys.push(Object.assign({ lv: allLv, id, name: f.full, rings: decode(f).map((poly) => poly.map((ring) => ring.map(T2))), fill: fillOf[K(allLv, id)] || neutral, stroke: C.line, width: base * 0.9, group: "inset" }, fo != null ? { fillOpacity: fo, strokeOpacity: 0.6 } : {}));
           }
           // 원 크기 지도면 상자 안에도 같은 크기 기준으로 원을 그린다 (범례와 같은 눈금)
           if (bub) {
@@ -1241,7 +1280,8 @@
               const box = [q[0] - tw / 2, q[1] - th / 2, q[0] + tw / 2, q[1] + th / 2];
               if (overlaps(box)) continue;
               placed.push(box);
-              const color = textOn(fillOf[key] || neutral, C.text);
+              const seen = opacityOf[key] != null ? mix(ground, fillOf[key] || neutral, opacityOf[key]) : fillOf[key] || neutral;
+              const color = textOn(seen, C.text);
               scene.texts.push({ lv: allLv, id, x: q[0], y: q[1] - (val ? ls * 0.45 : 0), text: name, size: ls, weight: 600, fill: color, track: -0.02 });
               if (val) scene.texts.push({ lv: allLv, id, x: q[0], y: q[1] + ls * 0.62, text: String(val), size: ls * 0.85, weight: 500, fill: color, sub: true });
             }
@@ -1277,9 +1317,24 @@
   }
 
   const GROUPS = [
-    ["context", "배경"], ["all", "지역"], ["neighbor", "주변"], ["shadow", "그림자"], ["picked", "선택"], ["inner", "대상_내부"], ["target", "대상"], ["sido", "시도경계"], ["bubble", "원"], ["leader", "지시선"], ["inset", "확대"],
+    ["context", "배경"], ["extrude", "입체"], ["all", "지역"], ["neighbor", "주변"], ["shadow", "그림자"], ["picked", "선택"], ["inner", "대상_내부"], ["target", "대상"], ["sido", "시도경계"], ["bubble", "원"], ["leader", "지시선"], ["inset", "확대"],
   ];
 
+  /** 바탕(단색 · 그라데이션 · 번진 빛) 마크업. defs 는 toSVG 가 넣는다 */
+  function backdropMarkup(scene) {
+    const W = scene.width, H = scene.height, bd = scene.backdrop;
+    if (!bd) return scene.bg ? `<rect id="바탕" x="0" y="0" width="${W}" height="${H}" fill="${scene.bg}"/>` : "";
+    if (bd.kind === "solid") return `<rect id="바탕" x="0" y="0" width="${W}" height="${H}" fill="${bd.mid}"/>`;
+    const m = Math.max(W, H);
+    const blobs = (bd.blobs || []).map((b) => `<circle cx="${num(b.x * W)}" cy="${num(b.y * H)}" r="${num(b.r * m)}" fill="${b.color}" fill-opacity="0.75"/>`).join("");
+    return `<g id="바탕"><rect x="0" y="0" width="${W}" height="${H}" fill="url(#bgGrad)"/>${blobs ? `<g filter="url(#bgBlur)">${blobs}</g>` : ""}</g>`;
+  }
+  /** 그라데이션 바탕이 있으면 바탕만 그린 SVG (PPTX 슬라이드 배경 그림용, 기본 16:9 크기) */
+  function backdropSVG(scene, w, h) {
+    if (!scene.backdrop || scene.backdrop.kind === "solid") return null;
+    const one = Object.assign({}, scene, { polys: [], lines: [], texts: [], shadow: null, glow: null, soft: null, width: w || 1600, height: h || 900 });
+    return toSVG(one);
+  }
   function toSVG(scene, opt) {
     opt = opt || {};
     const used = new Set();
@@ -1289,25 +1344,49 @@
       `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" font-family="${esc(FONT)}">`
     );
     out.push(`<title>${esc(scene.title)}</title>`);
+    const defs = [];
     if (scene.shadow) {
       const sh = scene.shadow;
-      out.push(
-        `<defs><filter id="liftShadow" x="-10%" y="-10%" width="120%" height="125%" color-interpolation-filters="sRGB">` +
-          `<feDropShadow dx="0" dy="${num(sh.dy)}" stdDeviation="${num(sh.blur)}" flood-color="${sh.color}" flood-opacity="${sh.opacity}"/></filter></defs>`
+      defs.push(
+        `<filter id="liftShadow" x="-10%" y="-10%" width="120%" height="125%" color-interpolation-filters="sRGB">` +
+          `<feDropShadow dx="0" dy="${num(sh.dy)}" stdDeviation="${num(sh.blur)}" flood-color="${sh.color}" flood-opacity="${sh.opacity}"/></filter>`
       );
     }
-    if (scene.bg) out.push(`<rect id="바탕" x="0" y="0" width="${W}" height="${H}" fill="${scene.bg}"/>`);
+    if (scene.glow) {
+      // 네온: 흐린 복사본 두 겹 위에 원래 선
+      defs.push(`<filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceGraphic" stdDeviation="${num(scene.glow.blur)}" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>`);
+    }
+    if (scene.soft) {
+      // 소프트: 왼쪽 위 밝은 빛, 오른쪽 아래 그늘
+      const so = scene.soft;
+      defs.push(`<filter id="softRaise" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceAlpha" stdDeviation="${num(so.blur)}" result="bl"/>` +
+        `<feOffset in="bl" dx="${num(so.d)}" dy="${num(so.d)}" result="o1"/><feFlood flood-color="${so.dark}" flood-opacity="0.75"/><feComposite in2="o1" operator="in" result="s1"/>` +
+        `<feOffset in="bl" dx="${num(-so.d)}" dy="${num(-so.d)}" result="o2"/><feFlood flood-color="${so.light}" flood-opacity="0.95"/><feComposite in2="o2" operator="in" result="s2"/>` +
+        `<feMerge><feMergeNode in="s1"/><feMergeNode in="s2"/><feMergeNode in="SourceGraphic"/></feMerge></filter>`);
+    }
+    const bd = scene.backdrop;
+    if (bd && bd.kind !== "solid") {
+      if (bd.kind === "radial") defs.push(`<radialGradient id="bgGrad" cx="50%" cy="38%" r="75%">${bd.stops.map((c, i) => `<stop offset="${num((i / Math.max(bd.stops.length - 1, 1)) * 100)}%" stop-color="${c}"/>`).join("")}</radialGradient>`);
+      else {
+        const a = ((bd.angle || 135) * Math.PI) / 180, dx = Math.cos(a) / 2, dy = Math.sin(a) / 2;
+        defs.push(`<linearGradient id="bgGrad" x1="${num((0.5 - dx) * 100)}%" y1="${num((0.5 - dy) * 100)}%" x2="${num((0.5 + dx) * 100)}%" y2="${num((0.5 + dy) * 100)}%">${bd.stops.map((c, i) => `<stop offset="${num((i / Math.max(bd.stops.length - 1, 1)) * 100)}%" stop-color="${c}"/>`).join("")}</linearGradient>`);
+      }
+      if (bd.blobs && bd.blobs.length) defs.push(`<filter id="bgBlur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="${num(Math.max(W, H) * 0.07)}"/></filter>`);
+    }
+    if (defs.length) out.push(`<defs>${defs.join("")}</defs>`);
+    out.push(backdropMarkup(scene));
     for (const [g, gname] of GROUPS) {
       const ps = scene.polys.filter((p) => p.group === g);
       const ls = scene.lines.filter((l) => l.group === g);
       if (!ps.length && !ls.length) continue;
-      out.push(g === "shadow" ? `<g id="${gname}" filter="url(#liftShadow)">` : `<g id="${gname}">`);
+      const gf = g === "shadow" ? "liftShadow" : ps.some((p) => p.glow) || ls.some((l) => l.glow) ? "neonGlow" : ps.some((p) => p.soft) ? "softRaise" : null;
+      out.push(gf ? `<g id="${gname}" filter="url(#${gf})">` : `<g id="${gname}">`);
       for (const p of ps) {
         const dk = opt.interactive ? ` data-k="${p.lv}:${p.id}"` : "";
-        if (g === "shadow") { out.push(`<path${dk} d="${polyD(p.rings)}" fill="${p.fill}"/>`); continue; }
+        if (g === "shadow") { out.push(`<path${dk} d="${polyD(p.rings)}" fill="${p.fill}"${p.fillOpacity != null ? ` fill-opacity="${p.fillOpacity}"` : ""}/>`); continue; }
         const attrs = opt.interactive ? ` data-lv="${p.lv}" data-id="${p.id}"${dk}` : "";
-        const stroke = p.stroke ? ` stroke="${p.stroke}" stroke-width="${num(p.width)}" stroke-linejoin="round"` : "";
-        const id = g === "context" ? "" : ` id="${safeId(p.name, used)}"`;
+        const stroke = p.stroke ? ` stroke="${p.stroke}" stroke-width="${num(p.width)}" stroke-linejoin="round"${p.strokeOpacity != null ? ` stroke-opacity="${p.strokeOpacity}"` : ""}` : "";
+        const id = g === "context" || g === "extrude" ? "" : ` id="${safeId(p.name, used)}"`;
         const op = p.fillOpacity != null ? ` fill-opacity="${p.fillOpacity}"` : "";
         const title = g === "context" && !opt.interactive ? "" : `<title>${esc(p.name)}</title>`;
         if (p.circle) out.push(`<circle${id}${attrs} cx="${num(p.circle.cx)}" cy="${num(p.circle.cy)}" r="${num(p.circle.r)}" fill="${p.fill}"${op}${stroke}>${title}</circle>`);
@@ -1315,7 +1394,7 @@
       }
       for (const l of ls) {
         const d = l.lines.map((r) => ringD(r, false)).join("");
-        if (d) out.push(`<path d="${d}" fill="none" stroke="${l.stroke}" stroke-width="${num(l.width)}" stroke-linejoin="round" stroke-linecap="round"/>`);
+        if (d) out.push(`<path d="${d}" fill="none" stroke="${l.stroke}" stroke-width="${num(l.width)}"${l.strokeOpacity != null ? ` stroke-opacity="${l.strokeOpacity}"` : ""} stroke-linejoin="round" stroke-linecap="round"/>`);
       }
       out.push(`</g>`);
     }
@@ -1346,10 +1425,11 @@
     if (legend.length) {
       out.push(`<g id="범례"${opt.interactive ? ' pointer-events="none"' : ""}>`);
       for (const p of legend) {
-        const stroke = p.stroke ? ` stroke="${p.stroke}" stroke-width="${num(p.width)}"` : "";
+        const stroke = p.stroke ? ` stroke="${p.stroke}" stroke-width="${num(p.width)}"${p.strokeOpacity != null ? ` stroke-opacity="${p.strokeOpacity}"` : ""}` : "";
         const op = p.fillOpacity != null ? ` fill-opacity="${p.fillOpacity}"` : "";
+        const fl = p.soft ? ` filter="url(#softRaise)"` : "";
         if (p.circle) out.push(`<circle cx="${num(p.circle.cx)}" cy="${num(p.circle.cy)}" r="${num(p.circle.r)}" fill="${p.fill}"${op}${stroke}/>`);
-        else out.push(`<path d="${polyD(p.rings)}" fill="${p.fill}"${op}${stroke}/>`);
+        else out.push(`<path d="${polyD(p.rings)}" fill="${p.fill}"${op}${stroke}${fl}/>`);
       }
       for (const l of scene.lines.filter((q) => q.group === "legend")) out.push(`<path d="${l.lines.map((r) => ringD(r, false)).join("")}" fill="none" stroke="${l.stroke}" stroke-width="${num(l.width)}" stroke-linecap="round"/>`);
       for (const t of legendTexts) out.push(textEl(t));
@@ -1365,5 +1445,5 @@
     return out.join("\n");
   }
 
-  return { INSETS, insetMembers, buildScene, toSVG, useSido17, tileLayout, tileName, neighborsOf, featuresInside, contains, decode, sidoShort, DEFAULT_COLORS, DISTINCT, LEVEL_NAME, LEVEL_ORDER, FONT };
+  return { INSETS, insetMembers, buildScene, toSVG, backdropSVG, useSido17, tileLayout, tileName, neighborsOf, featuresInside, contains, decode, sidoShort, DEFAULT_COLORS, DISTINCT, LEVEL_NAME, LEVEL_ORDER, FONT };
 });

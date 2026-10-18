@@ -172,6 +172,7 @@ details.more summary::-webkit-details-marker { display: none; }
 details.more summary::before { content: "›"; display: inline-block; transition: transform 0.15s; font-size: 14px; }
 details.more[open] summary::before { transform: rotate(90deg); }
 details.more[open] summary { margin-bottom: 10px; }
+.basecolor { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
 .colors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
 .colors label { display: flex; flex-direction: column; gap: 4px; font-size: 11.5px; color: var(--muted); }
 .colors input { width: 100%; height: 30px; border: 1px solid var(--rule-strong); border-radius: 7px; padding: 2px; background: var(--panel); cursor: pointer; }
@@ -387,7 +388,17 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
       <div class="pane" data-pane="look" hidden>
       <section class="card">
         <h2>스타일</h2>
+        <span class="lbl">디자인</span>
+        <div class="seg" id="look" aria-label="디자인 방식"><button data-v="flat">기본</button><button data-v="glass">유리</button><button data-v="paper">입체</button><button data-v="soft">소프트</button><button data-v="neon">네온</button></div>
+        <p class="note" id="lookNote" hidden></p>
+        <span class="lbl">색 조합</span>
         <div class="themes" id="presets"></div>
+        <div class="basecolor">
+          <label class="ed">기준 색 하나로 <input type="color" id="baseColor" value="#3361E0" aria-label="기준 색"></label>
+          <button class="btn sm" id="baseSuggest" title="어울리는 색 조합을 차례로 보여 줍니다">추천 조합</button>
+          <label class="chk"><input type="checkbox" id="baseDark"> 어두운 바탕</label>
+        </div>
+        <p class="note">색 하나를 고르면 대상 · 주변 · 바탕 · 글자색과 데이터 색 단계까지 그 색에 맞춰 만듭니다.</p>
         <div class="row">
           <label class="chk"><input type="checkbox" id="shadow" checked> 고른 지역 띄우기</label>
           <label class="chk"><input type="checkbox" id="distinct"> 이웃끼리 색 다르게</label>
@@ -444,6 +455,7 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
         <input class="field" id="hTitle" type="text" maxlength="60" placeholder="제목 — 예: 충청권 지사 현황" aria-label="지도 제목">
         <input class="field" id="hSub" type="text" maxlength="80" placeholder="부제 — 예: 2026년 3분기 기준" aria-label="지도 부제">
         <label class="chk"><input type="checkbox" id="hNote"> 지도 아래에 출처 넣기</label>
+        <input class="field" id="hNoteText" type="text" maxlength="120" placeholder="데이터 출처 — 예: 통계청 KOSIS, 주민등록인구현황(DT_1B04005N)" aria-label="데이터 출처">
       </section>
 
       <section class="card">
@@ -622,6 +634,7 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
 <script src="render.js"></script>
 <script src="datafill.js"></script>
 <script src="pins.js"></script>
+<script src="colors.js"></script>
 <script src="state.js"></script>
 <script src="pptx.js"></script>
 <script src="app.js"></script>

@@ -77,5 +77,26 @@ await t("슬라이드 여러 장", async () => {
   assert.ok(r.items.some((it) => it.title === "유성구 고령 인구"));
   assert.ok(fs.statSync(r.files[0]).size > 10000 && r.files[0].endsWith(".pptx"));
 });
+await t("통계 MCP 결과(rows) · 출처 문구", async () => {
+  const rows = [{ 지역: "광진구", 청년비율: 31.2 }, { 지역: "강남구", 청년비율: 29.1 }, { 지역: "부산 중구", 청년비율: 20 }];
+  assert.equal(K.rowsToTable(rows).split("\n")[0], "지역\t청년비율");
+  const r = await K.renderSpec({ regions: ["서울특별시"], unit: "시군구", data: { rows }, source: "통계청 KOSIS(DT_TEST)" }, { out, formats: ["svg"], name: "rows" });
+  assert.equal(r.colored, 2); // 부산 중구는 서울 지도에 없다
+  assert.ok(r.source.startsWith("출처: 통계청 KOSIS(DT_TEST), 경계:"));
+});
+await t("색 하나로 색 조합 · 디자인 방식", async () => {
+  const th = K.Cl.themeFrom("#13A07F");
+  assert.ok(K.Cl.lch(th.neighbor)[0] > K.Cl.lch(th.target)[0]); // 주변은 대상보다 밝다
+  const L = K.Cl.rampStops("#13A07F").map((h) => K.Cl.lch(h)[0]);
+  assert.ok(L.every((v, i) => !i || v < L[i - 1])); // 단계는 밝음 → 진함
+  const r = await K.renderSpec({ region: "대전광역시", stat: "old60R", baseColor: "#13A07F" }, { out, formats: ["svg"], name: "base" });
+  assert.ok(fs.readFileSync(r.files[0], "utf8").includes(th.target));
+  const marks = { 유리: "bgGrad", 네온: "neonGlow", 소프트: "softRaise", 입체: 'id="입체"' };
+  for (const [look, mark] of Object.entries(marks)) {
+    const q = await K.renderSpec({ region: "대전광역시", look }, { out, formats: ["svg", "pptx"], name: "look_" + look });
+    assert.ok(fs.readFileSync(q.files[0], "utf8").includes(mark), look);
+  }
+  await assert.rejects(K.renderSpec({ region: "대전광역시", look: "없는디자인" }, { out, formats: ["svg"] }), /디자인 방식을 알 수 없습니다/);
+});
 fs.rmSync(out, { recursive: true, force: true });
 process.stdout.write(`\n${n}개 모두 통과\n`);

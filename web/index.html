@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>행정구역 지도 추출기</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* 레이아웃: 왼쪽 조작판 + 오른쪽 슬라이드 미리보기. 좁은 화면에서는 위아래로 쌓인다. */
+:root {
+  --paper: #EEF1F5;
+  --panel: #FFFFFF;
+  --ink: #18222E;
+  --muted: #5B6878;
+  --rule: #D8DFE7;
+  --accent: #2F5BD3;
+  --accent-soft: #E3EAFB;
+  --accent-ink: #FFFFFF;
+  --slide: #FFFFFF;
+  --slide-edge: #CCD5DF;
+  --font-ui: "IBM Plex Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --radius: 8px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0F151C; --panel: #18212B; --ink: #E5EAF0; --muted: #94A2B2; --rule: #2B3746;
+    --accent: #7397F2; --accent-soft: #22304A; --accent-ink: #0F151C; --slide-edge: #2B3746;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0F151C; --panel: #18212B; --ink: #E5EAF0; --muted: #94A2B2; --rule: #2B3746;
+  --accent: #7397F2; --accent-soft: #22304A; --accent-ink: #0F151C; --slide-edge: #2B3746;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink); font: 14px/1.5 var(--font-ui);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 16px;
+}
+.app { display: grid; grid-template-columns: 330px minmax(0, 1fr); gap: 16px; max-width: 1500px; margin: 0 auto; min-height: 100%; }
+@media (max-width: 860px) { .app { grid-template-columns: minmax(0, 1fr); } }
+
+/* 조작판 */
+.panel { background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius); padding: 16px; display: flex; flex-direction: column; gap: 18px; align-self: start; }
+.brand h1 { margin: 0; font-size: 19px; font-weight: 700; letter-spacing: -0.01em; text-wrap: balance; }
+.brand p { margin: 2px 0 0; color: var(--muted); font-size: 12.5px; }
+.sec { display: flex; flex-direction: column; gap: 8px; }
+.sec + .sec { border-top: 1px solid var(--rule); padding-top: 16px; }
+.lbl { font-size: 11.5px; font-weight: 600; color: var(--muted); letter-spacing: 0.06em; }
+.row { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+
+.search { position: relative; }
+.search input { width: 100%; font: inherit; padding: 9px 12px; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); }
+.search input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.results { position: absolute; z-index: 5; left: 0; right: 0; top: calc(100% + 4px); background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; max-height: 300px; overflow-y: auto; box-shadow: 0 8px 24px rgba(15, 25, 40, 0.14); }
+.results button { display: flex; width: 100%; justify-content: space-between; gap: 8px; border: 0; background: none; color: var(--ink); text-align: left; font: inherit; padding: 7px 12px; cursor: pointer; }
+.results button:hover, .results button.on { background: var(--accent-soft); }
+.results small { color: var(--muted); font-size: 11.5px; white-space: nowrap; }
+.crumbs { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; font-size: 13px; }
+.crumbs button { border: 0; background: none; padding: 2px 4px; border-radius: 4px; font: inherit; color: var(--accent); cursor: pointer; }
+.crumbs button:hover { background: var(--accent-soft); }
+.crumbs b { padding: 2px 4px; }
+.crumbs span { color: var(--muted); }
+
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; width: 100%; }
+.seg button { flex: 1; border: 0; background: var(--panel); color: var(--ink); font: inherit; font-size: 13px; padding: 6px 4px; cursor: pointer; white-space: nowrap; }
+.seg button + button { border-left: 1px solid var(--rule); }
+.seg button.on { background: var(--accent); color: var(--accent-ink); font-weight: 600; }
+.seg button:disabled { color: var(--muted); opacity: 0.5; cursor: default; }
+.seg button.on:disabled { background: var(--rule); color: var(--muted); }
+.chk { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; font-size: 13px; }
+.chk input { accent-color: var(--accent); margin: 0; }
+input[type="range"] { accent-color: var(--accent); flex: 1; min-width: 0; }
+
+.swatches { display: flex; gap: 8px; flex-wrap: wrap; }
+.sw { width: 34px; height: 26px; border-radius: 5px; border: 1px solid var(--rule); cursor: pointer; padding: 0; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
+.sw.on { outline: 2px solid var(--ink); outline-offset: 2px; }
+.sw i { display: block; }
+.colors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.colors label { display: flex; flex-direction: column; gap: 3px; font-size: 11.5px; color: var(--muted); }
+.colors input { width: 100%; height: 28px; border: 1px solid var(--rule); border-radius: 5px; padding: 1px; background: var(--panel); cursor: pointer; }
+
+/* 미리보기 */
+.stage { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.title { min-width: 0; }
+.title h2 { margin: 0; font-size: 20px; font-weight: 700; text-wrap: balance; }
+.title .meta { font: 12px var(--font-data); color: var(--muted); }
+.exports { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn { border: 1px solid var(--rule); background: var(--panel); color: var(--ink); font: inherit; font-weight: 600; font-size: 13px; padding: 8px 14px; border-radius: 6px; cursor: pointer; display: inline-flex; gap: 6px; align-items: center; }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn:focus-visible, .seg button:focus-visible, .sw:focus-visible, .crumbs button:focus-visible, .chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.btn small { font-weight: 400; opacity: 0.75; font-size: 11px; }
+
+.slide { background: var(--slide); border: 1px solid var(--slide-edge); border-radius: var(--radius); padding: 18px; display: flex; align-items: center; justify-content: center; min-height: 420px; position: relative; overflow: hidden;
+  background-image: linear-gradient(45deg, #F3F5F8 25%, transparent 25%), linear-gradient(-45deg, #F3F5F8 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #F3F5F8 75%), linear-gradient(-45deg, transparent 75%, #F3F5F8 75%);
+  background-size: 16px 16px; background-position: 0 0, 0 8px, 8px -8px, -8px 0; }
+.slide.solid { background-image: none; }
+#map { width: 100%; display: flex; justify-content: center; }
+#map svg { max-width: 100%; height: auto; max-height: min(72vh, 900px); width: auto; display: block; }
+#map svg [data-id] { cursor: pointer; transition: opacity 0.12s; }
+#map svg [data-id]:hover { opacity: 0.82; }
+.loading { color: #5B6878; font-size: 13px; }
+
+.info { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 16px; background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius); padding: 14px 16px; }
+.info h3 { margin: 0 0 6px; font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: 0.04em; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { border: 1px solid var(--rule); background: var(--paper); color: var(--ink); border-radius: 999px; padding: 3px 10px; font: inherit; font-size: 12.5px; cursor: pointer; }
+.chip:hover { border-color: var(--accent); }
+.chip.r2 { opacity: 0.7; }
+.chip small { color: var(--muted); margin-left: 4px; }
+.info .side { align-self: start; }
+.empty { color: var(--muted); font-size: 13px; }
+.note { color: var(--muted); font-size: 12px; line-height: 1.6; }
+.note a { color: var(--accent); }
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--panel); padding: 8px 14px; border-radius: 6px; font-size: 13px; z-index: 20; }
+@media (prefers-reduced-motion: reduce) { #map svg [data-id] { transition: none; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="panel">
+    <div class="brand">
+      <h1>행정구역 지도 추출기</h1>
+      <p>지역을 고르면 주변 시군구까지 한 장으로 뽑아 SVG·PNG·PPTX로 저장합니다.</p>
+    </div>
+
+    <div class="sec">
+      <span class="lbl">지역 찾기</span>
+      <div class="search">
+        <input id="q" type="search" placeholder="예: 대전, 유성구, 정자동" autocomplete="off" aria-label="지역 이름 검색">
+        <div class="results" id="results" hidden></div>
+      </div>
+      <div class="crumbs" id="crumbs"></div>
+    </div>
+
+    <div class="sec">
+      <span class="lbl">주변 지역</span>
+      <div class="seg" id="depth">
+        <button data-v="0">표시 안 함</button><button data-v="1">맞닿은 곳</button><button data-v="2">두 겹</button>
+      </div>
+      <span class="lbl">주변 지역 단위</span>
+      <div class="seg" id="nbLevel">
+        <button data-v="sido">시도</button><button data-v="si">시군구</button><button data-v="emd">읍면동</button>
+      </div>
+    </div>
+
+    <div class="sec">
+      <span class="lbl" id="innerLbl">대상 안쪽 나누기</span>
+      <div class="seg" id="inner">
+        <button data-v="">나누지 않음</button><button data-v="sido">시도</button><button data-v="si">시군구</button><button data-v="emd">읍면동</button>
+      </div>
+      <div class="row">
+        <label class="chk"><input type="checkbox" id="splitGu"> 일반구 나누기 <span class="note">(수원시 → 장안구…)</span></label>
+      </div>
+    </div>
+
+    <div class="sec">
+      <span class="lbl">표시</span>
+      <div class="row">
+        <label class="chk"><input type="checkbox" id="context" checked> 나머지 지역 흐리게</label>
+        <label class="chk"><input type="checkbox" id="sidoLines" checked> 시도 경계 강조</label>
+        <label class="chk"><input type="checkbox" id="lblTarget" checked> 대상 이름</label>
+        <label class="chk"><input type="checkbox" id="lblNb" checked> 주변 이름</label>
+        <label class="chk"><input type="checkbox" id="lblInner" checked> 안쪽 이름</label>
+        <label class="chk"><input type="checkbox" id="subLabel" checked> 소속 시도 작게</label>
+        <label class="chk"><input type="checkbox" id="halo"> 글자 흰 테두리</label>
+      </div>
+      <div class="row"><span class="note">글자 크기</span><input type="range" id="fontScale" min="0.5" max="2" step="0.05" value="1" aria-label="글자 크기"></div>
+      <div class="row"><span class="note">선 굵기</span><input type="range" id="lineScale" min="0.3" max="3" step="0.1" value="1" aria-label="선 굵기"></div>
+    </div>
+
+    <div class="sec">
+      <span class="lbl">색</span>
+      <div class="swatches" id="presets"></div>
+      <div class="colors">
+        <label>대상<input type="color" id="cTarget"></label>
+        <label>주변<input type="color" id="cNeighbor"></label>
+        <label>나머지<input type="color" id="cContext"></label>
+      </div>
+      <div class="row">
+        <label class="chk"><input type="checkbox" id="distinct"> 주변 지역 색 다르게</label>
+        <label class="chk"><input type="checkbox" id="whiteBg"> 흰 바탕 (끄면 투명)</label>
+      </div>
+    </div>
+
+    <div class="sec">
+      <span class="lbl">그림 비율</span>
+      <div class="seg" id="aspect">
+        <button data-v="">자동</button><button data-v="1.7778">16:9</button><button data-v="1.3333">4:3</button><button data-v="1">1:1</button>
+      </div>
+    </div>
+
+    <div class="sec note" id="credit"></div>
+  </aside>
+
+  <main class="stage">
+    <div class="toolbar">
+      <div class="title"><h2 id="title">불러오는 중…</h2><div class="meta" id="meta"></div></div>
+      <div class="exports">
+        <button class="btn primary" id="dlPptx">PPTX <small>도형 편집 가능</small></button>
+        <button class="btn" id="dlSvg">SVG</button>
+        <button class="btn" id="dlPng">PNG <small>고해상도</small></button>
+      </div>
+    </div>
+    <div class="slide" id="slide"><div id="map"><span class="loading">경계 데이터를 불러오는 중입니다…</span></div></div>
+    <div class="info">
+      <div>
+        <h3 id="nbHead">주변 지역</h3>
+        <div class="chips" id="nbList"></div>
+      </div>
+      <div class="side"><button class="btn" id="copyList">목록 복사</button></div>
+    </div>
+  </main>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+  window.KRMAP = { base: null, emd: null, waiting: {} };
+  function KRMAP_LOAD(name, data) {
+    window.KRMAP[name] = data;
+    (window.KRMAP.waiting[name] || []).forEach(function (f) { f(); });
+  }
+</script>
+<script src="data/base.js"></script>
+<script src="render.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

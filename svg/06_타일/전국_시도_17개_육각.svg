@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1619" viewBox="0 0 1400 1619" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>전국 시도</title>
-
 <g id="지역">
 <path id="서울특별시" d="M502.4 101.9L620.9 170.4 620.9 307.3 502.4 375.8 383.8 307.3 383.8 170.4Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.9" stroke-linejoin="round"><title>서울특별시</title></path>
 <path id="부산광역시" d="M1029.4 1014.8L1148 1083.2 1148 1220.1 1029.4 1288.6 910.8 1220.1 910.8 1083.2Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.9" stroke-linejoin="round"><title>부산광역시</title></path>

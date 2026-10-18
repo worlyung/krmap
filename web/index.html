@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>행정구역 지도 추출기</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* 레이아웃: 위 머리줄(이름 + 저장 버튼), 왼쪽 설정, 오른쪽 슬라이드 미리보기(스크롤해도 따라옴). 좁은 화면에서는 위아래로 쌓인다. */
+:root {
+  --paper: #F1F3F7;
+  --panel: #FFFFFF;
+  --ink: #161D27;
+  --muted: #667385;
+  --faint: #8E99A8;
+  --rule: #E2E6EC;
+  --field: #F5F7FA;
+  --accent: #3361E0;
+  --accent-soft: #E8EEFC;
+  --accent-ink: #FFFFFF;
+  --stage: #E6EAF0;
+  --shadow: 0 1px 2px rgba(20, 30, 50, 0.06), 0 8px 24px rgba(20, 30, 50, 0.06);
+  --slide-shadow: 0 2px 6px rgba(20, 30, 50, 0.08), 0 18px 40px rgba(20, 30, 50, 0.10);
+  --font-ui: "IBM Plex Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --radius: 12px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0E131A; --panel: #161D27; --ink: #E7ECF2; --muted: #9AA7B7; --faint: #6E7B8C; --rule: #263140; --field: #1D2632;
+    --accent: #7C9CF5; --accent-soft: #1F2B44; --accent-ink: #0E131A; --stage: #121821;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3); --slide-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0E131A; --panel: #161D27; --ink: #E7ECF2; --muted: #9AA7B7; --faint: #6E7B8C; --rule: #263140; --field: #1D2632;
+  --accent: #7C9CF5; --accent-soft: #1F2B44; --accent-ink: #0E131A; --stage: #121821;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3); --slide-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { min-height: 100%; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink); font: 14px/1.5 var(--font-ui);
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+  padding-block: 0 24px;
+}
+.wrap { max-width: 1520px; margin: 0 auto; }
+
+/* 머리줄 */
+.top { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; justify-content: space-between; padding-block: 18px; }
+.brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.mark { width: 34px; height: 34px; border-radius: 9px; background: var(--accent); display: grid; place-items: center; flex: none; }
+.mark svg { width: 20px; height: 20px; }
+.brand h1 { margin: 0; font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
+.brand p { margin: 0; font-size: 12.5px; color: var(--muted); }
+.exports { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn { border: 1px solid var(--rule); background: var(--panel); color: var(--ink); font: inherit; font-weight: 600; font-size: 13px; padding: 9px 16px; border-radius: 9px; cursor: pointer; display: inline-flex; gap: 6px; align-items: center; box-shadow: 0 1px 1px rgba(20, 30, 50, 0.04); }
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { filter: brightness(1.06); color: var(--accent-ink); }
+.btn small { font-weight: 400; opacity: 0.8; font-size: 11.5px; }
+.btn.sm { padding: 6px 11px; font-size: 12.5px; border-radius: 8px; }
+.btn:disabled { opacity: 0.6; cursor: progress; }
+
+.app { display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 900px) { .app { grid-template-columns: minmax(0, 1fr); } }
+
+/* 설정판 */
+.panel { display: flex; flex-direction: column; gap: 12px; }
+.card { background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius); padding: 16px; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--shadow); }
+.card h2 { margin: 0; font-size: 13px; font-weight: 700; letter-spacing: -0.01em; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.card h2 .hint { font-weight: 400; color: var(--faint); font-size: 12px; }
+.lbl { font-size: 12px; font-weight: 500; color: var(--muted); margin-top: 2px; }
+.row { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; }
+.note { color: var(--muted); font-size: 12px; line-height: 1.6; margin: 0; }
+.note a { color: var(--accent); }
+
+.tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; background: var(--field); border-radius: 10px; padding: 4px; }
+.tabs button { border: 0; background: none; color: var(--muted); font: inherit; font-weight: 600; font-size: 13px; padding: 8px 4px; border-radius: 7px; cursor: pointer; }
+.tabs button.on { background: var(--panel); color: var(--ink); box-shadow: 0 1px 3px rgba(20, 30, 50, 0.14); }
+
+.seg { display: flex; background: var(--field); border-radius: 9px; padding: 3px; gap: 2px; width: 100%; }
+.seg button { flex: 1; border: 0; background: none; color: var(--muted); font: inherit; font-size: 12.5px; font-weight: 500; padding: 6px 4px; border-radius: 6px; cursor: pointer; white-space: nowrap; }
+.seg button.on { background: var(--panel); color: var(--ink); font-weight: 600; box-shadow: 0 1px 2px rgba(20, 30, 50, 0.14); }
+.seg button:disabled { opacity: 0.4; cursor: default; }
+.seg button.on:disabled { box-shadow: none; }
+
+.chk { display: inline-flex; gap: 7px; align-items: center; cursor: pointer; font-size: 13px; }
+.chk input { accent-color: var(--accent); margin: 0; width: 15px; height: 15px; }
+.chk .note { font-size: 11.5px; }
+input[type="range"] { accent-color: var(--accent); flex: 1; min-width: 0; }
+.slider { display: grid; grid-template-columns: 64px minmax(0, 1fr); align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); }
+
+.search { position: relative; }
+.search input { width: 100%; font: inherit; padding: 10px 12px 10px 36px; border: 1px solid transparent; border-radius: 9px; background: var(--field); color: var(--ink); }
+.search input:focus { outline: none; border-color: var(--accent); background: var(--panel); }
+.search svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--faint); pointer-events: none; }
+.results { position: absolute; z-index: 5; left: 0; right: 0; top: calc(100% + 6px); background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; max-height: 320px; overflow-y: auto; box-shadow: 0 12px 32px rgba(15, 25, 40, 0.16); padding: 4px; }
+.results button { display: flex; width: 100%; justify-content: space-between; gap: 8px; border: 0; background: none; color: var(--ink); text-align: left; font: inherit; padding: 7px 10px; border-radius: 6px; cursor: pointer; }
+.results button:hover, .results button.on { background: var(--accent-soft); }
+.results small { color: var(--muted); font-size: 11.5px; white-space: nowrap; }
+.crumbs { display: flex; flex-wrap: wrap; gap: 2px; align-items: center; font-size: 13px; }
+.crumbs button { border: 0; background: none; padding: 2px 5px; border-radius: 5px; font: inherit; color: var(--accent); cursor: pointer; }
+.crumbs button:hover { background: var(--accent-soft); }
+.crumbs b { padding: 2px 5px; }
+.crumbs span { color: var(--faint); }
+.pickbulk { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+.pickbulk select { min-width: 0; font: inherit; font-size: 13px; padding: 7px 8px; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); color: var(--ink); }
+.pickbulk #pickClear { grid-column: 1 / -1; justify-self: start; }
+
+/* 색 테마 */
+.themes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.theme { border: 1px solid var(--rule); background: var(--panel); border-radius: 10px; padding: 6px; cursor: pointer; display: flex; flex-direction: column; gap: 5px; font: inherit; color: var(--ink); text-align: left; }
+.theme:hover { border-color: var(--faint); }
+.theme.on { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+.theme .pv { height: 44px; border-radius: 6px; position: relative; overflow: hidden; }
+.theme .pv i { position: absolute; display: block; border-radius: 40% 55% 45% 50%; }
+.theme .pv .n1 { left: 10%; top: 18%; width: 34%; height: 62%; }
+.theme .pv .n2 { right: 10%; top: 12%; width: 32%; height: 70%; }
+.theme .pv .t { left: 34%; top: 26%; width: 34%; height: 56%; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25); }
+.theme span { font-size: 12px; font-weight: 600; padding-inline: 2px; }
+details.more summary { cursor: pointer; font-size: 12.5px; color: var(--muted); list-style: none; display: flex; align-items: center; gap: 6px; }
+details.more summary::-webkit-details-marker { display: none; }
+details.more summary::before { content: "›"; display: inline-block; transition: transform 0.15s; font-size: 14px; }
+details.more[open] summary::before { transform: rotate(90deg); }
+details.more[open] summary { margin-bottom: 10px; }
+.colors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.colors label { display: flex; flex-direction: column; gap: 4px; font-size: 11.5px; color: var(--muted); }
+.colors input { width: 100%; height: 30px; border: 1px solid var(--rule); border-radius: 7px; padding: 2px; background: var(--panel); cursor: pointer; }
+
+/* 미리보기 */
+.stage { position: sticky; top: 16px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+@media (max-width: 900px) { .stage { position: static; } }
+.board { background: var(--stage); border-radius: var(--radius); padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: flex-end; justify-content: space-between; }
+.title { min-width: 0; }
+.title h2 { margin: 0; font-size: 21px; font-weight: 700; letter-spacing: -0.02em; text-wrap: balance; }
+.title .meta { font: 12px var(--font-data); color: var(--muted); margin-top: 2px; }
+.toolbar .seg { width: auto; background: var(--panel); }
+.toolbar .seg button.on { background: var(--ink); color: var(--panel); }
+.slide { background: #FFFFFF; border-radius: 6px; box-shadow: var(--slide-shadow); padding: 3%; display: flex; align-items: center; justify-content: center; min-height: 380px; position: relative; overflow: hidden; }
+#map { width: 100%; display: flex; justify-content: center; }
+#map svg { max-width: 100%; height: auto; max-height: min(64vh, 820px); width: auto; display: block; }
+#map svg [data-id] { cursor: pointer; transition: opacity 0.12s; }
+#map svg [data-id]:hover { opacity: 0.8; }
+.loading { color: #667385; font-size: 13px; }
+.clickbar { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; font-size: 12.5px; color: var(--muted); }
+.clickbar .seg { width: auto; background: var(--panel); }
+.clickbar .seg button { padding: 5px 12px; }
+
+.editbox { background: var(--panel); border-radius: 10px; padding: 10px 12px; }
+.editrow { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-size: 13px; }
+.editrow b { font-size: 13.5px; }
+.ed { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 12.5px; }
+.ed input[type="color"] { width: 38px; height: 28px; border: 1px solid var(--rule); border-radius: 6px; padding: 2px; background: var(--panel); cursor: pointer; }
+.ed input[type="text"] { width: 120px; font: inherit; font-size: 13px; padding: 5px 8px; border: 1px solid var(--rule); border-radius: 6px; background: var(--field); color: var(--ink); }
+#map.editing svg [data-id] { cursor: grab; }
+#map.dragging svg [data-id] { cursor: grabbing; }
+#map svg .sel { stroke: #111827; stroke-width: 3px; stroke-dasharray: 7 5; }
+#map svg .lift { opacity: 0.85; }
+.info { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px 16px; background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius); padding: 14px 16px; box-shadow: var(--shadow); }
+.info h3 { margin: 0 0 8px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { border: 1px solid var(--rule); background: var(--field); color: var(--ink); border-radius: 999px; padding: 4px 11px; font: inherit; font-size: 12.5px; cursor: pointer; }
+.chip:hover { border-color: var(--accent); }
+.chip.r2 { opacity: 0.7; }
+.chip small { color: var(--muted); margin-left: 4px; }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.chip[aria-pressed="true"] small { color: inherit; opacity: 0.8; }
+.labelpick { grid-column: 1 / -1; border-top: 1px solid var(--rule); padding-top: 12px; }
+.labelpick .chips { max-height: 220px; overflow-y: auto; }
+.empty { color: var(--muted); font-size: 13px; }
+.credit { font-size: 11.5px; color: var(--faint); line-height: 1.6; padding-inline: 4px; margin: 0; }
+.credit a { color: inherit; }
+.btn:focus-visible, .seg button:focus-visible, .tabs button:focus-visible, .theme:focus-visible, .crumbs button:focus-visible, .chip:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--panel); padding: 9px 16px; border-radius: 9px; font-size: 13px; z-index: 20; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); }
+@media (prefers-reduced-motion: reduce) { #map svg [data-id], details.more summary::before { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round"><path d="M9 2.5 6.5 6l1 3-2.5 2 1.5 3.5L5 18l3.5 3.5 4-1 2.5 1.5 3-2-1-3.5 2-3-1.5-3.5L16 6l-2-1-1-2.5z"/></svg>
+      </div>
+      <div>
+        <h1>행정구역 지도 추출기</h1>
+        <p>시도 · 시군구 · 읍면동을 골라 PPT용 지도로</p>
+      </div>
+    </div>
+    <div class="exports">
+      <button class="btn primary" id="dlPptx">PPTX 저장 <small>도형 편집 가능</small></button>
+      <button class="btn" id="dlSvg">SVG</button>
+      <button class="btn" id="dlPng">PNG</button>
+    </div>
+  </header>
+
+  <div class="app">
+    <aside class="panel">
+      <section class="card">
+        <div class="tabs" id="mode">
+          <button data-v="around">주변 지역</button><button data-v="pick">직접 고르기</button><button data-v="all">전국</button>
+        </div>
+        <div class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="q" type="search" placeholder="지역 찾기 — 대전, 유성구, 정자동" autocomplete="off" aria-label="지역 이름 검색">
+          <div class="results" id="results" hidden></div>
+        </div>
+        <div class="crumbs" id="crumbs"></div>
+      </section>
+
+      <section class="card" id="secAround">
+        <h2>주변 지역</h2>
+        <div class="seg" id="depth">
+          <button data-v="0">안 보기</button><button data-v="1">맞닿은 곳</button><button data-v="2">두 겹</button>
+        </div>
+        <span class="lbl">주변을 나눌 단위</span>
+        <div class="seg" id="nbLevel">
+          <button data-v="sido">시도</button><button data-v="si">시군구</button><button data-v="emd">읍면동</button>
+        </div>
+        <span class="lbl">고른 지역 안쪽 나누기</span>
+        <div class="seg" id="inner">
+          <button data-v="">나누지 않음</button><button data-v="si">시군구</button><button data-v="emd">읍면동</button>
+        </div>
+        <label class="chk"><input type="checkbox" id="context" checked> 나머지 지역도 흐리게 보이기</label>
+      </section>
+
+      <section class="card" id="secPick" hidden>
+        <h2>영역 고르기 <span class="hint">지도를 눌러 넣고 빼기</span></h2>
+        <span class="lbl">단위</span>
+        <div class="seg" id="pickLv">
+          <button data-v="sido">시도</button><button data-v="si">시군구</button><button data-v="emd">읍면동</button>
+        </div>
+        <span class="lbl">그림 범위</span>
+        <div class="seg" id="pickFit">
+          <button data-v="1">고른 영역에 맞춤</button><button data-v="0">전국 전체</button>
+        </div>
+        <label class="chk"><input type="checkbox" id="hideOthers"> 고르지 않은 지역은 빼기</label>
+        <div class="pickbulk">
+          <select id="pickSido" aria-label="시도 고르기"></select>
+          <button class="btn sm" id="pickAddSido">시도 전체 넣기</button>
+          <button class="btn sm" id="pickClear">모두 비우기</button>
+        </div>
+      </section>
+
+      <section class="card" id="secAll" hidden>
+        <h2>전국 지도 <span class="hint">지역을 누르면 주변 보기로</span></h2>
+        <div class="seg" id="allLv">
+          <button data-v="sido">시도</button><button data-v="si">시군구</button><button data-v="emd">읍면동</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>스타일</h2>
+        <div class="themes" id="presets"></div>
+        <div class="row">
+          <label class="chk"><input type="checkbox" id="shadow" checked> 고른 지역 띄우기</label>
+          <label class="chk"><input type="checkbox" id="distinct"> 이웃끼리 색 다르게</label>
+          <label class="chk"><input type="checkbox" id="fillBg"> 바탕색 채우기 <span class="note">(끄면 투명)</span></label>
+        </div>
+        <details class="more">
+          <summary>색 직접 고르기</summary>
+          <div class="colors">
+            <label id="cTargetLbl">대상<input type="color" id="cTarget"></label>
+            <label id="cNeighborLbl">주변<input type="color" id="cNeighbor"></label>
+            <label>나머지<input type="color" id="cContext"></label>
+          </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <h2>배치 <span class="hint">모양은 그대로 두고 위치만</span></h2>
+        <div class="seg" id="layout">
+          <button data-v="real">실제 위치</button><button data-v="explode">벌려 놓기</button>
+        </div>
+        <div class="slider" id="explodeRow"><span>벌린 간격</span><input type="range" id="explodeAmt" min="0.05" max="0.8" step="0.01" value="0.25" aria-label="벌린 간격"></div>
+        <p class="note">지도 위 <b>하나씩 꾸미기</b>를 누르면 지역마다 끌어서 옮기고, 색과 이름을 따로 바꿀 수 있습니다.</p>
+        <button class="btn sm" id="resetEdits" style="align-self:flex-start">옮기고 꾸민 것 모두 되돌리기</button>
+      </section>
+
+      <section class="card">
+        <h2>지역 이름</h2>
+        <div class="seg" id="labelMode">
+          <button data-v="all">모두 넣기</button><button data-v="none">모두 빼기</button><button data-v="pick">고른 것만</button>
+        </div>
+        <p class="note" id="labelHint" hidden>지도에서 누르거나 아래 목록에서 이름을 하나씩 켜고 끕니다.</p>
+        <div class="slider"><span>글자 크기</span><input type="range" id="fontScale" min="0.5" max="2" step="0.05" value="1" aria-label="글자 크기"></div>
+        <details class="more">
+          <summary>이름 · 선 세부 설정</summary>
+          <div class="row" style="flex-direction:column;align-items:flex-start;gap:8px">
+            <label class="chk"><input type="checkbox" id="subLabel" checked> 다른 시도 지역에 소속 시도 작게</label>
+            <label class="chk"><input type="checkbox" id="halo"> 글자에 흰 테두리</label>
+            <label class="chk"><input type="checkbox" id="sidoLines" checked> 시도 경계선 표시</label>
+          </div>
+          <div class="slider" style="margin-top:8px"><span>선 굵기</span><input type="range" id="lineScale" min="0.3" max="3" step="0.1" value="1" aria-label="선 굵기"></div>
+        </details>
+      </section>
+
+      <section class="card">
+        <h2>기준</h2>
+        <label class="chk"><input type="checkbox" id="sido17"> 광주·전남 나눠 보기 <span class="note">(17개 시도)</span></label>
+        <label class="chk"><input type="checkbox" id="splitGu"> 일반구 나눠 보기 <span class="note">(수원시 → 장안구…)</span></label>
+      </section>
+      <p class="credit" id="credit"></p>
+    </aside>
+
+    <main class="stage">
+      <div class="board">
+        <div class="toolbar">
+          <div class="title"><h2 id="title">불러오는 중…</h2><div class="meta" id="meta"></div></div>
+          <div class="seg" id="aspect" aria-label="그림 비율">
+            <button data-v="">자동</button><button data-v="1.7778">16:9</button><button data-v="1.3333">4:3</button><button data-v="1">1:1</button>
+          </div>
+        </div>
+        <div class="clickbar" id="clickBar">
+          <span>지도를 누르면</span>
+          <div class="seg" id="clickAction"><button data-v="main" id="clickMain">지역 고르기</button><button data-v="label">이름 넣기·빼기</button><button data-v="edit">하나씩 꾸미기</button></div>
+        </div>
+        <div class="editbox" id="editBox" hidden>
+          <p class="note" id="editEmpty">꾸밀 지역을 지도에서 누르세요. 누른 채로 끌면 그 지역만 옮겨집니다.</p>
+          <div class="editrow" id="editForm" hidden>
+            <b id="editName"></b>
+            <label class="ed">색 <input type="color" id="editFill"></label>
+            <label class="ed">이름 <input type="text" id="editText" maxlength="20"></label>
+            <label class="chk"><input type="checkbox" id="editHide"> 이름 숨기기</label>
+            <button class="btn sm" id="editReset">이 지역 원래대로</button>
+            <button class="btn sm" id="editDone">닫기</button>
+          </div>
+        </div>
+        <div class="slide" id="slide"><div id="map"><span class="loading">경계 데이터를 불러오는 중입니다…</span></div></div>
+      </div>
+      <div class="info">
+        <div>
+          <h3 id="nbHead">주변 지역</h3>
+          <div class="chips" id="nbList"></div>
+        </div>
+        <div><button class="btn sm" id="copyList">목록 복사</button></div>
+        <div class="labelpick" id="labelPickBox" hidden>
+          <h3>이름 넣을 지역 <span class="note" id="labelPickCount"></span></h3>
+          <div class="chips" id="labelPickList"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+  window.KRMAP = { base: null, emd: null, waiting: {} };
+  function KRMAP_LOAD(name, data) {
+    window.KRMAP[name] = data;
+    (window.KRMAP.waiting[name] || []).forEach(function (f) { f(); });
+  }
+</script>
+<script src="data/base.js"></script>
+<script src="render.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

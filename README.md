@@ -1,5 +1,9 @@
 # 대한민국 행정구역 지도 (시도 · 시군구 · 읍면동)
 
+[![test](https://github.com/worlyung/-/actions/workflows/test.yml/badge.svg)](https://github.com/worlyung/-/actions/workflows/test.yml)
+[![code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
+[![data: CC BY 4.0 / KOGL Type 1](https://img.shields.io/badge/data-CC%20BY%204.0%20%2F%20KOGL%20Type%201-green.svg)](NOTICE.md)
+
 보고서와 PPT에 넣을 대한민국 지도를 만드는 도구입니다. 지역을 고르면 주변 시군과 함께 그리고, 인구 통계나 여론조사 표로 색을 칠하고, 주소로 핀을 찍어 **SVG · PNG · PPTX** 로 저장합니다.
 브라우저에서 눌러 만들 수도 있고, 명령줄이나 Claude Code · Codex 에게 말로 시켜서 만들 수도 있습니다.
 
@@ -124,7 +128,7 @@
 웹 도구와 **같은 그리기 코드**를 Node 에서 돌립니다. 설정(JSON) 하나가 지도 한 장이라, 같은 형식의 지도를 여러 장 만들거나 에이전트에게 맡기기 좋습니다.
 
 ```bash
-npm install          # Node 18 이상, 처음 한 번
+npm install          # Node 20 이상, 처음 한 번
 npm test             # 13개 확인 (인터넷 필요 없음)
 ```
 
@@ -278,12 +282,18 @@ svg/                 미리 만든 SVG 521장
 scripts/             경계 · 통계 · SVG 만들기
 data/mois/           행정안전부 인구통계 원본 CSV
 docs/                자동화 설명서, README 그림
+.github/             테스트(GitHub Actions) · 이슈 · PR 양식
 .claude/skills/      Claude Code 스킬
 AGENTS.md            Codex 등 에이전트 안내
 ```
 
+## 함께 만들기
+
+버그 제보 · 기능 제안 · 풀 리퀘스트를 반깁니다. [CONTRIBUTING.md](CONTRIBUTING.md) 를 먼저 봐 주세요.
+
 ## 출처 · 라이선스
 
+- **코드**: [MIT](LICENSE). 데이터 · 글꼴 · 외부 파일은 각자의 라이선스를 따릅니다 — 전체 목록은 [NOTICE.md](NOTICE.md).
 - **경계**: 통계청 SGIS 행정구역 경계 (공공누리 제1유형, 출처표시) — [vuski/admdongkor](https://github.com/vuski/admdongkor) 가공본(CC BY 4.0)을 단순화해서 썼습니다.
   발표 자료에는 "출처: 통계청 SGIS 행정구역 경계(2026.10.01)" 정도로 표시해 주세요. PPTX 에는 자동으로 들어갑니다.
 - **인구 통계**: 행정안전부 주민등록 인구통계(2026년 7월말, 거주자 기준). 원본 CSV 는 [SimpleisNice/korea-population-dashboard](https://github.com/SimpleisNice/korea-population-dashboard) 에 공개된 사본을 썼습니다.
@@ -291,3 +301,17 @@ AGENTS.md            Codex 등 에이전트 안내
 - `web/vendor/pptxgen.bundle.js`: [PptxGenJS](https://github.com/gitbrent/PptxGenJS) 4.0.1 (MIT).
 - 글꼴: [Pretendard](https://github.com/orioncactus/pretendard) 1.3.9 (SIL OFL 1.1, `web/vendor/fonts/`).
 - 단순화한 경계라 실제와 수십 m 차이가 날 수 있습니다. 측량 · 법적 용도로는 쓰지 마세요.
+
+---
+
+## English
+
+**Korea admin map** makes maps of South Korea's administrative divisions (17 provinces · 250+ municipalities · 3,500+ neighbourhoods, boundaries as of 2026-10-01) as **SVG, PNG and editable PPTX** for reports and slides.
+Pick a region and its neighbours, colour it with the built-in population statistics or your own table (polls, sales, any CSV), drop pins by address, and export.
+
+- **Web tool**: open `web/index.html` in a browser — no install, no server.
+- **CLI**: `npm install`, then `node tools/krmap.mjs render --region 대전광역시 --stat old60R`.
+- **MCP server** for Claude Code / Codex: `tools/mcp-server.mjs` (`.mcp.json` included). Pair it with a KOSIS statistics MCP to go from "map the share of one-person households by Seoul district" to a finished slide.
+- Leader-line callouts, side label columns, bubble maps, metro insets, multi-slide decks, one-colour palettes (OKLCH) and looks (glass, paper, soft, neon).
+
+Code is MIT. Boundary data: Statistics Korea SGIS (KOGL Type 1) via [vuski/admdongkor](https://github.com/vuski/admdongkor) (CC BY 4.0); population data: Ministry of the Interior and Safety (KOGL Type 1). See [NOTICE.md](NOTICE.md).

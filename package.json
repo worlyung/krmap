@@ -2,6 +2,21 @@
   "name": "korea-admin-map",
   "version": "1.0.0",
   "description": "대한민국 행정구역(시도·시군구·읍면동) 지도를 SVG·PNG·PPTX로 만드는 도구 — 웹 도구, 명령줄(krmap), MCP 서버",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/worlyung/-.git"
+  },
+  "keywords": [
+    "korea",
+    "map",
+    "svg",
+    "pptx",
+    "choropleth",
+    "행정구역",
+    "지도",
+    "mcp"
+  ],
   "private": true,
   "bin": {
     "krmap": "tools/krmap.mjs"
@@ -12,7 +27,7 @@
     "test": "node tools/test.mjs"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.30.1",

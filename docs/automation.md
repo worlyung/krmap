@@ -7,7 +7,7 @@ Claude Code · Codex 같은 코딩 에이전트는 MCP 서버를 쓰거나 명�
 
 ```bash
 git clone <이 저장소> && cd <저장소>
-npm install          # Node 18 이상
+npm install          # Node 20 이상
 npm test             # 13개 확인 (인터넷 필요 없음)
 ```
 

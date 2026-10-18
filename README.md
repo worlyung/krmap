@@ -36,7 +36,7 @@
 
 | 이런 경우 | 이렇게 |
 | --- | --- |
-| 지도 한두 장을 눌러서 만들고 싶다 | [웹 도구](#1-웹-도구) — `web/index.html` 을 브라우저로 열기 |
+| 지도 한두 장을 눌러서 만들고 싶다 | [웹 도구](#1-웹-도구) — **[바로 열기](https://worlyung.github.io/krmap/)**, 또는 `web/index.html` 을 브라우저로 열기 |
 | 지금 바로 SVG 가 필요하다 | [미리 만든 SVG](#2-미리-만든-svg) — `svg/` 폴더의 521장 |
 | 여러 장을 같은 형식으로, 또는 에이전트에게 맡기고 싶다 | [자동화](#3-자동화-명령줄--claude-code--codex) — `krmap` 명령줄, Claude Code · Codex |
 
@@ -44,7 +44,8 @@
 
 ## 1. 웹 도구
 
-`web/index.html` 을 브라우저로 열면 됩니다. 설치도 서버도 필요 없습니다.
+**https://worlyung.github.io/krmap/** 에서 바로 씁니다. 받아서 쓰려면 `web/index.html` 을 브라우저로 열면 됩니다. 설치도 서버도 필요 없습니다.
+지도는 모두 브라우저 안에서 그려지고, 넣은 표나 주소는 어디에도 올라가지 않습니다(주소 검색만 OpenStreetMap 에 물어봅니다).
 왼쪽에서 설정하면 오른쪽 미리보기가 바로 바뀌고, 위의 버튼으로 SVG · PNG · PPTX 를 저장합니다. 그림 비율(자동 · 16:9 · 4:3 · 1:1)은 미리보기 위에서 고릅니다.
 
 ![웹 도구 화면: 대전과 주변 시군을 60세 이상 인구 비율로 칠한 모습](docs/images/web.png)
@@ -309,7 +310,7 @@ AGENTS.md            Codex 등 에이전트 안내
 **Korea admin map** makes maps of South Korea's administrative divisions (17 provinces · 250+ municipalities · 3,500+ neighbourhoods, boundaries as of 2026-10-01) as **SVG, PNG and editable PPTX** for reports and slides.
 Pick a region and its neighbours, colour it with the built-in population statistics or your own table (polls, sales, any CSV), drop pins by address, and export.
 
-- **Web tool**: open `web/index.html` in a browser — no install, no server.
+- **Web tool**: use it at https://worlyung.github.io/krmap/, or open `web/index.html` in a browser — no install, no server.
 - **CLI**: `npm install`, then `node tools/krmap.mjs render --region 대전광역시 --stat old60R`.
 - **MCP server** for Claude Code / Codex: `tools/mcp-server.mjs` (`.mcp.json` included). Pair it with a KOSIS statistics MCP to go from "map the share of one-person households by Seoul district" to a finished slide.
 - Leader-line callouts, side label columns, bubble maps, metro insets, multi-slide decks, one-colour palettes (OKLCH) and looks (glass, paper, soft, neon).

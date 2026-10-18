@@ -1374,7 +1374,8 @@
       if (bd.blobs && bd.blobs.length) defs.push(`<filter id="bgBlur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="${num(Math.max(W, H) * 0.07)}"/></filter>`);
     }
     if (defs.length) out.push(`<defs>${defs.join("")}</defs>`);
-    out.push(backdropMarkup(scene));
+    const bgm = backdropMarkup(scene);
+    if (bgm) out.push(bgm);
     for (const [g, gname] of GROUPS) {
       const ps = scene.polys.filter((p) => p.group === g);
       const ls = scene.lines.filter((l) => l.group === g);

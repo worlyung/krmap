@@ -43,6 +43,11 @@
 <g id="시도경계">
 <path d="M470.2 0L517.5 96.5 580.8 118.3 648.4 59.4 755.3 0M755.3 0L648.4 59.4 580.8 118.3 517.5 96.5 470.2 0" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
+<g id="지시선">
+<path id="지시점_창신2동" d="M1259.4 1459.9L1259.2 1460.8 1258.7 1461.6 1257.9 1462.1 1257 1462.3 1256.1 1462.1 1255.3 1461.6 1254.8 1460.8 1254.6 1459.9 1254.8 1459 1255.3 1458.2 1256.1 1457.7 1257 1457.5 1257.9 1457.7 1258.7 1458.2 1259.2 1459Z" fill="#6D727A" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.8" stroke-linejoin="round"><title>지시점 창신2동</title></path>
+<path id="지시점_숭인1동" d="M1390.3 1486.1L1390.1 1487 1389.6 1487.8 1388.8 1488.3 1387.9 1488.5 1387 1488.3 1386.2 1487.8 1385.7 1487 1385.5 1486.1 1385.7 1485.2 1386.2 1484.4 1387 1483.9 1387.9 1483.7 1388.8 1483.9 1389.6 1484.4 1390.1 1485.2Z" fill="#6D727A" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.8" stroke-linejoin="round"><title>지시점 숭인1동</title></path>
+<path d="M1257 1459.9L1187 1644.7M1387.9 1486.1L1500.4 1598.1" fill="none" stroke="#6D727A" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
 <g id="지명" text-anchor="middle">
 <text  x="436.8" y="463.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">평창동</text>
 <text  x="480.4" y="1233.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">청운효자동</text>
@@ -59,5 +64,7 @@
 <text  x="1459.9" y="1477.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">숭인2동</text>
 <text  x="1320.3" y="1575.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">창신1동</text>
 <text  x="1309.4" y="1410" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">창신3동</text>
+<text  x="1181.1" y="1668.4" font-size="23" font-weight="500" letter-spacing="-0.5" fill="none" stroke="#FFFFFF" stroke-width="5.1" stroke-linejoin="round">창신2동</text><text  x="1181.1" y="1668.4" font-size="23" font-weight="500" letter-spacing="-0.5" fill="#1E2633">창신2동</text>
+<text  x="1515.9" y="1621.8" font-size="23" font-weight="500" letter-spacing="-0.5" fill="none" stroke="#FFFFFF" stroke-width="5.1" stroke-linejoin="round">숭인1동</text><text  x="1515.9" y="1621.8" font-size="23" font-weight="500" letter-spacing="-0.5" fill="#1E2633">숭인1동</text>
 </g>
 </svg>

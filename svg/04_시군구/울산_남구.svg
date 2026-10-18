@@ -32,6 +32,12 @@
 <g id="시도경계">
 <path d="M1600 707L1569.6 700.2 1589 623.3 1576.8 543.5 1487.7 405.2 1445.7 337.6 1410.9 296.7 1366.8 270 1315.6 222.9 1272.6 229.1 1254.2 253.7 1276.7 262.9 1324.8 304.9 1398.6 395 1366.8 389.9 1349.4 451.3 1382.2 461.5 1379.1 517.9 1467.2 535.3 1490.7 657.1 1492.8 692 1473.3 705.3 1422.1 684.8 1360.7 708.3 1330 707.3 1291 661.2 1259.3 659.2 1309.5 741.1 1418 716.5 1494.8 831.2 1514.3 853.8 1470.3 899.8 1468.2 1009.4 1436.5 1043.2 1416 1032 1341.2 1108.8 1272.6 1168.2 1319.7 1189.7 1294.1 1211.2 1259.3 1183.5 1234.7 1190.7 1194.8 1178.4 1178.4 1113.9 1146.6 1073.9 1115.9 1059.6 1052.4 1004.3 1048.3 949 1016.6 923.4 1040.1 953.1 1042.2 1001.2 1052.4 1015.6 1079.1 1064.7 1095.4 1075 1129.2 1127.2 1132.3 1177.4 1154.6 1297" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
+<g id="지시선">
+<path id="지시점_신정3동" d="M798.8 197.3L798.6 198.3 798.1 199 797.3 199.6 796.4 199.7 795.5 199.6 794.7 199 794.2 198.3 794 197.3 794.2 196.4 794.7 195.6 795.5 195.1 796.4 194.9 797.3 195.1 798.1 195.6 798.6 196.4Z" fill="#6D727A" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.8" stroke-linejoin="round"><title>지시점 신정3동</title></path>
+<path id="지시점_신정4동" d="M811.1 403.2L810.9 404.1 810.4 404.9 809.6 405.4 808.7 405.6 807.8 405.4 807 404.9 806.5 404.1 806.3 403.2 806.5 402.3 807 401.5 807.8 401 808.7 400.8 809.6 401 810.4 401.5 810.9 402.3Z" fill="#6D727A" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.8" stroke-linejoin="round"><title>지시점 신정4동</title></path>
+<path id="지시점_신정5동" d="M880.7 236.3L880.6 237.2 880 237.9 879.3 238.5 878.3 238.7 877.4 238.5 876.6 237.9 876.1 237.2 875.9 236.3 876.1 235.3 876.6 234.6 877.4 234 878.3 233.9 879.3 234 880 234.6 880.6 235.3Z" fill="#6D727A" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.8" stroke-linejoin="round"><title>지시점 신정5동</title></path>
+<path d="M796.4 197.3L829 139.8M808.7 403.2L809.8 371.8M878.3 236.3L957.8 144" fill="none" stroke="#6D727A" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
 <g id="지명" text-anchor="middle">
 <text  x="1255.2" y="929.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">선암동</text>
 <text  x="1203" y="483.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">야음장생포동</text>
@@ -43,8 +49,9 @@
 <text  x="721.7" y="254.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">신정1동</text>
 <text  x="888.6" y="323.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">달동</text>
 <text  x="927.5" y="441.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">대현동</text>
-<text  x="796.4" y="206.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">신정3동</text>
-<text  x="878.3" y="245.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">신정5동</text>
 <text  x="845.6" y="484.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">수암동</text>
+<text  x="837.8" y="132.6" font-size="23" font-weight="500" letter-spacing="-0.5" fill="none" stroke="#FFFFFF" stroke-width="5.1" stroke-linejoin="round">신정3동</text><text  x="837.8" y="132.6" font-size="23" font-weight="500" letter-spacing="-0.5" fill="#1E2633">신정3동</text>
+<text  x="810.4" y="364.5" font-size="23" font-weight="500" letter-spacing="-0.5" fill="none" stroke="#FFFFFF" stroke-width="5.1" stroke-linejoin="round">신정4동</text><text  x="810.4" y="364.5" font-size="23" font-weight="500" letter-spacing="-0.5" fill="#1E2633">신정4동</text>
+<text  x="971.2" y="136.8" font-size="23" font-weight="500" letter-spacing="-0.5" fill="none" stroke="#FFFFFF" stroke-width="5.1" stroke-linejoin="round">신정5동</text><text  x="971.2" y="136.8" font-size="23" font-weight="500" letter-spacing="-0.5" fill="#1E2633">신정5동</text>
 </g>
 </svg>

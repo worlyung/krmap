@@ -97,6 +97,13 @@ const SPEC_HELP = `지도 설정(spec). 자주 쓰는 칸:
 - 색칠: stat="old60R"(내장 통계 지표, list_indicators) + statLabels=["pop"] / data={table:"붙여넣은 표 또는 파일 경로", by:"열" | ratio:["A","B"] | poll:true, labels:[...]} / palette, steps, method "quantile"|"equal"
 - 그룹: groups=[{name, color, regions:[...], unit}], 지역별: styles={"대전 유성구":{fill:"#..", text:"#..", hideLabel:true}}
 - 핀: pins=[{name, address | lat,lng, category}] 또는 붙여넣은 표, geocode=false, pinStyle={shape:"물방울"|"점"|"네모", color, size, labels}, colorByPins
+- 이름 자리: labelPlace "auto"(지역 안, 안 들어가면 지시선) | "side"(양옆 줄로 모두 빼기), leaders=false 면 안 들어가는 이름 생략
+- 원 크기: bubbles=true (인구·매출·지점 수 같은 개수는 면 색보다 원 크기), bubbleScale
+- 확대 상자: 전국 시군구 지도에서 insets=true 또는 ["서울","부산","대구","인천","광주","대전","울산"]
+- 여러 장(PPTX 하나에 슬라이드 여러 장): each="시도" | {in:"충청남도", unit:"시군구"} | {regions:[...]} 또는 slides=[{...},{...}]. 제목의 {지역} 은 지역 이름으로
+- 색: baseColor="#13A07F"(색 하나로 색 조합 전체, darkBase=true 면 어두운 바탕), palette "theme"|"themeDiverge"
+- 디자인: look "기본"|"유리"(글라스모피즘)|"입체"|"소프트"(뉴모피즘)|"네온"
+- 통계 MCP 결과: data={rows:[{지역:"광진구", 값:31.2}, ...], by:"값"}, source="통계청 KOSIS, 표이름(DT_…)" (출처 문구로 들어감)
 - 기타: sido17(광주·전남 나눔), splitGu(일반구 나눔), fontScale, lineScale, shadow, background
 웹 도구에서 "작업 저장"한 파일 내용({state, fileText})을 그대로 넣어도 된다. 모든 칸은 map_spec_reference 로 볼 수 있다.`;
 
@@ -114,6 +121,13 @@ server.registerTool("render_map", {
 }, run(async ({ spec, formats, out_dir, name, width, preview }) => {
   const { D, stats } = K.loadData();
   const base = process.cwd();
+  if (K.isDeck(spec)) {
+    // 여러 장: PPTX 하나에 슬라이드 여러 장, 미리보기는 첫 장
+    const res = await K.renderDeck(spec, { baseDir: base, formats: formats || spec.formats, width: width || spec.width, name: name || spec.name, out: path.resolve(base, out_dir || spec.out || "out"), preview: preview !== false, previewWidth: 900 });
+    const img = res.preview ? [{ type: "image", data: Buffer.from(res.preview).toString("base64"), mimeType: "image/png" }] : [];
+    delete res.preview;
+    return ok(res, img);
+  }
   const { S, bigText } = await K.specToState(D, spec, { stats, baseDir: base });
   const res = await K.renderState(D, stats, S, bigText, {
     formats: formats || spec.formats, width: width || spec.width, name: name || spec.name,

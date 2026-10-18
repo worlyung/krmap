@@ -47,6 +47,12 @@
 <g id="시도경계">
 <path d="M1600 421L1511.9 352.9 1462.7 364.6 1503.7 399.8 1514.3 520.5 1493.2 575.6 1504.9 620.1 1485 636.5 1439.3 633 1372.5 699.8 1333.8 751.4 1331.5 787.7 1344.4 828.7 1380.7 865 1412.3 976.4 1431.1 1009.2 1363.1 1031.5 1339.7 1050.2 1217.8 1175.6 1185 1144 1152.2 1155.7 1131.1 1199 1061.9 1231.9 1049 1288.1 1055.9 1318M1055.9 1318L1049 1288.1 1061.9 1231.9 1131.1 1199 1152.2 1155.7 1185 1144 1217.8 1175.6 1339.7 1050.2 1363.1 1031.5 1431.1 1009.2 1412.3 976.4 1380.7 865 1344.4 828.7 1331.5 787.7 1333.8 751.4 1372.5 699.8 1439.3 633 1485 636.5 1504.9 620.1 1493.2 575.6 1514.3 520.5 1503.7 399.8 1462.7 364.6 1511.9 352.9 1600 421" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
+<g id="지시선">
+<path id="지시점_수성2_3가동" d="M363.5 389.2L363.3 390.2 362.8 390.9 362 391.5 361.1 391.6 360.2 391.5 359.4 390.9 358.9 390.2 358.7 389.2 358.9 388.3 359.4 387.5 360.2 387 361.1 386.8 362 387 362.8 387.5 363.3 388.3Z" fill="#6D727A" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.8" stroke-linejoin="round"><title>지시점 수성2·3가동</title></path>
+<path id="지시점_수성1가동" d="M295.5 363.5L295.4 364.4 294.8 365.2 294.1 365.7 293.1 365.9 292.2 365.7 291.4 365.2 290.9 364.4 290.7 363.5 290.9 362.5 291.4 361.8 292.2 361.2 293.1 361.1 294.1 361.2 294.8 361.8 295.4 362.5Z" fill="#6D727A" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.8" stroke-linejoin="round"><title>지시점 수성1가동</title></path>
+<path id="지시점_범어3동" d="M428 267.4L427.8 268.3 427.3 269.1 426.5 269.6 425.6 269.8 424.7 269.6 423.9 269.1 423.4 268.3 423.2 267.4 423.4 266.4 423.9 265.7 424.7 265.1 425.6 265 426.5 265.1 427.3 265.7 427.8 266.4Z" fill="#6D727A" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.8" stroke-linejoin="round"><title>지시점 범어3동</title></path>
+<path d="M361.1 389.2L259.7 386.5M293.1 363.5L229.1 326.1M425.6 267.4L437.1 227.8" fill="none" stroke="#6D727A" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
 <g id="지명" text-anchor="middle">
 <text  x="994" y="638.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">고산2동</text>
 <text  x="1289.3" y="956.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">고산1동</text>
@@ -68,5 +74,8 @@
 <text  x="531" y="293.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">범어2동</text>
 <text  x="302.5" y="533" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">중동</text>
 <text  x="333" y="304.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">수성4가동</text>
+<text  x="189.8" y="392.8" font-size="23" font-weight="500" letter-spacing="-0.5" fill="none" stroke="#FFFFFF" stroke-width="5.1" stroke-linejoin="round">수성2·3가동</text><text  x="189.8" y="392.8" font-size="23" font-weight="500" letter-spacing="-0.5" fill="#1E2633">수성2·3가동</text>
+<text  x="202.5" y="318.9" font-size="23" font-weight="500" letter-spacing="-0.5" fill="none" stroke="#FFFFFF" stroke-width="5.1" stroke-linejoin="round">수성1가동</text><text  x="202.5" y="318.9" font-size="23" font-weight="500" letter-spacing="-0.5" fill="#1E2633">수성1가동</text>
+<text  x="441.7" y="220.6" font-size="23" font-weight="500" letter-spacing="-0.5" fill="none" stroke="#FFFFFF" stroke-width="5.1" stroke-linejoin="round">범어3동</text><text  x="441.7" y="220.6" font-size="23" font-weight="500" letter-spacing="-0.5" fill="#1E2633">범어3동</text>
 </g>
 </svg>

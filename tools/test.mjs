@@ -48,5 +48,55 @@ await t("전국 · 17개 시도", async () => {
   assert.equal(r.colored, 17);
   K.R.useSido17(D, false);
 });
+await t("지시선 · 양옆 줄", async () => {
+  // 세종 읍면동: 안 들어가는 동 이름은 지시선으로 밖에 쓴다
+  const r = await K.renderSpec({ region: "세종", inner: "읍면동" }, { out, formats: ["svg"], name: "세종" });
+  const svg = fs.readFileSync(r.files[0], "utf8");
+  assert.ok(svg.includes('id="지시선"'));
+  assert.ok(svg.includes("한솔동") && svg.includes("조치원읍"));
+  // 양옆으로 모두 빼기: 왼쪽 줄은 오른쪽 끝을 맞춘다
+  const r2 = await K.renderSpec({ nationalUnit: "시도", stat: "yoyR", statLabels: ["yoyR"], labels: "side" }, { out, formats: ["svg"], name: "양옆" });
+  const s2 = fs.readFileSync(r2.files[0], "utf8");
+  assert.ok((s2.match(/text-anchor="end"/g) || []).length >= 8);
+});
+await t("원 크기 지도", async () => {
+  const r = await K.renderSpec({ region: "대전광역시", stat: "pop", bubbles: true }, { out, formats: ["svg", "pptx"], name: "원" });
+  const svg = fs.readFileSync(r.files[0], "utf8");
+  assert.ok((svg.match(/<circle/g) || []).length >= 9 + 3); // 지역 9곳 + 범례 3
+  assert.deepEqual(r.legend.items.length, 0);
+});
+await t("확대 상자", async () => {
+  const r = await K.renderSpec({ nationalUnit: "시군구", insets: ["서울", "광주"], labels: "none" }, { out, formats: ["svg"], name: "확대" });
+  const svg = fs.readFileSync(r.files[0], "utf8");
+  assert.ok(svg.includes('id="확대"') && svg.includes("확대 서울") && svg.includes("확대 광주"));
+  await assert.rejects(K.renderSpec({ nationalUnit: "시군구", insets: ["제주"] }, { out, formats: ["svg"] }), /확대 상자를 만들 수 없는 곳/);
+});
+await t("슬라이드 여러 장", async () => {
+  const r = await K.renderSpec({ each: { in: "대전광역시", unit: "시군구" }, stat: "old60R", title: "{지역} 고령 인구" }, { out, name: "묶음" });
+  assert.equal(r.slides, 5);
+  assert.ok(r.items.some((it) => it.title === "유성구 고령 인구"));
+  assert.ok(fs.statSync(r.files[0]).size > 10000 && r.files[0].endsWith(".pptx"));
+});
+await t("통계 MCP 결과(rows) · 출처 문구", async () => {
+  const rows = [{ 지역: "광진구", 청년비율: 31.2 }, { 지역: "강남구", 청년비율: 29.1 }, { 지역: "부산 중구", 청년비율: 20 }];
+  assert.equal(K.rowsToTable(rows).split("\n")[0], "지역\t청년비율");
+  const r = await K.renderSpec({ regions: ["서울특별시"], unit: "시군구", data: { rows }, source: "통계청 KOSIS(DT_TEST)" }, { out, formats: ["svg"], name: "rows" });
+  assert.equal(r.colored, 2); // 부산 중구는 서울 지도에 없다
+  assert.ok(r.source.startsWith("출처: 통계청 KOSIS(DT_TEST), 경계:"));
+});
+await t("색 하나로 색 조합 · 디자인 방식", async () => {
+  const th = K.Cl.themeFrom("#13A07F");
+  assert.ok(K.Cl.lch(th.neighbor)[0] > K.Cl.lch(th.target)[0]); // 주변은 대상보다 밝다
+  const L = K.Cl.rampStops("#13A07F").map((h) => K.Cl.lch(h)[0]);
+  assert.ok(L.every((v, i) => !i || v < L[i - 1])); // 단계는 밝음 → 진함
+  const r = await K.renderSpec({ region: "대전광역시", stat: "old60R", baseColor: "#13A07F" }, { out, formats: ["svg"], name: "base" });
+  assert.ok(fs.readFileSync(r.files[0], "utf8").includes(th.target));
+  const marks = { 유리: "bgGrad", 네온: "neonGlow", 소프트: "softRaise", 입체: 'id="입체"' };
+  for (const [look, mark] of Object.entries(marks)) {
+    const q = await K.renderSpec({ region: "대전광역시", look }, { out, formats: ["svg", "pptx"], name: "look_" + look });
+    assert.ok(fs.readFileSync(q.files[0], "utf8").includes(mark), look);
+  }
+  await assert.rejects(K.renderSpec({ region: "대전광역시", look: "없는디자인" }, { out, formats: ["svg"] }), /디자인 방식을 알 수 없습니다/);
+});
 fs.rmSync(out, { recursive: true, force: true });
 process.stdout.write(`\n${n}개 모두 통과\n`);

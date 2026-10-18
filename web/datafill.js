@@ -174,7 +174,7 @@
       valCols.forEach((c, i) => out.columns.push({ id: "c" + c, name: H(c) || (valCols.length > 1 ? `값 ${i + 1}` : "값"), kind: isPct(c) ? "pct" : "count", get: (r) => r.base[c] }));
     }
     textCols.forEach((c, i) => out.columns.push({ id: "t" + c, name: H(c) || (textCols.length > 1 ? `분류 ${i + 1}` : "분류"), kind: "text", get: (r) => r.text[c] }));
-    out.additive = (c) => !isPct(c);
+    out.additive = (c) => !isPct(+c);
     out.valCols = valCols;
     return out;
   }
@@ -283,7 +283,7 @@
         a.n++;
         for (const c in r.base) {
           if (r.base[c] == null) continue;
-          a.base[c] = ds.additive(+c) ? (a.base[c] || 0) + r.base[c] : a.n === 1 ? r.base[c] : NaN;
+          a.base[c] = ds.additive(c) ? (a.base[c] || 0) + r.base[c] : a.n === 1 ? r.base[c] : NaN;
         }
         if (r.ages) for (let i = 0; i <= 100; i++) a.ages[i] += r.ages[i];
         for (const c in r.text) if (a.text[c] !== r.text[c]) a.text[c] = a.n === 1 ? r.text[c] : null;
@@ -292,6 +292,34 @@
     for (const [k, a] of agg) if (!res.recs[k]) res.recs[k] = a.n === 1 ? a.first : a;
     res.matched = Object.keys(res.recs).length;
     return res;
+  }
+
+  /**
+   * 기본 통계(build_stats.py 가 만든 stats.js) → 표 데이터.
+   * 비율·지수는 저장된 값 대신 인구 수에서 다시 계산해 위 단위로 더할 때도 맞게 한다.
+   */
+  function fromStats(st) {
+    const ids = st.cols.map((c) => c.id);
+    const rows = Object.entries(st.rows).map(([code, arr]) => ({ name: arr[0], code, base: Object.fromEntries(ids.map((id, i) => [id, arr[i + 1]])), ages: null, text: {} }));
+    const ratio = (a, b, k) => (r) => (r.base[a] != null && r.base[b] ? ((k || 100) * r.base[a]) / r.base[b] : null);
+    const derived = {
+      kidR: ratio("kid", "pop"), youngR: ratio("young", "pop"), midR: ratio("mid", "pop"), old60R: ratio("old60", "pop"), old70R: ratio("old70", "pop"),
+      sexR: ratio("male", "female"), hhsize: ratio("pop", "hh", 1), agingI: ratio("old60", "kid"),
+      yoyR: (r) => (r.base.yoy != null && r.base.pop ? (100 * r.base.yoy) / (r.base.pop - r.base.yoy) : null),
+    };
+    const columns = st.cols.map((c) => ({ id: c.id, name: c.name, kind: c.kind, get: derived[c.id] || ((r) => r.base[c.id]) }));
+    return { rows, columns, pop: false, builtin: true, note: `행정안전부 주민등록 인구통계 ${st.meta.month}월말 기준 (시도·시군구)`, additive: (c) => !derived[c] && st.cols.some((x) => x.id === c && x.kind === "count") };
+  }
+  /** 지점 핀 → 지역마다 핀 수 (가장 잘게 찾은 지역 기준, 위 단위로는 더한다) */
+  function fromPins(items) {
+    const count = new Map();
+    for (const it of items) {
+      const keys = it.keys || {};
+      const k = keys.emd || keys.sgg || keys.si || keys.sido;
+      if (k) count.set(k, (count.get(k) || 0) + 1);
+    }
+    const rows = [...count].map(([k, n]) => ({ name: k, code: k.split(":")[1], base: { n }, ages: null, text: {} }));
+    return { rows, columns: [{ id: "n", name: "지점 수", kind: "count", get: (r) => r.base.n }], pop: false, note: "", additive: () => true };
   }
 
   /** 기록 → 숫자/글자 값 */
@@ -322,6 +350,7 @@
   /** 기본 색칠 기준: 인구 표면 노인 비율, 아니면 첫 숫자 열, 숫자 열이 없으면 첫 분류 열 */
   function defaultBy(ds) {
     if (ds.pop) return { t: "col", c: "oldR" };
+    if (ds.builtin) return { t: "col", c: "pop" };
     const n = ds.columns.filter((c) => c.kind !== "text");
     // 여론조사처럼 보이면(열 이름이 후보·정당·찬반이거나, 줄마다 합이 100 안팎) 1위 색칠
     const sums = ds.rows.slice(0, 50).map((r) => n.reduce((a, c) => a + (+c.get(r) || 0), 0));
@@ -419,5 +448,5 @@
     return Object.assign(col, { ds, matched: res.matched, unmatched: res.unmatched, ambiguous: res.ambiguous, recs: res.recs });
   }
 
-  return { PALETTES, CATEGORY, ramp, readTable, analyze, matcher, resolve, colorize, build, breaks, fmt, compact, defaultBy, LEVEL_ORDER };
+  return { PALETTES, CATEGORY, ramp, readTable, analyze, matcher, resolve, colorize, build, breaks, fmt, compact, defaultBy, fromStats, fromPins, LEVEL_ORDER };
 });

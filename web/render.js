@@ -187,35 +187,81 @@
   }
 
   /**
+   * 17개 시도 보기 켜기/끄기. 통합특별시를 광주·전남으로 나눈 시도 경계, 인접표,
+   * 소속 시도와 전체 이름을 바꿔 끼운다 (데이터에 *17 필드가 있을 때만).
+   * 읍면동을 나중에 불러왔으면 다시 불러 주면 된다.
+   */
+  function useSido17(D, on) {
+    if (!D.sido17) return false;
+    if (!D._s16) { D._s16 = D.sido; D._nb16 = {}; }
+    if (on) {
+      const s = {};
+      for (const k in D._s16) if (k !== D.meta.merged) s[k] = D._s16[k];
+      D.sido = Object.assign(s, D.sido17);
+    } else D.sido = D._s16;
+    for (const k in D.nb17 || {}) {
+      if (!(k in D._nb16)) D._nb16[k] = D.nb[k];
+      D.nb[k] = on ? D.nb17[k] : D._nb16[k];
+    }
+    for (const lv of ["si", "sgg", "emd"]) {
+      const L = D[lv];
+      if (!L) continue;
+      for (const id in L) {
+        const f = L[id];
+        if (!f.sido17) continue;
+        if (f._s16 === undefined) { f._s16 = f.sido; f._full16 = f.full; }
+        f.sido = on ? f.sido17 : f._s16;
+        f.full = on ? f.full17 : f._full16;
+      }
+    }
+    D.split = !!on;
+    return true;
+  }
+
+  /**
    * 지도 한 장의 scene 을 만든다.
    * opts.target   {lv,id} | null(전국)
    * opts.nbLevel  주변 지역 단위: sido|si|sgg|emd
    * opts.depth    0(주변 없음) | 1 | 2
    * opts.inner    대상 내부 구분 단위 (없으면 null). 전국 모드에서는 그릴 단위
+   * opts.pick     {lv, ids, fit, hideOthers} — 직접 고른 지역만 강조 (target 대신)
    * opts.context  보이는 범위의 나머지 지역을 흐리게 그림
    * opts.sidoLines 시도 경계를 진하게 덧그림
-   * opts.labels   {target, neighbor, inner}
+   * opts.labelMode "all"(자동 배치) | "none" | "pick"(labelPick 에 든 "lv:id" 만)
+   * opts.labels   {target, neighbor, inner} — "all" 일 때 종류별로 끄기
    * opts.subLabel 다른 시도·소속 시 이름을 작은 글씨로
-   * opts.distinct 주변 지역을 서로 다른 색으로
+   * opts.distinct 주변(또는 고른) 지역을 서로 다른 색으로
    * opts.aspect   null(자동) | 가로/세로 비율 숫자
    * opts.width    출력 너비(px)
    */
   function buildScene(D, opts) {
     const o = Object.assign(
       {
-        target: null, nbLevel: "si", depth: 1, inner: null, context: true, sidoLines: true,
+        target: null, nbLevel: "si", depth: 1, inner: null, pick: null, context: true, sidoLines: true,
+        labelMode: "all", labelPick: null,
         labels: { target: true, neighbor: true, inner: true }, subLabel: true, distinct: false,
         aspect: null, width: 1600, pad: 0.06, fontScale: 1, halo: false, highlight: [], shortSido: false,
       },
       opts
     );
     const C = Object.assign({}, DEFAULT_COLORS, o.colors || {});
-    const T = o.target && D[o.target.lv][o.target.id];
+    const P = o.pick;
+    const T = !P && o.target && D[o.target.lv][o.target.id];
     const scene = { polys: [], lines: [], texts: [], width: 0, height: 0, bg: C.bg, title: "" };
 
     // 1) 무엇을 그릴지
-    let nbs = [], innerIds = [], bb = null, allIds = [], allLv = null;
-    if (T) {
+    let nbs = [], innerIds = [], bb = null, allIds = [], allLv = null, picked = [];
+    const national = () => { for (const k of Object.keys(D.sido)) bb = bbUnion(bb, D.sido[k].bb); };
+    if (P) {
+      picked = (P.ids || []).filter((k) => D[P.lv][k]);
+      if (P.fit && picked.length) for (const k of picked) bb = bbUnion(bb, D[P.lv][k].bb);
+      else national();
+      scene.title = !picked.length
+        ? `전국 ${LEVEL_NAME[P.lv]}`
+        : picked.length <= 3
+          ? picked.map((k) => D[P.lv][k].full).join(", ")
+          : `${D[P.lv][picked[0]].full} 외 ${picked.length - 1}곳`;
+    } else if (T) {
       nbs = neighborsOf(D, o.target.lv, o.target.id, o.nbLevel, o.depth);
       bb = T.bb.slice();
       for (const n of nbs) bb = bbUnion(bb, D[o.nbLevel][n.id].bb);
@@ -225,7 +271,7 @@
     } else {
       allLv = o.inner && D[o.inner] ? o.inner : "sido";
       allIds = Object.keys(D[allLv]);
-      for (const k of Object.keys(D.sido)) bb = bbUnion(bb, D.sido[k].bb);
+      national();
       scene.title = `전국 ${LEVEL_NAME[allLv]}`;
     }
 
@@ -265,10 +311,42 @@
       const rings = project(f);
       if (rings.length) scene.polys.push(Object.assign({ lv, id, name: f.full, rings, fill, stroke, width, group }, extra));
     };
+    // 흐린 배경 지역: 화면 사각형으로 잘라서 채움과 경계선을 따로 둔다
+    const addContext = (lv, k, f) => {
+      const rings = [];
+      const outl = [];
+      for (const poly of project(f)) {
+        const cp = poly.map((r) => clipRing(r, 0, 0, W, H)).filter(Boolean);
+        if (cp.length) rings.push(cp);
+        for (const r of poly) outl.push(...clipOutline(r, 0, 0, W, H));
+      }
+      if (rings.length) scene.polys.push({ lv, id: k, name: f.full, rings, fill: C.context, stroke: null, width: 0, group: "context" });
+      if (outl.length) scene.lines.push({ lines: outl, stroke: C.line, width: base * 1.2, group: "context" });
+    };
+    // 이웃끼리 다른 색 (greedy)
+    const distinctColors = (lv, ids) => {
+      const assigned = {};
+      const same = D.nb[`${lv}>${lv}`] || {};
+      for (const id of ids) {
+        const used = new Set((same[id] || []).map((m) => assigned[m]).filter(Boolean));
+        assigned[id] = DISTINCT.find((c) => !used.has(c)) || DISTINCT[0];
+      }
+      return assigned;
+    };
 
-    // 3) 흐린 배경 지역 (화면에 걸친 것만, 사각형으로 잘라서)
-    const skip = new Set();
-    if (T) {
+    if (P) {
+      // 3') 직접 고른 지역
+      const sel = new Set(picked);
+      if (!P.hideOthers) {
+        for (const k in D[P.lv]) {
+          const f = D[P.lv][k];
+          if (!sel.has(k) && bbHit(f.bb, view)) addContext(P.lv, k, f);
+        }
+      }
+      const colors = o.distinct ? distinctColors(P.lv, picked) : null;
+      for (const k of picked) add(P.lv, k, D[P.lv][k], colors ? colors[k] : C.target, C.line, base * 1.4, "picked");
+    } else if (T) {
+      // 3) 흐린 배경 지역
       const ctxLv = o.nbLevel || "si";
       const nbSet = new Set(nbs.map((n) => n.id));
       if (o.context && D[ctxLv]) {
@@ -276,32 +354,14 @@
           const f = D[ctxLv][k];
           if (!bbHit(f.bb, view) || nbSet.has(k)) continue;
           if (contains(D, o.target.lv, o.target.id, ctxLv, k)) continue;
-          const rings = [];
-          const outl = [];
-          for (const poly of project(f)) {
-            const cp = poly.map((r) => clipRing(r, 0, 0, W, H)).filter(Boolean);
-            if (cp.length && cp[0]) rings.push(cp);
-            for (const r of poly) outl.push(...clipOutline(r, 0, 0, W, H));
-          }
-          if (rings.length)
-            scene.polys.push({ lv: ctxLv, id: k, name: f.full, rings, fill: C.context, stroke: null, width: 0, group: "context" });
-          if (outl.length) scene.lines.push({ lines: outl, stroke: C.line, width: base * 1.2, group: "context" });
+          addContext(ctxLv, k, f);
         }
       }
       // 4) 주변 지역
-      let colorOf = () => C.neighbor;
-      if (o.distinct) {
-        const assigned = {};
-        const same = D.nb[`${o.nbLevel}>${o.nbLevel}`] || {};
-        for (const n of nbs) {
-          const used = new Set((same[n.id] || []).map((m) => assigned[m]).filter(Boolean));
-          assigned[n.id] = DISTINCT.find((c) => !used.has(c)) || DISTINCT[0];
-        }
-        colorOf = (n) => assigned[n.id];
-      }
+      const colors = o.distinct ? distinctColors(o.nbLevel, nbs.map((n) => n.id)) : null;
       for (const n of nbs) {
-        let fill = colorOf(n);
-        if (n.ring === 2 && !o.distinct) fill = mix(fill, "#FFFFFF", 0.55);
+        let fill = colors ? colors[n.id] : C.neighbor;
+        if (n.ring === 2 && !colors) fill = mix(fill, "#FFFFFF", 0.55);
         add(o.nbLevel, n.id, D[o.nbLevel][n.id], fill, C.line, base * 1.6, "neighbor", { ring: n.ring });
       }
       // 5) 대상 (내부 구분이 있으면 하위 지역들로)
@@ -315,14 +375,16 @@
       }
     } else {
       const hl = new Set(o.highlight || []);
+      const colors = o.distinct ? distinctColors(allLv, allIds) : null;
       for (const k of allIds) {
         const f = D[allLv][k];
-        add(allLv, k, f, hl.has(k) ? C.target : C.neighbor, C.line, base * (allLv === "emd" ? 0.5 : 1.0), hl.has(k) ? "target" : "all");
+        const fill = hl.has(k) ? C.target : colors ? colors[k] : C.neighbor;
+        add(allLv, k, f, fill, C.line, base * (allLv === "emd" ? 0.5 : 1.0), hl.has(k) ? "target" : "all");
       }
     }
 
     // 6) 시도 경계 덧그리기
-    const fineLv = T ? (LEVEL_ORDER[o.nbLevel] > 0 || innerIds.length ? o.nbLevel : null) : allLv;
+    const fineLv = P ? P.lv : T ? (LEVEL_ORDER[o.nbLevel] > 0 || innerIds.length ? o.nbLevel : null) : allLv;
     if (o.sidoLines && fineLv && fineLv !== "sido") {
       const lines = [];
       for (const k in D.sido) {
@@ -330,7 +392,7 @@
         if (!bbHit(f.bb, view)) continue;
         for (const poly of project(f)) for (const r of poly) lines.push(...clipOutline(r, 0, 0, W, H));
       }
-      scene.lines.push({ lines, stroke: C.sidoLine, width: base * 2.2, group: "sido", dash: null });
+      scene.lines.push({ lines, stroke: C.sidoLine, width: base * 2.2, group: "sido" });
     }
 
     // 7) 글자
@@ -338,15 +400,16 @@
     const placed = [];
     const overlaps = (b) => placed.some((p) => b[0] < p[2] && b[2] > p[0] && b[1] < p[3] && b[3] > p[1]);
     const textW = (t, size) => [...t].reduce((a, ch) => a + (/[ㄱ-힣]/.test(ch) ? 1 : 0.58), 0) * size;
-    const targetSido = T ? T.sido : null;
-    const label = (lv, id, fill, size, weight, force, isTarget) => {
+    const homeSido = T ? T.sido : P && picked.length ? D[P.lv][picked[0]].sido : null;
+    const label = (lv, id, fill, size, weight, force) => {
       const f = D[lv][id];
       const p = tf(f.lp);
+      if (p[0] < 0 || p[1] < 0 || p[0] > W || p[1] > H) return;
       let sub = [];
       if (o.subLabel) {
         if (lv === "sgg" && f.city) sub.push(f.city);
         const sShort = sidoShort(D.sido[f.sido].nm);
-        if (T && f.sido !== targetSido && lv !== "sido" && !f.nm.startsWith(sShort)) sub.push(sShort);
+        if (homeSido && f.sido !== homeSido && lv !== "sido" && !f.nm.startsWith(sShort)) sub.push(sShort);
       }
       const main = lv === "sido" && o.shortSido ? sidoShort(f.nm) : f.nm;
       const subTxt = sub.join(" · ");
@@ -362,28 +425,37 @@
       placed.push(box);
       const color = textOn(fill, C.text);
       const y0t = p[1] - th / 2;
-      scene.texts.push({ x: p[0], y: y0t + size * 0.5, text: main, size, weight, fill: color, halo: o.halo, target: !!isTarget });
-      if (subTxt) scene.texts.push({ x: p[0], y: y0t + size + ss * 0.65, text: subTxt, size: ss, weight: 400, fill: color, halo: o.halo, sub: true });
+      scene.texts.push({ lv, id, x: p[0], y: y0t + size * 0.5, text: main, size, weight, fill: color, halo: o.halo });
+      if (subTxt) scene.texts.push({ lv, id, x: p[0], y: y0t + size + ss * 0.65, text: subTxt, size: ss, weight: 400, fill: color, halo: o.halo, sub: true });
     };
-    if (T) {
-      if (o.labels.target && !innerIds.length) label(o.target.lv, o.target.id, C.target, fs * 1.25, 700, true, true);
-      if (o.labels.neighbor) {
-        for (const n of nbs) {
-          const poly = scene.polys.find((p) => p.group === "neighbor" && p.id === n.id);
-          label(o.nbLevel, n.id, poly ? poly.fill : C.neighbor, fs * (n.ring === 2 ? 0.8 : 0.95), 600, false);
-        }
+    const style = (p) => {
+      switch (p.group) {
+        case "target": return [fs * 1.25, 700];
+        case "neighbor": return [fs * (p.ring === 2 ? 0.8 : 0.95), 600];
+        case "picked": return [fs * (p.lv === "sido" ? 1.0 : p.lv === "emd" ? 0.6 : 0.85), 600];
+        case "all": return [allLv === "sido" ? fs * 0.9 : allLv === "emd" ? fs * 0.3 : fs * 0.45, allLv === "sido" ? 700 : 500];
+        default: return [fs * 0.8, 500];
       }
-      if (innerIds.length && o.labels.inner) {
-        const ordered = innerIds.slice().sort((a, b) => D[o.inner][b].a - D[o.inner][a].a);
-        for (const k of ordered) label(o.inner, k, C.target, fs * 0.8, 500, false);
+    };
+    const byArea = (a, b) => D[b.lv][b.id].a - D[a.lv][a.id].a;
+    if (o.labelMode === "pick") {
+      const want = o.labelPick || new Set();
+      const seen = new Set();
+      for (const p of scene.polys) {
+        const key = p.lv + ":" + p.id;
+        if (!want.has(key) || seen.has(key)) continue;
+        seen.add(key);
+        const [size, weight] = style(p);
+        label(p.lv, p.id, p.fill, size, weight, true);
       }
-    } else if (o.labels.inner !== false && allLv !== "emd") {
-      const ordered = allIds.slice().sort((a, b) => D[allLv][b].a - D[allLv][a].a);
-      const sz = allLv === "sido" ? fs * 0.9 : allLv === "emd" ? fs * 0.3 : fs * 0.45;
-      for (const k of ordered) {
-        const isHl = (o.highlight || []).includes(k);
-        label(allLv, k, isHl ? C.target : C.neighbor, sz, allLv === "sido" ? 700 : 500, allLv === "sido");
-      }
+    } else if (o.labelMode !== "none") {
+      const of = (g) => scene.polys.filter((p) => p.group === g);
+      for (const p of of("target")) if (o.labels.target && T) label(p.lv, p.id, p.fill, ...style(p), true);
+      if (o.labels.neighbor) for (const p of of("neighbor")) label(p.lv, p.id, p.fill, ...style(p), false);
+      if (o.labels.inner) for (const p of of("inner").sort(byArea)) label(p.lv, p.id, p.fill, ...style(p), false);
+      for (const p of of("picked").sort(byArea)) label(p.lv, p.id, p.fill, ...style(p), p.lv === "sido");
+      if (o.labels.inner !== false && allLv !== "emd")
+        for (const p of of("all").sort(byArea)) label(p.lv, p.id, p.fill, ...style(p), allLv === "sido");
     }
     return scene;
   }
@@ -409,7 +481,7 @@
   }
 
   const GROUPS = [
-    ["context", "배경"], ["all", "지역"], ["neighbor", "주변"], ["inner", "대상_내부"], ["target", "대상"], ["sido", "시도경계"],
+    ["context", "배경"], ["all", "지역"], ["neighbor", "주변"], ["picked", "선택"], ["inner", "대상_내부"], ["target", "대상"], ["sido", "시도경계"],
   ];
 
   function toSVG(scene, opt) {
@@ -457,5 +529,5 @@
     return out.join("\n");
   }
 
-  return { buildScene, toSVG, neighborsOf, featuresInside, contains, decode, sidoShort, DEFAULT_COLORS, DISTINCT, LEVEL_NAME, LEVEL_ORDER, FONT };
+  return { buildScene, toSVG, useSido17, neighborsOf, featuresInside, contains, decode, sidoShort, DEFAULT_COLORS, DISTINCT, LEVEL_NAME, LEVEL_ORDER, FONT };
 });

@@ -44,20 +44,20 @@
 <path d="M470.2 0L517.5 96.5 580.8 118.3 648.4 59.4 755.3 0M755.3 0L648.4 59.4 580.8 118.3 517.5 96.5 470.2 0" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="436.8" y="463.4" font-size="25.6" font-weight="500" fill="#FFFFFF">평창동</text>
-<text x="480.4" y="1233.5" font-size="25.6" font-weight="500" fill="#FFFFFF">청운효자동</text>
-<text x="899.3" y="1536.7" font-size="25.6" font-weight="500" fill="#FFFFFF">종로1·2·3·4가동</text>
-<text x="338.6" y="965.2" font-size="25.6" font-weight="500" fill="#FFFFFF">부암동</text>
-<text x="692" y="1100.4" font-size="25.6" font-weight="500" fill="#FFFFFF">삼청동</text>
-<text x="465.1" y="1493.1" font-size="25.6" font-weight="500" fill="#FFFFFF">사직동</text>
-<text x="1041.1" y="1216.1" font-size="25.6" font-weight="500" fill="#FFFFFF">혜화동</text>
-<text x="1143.6" y="1373.1" font-size="25.6" font-weight="500" fill="#FFFFFF">이화동</text>
-<text x="1139.2" y="1547.7" font-size="25.6" font-weight="500" fill="#FFFFFF">종로5·6가동</text>
-<text x="796.7" y="1325.1" font-size="25.6" font-weight="500" fill="#FFFFFF">가회동</text>
-<text x="268.8" y="1414.6" font-size="25.6" font-weight="500" fill="#FFFFFF">무악동</text>
-<text x="345.2" y="1560.7" font-size="25.6" font-weight="500" fill="#FFFFFF">교남동</text>
-<text x="1459.9" y="1477.8" font-size="25.6" font-weight="500" fill="#FFFFFF">숭인2동</text>
-<text x="1320.3" y="1576" font-size="25.6" font-weight="500" fill="#FFFFFF">창신1동</text>
-<text x="1309.4" y="1410.2" font-size="25.6" font-weight="500" fill="#FFFFFF">창신3동</text>
+<text  x="436.8" y="463.4" font-size="25.6" font-weight="500" fill="#FFFFFF">평창동</text>
+<text  x="480.4" y="1233.5" font-size="25.6" font-weight="500" fill="#FFFFFF">청운효자동</text>
+<text  x="899.3" y="1536.7" font-size="25.6" font-weight="500" fill="#FFFFFF">종로1·2·3·4가동</text>
+<text  x="338.6" y="965.2" font-size="25.6" font-weight="500" fill="#FFFFFF">부암동</text>
+<text  x="692" y="1100.4" font-size="25.6" font-weight="500" fill="#FFFFFF">삼청동</text>
+<text  x="465.1" y="1493.1" font-size="25.6" font-weight="500" fill="#FFFFFF">사직동</text>
+<text  x="1041.1" y="1216.1" font-size="25.6" font-weight="500" fill="#FFFFFF">혜화동</text>
+<text  x="1143.6" y="1373.1" font-size="25.6" font-weight="500" fill="#FFFFFF">이화동</text>
+<text  x="1139.2" y="1547.7" font-size="25.6" font-weight="500" fill="#FFFFFF">종로5·6가동</text>
+<text  x="796.7" y="1325.1" font-size="25.6" font-weight="500" fill="#FFFFFF">가회동</text>
+<text  x="268.8" y="1414.6" font-size="25.6" font-weight="500" fill="#FFFFFF">무악동</text>
+<text  x="345.2" y="1560.7" font-size="25.6" font-weight="500" fill="#FFFFFF">교남동</text>
+<text  x="1459.9" y="1477.8" font-size="25.6" font-weight="500" fill="#FFFFFF">숭인2동</text>
+<text  x="1320.3" y="1576" font-size="25.6" font-weight="500" fill="#FFFFFF">창신1동</text>
+<text  x="1309.4" y="1410.2" font-size="25.6" font-weight="500" fill="#FFFFFF">창신3동</text>
 </g>
 </svg>

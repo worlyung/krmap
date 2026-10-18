@@ -32,21 +32,19 @@
 <g id="대상">
 <path d="M755.6 744.7L684 777.2 625.5 848.8 532.3 874.8 486.8 885.6 497.6 920.3 404.4 944.2 322 920.3 263.5 926.8 161.6 879.1 85.7 779.4 107.4 692.7 202.8 577.8 222.3 534.4 228.8 465.1 226.6 419.6 322 278.6 378.4 157.3 395.7 105.2 497.6 85.7 521.4 124.7 621.2 100.9 742.6 98.7 824.9 139.9 890 200.6 931.2 207.1 887.8 296 1035.2 328.5 1067.7 365.4 1074.2 354.5 1137.1 384.9 1236.8 428.2 1288.8 471.6 1386.4 475.9 1414.6 625.5 1462.3 675.4 1514.3 690.5 1479.6 798.9 1475.3 885.6 1496.9 965.8 1503.4 1011.4 1496.9 1121.9 1403.7 968 1360.4 950.7 1206.5 929 1182.6 922.5 1104.6 907.3 1011.4 883.5 909.5 855.3 803.3 746.9 755.6 744.7" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
-<g id="시도경계">
-</g>
 <g id="지명" text-anchor="middle">
-<text x="428.2" y="357.2" font-size="25.6" font-weight="500" fill="#FFFFFF">온천2동</text>
-<text x="738.2" y="261.8" font-size="25.6" font-weight="500" fill="#FFFFFF">온천1동</text>
-<text x="241.8" y="756.1" font-size="25.6" font-weight="500" fill="#FFFFFF">사직2동</text>
-<text x="419.6" y="576.2" font-size="25.6" font-weight="500" fill="#FFFFFF">온천3동</text>
-<text x="1369" y="832" font-size="25.6" font-weight="500" fill="#FFFFFF">안락2동</text>
-<text x="926.8" y="413.6" font-size="25.6" font-weight="500" fill="#FFFFFF">명륜동</text>
-<text x="961.5" y="795.1" font-size="25.6" font-weight="500" fill="#FFFFFF">수민동</text>
-<text x="1178.3" y="511.1" font-size="25.6" font-weight="500" fill="#FFFFFF">명장2동</text>
-<text x="1317" y="623.9" font-size="25.6" font-weight="500" fill="#FFFFFF">명장1동</text>
-<text x="1002.7" y="584.9" font-size="25.6" font-weight="500" fill="#FFFFFF">복산동</text>
-<text x="1186.9" y="764.8" font-size="25.6" font-weight="500" fill="#FFFFFF">안락1동</text>
-<text x="588.6" y="799.5" font-size="25.6" font-weight="500" fill="#FFFFFF">사직3동</text>
-<text x="441.2" y="740.9" font-size="25.6" font-weight="500" fill="#FFFFFF">사직1동</text>
+<text  x="428.2" y="357.2" font-size="25.6" font-weight="500" fill="#FFFFFF">온천2동</text>
+<text  x="738.2" y="261.8" font-size="25.6" font-weight="500" fill="#FFFFFF">온천1동</text>
+<text  x="241.8" y="756.1" font-size="25.6" font-weight="500" fill="#FFFFFF">사직2동</text>
+<text  x="419.6" y="576.2" font-size="25.6" font-weight="500" fill="#FFFFFF">온천3동</text>
+<text  x="1369" y="832" font-size="25.6" font-weight="500" fill="#FFFFFF">안락2동</text>
+<text  x="926.8" y="413.6" font-size="25.6" font-weight="500" fill="#FFFFFF">명륜동</text>
+<text  x="961.5" y="795.1" font-size="25.6" font-weight="500" fill="#FFFFFF">수민동</text>
+<text  x="1178.3" y="511.1" font-size="25.6" font-weight="500" fill="#FFFFFF">명장2동</text>
+<text  x="1317" y="623.9" font-size="25.6" font-weight="500" fill="#FFFFFF">명장1동</text>
+<text  x="1002.7" y="584.9" font-size="25.6" font-weight="500" fill="#FFFFFF">복산동</text>
+<text  x="1186.9" y="764.8" font-size="25.6" font-weight="500" fill="#FFFFFF">안락1동</text>
+<text  x="588.6" y="799.5" font-size="25.6" font-weight="500" fill="#FFFFFF">사직3동</text>
+<text  x="441.2" y="740.9" font-size="25.6" font-weight="500" fill="#FFFFFF">사직1동</text>
 </g>
 </svg>

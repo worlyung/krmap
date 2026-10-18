@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1670" viewBox="0 0 1400 1670" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<title>제주특별자치도 제주시, 제주특별자치도 서귀포시</title>
+<g id="선택">
+<path id="제주특별자치도_제주시" d="M884.5 132.1L1216.6 323.8 1216.6 707.2 884.5 899 552.4 707.2 552.4 323.8Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>제주특별자치도 제주시</title></path>
+<path id="제주특별자치도_서귀포시" d="M515.5 771.1L847.6 962.9 847.6 1346.3 515.5 1538 183.4 1346.3 183.4 962.9Z" fill="#F8DFA0" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>제주특별자치도 서귀포시</title></path>
+</g>
+<g id="지명" text-anchor="middle">
+<text  x="884.5" y="527.1" font-size="32.2" font-weight="600" fill="#1E2633">제주</text>
+<text  x="515.5" y="1166.2" font-size="32.2" font-weight="600" fill="#1E2633">서귀포</text>
+</g>
+</svg>

@@ -31,11 +31,11 @@
 <path d="M0 344.3L14.8 347.2 111.1 421.1 166.2 440.8 185.6 307.9 196.7 310.3 229.6 302.6 245.7 301.7 246.3 314.1 250.7 316.7 268.6 319.6 288.5 324.9 325.8 322.3 344.9 315.2 374.8 298.5 424.4 263.9 478.3 232.8 484.5 229.3 548.5 197.6 638.2 142.7 677.5 114 684.6 111.1 714.2 95.8 730.9 81.1 745 66.2 751.5 56.2 784 29.5 792.8 6 796.7 0M1371.2 0L1388.9 23.9 1405 41.3 1437.9 81.1 1445.8 80.6 1464.3 103.7 1483.7 123.1 1484.8 169.2 1512.1 231.3 1524.4 228.7 1541.1 233.4 1546.7 275.3 1563.1 282.7 1576.4 309.1 1584.3 335.2 1600 378.6" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="1047.7" y="828.1" font-size="25.6" font-weight="500" fill="#FFFFFF">북면</text>
-<text x="793.4" y="1194.5" font-size="25.6" font-weight="500" fill="#FFFFFF">인제읍</text>
-<text x="1198.2" y="1514.9" font-size="25.6" font-weight="500" fill="#FFFFFF">기린면</text>
-<text x="760.5" y="465" font-size="25.6" font-weight="500" fill="#FFFFFF">서화면</text>
-<text x="432.9" y="1464.1" font-size="25.6" font-weight="500" fill="#FFFFFF">남면</text>
-<text x="757.6" y="1712.3" font-size="25.6" font-weight="500" fill="#FFFFFF">상남면</text>
+<text  x="1047.7" y="828.1" font-size="25.6" font-weight="500" fill="#FFFFFF">북면</text>
+<text  x="793.4" y="1194.5" font-size="25.6" font-weight="500" fill="#FFFFFF">인제읍</text>
+<text  x="1198.2" y="1514.9" font-size="25.6" font-weight="500" fill="#FFFFFF">기린면</text>
+<text  x="760.5" y="465" font-size="25.6" font-weight="500" fill="#FFFFFF">서화면</text>
+<text  x="432.9" y="1464.1" font-size="25.6" font-weight="500" fill="#FFFFFF">남면</text>
+<text  x="757.6" y="1712.3" font-size="25.6" font-weight="500" fill="#FFFFFF">상남면</text>
 </g>
 </svg>

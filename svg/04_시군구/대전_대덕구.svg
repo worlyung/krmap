@@ -35,17 +35,17 @@
 <path d="M260.9 0L284.7 36.9 275.2 145.2 240 234.6 238.7 367.3 248.1 426.9 264.4 452.6 329.4 466.2 410.6 464.8 532.5 441.8 556.9 458 551.5 433.7 635.5 429.6 673.4 437.7 765.5 533.9 835.9 543.4 879.2 536.6 955.1 493.3 1009.2 439.1 1010.6 330.7 1037.7 248.1 1104 168.2 1194.8 126.2 1244.9 120.8 1258.4 158.7 1194.8 386.3 1196.1 420.1 1232.7 448.6 1290.9 468.9 1358.6 470.2 1433.1 452.6 1479.2 478.4 1479.2 548.8 1351.9 681.5 1315.3 798 1418.2 1005.2 1477.8 1166.3 1556.4 1211 1568.6 1242.2 1600 1116.4M1600 2023.9L1565.8 2034.4 1542.8 2104.8 1560.4 2144.1 1529.3 2180.7 1472.4 2194.2 1461.6 2210.5 1461.6 2255M1600 1116.4L1568.6 1242.2 1556.4 1211 1477.8 1166.3 1418.2 1005.2 1315.3 798 1351.9 681.5 1479.2 548.8 1479.2 478.4 1433.1 452.6 1358.6 470.2 1290.9 468.9 1232.7 448.6 1196.1 420.1 1194.8 386.3 1258.4 158.7 1244.9 120.8 1194.8 126.2 1104 168.2 1037.7 248.1 1010.6 330.7 1009.2 439.1 955.1 493.3 879.2 536.6 835.9 543.4 765.5 533.9 673.4 437.7 635.5 429.6 551.5 433.7 556.9 458 532.5 441.8 410.6 464.8 329.4 466.2 264.4 452.6 248.1 426.9 238.7 367.3 240 234.6 275.2 145.2 284.7 36.9 260.9 0M1461.6 2255L1461.6 2210.5 1472.4 2194.2 1529.3 2180.7 1560.4 2144.1 1542.8 2104.8 1565.8 2034.4 1600 2023.9" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="1053.9" y="697.5" font-size="25.6" font-weight="500" fill="#FFFFFF">신탄진동</text>
-<text x="634.1" y="1323.2" font-size="25.6" font-weight="500" fill="#FFFFFF">회덕동</text>
-<text x="569.1" y="858.6" font-size="25.6" font-weight="500" fill="#FFFFFF">덕암동</text>
-<text x="288.8" y="654.2" font-size="25.6" font-weight="500" fill="#FFFFFF">목상동</text>
-<text x="922.6" y="1900.1" font-size="25.6" font-weight="500" fill="#FFFFFF">비래동</text>
-<text x="325.3" y="1763.3" font-size="25.6" font-weight="500" fill="#FFFFFF">대화동</text>
-<text x="367.3" y="1981.3" font-size="25.6" font-weight="500" fill="#FFFFFF">오정동</text>
-<text x="678.8" y="1690.2" font-size="25.6" font-weight="500" fill="#FFFFFF">법2동</text>
-<text x="753.3" y="1854" font-size="25.6" font-weight="500" fill="#FFFFFF">송촌동</text>
-<text x="539.3" y="1881.1" font-size="25.6" font-weight="500" fill="#FFFFFF">중리동</text>
-<text x="504.1" y="522.8" font-size="25.6" font-weight="500" fill="#FFFFFF">석봉동</text>
-<text x="546.1" y="1753.8" font-size="25.6" font-weight="500" fill="#FFFFFF">법1동</text>
+<text  x="1053.9" y="697.5" font-size="25.6" font-weight="500" fill="#FFFFFF">신탄진동</text>
+<text  x="634.1" y="1323.2" font-size="25.6" font-weight="500" fill="#FFFFFF">회덕동</text>
+<text  x="569.1" y="858.6" font-size="25.6" font-weight="500" fill="#FFFFFF">덕암동</text>
+<text  x="288.8" y="654.2" font-size="25.6" font-weight="500" fill="#FFFFFF">목상동</text>
+<text  x="922.6" y="1900.1" font-size="25.6" font-weight="500" fill="#FFFFFF">비래동</text>
+<text  x="325.3" y="1763.3" font-size="25.6" font-weight="500" fill="#FFFFFF">대화동</text>
+<text  x="367.3" y="1981.3" font-size="25.6" font-weight="500" fill="#FFFFFF">오정동</text>
+<text  x="678.8" y="1690.2" font-size="25.6" font-weight="500" fill="#FFFFFF">법2동</text>
+<text  x="753.3" y="1854" font-size="25.6" font-weight="500" fill="#FFFFFF">송촌동</text>
+<text  x="539.3" y="1881.1" font-size="25.6" font-weight="500" fill="#FFFFFF">중리동</text>
+<text  x="504.1" y="522.8" font-size="25.6" font-weight="500" fill="#FFFFFF">석봉동</text>
+<text  x="546.1" y="1753.8" font-size="25.6" font-weight="500" fill="#FFFFFF">법1동</text>
 </g>
 </svg>

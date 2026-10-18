@@ -40,18 +40,18 @@
 <path d="M0 1321.8L294.6 1192 364.7 1014.5 517.4 624.7 548.3 513.3 569 381.2 562.8 298.7 649.4 247.1 709.2 236.8 816.5 185.3 888.7 172.9 963 207.9 1062 230.6 1154.8 127.5 1272.4 131.6 1260 42.9 1275.9 0M1275.9 0L1260 42.9 1272.4 131.6 1154.8 127.5 1062 230.6 963 207.9 888.7 172.9 816.5 185.3 709.2 236.8 649.4 247.1 562.8 298.7 569 381.2 548.3 513.3 517.4 624.7 364.7 1014.5 294.6 1192 0 1321.8" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="814.4" y="462.6" font-size="25.6" font-weight="500" fill="#FFFFFF">금곡동</text>
-<text x="989.8" y="881.4" font-size="25.6" font-weight="500" fill="#FFFFFF">화명2동</text>
-<text x="1043.4" y="1506.5" font-size="25.6" font-weight="500" fill="#FFFFFF">만덕1동</text>
-<text x="721.6" y="1300.2" font-size="25.6" font-weight="500" fill="#FFFFFF">화명1동</text>
-<text x="441.1" y="1244.5" font-size="25.6" font-weight="500" fill="#FFFFFF">화명3동</text>
-<text x="1088.8" y="1828.3" font-size="25.6" font-weight="500" fill="#FFFFFF">만덕2동</text>
-<text x="616.4" y="2098.5" font-size="25.6" font-weight="500" fill="#FFFFFF">구포3동</text>
-<text x="403.9" y="1626.1" font-size="25.6" font-weight="500" fill="#FFFFFF">덕천2동</text>
-<text x="313.2" y="2001.6" font-size="25.6" font-weight="500" fill="#FFFFFF">구포2동</text>
-<text x="859.8" y="1766.4" font-size="25.6" font-weight="500" fill="#FFFFFF">만덕3동</text>
-<text x="682.4" y="1601.4" font-size="25.6" font-weight="500" fill="#FFFFFF">덕천1동</text>
-<text x="449.3" y="1842.7" font-size="25.6" font-weight="500" fill="#FFFFFF">구포1동</text>
-<text x="705.1" y="1840.7" font-size="25.6" font-weight="500" fill="#FFFFFF">덕천3동</text>
+<text  x="814.4" y="462.6" font-size="25.6" font-weight="500" fill="#FFFFFF">금곡동</text>
+<text  x="989.8" y="881.4" font-size="25.6" font-weight="500" fill="#FFFFFF">화명2동</text>
+<text  x="1043.4" y="1506.5" font-size="25.6" font-weight="500" fill="#FFFFFF">만덕1동</text>
+<text  x="721.6" y="1300.2" font-size="25.6" font-weight="500" fill="#FFFFFF">화명1동</text>
+<text  x="441.1" y="1244.5" font-size="25.6" font-weight="500" fill="#FFFFFF">화명3동</text>
+<text  x="1088.8" y="1828.3" font-size="25.6" font-weight="500" fill="#FFFFFF">만덕2동</text>
+<text  x="616.4" y="2098.5" font-size="25.6" font-weight="500" fill="#FFFFFF">구포3동</text>
+<text  x="403.9" y="1626.1" font-size="25.6" font-weight="500" fill="#FFFFFF">덕천2동</text>
+<text  x="313.2" y="2001.6" font-size="25.6" font-weight="500" fill="#FFFFFF">구포2동</text>
+<text  x="859.8" y="1766.4" font-size="25.6" font-weight="500" fill="#FFFFFF">만덕3동</text>
+<text  x="682.4" y="1601.4" font-size="25.6" font-weight="500" fill="#FFFFFF">덕천1동</text>
+<text  x="449.3" y="1842.7" font-size="25.6" font-weight="500" fill="#FFFFFF">구포1동</text>
+<text  x="705.1" y="1840.7" font-size="25.6" font-weight="500" fill="#FFFFFF">덕천3동</text>
 </g>
 </svg>

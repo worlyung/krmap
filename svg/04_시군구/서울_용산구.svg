@@ -39,24 +39,22 @@
 <g id="대상">
 <path d="M745.9 1238.3L633.4 1217.1 478.4 1140.7 402 1085.5 317.1 1026.1 174.9 968.8 177 756.5 157.9 714 85.7 590.9 117.6 544.2 200.3 537.8 242.8 495.4 306.5 431.7 308.6 429.6 348.9 315 433.8 242.8 419 174.9 533.6 85.7 544.2 119.7 607.9 109.1 686.4 149.4 852 126 896.6 179.1 981.5 213.1 996.3 236.4 1036.7 278.9 1096.1 217.3 1204.4 206.7 1223.5 270.4 1215 304.4 1285 357.4 1297.8 459.3 1399.7 478.4 1514.3 567.6 1344.5 737.4 1270.2 813.8 1204.4 915.7 1128 970.9 1045.2 1021.8 943.3 1085.5 849.9 1234.1 758.6 1236.2 745.9 1238.3" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
-<g id="시도경계">
-</g>
 <g id="지명" text-anchor="middle">
-<text x="1289.3" y="610.7" font-size="25.6" font-weight="500" fill="#FFFFFF">한남동</text>
-<text x="622.8" y="1039.5" font-size="25.6" font-weight="500" fill="#FFFFFF">이촌1동</text>
-<text x="480.5" y="731.7" font-size="25.6" font-weight="500" fill="#FFFFFF">한강로동</text>
-<text x="947.5" y="912.2" font-size="25.6" font-weight="500" fill="#FFFFFF">서빙고동</text>
-<text x="845.6" y="678.7" font-size="25.6" font-weight="500" fill="#FFFFFF">용산2가동</text>
-<text x="274.6" y="886.7" font-size="25.6" font-weight="500" fill="#FFFFFF">이촌2동</text>
-<text x="667.3" y="396.4" font-size="25.6" font-weight="500" fill="#FFFFFF">남영동</text>
-<text x="501.8" y="345.4" font-size="25.6" font-weight="500" fill="#FFFFFF">청파동</text>
-<text x="1181" y="837.9" font-size="25.6" font-weight="500" fill="#FFFFFF">보광동</text>
-<text x="990" y="407" font-size="25.6" font-weight="500" fill="#FFFFFF">이태원2동</text>
-<text x="189.7" y="619.2" font-size="25.6" font-weight="500" fill="#FFFFFF">원효로2동</text>
-<text x="790.4" y="226.5" font-size="25.6" font-weight="500" fill="#FFFFFF">후암동</text>
-<text x="996.3" y="610.7" font-size="25.6" font-weight="500" fill="#FFFFFF">이태원1동</text>
-<text x="499.6" y="523.7" font-size="25.6" font-weight="500" fill="#FFFFFF">원효로1동</text>
-<text x="372.3" y="415.5" font-size="25.6" font-weight="500" fill="#FFFFFF">효창동</text>
-<text x="344.7" y="496.1" font-size="25.6" font-weight="500" fill="#FFFFFF">용문동</text>
+<text  x="1289.3" y="610.7" font-size="25.6" font-weight="500" fill="#FFFFFF">한남동</text>
+<text  x="622.8" y="1039.5" font-size="25.6" font-weight="500" fill="#FFFFFF">이촌1동</text>
+<text  x="480.5" y="731.7" font-size="25.6" font-weight="500" fill="#FFFFFF">한강로동</text>
+<text  x="947.5" y="912.2" font-size="25.6" font-weight="500" fill="#FFFFFF">서빙고동</text>
+<text  x="845.6" y="678.7" font-size="25.6" font-weight="500" fill="#FFFFFF">용산2가동</text>
+<text  x="274.6" y="886.7" font-size="25.6" font-weight="500" fill="#FFFFFF">이촌2동</text>
+<text  x="667.3" y="396.4" font-size="25.6" font-weight="500" fill="#FFFFFF">남영동</text>
+<text  x="501.8" y="345.4" font-size="25.6" font-weight="500" fill="#FFFFFF">청파동</text>
+<text  x="1181" y="837.9" font-size="25.6" font-weight="500" fill="#FFFFFF">보광동</text>
+<text  x="990" y="407" font-size="25.6" font-weight="500" fill="#FFFFFF">이태원2동</text>
+<text  x="189.7" y="619.2" font-size="25.6" font-weight="500" fill="#FFFFFF">원효로2동</text>
+<text  x="790.4" y="226.5" font-size="25.6" font-weight="500" fill="#FFFFFF">후암동</text>
+<text  x="996.3" y="610.7" font-size="25.6" font-weight="500" fill="#FFFFFF">이태원1동</text>
+<text  x="499.6" y="523.7" font-size="25.6" font-weight="500" fill="#FFFFFF">원효로1동</text>
+<text  x="372.3" y="415.5" font-size="25.6" font-weight="500" fill="#FFFFFF">효창동</text>
+<text  x="344.7" y="496.1" font-size="25.6" font-weight="500" fill="#FFFFFF">용문동</text>
 </g>
 </svg>

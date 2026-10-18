@@ -46,28 +46,28 @@
 <path d="M0 1010.2L72.2 1014.6 110.2 998.3 182.2 933.1 209.3 873.3 212 805.4 167.2 726.7 87.1 643.8 0 562.2M0 562.2L87.1 643.8 167.2 726.7 212 805.4 209.3 873.3 182.2 933.1 110.2 998.3 72.2 1014.6 0 1010.2" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="1119.1" y="1254.6" font-size="25.6" font-weight="500" fill="#FFFFFF">도원동</text>
-<text x="266.3" y="429" font-size="25.6" font-weight="500" fill="#FFFFFF">신당동</text>
-<text x="467.3" y="759" font-size="25.6" font-weight="500" fill="#FFFFFF">월성2동</text>
-<text x="778.3" y="1144.6" font-size="25.6" font-weight="500" fill="#FFFFFF">진천동</text>
-<text x="1337.7" y="946.4" font-size="25.6" font-weight="500" fill="#FFFFFF">상인3동</text>
-<text x="685.9" y="494.2" font-size="25.6" font-weight="500" fill="#FFFFFF">장기동</text>
-<text x="1123.2" y="761.7" font-size="25.6" font-weight="500" fill="#FFFFFF">송현1동</text>
-<text x="486.3" y="225.3" font-size="25.6" font-weight="500" fill="#FFFFFF">이곡2동</text>
-<text x="1115" y="510.5" font-size="25.6" font-weight="500" fill="#FFFFFF">성당동</text>
-<text x="738.9" y="776.6" font-size="25.6" font-weight="500" fill="#FFFFFF">월성1동</text>
-<text x="592.2" y="171" font-size="25.6" font-weight="500" fill="#FFFFFF">이곡1동</text>
-<text x="690" y="241.6" font-size="25.6" font-weight="500" fill="#FFFFFF">용산2동</text>
-<text x="987.4" y="854" font-size="25.6" font-weight="500" fill="#FFFFFF">상인1동</text>
-<text x="790.5" y="336.7" font-size="25.6" font-weight="500" fill="#FFFFFF">용산1동</text>
-<text x="634.3" y="901.6" font-size="25.6" font-weight="500" fill="#FFFFFF">유천동</text>
-<text x="1254.9" y="297.3" font-size="25.6" font-weight="500" fill="#FFFFFF">두류1,2동</text>
-<text x="1116.4" y="359.7" font-size="25.6" font-weight="500" fill="#FFFFFF">두류3동</text>
-<text x="929" y="431.7" font-size="25.6" font-weight="500" fill="#FFFFFF">감삼동</text>
-<text x="933.1" y="634" font-size="25.6" font-weight="500" fill="#FFFFFF">본동</text>
-<text x="950.7" y="532.2" font-size="25.6" font-weight="500" fill="#FFFFFF">본리동</text>
-<text x="915.4" y="945" font-size="25.6" font-weight="500" fill="#FFFFFF">상인2동</text>
-<text x="1028.1" y="672.1" font-size="25.6" font-weight="500" fill="#FFFFFF">송현2동</text>
-<text x="904.6" y="329.9" font-size="25.6" font-weight="500" fill="#FFFFFF">죽전동</text>
+<text  x="1119.1" y="1254.6" font-size="25.6" font-weight="500" fill="#FFFFFF">도원동</text>
+<text  x="266.3" y="429" font-size="25.6" font-weight="500" fill="#FFFFFF">신당동</text>
+<text  x="467.3" y="759" font-size="25.6" font-weight="500" fill="#FFFFFF">월성2동</text>
+<text  x="778.3" y="1144.6" font-size="25.6" font-weight="500" fill="#FFFFFF">진천동</text>
+<text  x="1337.7" y="946.4" font-size="25.6" font-weight="500" fill="#FFFFFF">상인3동</text>
+<text  x="685.9" y="494.2" font-size="25.6" font-weight="500" fill="#FFFFFF">장기동</text>
+<text  x="1123.2" y="761.7" font-size="25.6" font-weight="500" fill="#FFFFFF">송현1동</text>
+<text  x="486.3" y="225.3" font-size="25.6" font-weight="500" fill="#FFFFFF">이곡2동</text>
+<text  x="1115" y="510.5" font-size="25.6" font-weight="500" fill="#FFFFFF">성당동</text>
+<text  x="738.9" y="776.6" font-size="25.6" font-weight="500" fill="#FFFFFF">월성1동</text>
+<text  x="592.2" y="171" font-size="25.6" font-weight="500" fill="#FFFFFF">이곡1동</text>
+<text  x="690" y="241.6" font-size="25.6" font-weight="500" fill="#FFFFFF">용산2동</text>
+<text  x="987.4" y="854" font-size="25.6" font-weight="500" fill="#FFFFFF">상인1동</text>
+<text  x="790.5" y="336.7" font-size="25.6" font-weight="500" fill="#FFFFFF">용산1동</text>
+<text  x="634.3" y="901.6" font-size="25.6" font-weight="500" fill="#FFFFFF">유천동</text>
+<text  x="1254.9" y="297.3" font-size="25.6" font-weight="500" fill="#FFFFFF">두류1,2동</text>
+<text  x="1116.4" y="359.7" font-size="25.6" font-weight="500" fill="#FFFFFF">두류3동</text>
+<text  x="929" y="431.7" font-size="25.6" font-weight="500" fill="#FFFFFF">감삼동</text>
+<text  x="933.1" y="634" font-size="25.6" font-weight="500" fill="#FFFFFF">본동</text>
+<text  x="950.7" y="532.2" font-size="25.6" font-weight="500" fill="#FFFFFF">본리동</text>
+<text  x="915.4" y="945" font-size="25.6" font-weight="500" fill="#FFFFFF">상인2동</text>
+<text  x="1028.1" y="672.1" font-size="25.6" font-weight="500" fill="#FFFFFF">송현2동</text>
+<text  x="904.6" y="329.9" font-size="25.6" font-weight="500" fill="#FFFFFF">죽전동</text>
 </g>
 </svg>

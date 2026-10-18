@@ -36,19 +36,17 @@
 <g id="대상">
 <path d="M1119.6 806.2L1043.7 849.4 992.5 839.7 954.5 805.3 914.8 811.5 894.5 854.7 853 871.5 851.2 883.9 811.5 936 764.7 930.7 758.5 948.3 708.2 966.9 681.7 963.3 643.7 988.1 619 1055.2 579.3 1050.8 536.9 1060.5 494.5 1060.5 474.2 1011 426.5 973.9 402.7 984.5 323.2 1040.2 289.7 1051.6 224.3 1036.6 201.4 1015.4 215.5 962.5 213.7 936 195.2 934.2 151.1 954.5 119.3 988.1 108.7 958.9 85.7 938.6 91 921 121.9 898.9 155.5 897.1 192.5 908.6 231.4 886.5 248.2 875.9 295.9 872.4 326.8 861.8 357.7 833.6 440.6 706.4 491.9 667.6 515.7 634.9 550.1 672.9 564.3 678.2 598.7 657.8 629.6 683.5 705.5 640.2 720.5 614.6 755 613.7 774.4 574 799.1 588.1 823 557.2 918.3 528.9 956.3 535.1 956.3 506.9 995.1 506 999.5 494.5 1036.6 492.7 1018.1 470.7 1029.6 443.3 1073.7 415.9 1134.6 445.9 1175.2 432.7 1180.5 386.8 1168.2 301.1 1174.4 284.4 1160.2 243.8 1143.5 230.5 1140.8 217.3 1177.9 187.3 1158.5 143.1 1167.3 136.9 1232.6 100.7 1230 96.3 1247.6 88.4 1283 85.7 1300.6 114 1320 127.2 1356.2 120.1 1386.3 162.5 1403.9 180.2 1416.3 196.1 1438.4 228.7 1452.5 252.6 1496.6 313.5 1514.3 344.4 1470.1 358.5 1457.8 395.6 1426 427.4 1371.3 445.9 1379.2 455.7 1373.9 497.2 1387.1 514.8 1392.4 552.8 1414.5 577.5 1442.8 628.7 1426.9 683.5 1406.6 686.1 1358.9 712.6 1323.6 770 1288.3 785 1266.2 784.1 1234.4 786.8 1207.9 813.2 1151.4 779.7 1119.6 806.2" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
-<g id="시도경계">
-</g>
 <g id="지명" text-anchor="middle">
-<text x="554.5" y="855.1" font-size="25.6" font-weight="500" fill="#FFFFFF">대촌동</text>
-<text x="1290.9" y="651.2" font-size="25.6" font-weight="500" fill="#FFFFFF">효덕동</text>
-<text x="1084.3" y="555.8" font-size="25.6" font-weight="500" fill="#FFFFFF">송암동</text>
-<text x="1252.9" y="424.3" font-size="25.6" font-weight="500" fill="#FFFFFF">진월동</text>
-<text x="1372.1" y="396.9" font-size="25.6" font-weight="500" fill="#FFFFFF">봉선2동</text>
-<text x="1254.7" y="321.8" font-size="25.6" font-weight="500" fill="#FFFFFF">주월1동</text>
-<text x="1277.7" y="147.9" font-size="25.6" font-weight="500" fill="#FFFFFF">월산동</text>
-<text x="1193.8" y="263.6" font-size="25.6" font-weight="500" fill="#FFFFFF">주월2동</text>
-<text x="1446.3" y="301.5" font-size="25.6" font-weight="500" fill="#FFFFFF">방림2동</text>
-<text x="1391.6" y="230.9" font-size="25.6" font-weight="500" fill="#FFFFFF">양림동</text>
-<text x="1295.3" y="262.7" font-size="25.6" font-weight="500" fill="#FFFFFF">백운2동</text>
+<text  x="554.5" y="855.1" font-size="25.6" font-weight="500" fill="#FFFFFF">대촌동</text>
+<text  x="1290.9" y="651.2" font-size="25.6" font-weight="500" fill="#FFFFFF">효덕동</text>
+<text  x="1084.3" y="555.8" font-size="25.6" font-weight="500" fill="#FFFFFF">송암동</text>
+<text  x="1252.9" y="424.3" font-size="25.6" font-weight="500" fill="#FFFFFF">진월동</text>
+<text  x="1372.1" y="396.9" font-size="25.6" font-weight="500" fill="#FFFFFF">봉선2동</text>
+<text  x="1254.7" y="321.8" font-size="25.6" font-weight="500" fill="#FFFFFF">주월1동</text>
+<text  x="1277.7" y="147.9" font-size="25.6" font-weight="500" fill="#FFFFFF">월산동</text>
+<text  x="1193.8" y="263.6" font-size="25.6" font-weight="500" fill="#FFFFFF">주월2동</text>
+<text  x="1446.3" y="301.5" font-size="25.6" font-weight="500" fill="#FFFFFF">방림2동</text>
+<text  x="1391.6" y="230.9" font-size="25.6" font-weight="500" fill="#FFFFFF">양림동</text>
+<text  x="1295.3" y="262.7" font-size="25.6" font-weight="500" fill="#FFFFFF">백운2동</text>
 </g>
 </svg>

@@ -180,6 +180,41 @@ details.more[open] summary { margin-bottom: 10px; }
 .credit { font-size: 11.5px; color: var(--faint); line-height: 1.6; padding-inline: 4px; margin: 0; }
 .credit a { color: inherit; }
 .btn:focus-visible, .seg button:focus-visible, .tabs button:focus-visible, .theme:focus-visible, .crumbs button:focus-visible, .chip:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tools { display: flex; gap: 6px; flex-wrap: wrap; margin-right: 8px; }
+.btn.icon { padding: 9px 11px; font-size: 15px; line-height: 1; }
+.btn:disabled { opacity: 0.45; cursor: default; }
+.ptabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius); padding: 4px; box-shadow: var(--shadow); position: sticky; top: 8px; z-index: 4; }
+.ptabs button { border: 0; background: none; color: var(--muted); font: inherit; font-weight: 600; font-size: 13px; padding: 8px 4px; border-radius: 8px; cursor: pointer; }
+.ptabs button.on { background: var(--accent); color: var(--accent-ink); }
+.pane { display: flex; flex-direction: column; gap: 12px; }
+.field { width: 100%; font: inherit; font-size: 13px; padding: 8px 10px; border: 1px solid transparent; border-radius: 8px; background: var(--field); color: var(--ink); resize: vertical; }
+.field:focus { outline: none; border-color: var(--accent); background: var(--panel); }
+textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.55; }
+.ed select { font: inherit; font-size: 12.5px; padding: 4px 6px; border: 1px solid var(--rule); border-radius: 6px; background: var(--panel); color: var(--ink); }
+.palettes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.pal { border: 1px solid var(--rule); background: var(--panel); border-radius: 8px; padding: 4px; cursor: pointer; display: flex; flex-direction: column; gap: 3px; font: inherit; font-size: 11px; color: var(--muted); }
+.pal.on { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); color: var(--ink); }
+.pal i { display: block; height: 12px; border-radius: 3px; }
+.datacols { display: flex; flex-direction: column; gap: 8px; }
+.field.half { width: auto; flex: 1 1 0; min-width: 0; }
+.chip.sm { font-size: 12px; padding: 3px 9px; }
+.datasrc { display: flex; flex-direction: column; gap: 8px; }
+.pinlist { display: flex; flex-direction: column; gap: 2px; max-height: 260px; overflow-y: auto; }
+.pinrow { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto auto; gap: 8px; align-items: center; font-size: 12.5px; padding: 3px 4px; border-radius: 6px; }
+.pinrow:hover { background: var(--field); }
+.pinrow i { width: 10px; height: 10px; border-radius: 50%; display: block; }
+.pinrow span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pinrow small { color: var(--muted); font-size: 11px; white-space: nowrap; }
+.pinrow small.bad { color: #B4511E; }
+.pinrow .x { border: 0; background: none; color: var(--faint); cursor: pointer; }
+.groups { display: flex; flex-direction: column; gap: 6px; }
+.grp { display: grid; grid-template-columns: auto 34px minmax(0, 1fr) auto auto; gap: 8px; align-items: center; padding: 4px 6px; border-radius: 8px; border: 1px solid transparent; }
+.grp.on { border-color: var(--accent); background: var(--accent-soft); }
+.grp input[type="color"] { width: 34px; height: 26px; border: 1px solid var(--rule); border-radius: 6px; padding: 2px; background: var(--panel); }
+.grp input[type="text"] { min-width: 0; font: inherit; font-size: 13px; padding: 4px 6px; border: 1px solid var(--rule); border-radius: 6px; background: var(--panel); color: var(--ink); }
+.grp small { color: var(--muted); font-size: 11.5px; white-space: nowrap; }
+.grp .x { border: 0; background: none; color: var(--faint); cursor: pointer; font-size: 15px; padding: 2px 4px; }
+.warn { color: #B4511E; }
 .toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--panel); padding: 9px 16px; border-radius: 9px; font-size: 13px; z-index: 20; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); }
 @media (prefers-reduced-motion: reduce) { #map svg [data-id], details.more summary::before { transition: none; } }
 </style>
@@ -197,6 +232,14 @@ details.more[open] summary { margin-bottom: 10px; }
       </div>
     </div>
     <div class="exports">
+      <div class="tools">
+        <button class="btn icon" id="undo" title="되돌리기 (Ctrl+Z)" aria-label="되돌리기">↶</button>
+        <button class="btn icon" id="redo" title="다시 하기 (Ctrl+Shift+Z)" aria-label="다시 하기">↷</button>
+        <button class="btn" id="saveWork" title="지금 설정을 파일로 저장">작업 저장</button>
+        <button class="btn" id="loadWork" title="저장한 작업 파일 열기">불러오기</button>
+        <input type="file" id="loadFile" accept=".json,application/json" hidden>
+        <button class="btn" id="copyImg" title="PPT에 바로 붙여넣기">이미지 복사</button>
+      </div>
       <button class="btn primary" id="dlPptx">PPTX 저장 <small>도형 편집 가능</small></button>
       <button class="btn" id="dlSvg">SVG</button>
       <button class="btn" id="dlPng">PNG</button>
@@ -205,6 +248,10 @@ details.more[open] summary { margin-bottom: 10px; }
 
   <div class="app">
     <aside class="panel">
+      <nav class="ptabs" id="ptab">
+        <button data-v="region">지역</button><button data-v="look">모양</button><button data-v="data">데이터</button><button data-v="pins">지점</button>
+      </nav>
+      <div class="pane" data-pane="region">
       <section class="card">
         <div class="tabs" id="mode">
           <button data-v="around">주변 지역</button><button data-v="pick">직접 고르기</button><button data-v="all">전국</button>
@@ -259,6 +306,14 @@ details.more[open] summary { margin-bottom: 10px; }
       </section>
 
       <section class="card">
+        <h2>기준</h2>
+        <label class="chk"><input type="checkbox" id="sido17"> 광주·전남 나눠 보기 <span class="note">(17개 시도)</span></label>
+        <label class="chk"><input type="checkbox" id="splitGu"> 일반구 나눠 보기 <span class="note">(수원시 → 장안구…)</span></label>
+      </section>
+      </div>
+
+      <div class="pane" data-pane="look" hidden>
+      <section class="card">
         <h2>스타일</h2>
         <div class="themes" id="presets"></div>
         <div class="row">
@@ -279,9 +334,11 @@ details.more[open] summary { margin-bottom: 10px; }
       <section class="card">
         <h2>배치 <span class="hint">모양은 그대로 두고 위치만</span></h2>
         <div class="seg" id="layout">
-          <button data-v="real">실제 위치</button><button data-v="explode">벌려 놓기</button>
+          <button data-v="real">실제 지도</button><button data-v="explode">벌려 놓기</button><button data-v="square">네모 타일</button><button data-v="hex">육각 타일</button>
         </div>
         <div class="slider" id="explodeRow"><span>벌린 간격</span><input type="range" id="explodeAmt" min="0.05" max="0.8" step="0.01" value="0.25" aria-label="벌린 간격"></div>
+        <div class="slider" id="tileGapRow"><span>칸 사이</span><input type="range" id="tileGap" min="0" max="0.35" step="0.01" value="0.1" aria-label="타일 사이 간격"></div>
+        <p class="note" id="tileNote" hidden>지역 하나를 같은 크기 칸 하나로 바꿔, 실제 위치에 가장 가깝게 놓습니다. 작은 지역도 크게 보여 데이터 비교에 좋습니다.</p>
         <p class="note">지도 위 <b>하나씩 꾸미기</b>를 누르면 지역마다 끌어서 옮기고, 색과 이름을 따로 바꿀 수 있습니다.</p>
         <button class="btn sm" id="resetEdits" style="align-self:flex-start">옮기고 꾸민 것 모두 되돌리기</button>
       </section>
@@ -304,11 +361,113 @@ details.more[open] summary { margin-bottom: 10px; }
         </details>
       </section>
 
+      </div>
+
+      <div class="pane" data-pane="data" hidden>
       <section class="card">
-        <h2>기준</h2>
-        <label class="chk"><input type="checkbox" id="sido17"> 광주·전남 나눠 보기 <span class="note">(17개 시도)</span></label>
-        <label class="chk"><input type="checkbox" id="splitGu"> 일반구 나눠 보기 <span class="note">(수원시 → 장안구…)</span></label>
+        <h2>제목 · 출처</h2>
+        <input class="field" id="hTitle" type="text" maxlength="60" placeholder="제목 — 예: 충청권 지사 현황" aria-label="지도 제목">
+        <input class="field" id="hSub" type="text" maxlength="80" placeholder="부제 — 예: 2026년 3분기 기준" aria-label="지도 부제">
+        <label class="chk"><input type="checkbox" id="hNote"> 지도 아래에 출처 넣기</label>
       </section>
+
+      <section class="card">
+        <h2>데이터로 색칠</h2>
+        <div class="seg" id="dataSrc" aria-label="칠할 데이터">
+          <button data-v="">끄기</button><button data-v="stats">기본 통계</button><button data-v="table">내 표 · 파일</button><button data-v="pins">지점 수</button>
+        </div>
+
+        <div class="datasrc" id="srcStats" hidden>
+          <p class="note" id="statsNote"></p>
+          <div class="chips" id="statQuick"></div>
+        </div>
+
+        <div class="datasrc" id="srcTable" hidden>
+          <textarea class="field" id="dataText" rows="6" spellcheck="false" placeholder="지역	인구	청년	노인&#10;대전 유성구	360000	98000	36000&#10;공주시	100000	15000	29000&#10;&#10;첫 줄에 열 이름을 넣으면 열마다 골라 칠할 수 있습니다." aria-label="지역별 데이터"></textarea>
+          <div class="row">
+            <button class="btn sm primary" id="dataApply">색칠하기</button>
+            <button class="btn sm" id="dataFile">CSV 파일 열기</button>
+            <input type="file" id="dataFileInput" accept=".csv,.tsv,.txt,text/csv,text/plain" hidden>
+            <button class="btn sm" id="dataClear">지우기</button>
+          </div>
+          <div class="row"><span class="note">예시로 해 보기:</span>
+            <button class="btn sm" data-sample="stat">인구 통계</button><button class="btn sm" data-sample="poll">여론조사</button><button class="btn sm" data-sample="simple">값 하나</button>
+          </div>
+          <details class="more">
+            <summary>1세 단위 공식 인구 자료로 칠하기 (청년 19~34세 · 노인 65세 이상)</summary>
+            <p class="note">행정안전부 <b>연령별 인구현황</b> CSV(1세 단위)를 그대로 열면 총인구, 청년(19~34세), 노인(65세 이상), 유소년(0~14세), 비율, 노령화지수를 계산합니다. 행정기관코드로 지역을 찾고 읍면동 숫자는 시군구·시도로 더합니다.</p>
+            <p class="note">받는 곳: <a href="https://jumin.mois.go.kr/" target="_blank" rel="noopener">주민등록 인구통계</a> → 연령별 인구현황 (행정구역 '전체', 1세 단위, CSV) 또는 <a href="https://www.data.go.kr/data/15097972/fileData.do" target="_blank" rel="noopener">공공데이터포털</a></p>
+          </details>
+        </div>
+
+        <div class="datasrc" id="srcPins" hidden>
+          <p class="note">'지점' 탭에서 찍은 핀이 지역마다 몇 개인지 세어 칠합니다.</p>
+        </div>
+
+        <p class="note" id="dataReport"></p>
+        <div class="datacols" id="dataCols" hidden>
+          <span class="lbl">색칠 기준</span>
+          <select class="field" id="dataBy" aria-label="색칠 기준"></select>
+          <div class="row" id="ratioRow" hidden>
+            <select class="field half" id="ratioA" aria-label="나눌 값"></select><span>÷</span><select class="field half" id="ratioB" aria-label="나누는 값"></select><span class="note">× 100</span>
+          </div>
+          <div id="winRow" hidden><span class="lbl">1위를 겨룰 항목</span><div class="chips" id="winCols"></div></div>
+          <span class="lbl">이름 아래 보일 값 <span class="note">(3개까지)</span></span>
+          <div class="chips" id="labelCols"></div>
+        </div>
+        <div class="datacols" id="dataLook" hidden>
+          <span class="lbl">색 단계</span>
+          <div class="palettes" id="palettes"></div>
+          <div class="row">
+            <label class="ed">단계 <select id="dataSteps"><option>3</option><option>4</option><option selected>5</option><option>6</option><option>7</option></select></label>
+            <label class="ed">나누는 법 <select id="dataMethod"><option value="quantile">같은 개수씩</option><option value="equal">같은 간격</option></select></label>
+          </div>
+          <label class="chk"><input type="checkbox" id="dataValues" checked> 이름 아래 값 보이기</label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>색 그룹 <span class="hint">그룹을 고르고 지도를 누르기</span></h2>
+        <div class="groups" id="groupList"></div>
+        <button class="btn sm" id="groupAdd" style="align-self:flex-start">+ 그룹 추가</button>
+      </section>
+
+      <section class="card">
+        <h2>범례 <span class="hint">데이터·그룹이 있으면 자동</span></h2>
+        <input class="field" id="legTitle" type="text" maxlength="30" placeholder="범례 제목 — 예: 매출(억 원)" aria-label="범례 제목">
+        <div class="seg" id="legPos" aria-label="범례 위치">
+          <button data-v="none">숨김</button><button data-v="tl">왼쪽 위</button><button data-v="tr">오른쪽 위</button><button data-v="bl">왼쪽 아래</button><button data-v="br">오른쪽 아래</button>
+        </div>
+      </section>
+      </div>
+
+      <div class="pane" data-pane="pins" hidden>
+      <section class="card">
+        <h2>지점 핀 <span class="hint">주소 또는 위도·경도</span></h2>
+        <textarea class="field" id="pinText" rows="7" spellcheck="false" placeholder="이름	주소	분류(선택)&#10;대전 본사	대전광역시 서구 둔산동 1420	본사&#10;세종 지점	36.4800, 127.2890	지점&#10;수원 매장	경기 수원시 장안구 정자동	매장" aria-label="지점 목록"></textarea>
+        <div class="row">
+          <button class="btn sm primary" id="pinApply">핀 찍기</button>
+          <button class="btn sm" id="pinFile">CSV 파일 열기</button>
+          <input type="file" id="pinFileInput" accept=".csv,.tsv,.txt,text/csv,text/plain" hidden>
+          <button class="btn sm" id="pinSample">예시</button>
+          <button class="btn sm" id="pinClear">지우기</button>
+        </div>
+        <label class="chk"><input type="checkbox" id="pinOnline" checked> 인터넷 주소 검색 쓰기 <span class="note">(OpenStreetMap)</span></label>
+        <p class="note" id="pinReport">한 줄에 지점 하나: 이름, 주소(또는 위도·경도), 분류. 엑셀에서 그대로 복사해도 됩니다. 위도·경도는 구글 지도에서 장소를 마우스 오른쪽으로 누르면 복사할 수 있습니다.</p>
+        <div class="pinlist" id="pinList"></div>
+      </section>
+      <section class="card">
+        <h2>핀 모양</h2>
+        <div class="seg" id="pinShape"><button data-v="pin">물방울</button><button data-v="dot">점</button><button data-v="square">네모</button></div>
+        <div class="row">
+          <label class="ed">색 <input type="color" id="pinColor"></label>
+          <label class="chk"><input type="checkbox" id="pinLabels" checked> 이름 보이기</label>
+          <label class="chk"><input type="checkbox" id="pinByCat" checked> 분류별 색</label>
+        </div>
+        <div class="slider"><span>핀 크기</span><input type="range" id="pinSize" min="0.5" max="2.5" step="0.05" value="1" aria-label="핀 크기"></div>
+        <button class="btn sm" id="pinCount" style="align-self:flex-start">지역별 지점 수로 칠하기</button>
+      </section>
+      </div>
       <p class="credit" id="credit"></p>
     </aside>
 
@@ -322,7 +481,7 @@ details.more[open] summary { margin-bottom: 10px; }
         </div>
         <div class="clickbar" id="clickBar">
           <span>지도를 누르면</span>
-          <div class="seg" id="clickAction"><button data-v="main" id="clickMain">지역 고르기</button><button data-v="label">이름 넣기·빼기</button><button data-v="edit">하나씩 꾸미기</button></div>
+          <div class="seg" id="clickAction"><button data-v="main" id="clickMain">지역 고르기</button><button data-v="label">이름 넣기·빼기</button><button data-v="edit">하나씩 꾸미기</button><button data-v="group" id="clickGroup">그룹 칠하기</button></div>
         </div>
         <div class="editbox" id="editBox" hidden>
           <p class="note" id="editEmpty">꾸밀 지역을 지도에서 누르세요. 누른 채로 끌면 그 지역만 옮겨집니다.</p>
@@ -361,7 +520,12 @@ details.more[open] summary { margin-bottom: 10px; }
   }
 </script>
 <script src="data/base.js"></script>
+<script src="data/stats.js"></script>
 <script src="render.js"></script>
+<script src="datafill.js"></script>
+<script src="pins.js"></script>
+<script src="state.js"></script>
+<script src="pptx.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

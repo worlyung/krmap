@@ -31,20 +31,18 @@
 <g id="대상">
 <path d="M403.2 1076.8L112.8 918.1 97.3 805.8 85.7 693.5 221.2 569.6 275.4 472.9 279.3 372.2 186.4 407 143.8 318 221.2 85.7 298.6 101.2 589 163.1 817.4 213.5 817.4 256.1 1042 275.4 1212.3 318 1355.6 267.7 1413.6 314.1 1514.3 554.2 1506.5 565.8 1460.1 670.3 1336.2 829 1320.7 848.4 1289.7 1014.9 1301.4 1127.1 1088.4 1115.5 817.4 1061.3 577.4 1057.5 453.5 1072.9 403.2 1076.8" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
-<g id="시도경계">
-</g>
 <g id="지명" text-anchor="middle">
-<text x="1293.6" y="470.5" font-size="25.6" font-weight="500" fill="#FFFFFF">동인동</text>
-<text x="685.8" y="358.2" font-size="25.6" font-weight="500" fill="#FFFFFF">성내2동</text>
-<text x="310.3" y="238.2" font-size="25.6" font-weight="500" fill="#FFFFFF">성내3동</text>
-<text x="894.9" y="462.7" font-size="25.6" font-weight="500" fill="#FFFFFF">성내1동</text>
-<text x="1038.1" y="671.8" font-size="25.6" font-weight="500" fill="#FFFFFF">삼덕동</text>
-<text x="1169.7" y="946.7" font-size="25.6" font-weight="500" fill="#FFFFFF">대봉1동</text>
-<text x="287" y="648.6" font-size="25.6" font-weight="500" fill="#FFFFFF">대신동</text>
-<text x="275.4" y="880.8" font-size="25.6" font-weight="500" fill="#FFFFFF">남산4동</text>
-<text x="712.9" y="954.4" font-size="25.6" font-weight="500" fill="#FFFFFF">남산1동</text>
-<text x="507.7" y="915.7" font-size="25.6" font-weight="500" fill="#FFFFFF">남산3동</text>
-<text x="662.6" y="741.5" font-size="25.6" font-weight="500" fill="#FFFFFF">남산2동</text>
-<text x="960.7" y="1004.7" font-size="25.6" font-weight="500" fill="#FFFFFF">대봉2동</text>
+<text  x="1293.6" y="470.5" font-size="25.6" font-weight="500" fill="#FFFFFF">동인동</text>
+<text  x="685.8" y="358.2" font-size="25.6" font-weight="500" fill="#FFFFFF">성내2동</text>
+<text  x="310.3" y="238.2" font-size="25.6" font-weight="500" fill="#FFFFFF">성내3동</text>
+<text  x="894.9" y="462.7" font-size="25.6" font-weight="500" fill="#FFFFFF">성내1동</text>
+<text  x="1038.1" y="671.8" font-size="25.6" font-weight="500" fill="#FFFFFF">삼덕동</text>
+<text  x="1169.7" y="946.7" font-size="25.6" font-weight="500" fill="#FFFFFF">대봉1동</text>
+<text  x="287" y="648.6" font-size="25.6" font-weight="500" fill="#FFFFFF">대신동</text>
+<text  x="275.4" y="880.8" font-size="25.6" font-weight="500" fill="#FFFFFF">남산4동</text>
+<text  x="712.9" y="954.4" font-size="25.6" font-weight="500" fill="#FFFFFF">남산1동</text>
+<text  x="507.7" y="915.7" font-size="25.6" font-weight="500" fill="#FFFFFF">남산3동</text>
+<text  x="662.6" y="741.5" font-size="25.6" font-weight="500" fill="#FFFFFF">남산2동</text>
+<text  x="960.7" y="1004.7" font-size="25.6" font-weight="500" fill="#FFFFFF">대봉2동</text>
 </g>
 </svg>

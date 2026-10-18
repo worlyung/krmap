@@ -57,29 +57,29 @@
 <path d="M1600 1160.5L1565.6 1169.3 1564.9 1184 1557.7 1184.3 1555.4 1175.8 1540.7 1171.6 1534.5 1172.9 1536.5 1195.8 1532.6 1200.3 1541.7 1210.1 1554.8 1209.2 1561 1224.5 1546.6 1230.4 1544.7 1238.2 1536.8 1245.1 1532.3 1238.9 1523.1 1239.5 1528.3 1259.5 1527.1 1261M1578 1261L1578 1258.8 1581.6 1225.2 1600 1212.4M533.5 1261L534.6 1259.1 548 1244.4 542.4 1238.9 536.2 1222.2 539.5 1201 545.7 1189.2 536.5 1183.4 538.5 1156.9 548.9 1128.5 556.8 1115.4 595.3 1081.1 588.1 1068.4 596.3 1053.7 589.5 1043.2 582.9 1049.4 577.4 1071.3 547.3 1091.6 543.1 1102 529 1111.5 518.9 1111.8 525.4 1127.5 525.8 1134 507.8 1145.5 500.6 1161.8 503.2 1176.2 515.3 1180.1 504.5 1201.7 499.6 1238.9 490.1 1252.9 479.4 1258.8 466.3 1258.2 448.3 1250.3 431.3 1234 429.4 1229.4 428.4 1207.5 406.2 1195.1 393.4 1197.7 378.1 1197.1 369.6 1218 368 1230.7 353.9 1238.9 353.9 1246.7 379.7 1243.1 384.6 1232 385 1219.6 396.1 1217.7 413.4 1225.5 410.1 1245.1 425.5 1259.5 428.3 1261" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="478.7" y="435" font-size="25.6" font-weight="500" fill="#FFFFFF">명석면</text>
-<text x="896.9" y="406.6" font-size="25.6" font-weight="500" fill="#FFFFFF">대곡면</text>
-<text x="765.5" y="264.8" font-size="25.6" font-weight="500" fill="#FFFFFF">미천면</text>
-<text x="679" y="460.2" font-size="25.6" font-weight="500" fill="#FFFFFF">집현면</text>
-<text x="1406.5" y="810" font-size="25.6" font-weight="500" fill="#FFFFFF">이반성면</text>
-<text x="369.6" y="672.2" font-size="25.6" font-weight="500" fill="#FFFFFF">대평면</text>
-<text x="191.9" y="634.6" font-size="25.6" font-weight="500" fill="#FFFFFF">수곡면</text>
-<text x="967.4" y="939.7" font-size="25.6" font-weight="500" fill="#FFFFFF">금곡면</text>
-<text x="1138" y="782.9" font-size="25.6" font-weight="500" fill="#FFFFFF">진성면</text>
-<text x="980.5" y="776.7" font-size="25.6" font-weight="500" fill="#FFFFFF">문산읍</text>
-<text x="514.3" y="857.7" font-size="25.6" font-weight="500" fill="#FFFFFF">내동면</text>
-<text x="885.1" y="616.3" font-size="25.6" font-weight="500" fill="#FFFFFF">금산면</text>
-<text x="1253.3" y="648" font-size="25.6" font-weight="500" fill="#FFFFFF">사봉면</text>
-<text x="1202" y="511.4" font-size="25.6" font-weight="500" fill="#FFFFFF">지수면</text>
-<text x="738.7" y="909.7" font-size="25.6" font-weight="500" fill="#FFFFFF">정촌면</text>
-<text x="1271.2" y="838.1" font-size="25.6" font-weight="500" fill="#FFFFFF">일반성면</text>
-<text x="468.6" y="748" font-size="25.6" font-weight="500" fill="#FFFFFF">판문동</text>
-<text x="701.5" y="602.6" font-size="25.6" font-weight="500" fill="#FFFFFF">초장동</text>
-<text x="738.1" y="799.3" font-size="25.6" font-weight="500" fill="#FFFFFF">가호동</text>
-<text x="676.7" y="726.4" font-size="25.6" font-weight="500" fill="#FFFFFF">천전동</text>
-<text x="573.8" y="640.8" font-size="25.6" font-weight="500" fill="#FFFFFF">이현동</text>
-<text x="760.6" y="703.9" font-size="25.6" font-weight="500" fill="#FFFFFF">상대동</text>
-<text x="770.4" y="742.7" font-size="25.6" font-weight="500" fill="#FFFFFF">상평동</text>
-<text x="743.6" y="670.2" font-size="25.6" font-weight="500" fill="#FFFFFF">하대동</text>
+<text  x="478.7" y="435" font-size="25.6" font-weight="500" fill="#FFFFFF">명석면</text>
+<text  x="896.9" y="406.6" font-size="25.6" font-weight="500" fill="#FFFFFF">대곡면</text>
+<text  x="765.5" y="264.8" font-size="25.6" font-weight="500" fill="#FFFFFF">미천면</text>
+<text  x="679" y="460.2" font-size="25.6" font-weight="500" fill="#FFFFFF">집현면</text>
+<text  x="1406.5" y="810" font-size="25.6" font-weight="500" fill="#FFFFFF">이반성면</text>
+<text  x="369.6" y="672.2" font-size="25.6" font-weight="500" fill="#FFFFFF">대평면</text>
+<text  x="191.9" y="634.6" font-size="25.6" font-weight="500" fill="#FFFFFF">수곡면</text>
+<text  x="967.4" y="939.7" font-size="25.6" font-weight="500" fill="#FFFFFF">금곡면</text>
+<text  x="1138" y="782.9" font-size="25.6" font-weight="500" fill="#FFFFFF">진성면</text>
+<text  x="980.5" y="776.7" font-size="25.6" font-weight="500" fill="#FFFFFF">문산읍</text>
+<text  x="514.3" y="857.7" font-size="25.6" font-weight="500" fill="#FFFFFF">내동면</text>
+<text  x="885.1" y="616.3" font-size="25.6" font-weight="500" fill="#FFFFFF">금산면</text>
+<text  x="1253.3" y="648" font-size="25.6" font-weight="500" fill="#FFFFFF">사봉면</text>
+<text  x="1202" y="511.4" font-size="25.6" font-weight="500" fill="#FFFFFF">지수면</text>
+<text  x="738.7" y="909.7" font-size="25.6" font-weight="500" fill="#FFFFFF">정촌면</text>
+<text  x="1271.2" y="838.1" font-size="25.6" font-weight="500" fill="#FFFFFF">일반성면</text>
+<text  x="468.6" y="748" font-size="25.6" font-weight="500" fill="#FFFFFF">판문동</text>
+<text  x="701.5" y="602.6" font-size="25.6" font-weight="500" fill="#FFFFFF">초장동</text>
+<text  x="738.1" y="799.3" font-size="25.6" font-weight="500" fill="#FFFFFF">가호동</text>
+<text  x="676.7" y="726.4" font-size="25.6" font-weight="500" fill="#FFFFFF">천전동</text>
+<text  x="573.8" y="640.8" font-size="25.6" font-weight="500" fill="#FFFFFF">이현동</text>
+<text  x="760.6" y="703.9" font-size="25.6" font-weight="500" fill="#FFFFFF">상대동</text>
+<text  x="770.4" y="742.7" font-size="25.6" font-weight="500" fill="#FFFFFF">상평동</text>
+<text  x="743.6" y="670.2" font-size="25.6" font-weight="500" fill="#FFFFFF">하대동</text>
 </g>
 </svg>

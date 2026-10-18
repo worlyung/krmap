@@ -33,18 +33,18 @@
 <path d="M1600 707L1569.6 700.2 1589 623.3 1576.8 543.5 1487.7 405.2 1445.7 337.6 1410.9 296.7 1366.8 270 1315.6 222.9 1272.6 229.1 1254.2 253.7 1276.7 262.9 1324.8 304.9 1398.6 395 1366.8 389.9 1349.4 451.3 1382.2 461.5 1379.1 517.9 1467.2 535.3 1490.7 657.1 1492.8 692 1473.3 705.3 1422.1 684.8 1360.7 708.3 1330 707.3 1291 661.2 1259.3 659.2 1309.5 741.1 1418 716.5 1494.8 831.2 1514.3 853.8 1470.3 899.8 1468.2 1009.4 1436.5 1043.2 1416 1032 1341.2 1108.8 1272.6 1168.2 1319.7 1189.7 1294.1 1211.2 1259.3 1183.5 1234.7 1190.7 1194.8 1178.4 1178.4 1113.9 1146.6 1073.9 1115.9 1059.6 1052.4 1004.3 1048.3 949 1016.6 923.4 1040.1 953.1 1042.2 1001.2 1052.4 1015.6 1079.1 1064.7 1095.4 1075 1129.2 1127.2 1132.3 1177.4 1154.6 1297" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="1255.2" y="929.5" font-size="25.6" font-weight="500" fill="#FFFFFF">선암동</text>
-<text x="1203" y="484.1" font-size="25.6" font-weight="500" fill="#FFFFFF">야음장생포동</text>
-<text x="527.1" y="352" font-size="25.6" font-weight="500" fill="#FFFFFF">옥동</text>
-<text x="1082.1" y="261.9" font-size="25.6" font-weight="500" fill="#FFFFFF">삼산동</text>
-<text x="267" y="260.8" font-size="25.6" font-weight="500" fill="#FFFFFF">무거동</text>
-<text x="715.5" y="433.9" font-size="25.6" font-weight="500" fill="#FFFFFF">신정2동</text>
-<text x="386.8" y="184" font-size="25.6" font-weight="500" fill="#FFFFFF">삼호동</text>
-<text x="721.7" y="254.7" font-size="25.6" font-weight="500" fill="#FFFFFF">신정1동</text>
-<text x="888.6" y="323.3" font-size="25.6" font-weight="500" fill="#FFFFFF">달동</text>
-<text x="927.5" y="442.1" font-size="25.6" font-weight="500" fill="#FFFFFF">대현동</text>
-<text x="796.4" y="206.6" font-size="25.6" font-weight="500" fill="#FFFFFF">신정3동</text>
-<text x="878.3" y="245.5" font-size="25.6" font-weight="500" fill="#FFFFFF">신정5동</text>
-<text x="845.6" y="485.1" font-size="25.6" font-weight="500" fill="#FFFFFF">수암동</text>
+<text  x="1255.2" y="929.5" font-size="25.6" font-weight="500" fill="#FFFFFF">선암동</text>
+<text  x="1203" y="484.1" font-size="25.6" font-weight="500" fill="#FFFFFF">야음장생포동</text>
+<text  x="527.1" y="352" font-size="25.6" font-weight="500" fill="#FFFFFF">옥동</text>
+<text  x="1082.1" y="261.9" font-size="25.6" font-weight="500" fill="#FFFFFF">삼산동</text>
+<text  x="267" y="260.8" font-size="25.6" font-weight="500" fill="#FFFFFF">무거동</text>
+<text  x="715.5" y="433.9" font-size="25.6" font-weight="500" fill="#FFFFFF">신정2동</text>
+<text  x="386.8" y="184" font-size="25.6" font-weight="500" fill="#FFFFFF">삼호동</text>
+<text  x="721.7" y="254.7" font-size="25.6" font-weight="500" fill="#FFFFFF">신정1동</text>
+<text  x="888.6" y="323.3" font-size="25.6" font-weight="500" fill="#FFFFFF">달동</text>
+<text  x="927.5" y="442.1" font-size="25.6" font-weight="500" fill="#FFFFFF">대현동</text>
+<text  x="796.4" y="206.6" font-size="25.6" font-weight="500" fill="#FFFFFF">신정3동</text>
+<text  x="878.3" y="245.5" font-size="25.6" font-weight="500" fill="#FFFFFF">신정5동</text>
+<text  x="845.6" y="485.1" font-size="25.6" font-weight="500" fill="#FFFFFF">수암동</text>
 </g>
 </svg>

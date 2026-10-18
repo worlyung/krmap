@@ -31,20 +31,18 @@
 <g id="대상">
 <path d="M756.4 1027.4L763.3 942.4 772.4 919.4 802.3 891.9 825.3 788.5 678.3 641.5 611.7 591 579.5 687.5 526.7 671.4 517.5 662.2 434.8 653 398.1 579.5 386.6 485.3 193.7 467 85.7 287.8 99.5 228.1 207.4 278.6 269.5 271.8 356.7 297 455.5 271.8 444 235 492.2 223.5 591 196 653 120.2 728.8 85.7 779.3 88 891.9 202.8 999.8 232.7 1098.6 258 1181.3 274 1206.5 280.9 1369.6 303.9 1415.5 322.3 1514.3 485.3 1456.9 639.2 1401.7 664.5 1351.2 618.6 1346.6 579.5 1273.1 549.7 1144.5 586.4 1128.4 740.3 1142.2 786.2 1094 875.8 1043.5 926.3 1098.6 1038.9 1075.6 1066.4 949.3 1075.6 850.5 1133 832.2 1100.9 756.4 1027.4" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
-<g id="시도경계">
-</g>
 <g id="지명" text-anchor="middle">
-<text x="285.5" y="386.6" font-size="25.6" font-weight="500" fill="#FFFFFF">거제2동</text>
-<text x="1337.4" y="448.6" font-size="25.6" font-weight="500" fill="#FFFFFF">연산9동</text>
-<text x="715" y="212.1" font-size="25.6" font-weight="500" fill="#FFFFFF">거제1동</text>
-<text x="1041.2" y="666.8" font-size="25.6" font-weight="500" fill="#FFFFFF">연산6동</text>
-<text x="795.4" y="643.9" font-size="25.6" font-weight="500" fill="#FFFFFF">연산2동</text>
-<text x="1029.7" y="823" font-size="25.6" font-weight="500" fill="#FFFFFF">연산3동</text>
-<text x="926.3" y="540.5" font-size="25.6" font-weight="500" fill="#FFFFFF">연산4동</text>
-<text x="983.7" y="352.2" font-size="25.6" font-weight="500" fill="#FFFFFF">연산1동</text>
-<text x="1133" y="430.3" font-size="25.6" font-weight="500" fill="#FFFFFF">연산8동</text>
-<text x="754.1" y="473.9" font-size="25.6" font-weight="500" fill="#FFFFFF">연산5동</text>
-<text x="478.5" y="554.3" font-size="25.6" font-weight="500" fill="#FFFFFF">거제4동</text>
-<text x="614" y="499.2" font-size="25.6" font-weight="500" fill="#FFFFFF">거제3동</text>
+<text  x="285.5" y="386.6" font-size="25.6" font-weight="500" fill="#FFFFFF">거제2동</text>
+<text  x="1337.4" y="448.6" font-size="25.6" font-weight="500" fill="#FFFFFF">연산9동</text>
+<text  x="715" y="212.1" font-size="25.6" font-weight="500" fill="#FFFFFF">거제1동</text>
+<text  x="1041.2" y="666.8" font-size="25.6" font-weight="500" fill="#FFFFFF">연산6동</text>
+<text  x="795.4" y="643.9" font-size="25.6" font-weight="500" fill="#FFFFFF">연산2동</text>
+<text  x="1029.7" y="823" font-size="25.6" font-weight="500" fill="#FFFFFF">연산3동</text>
+<text  x="926.3" y="540.5" font-size="25.6" font-weight="500" fill="#FFFFFF">연산4동</text>
+<text  x="983.7" y="352.2" font-size="25.6" font-weight="500" fill="#FFFFFF">연산1동</text>
+<text  x="1133" y="430.3" font-size="25.6" font-weight="500" fill="#FFFFFF">연산8동</text>
+<text  x="754.1" y="473.9" font-size="25.6" font-weight="500" fill="#FFFFFF">연산5동</text>
+<text  x="478.5" y="554.3" font-size="25.6" font-weight="500" fill="#FFFFFF">거제4동</text>
+<text  x="614" y="499.2" font-size="25.6" font-weight="500" fill="#FFFFFF">거제3동</text>
 </g>
 </svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1787" viewBox="0 0 1400 1787" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<title>충청북도 청주시 외 10곳</title>
+<g id="선택">
+<path id="충청북도_청주시" d="M263.7 616.4L394.6 691.9 394.6 843.1 263.7 918.6 132.8 843.1 132.8 691.9Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>충청북도 청주시</title></path>
+<path id="충청북도_충주시" d="M700 364.4L830.9 440 830.9 591.2 700 666.7 569.1 591.2 569.1 440Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>충청북도 충주시</title></path>
+<path id="충청북도_제천시" d="M845.4 112.5L976.3 188.1 976.3 339.2 845.4 414.8 714.5 339.2 714.5 188.1Z" fill="#F8DFA0" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>충청북도 제천시</title></path>
+<path id="충청북도_보은군" d="M409.1 868.3L540 943.8 540 1095 409.1 1170.6 278.2 1095 278.2 943.8Z" fill="#F8DFA0" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>충청북도 보은군</title></path>
+<path id="충청북도_옥천군" d="M554.6 1120.2L685.5 1195.8 685.5 1346.9 554.6 1422.5 423.7 1346.9 423.7 1195.8Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>충청북도 옥천군</title></path>
+<path id="충청북도_영동군" d="M700 1372.1L830.9 1447.7 830.9 1598.8 700 1674.4 569.1 1598.8 569.1 1447.7Z" fill="#F8DFA0" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>충청북도 영동군</title></path>
+<path id="충청북도_증평군" d="M554.6 616.4L685.5 691.9 685.5 843.1 554.6 918.6 423.7 843.1 423.7 691.9Z" fill="#F8DFA0" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>충청북도 증평군</title></path>
+<path id="충청북도_진천군" d="M409.1 364.4L540 440 540 591.2 409.1 666.7 278.2 591.2 278.2 440Z" fill="#C9E5AE" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>충청북도 진천군</title></path>
+<path id="충청북도_괴산군" d="M845.4 616.4L976.3 691.9 976.3 843.1 845.4 918.6 714.5 843.1 714.5 691.9Z" fill="#C9E5AE" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>충청북도 괴산군</title></path>
+<path id="충청북도_음성군" d="M554.6 112.5L685.5 188.1 685.5 339.2 554.6 414.8 423.7 339.2 423.7 188.1Z" fill="#A8DCD1" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>충청북도 음성군</title></path>
+<path id="충청북도_단양군" d="M1136.3 112.5L1267.2 188.1 1267.2 339.2 1136.3 414.8 1005.4 339.2 1005.4 188.1Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>충청북도 단양군</title></path>
+</g>
+<g id="지명" text-anchor="middle">
+<text  x="700" y="527.2" font-size="32.2" font-weight="600" fill="#1E2633">충주</text>
+<text  x="263.7" y="779.1" font-size="32.2" font-weight="600" fill="#1E2633">청주</text>
+<text  x="845.4" y="275.3" font-size="32.2" font-weight="600" fill="#1E2633">제천</text>
+<text  x="700" y="1534.8" font-size="32.2" font-weight="600" fill="#1E2633">영동</text>
+<text  x="845.4" y="779.1" font-size="32.2" font-weight="600" fill="#1E2633">괴산</text>
+<text  x="1136.3" y="275.3" font-size="32.2" font-weight="600" fill="#1E2633">단양</text>
+<text  x="409.1" y="1031" font-size="32.2" font-weight="600" fill="#1E2633">보은</text>
+<text  x="554.6" y="1282.9" font-size="32.2" font-weight="600" fill="#1E2633">옥천</text>
+<text  x="554.6" y="275.3" font-size="32.2" font-weight="600" fill="#1E2633">음성</text>
+<text  x="409.1" y="527.2" font-size="32.2" font-weight="600" fill="#1E2633">진천</text>
+<text  x="554.6" y="779.1" font-size="32.2" font-weight="600" fill="#1E2633">증평</text>
+</g>
+</svg>

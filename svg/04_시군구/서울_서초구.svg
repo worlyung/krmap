@@ -47,23 +47,23 @@
 <path d="M1600 1138.5L1595.9 1143.7 1532.3 1156.1 1508.8 1116 1483.9 1190.7 1441 1247.4 1410.6 1311 1406.5 1366.4 1377.4 1366.4 1335.9 1425.8 1262.6 1407.8 1215.6 1406.5 1226.7 1453.5 1203.2 1517.1 1190.7 1595.9 1161.7 1587.6 1131.2 1611.1 1100.8 1600.1 1037.2 1593.2 951.4 1600.1 908.6 1582.1 896.1 1542 831.1 1470.1 767.5 1453.5 762 1423.1 799.3 1353.9 768.9 1171.3 739.8 1117.4 756.4 1074.5 697 1049.6 695.6 1080.1 649.9 1156.1 582.2 1192.1 528.2 1204.5 466 1203.2 394.1 1085.6 373.3 1020.6 286.2 1028.9 291.7 1098 190.8 1160.3 114.7 1204.5 11 1320.7 0 1321.1M0 1321.1L11 1320.7 114.7 1204.5 190.8 1160.3 291.7 1098 286.2 1028.9 373.3 1020.6 394.1 1085.6 466 1203.2 528.2 1204.5 582.2 1192.1 649.9 1156.1 695.6 1080.1 697 1049.6 756.4 1074.5 739.8 1117.4 768.9 1171.3 799.3 1353.9 762 1423.1 767.5 1453.5 831.1 1470.1 896.1 1542 908.6 1582.1 951.4 1600.1 1037.2 1593.2 1100.8 1600.1 1131.2 1611.1 1161.7 1587.6 1190.7 1595.9 1203.2 1517.1 1226.7 1453.5 1215.6 1406.5 1262.6 1407.8 1335.9 1425.8 1377.4 1366.4 1406.5 1366.4 1410.6 1311 1441 1247.4 1483.9 1190.7 1508.8 1116 1532.3 1156.1 1595.9 1143.7 1600 1138.5" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="1217" y="1188.9" font-size="25.6" font-weight="500" fill="#FFFFFF">내곡동</text>
-<text x="915.5" y="1403.2" font-size="25.6" font-weight="500" fill="#FFFFFF">양재2동</text>
-<text x="539.3" y="1071.3" font-size="25.6" font-weight="500" fill="#FFFFFF">양재1동</text>
-<text x="425.9" y="732.5" font-size="25.6" font-weight="500" fill="#FFFFFF">서초3동</text>
-<text x="306.9" y="917.8" font-size="25.6" font-weight="500" fill="#FFFFFF">방배3동</text>
-<text x="176.9" y="805.8" font-size="25.6" font-weight="500" fill="#FFFFFF">방배2동</text>
-<text x="481.2" y="218" font-size="25.6" font-weight="500" fill="#FFFFFF">잠원동</text>
-<text x="323.5" y="583.1" font-size="25.6" font-weight="500" fill="#FFFFFF">반포4동</text>
-<text x="569.7" y="704.8" font-size="25.6" font-weight="500" fill="#FFFFFF">서초1동</text>
-<text x="370.6" y="313.4" font-size="25.6" font-weight="500" fill="#FFFFFF">반포3동</text>
-<text x="698.3" y="773.9" font-size="25.6" font-weight="500" fill="#FFFFFF">서초2동</text>
-<text x="290.4" y="440.6" font-size="25.6" font-weight="500" fill="#FFFFFF">반포2동</text>
-<text x="182.5" y="475.2" font-size="25.6" font-weight="500" fill="#FFFFFF">반포본동</text>
-<text x="526.9" y="443.4" font-size="25.6" font-weight="500" fill="#FFFFFF">반포1동</text>
-<text x="259.9" y="666.1" font-size="25.6" font-weight="500" fill="#FFFFFF">방배4동</text>
-<text x="604.3" y="529.2" font-size="25.6" font-weight="500" fill="#FFFFFF">서초4동</text>
-<text x="287.6" y="761.5" font-size="25.6" font-weight="500" fill="#FFFFFF">방배1동</text>
-<text x="172.8" y="603.8" font-size="25.6" font-weight="500" fill="#FFFFFF">방배본동</text>
+<text  x="1217" y="1188.9" font-size="25.6" font-weight="500" fill="#FFFFFF">내곡동</text>
+<text  x="915.5" y="1403.2" font-size="25.6" font-weight="500" fill="#FFFFFF">양재2동</text>
+<text  x="539.3" y="1071.3" font-size="25.6" font-weight="500" fill="#FFFFFF">양재1동</text>
+<text  x="425.9" y="732.5" font-size="25.6" font-weight="500" fill="#FFFFFF">서초3동</text>
+<text  x="306.9" y="917.8" font-size="25.6" font-weight="500" fill="#FFFFFF">방배3동</text>
+<text  x="176.9" y="805.8" font-size="25.6" font-weight="500" fill="#FFFFFF">방배2동</text>
+<text  x="481.2" y="218" font-size="25.6" font-weight="500" fill="#FFFFFF">잠원동</text>
+<text  x="323.5" y="583.1" font-size="25.6" font-weight="500" fill="#FFFFFF">반포4동</text>
+<text  x="569.7" y="704.8" font-size="25.6" font-weight="500" fill="#FFFFFF">서초1동</text>
+<text  x="370.6" y="313.4" font-size="25.6" font-weight="500" fill="#FFFFFF">반포3동</text>
+<text  x="698.3" y="773.9" font-size="25.6" font-weight="500" fill="#FFFFFF">서초2동</text>
+<text  x="290.4" y="440.6" font-size="25.6" font-weight="500" fill="#FFFFFF">반포2동</text>
+<text  x="182.5" y="475.2" font-size="25.6" font-weight="500" fill="#FFFFFF">반포본동</text>
+<text  x="526.9" y="443.4" font-size="25.6" font-weight="500" fill="#FFFFFF">반포1동</text>
+<text  x="259.9" y="666.1" font-size="25.6" font-weight="500" fill="#FFFFFF">방배4동</text>
+<text  x="604.3" y="529.2" font-size="25.6" font-weight="500" fill="#FFFFFF">서초4동</text>
+<text  x="287.6" y="761.5" font-size="25.6" font-weight="500" fill="#FFFFFF">방배1동</text>
+<text  x="172.8" y="603.8" font-size="25.6" font-weight="500" fill="#FFFFFF">방배본동</text>
 </g>
 </svg>

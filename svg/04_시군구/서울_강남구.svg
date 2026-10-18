@@ -49,27 +49,27 @@
 <path d="M1600 1194.4L1570.1 1182.5 1551 1182.5 1514.3 1242.7 1451.2 1291.1 1442.3 1349.8 1380.7 1301.4 1305.8 1285.2 1269.1 1332.2 1201.6 1345.4 1176.6 1302.9 1150.2 1382.1 1109.5 1436M403.5 1436L391.1 1361.6 360.3 1304.3 377.9 1258.8 314.8 1232.4 313.3 1264.7 264.8 1345.4 192.9 1383.6 135.6 1396.8 69.6 1395.4 0 1281.7M0 1281.7L69.6 1395.4 135.6 1396.8 192.9 1383.6 264.8 1345.4 313.3 1264.7 314.8 1232.4 377.9 1258.8 360.3 1304.3 391.1 1361.6 403.5 1436M1109.5 1436L1150.2 1382.1 1176.6 1302.9 1201.6 1345.4 1269.1 1332.2 1305.8 1285.2 1380.7 1301.4 1442.3 1349.8 1451.2 1291.1 1514.3 1242.7 1551 1182.5 1570.1 1182.5 1600 1194.4" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="1302.9" y="1140.3" font-size="25.6" font-weight="500" fill="#FFFFFF">세곡동</text>
-<text x="1031.2" y="970" font-size="25.6" font-weight="500" fill="#FFFFFF">일원본동</text>
-<text x="584.9" y="275.5" font-size="25.6" font-weight="500" fill="#FFFFFF">청담동</text>
-<text x="342.7" y="647" font-size="25.6" font-weight="500" fill="#FFFFFF">역삼1동</text>
-<text x="379.4" y="191.8" font-size="25.6" font-weight="500" fill="#FFFFFF">압구정동</text>
-<text x="808.1" y="699.8" font-size="25.6" font-weight="500" fill="#FFFFFF">대치2동</text>
-<text x="715.6" y="440" font-size="25.6" font-weight="500" fill="#FFFFFF">삼성1동</text>
-<text x="219.3" y="263.8" font-size="25.6" font-weight="500" fill="#FFFFFF">신사동</text>
-<text x="821.3" y="1049.3" font-size="25.6" font-weight="500" fill="#FFFFFF">개포1동</text>
-<text x="1232.4" y="864.3" font-size="25.6" font-weight="500" fill="#FFFFFF">수서동</text>
-<text x="775.8" y="921.5" font-size="25.6" font-weight="500" fill="#FFFFFF">개포2동</text>
-<text x="598.1" y="1056.6" font-size="25.6" font-weight="500" fill="#FFFFFF">개포4동</text>
-<text x="392.6" y="413.5" font-size="25.6" font-weight="500" fill="#FFFFFF">논현2동</text>
-<text x="554.1" y="475.2" font-size="25.6" font-weight="500" fill="#FFFFFF">삼성2동</text>
-<text x="260.4" y="459" font-size="25.6" font-weight="500" fill="#FFFFFF">논현1동</text>
-<text x="511.5" y="705.7" font-size="25.6" font-weight="500" fill="#FFFFFF">역삼2동</text>
-<text x="940.2" y="735.1" font-size="25.6" font-weight="500" fill="#FFFFFF">개포3동</text>
-<text x="593.7" y="804.1" font-size="25.6" font-weight="500" fill="#FFFFFF">도곡2동</text>
-<text x="482.1" y="854" font-size="25.6" font-weight="500" fill="#FFFFFF">도곡1동</text>
-<text x="1084.1" y="782.1" font-size="25.6" font-weight="500" fill="#FFFFFF">일원1동</text>
-<text x="695" y="792.3" font-size="25.6" font-weight="500" fill="#FFFFFF">대치1동</text>
-<text x="642.2" y="654.3" font-size="25.6" font-weight="500" fill="#FFFFFF">대치4동</text>
+<text  x="1302.9" y="1140.3" font-size="25.6" font-weight="500" fill="#FFFFFF">세곡동</text>
+<text  x="1031.2" y="970" font-size="25.6" font-weight="500" fill="#FFFFFF">일원본동</text>
+<text  x="584.9" y="275.5" font-size="25.6" font-weight="500" fill="#FFFFFF">청담동</text>
+<text  x="342.7" y="647" font-size="25.6" font-weight="500" fill="#FFFFFF">역삼1동</text>
+<text  x="379.4" y="191.8" font-size="25.6" font-weight="500" fill="#FFFFFF">압구정동</text>
+<text  x="808.1" y="699.8" font-size="25.6" font-weight="500" fill="#FFFFFF">대치2동</text>
+<text  x="715.6" y="440" font-size="25.6" font-weight="500" fill="#FFFFFF">삼성1동</text>
+<text  x="219.3" y="263.8" font-size="25.6" font-weight="500" fill="#FFFFFF">신사동</text>
+<text  x="821.3" y="1049.3" font-size="25.6" font-weight="500" fill="#FFFFFF">개포1동</text>
+<text  x="1232.4" y="864.3" font-size="25.6" font-weight="500" fill="#FFFFFF">수서동</text>
+<text  x="775.8" y="921.5" font-size="25.6" font-weight="500" fill="#FFFFFF">개포2동</text>
+<text  x="598.1" y="1056.6" font-size="25.6" font-weight="500" fill="#FFFFFF">개포4동</text>
+<text  x="392.6" y="413.5" font-size="25.6" font-weight="500" fill="#FFFFFF">논현2동</text>
+<text  x="554.1" y="475.2" font-size="25.6" font-weight="500" fill="#FFFFFF">삼성2동</text>
+<text  x="260.4" y="459" font-size="25.6" font-weight="500" fill="#FFFFFF">논현1동</text>
+<text  x="511.5" y="705.7" font-size="25.6" font-weight="500" fill="#FFFFFF">역삼2동</text>
+<text  x="940.2" y="735.1" font-size="25.6" font-weight="500" fill="#FFFFFF">개포3동</text>
+<text  x="593.7" y="804.1" font-size="25.6" font-weight="500" fill="#FFFFFF">도곡2동</text>
+<text  x="482.1" y="854" font-size="25.6" font-weight="500" fill="#FFFFFF">도곡1동</text>
+<text  x="1084.1" y="782.1" font-size="25.6" font-weight="500" fill="#FFFFFF">일원1동</text>
+<text  x="695" y="792.3" font-size="25.6" font-weight="500" fill="#FFFFFF">대치1동</text>
+<text  x="642.2" y="654.3" font-size="25.6" font-weight="500" fill="#FFFFFF">대치4동</text>
 </g>
 </svg>

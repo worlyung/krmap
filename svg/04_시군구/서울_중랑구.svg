@@ -37,21 +37,21 @@
 <path d="M1083.2 0L1070.8 32.5 1131.7 109.4 1282.3 115.8 1413.7 167.1 1452.1 234.4 1468.2 436.3 1445.7 500.4 1439.3 538.8 1490.6 590.1 1477.8 689.4 1362.4 872.1 1487.4 1029.1 1362.4 1090 1317.5 1141.3 1253.5 1298.3 1231 1397.7 1041.9 1416.9 1041.9 1599.6 990.7 1791.8 1080.4 1884.8 1058 1929.6 1037 2042M1037 2042L1058 1929.6 1080.4 1884.8 990.7 1791.8 1041.9 1599.6 1041.9 1416.9 1231 1397.7 1253.5 1298.3 1317.5 1141.3 1362.4 1090 1487.4 1029.1 1362.4 872.1 1477.8 689.4 1490.6 590.1 1439.3 538.8 1445.7 500.4 1468.2 436.3 1452.1 234.4 1413.7 167.1 1282.3 115.8 1131.7 109.4 1070.8 32.5 1083.2 0" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="1247" y="698.7" font-size="25.6" font-weight="500" fill="#FFFFFF">망우본동</text>
-<text x="1243.8" y="275.6" font-size="25.6" font-weight="500" fill="#FFFFFF">신내1동</text>
-<text x="923.4" y="1448.5" font-size="25.6" font-weight="500" fill="#FFFFFF">면목3·8동</text>
-<text x="868.9" y="1698.5" font-size="25.6" font-weight="500" fill="#FFFFFF">면목7동</text>
-<text x="436.3" y="330.1" font-size="25.6" font-weight="500" fill="#FFFFFF">묵1동</text>
-<text x="1141.3" y="1169.7" font-size="25.6" font-weight="500" fill="#FFFFFF">망우3동</text>
-<text x="266.4" y="945.4" font-size="25.6" font-weight="500" fill="#FFFFFF">중화2동</text>
-<text x="711.9" y="820.4" font-size="25.6" font-weight="500" fill="#FFFFFF">상봉1동</text>
-<text x="731.1" y="435.9" font-size="25.6" font-weight="500" fill="#FFFFFF">신내2동</text>
-<text x="606.1" y="1794.6" font-size="25.6" font-weight="500" fill="#FFFFFF">면목4동</text>
-<text x="667" y="1294.7" font-size="25.6" font-weight="500" fill="#FFFFFF">면목본동</text>
-<text x="330.5" y="1237" font-size="25.6" font-weight="500" fill="#FFFFFF">면목2동</text>
-<text x="490.8" y="756.3" font-size="25.6" font-weight="500" fill="#FFFFFF">중화1동</text>
-<text x="256.8" y="522.4" font-size="25.6" font-weight="500" fill="#FFFFFF">묵2동</text>
-<text x="683" y="1022.3" font-size="25.6" font-weight="500" fill="#FFFFFF">상봉2동</text>
-<text x="394.6" y="1467.8" font-size="25.6" font-weight="500" fill="#FFFFFF">면목5동</text>
+<text  x="1247" y="698.7" font-size="25.6" font-weight="500" fill="#FFFFFF">망우본동</text>
+<text  x="1243.8" y="275.6" font-size="25.6" font-weight="500" fill="#FFFFFF">신내1동</text>
+<text  x="923.4" y="1448.5" font-size="25.6" font-weight="500" fill="#FFFFFF">면목3·8동</text>
+<text  x="868.9" y="1698.5" font-size="25.6" font-weight="500" fill="#FFFFFF">면목7동</text>
+<text  x="436.3" y="330.1" font-size="25.6" font-weight="500" fill="#FFFFFF">묵1동</text>
+<text  x="1141.3" y="1169.7" font-size="25.6" font-weight="500" fill="#FFFFFF">망우3동</text>
+<text  x="266.4" y="945.4" font-size="25.6" font-weight="500" fill="#FFFFFF">중화2동</text>
+<text  x="711.9" y="820.4" font-size="25.6" font-weight="500" fill="#FFFFFF">상봉1동</text>
+<text  x="731.1" y="435.9" font-size="25.6" font-weight="500" fill="#FFFFFF">신내2동</text>
+<text  x="606.1" y="1794.6" font-size="25.6" font-weight="500" fill="#FFFFFF">면목4동</text>
+<text  x="667" y="1294.7" font-size="25.6" font-weight="500" fill="#FFFFFF">면목본동</text>
+<text  x="330.5" y="1237" font-size="25.6" font-weight="500" fill="#FFFFFF">면목2동</text>
+<text  x="490.8" y="756.3" font-size="25.6" font-weight="500" fill="#FFFFFF">중화1동</text>
+<text  x="256.8" y="522.4" font-size="25.6" font-weight="500" fill="#FFFFFF">묵2동</text>
+<text  x="683" y="1022.3" font-size="25.6" font-weight="500" fill="#FFFFFF">상봉2동</text>
+<text  x="394.6" y="1467.8" font-size="25.6" font-weight="500" fill="#FFFFFF">면목5동</text>
 </g>
 </svg>

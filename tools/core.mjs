@@ -14,7 +14,8 @@ const X = require("../web/datafill.js");
 const Pn = require("../web/pins.js");
 const St = require("../web/state.js");
 const Px = require("../web/pptx.js");
-export { R, X, Pn, St };
+const Cl = require("../web/colors.js");
+export { R, X, Pn, St, Cl };
 
 export const LEVEL_KO = { sido: "시도", si: "시군구", sgg: "시군구(일반구)", emd: "읍면동" };
 const ORDER = R.LEVEL_ORDER;
@@ -199,6 +200,17 @@ const readMaybeFile = (v, base) => {
   const p = path.resolve(base || process.cwd(), String(v));
   return typeof v === "string" && !v.includes("\n") && fs.existsSync(p) && fs.statSync(p).isFile() ? decodeText(fs.readFileSync(p)) : v;
 };
+/** 객체 목록이나 배열 목록 → 탭 표. 지역 열(region·지역·name·이름·행정구역)을 맨 앞으로 */
+export function rowsToTable(rows) {
+  if (!Array.isArray(rows) || !rows.length) return "";
+  const cell = (v) => (v == null ? "" : String(v).replace(/[\t\n]/g, " "));
+  if (Array.isArray(rows[0])) return rows.map((r) => r.map(cell).join("\t")).join("\n");
+  const keys = [];
+  for (const r of rows) for (const k of Object.keys(r)) if (!keys.includes(k)) keys.push(k);
+  const regionKey = keys.find((k) => /^(region|지역|지역명|name|이름|행정구역|시도|시군구|읍면동|code|코드)$/i.test(k)) || keys[0];
+  const cols = [regionKey, ...keys.filter((k) => k !== regionKey)];
+  return [cols.join("\t"), ...rows.map((r) => cols.map((k) => cell(r[k])).join("\t"))].join("\n");
+}
 /** 행정안전부 CSV 처럼 EUC-KR 인 파일도 읽는다 */
 export function decodeText(buf) {
   const t = new TextDecoder("utf-8").decode(buf);
@@ -268,7 +280,21 @@ export async function specToState(D, spec, opts = {}) {
     S.colors = Object.assign({}, p);
     if (p.fillBg) S.fillBg = true;
   }
+  // 기준 색 하나로 색 조합 전체 (대상 · 주변 · 바탕 · 글자 · 데이터 단계). darkBase: 어두운 바탕
+  const baseColor = spec.baseColor || spec.color;
+  if (baseColor) {
+    if (!/^#?[0-9a-f]{3}([0-9a-f]{3})?$/i.test(String(baseColor).trim())) throw new Error(`기준 색은 #RRGGBB 로 주세요: ${baseColor}`);
+    S.colors = Cl.themeFrom(String(baseColor).startsWith("#") ? baseColor : "#" + baseColor, { dark: !!spec.darkBase });
+    if (S.colors.fillBg) S.fillBg = true;
+    if (spec.palette == null) S.data.palette = "theme";
+  }
   if (spec.colors) Object.assign(S.colors, spec.colors);
+  // 디자인 방식: 기본 · 유리(글라스모피즘) · 입체 · 소프트(뉴모피즘) · 네온
+  if (spec.look || spec.style) {
+    const id = St.lookId(spec.look || spec.style);
+    if (!id) throw new Error(`디자인 방식을 알 수 없습니다: ${spec.look || spec.style} (${St.LOOKS.map((l) => l.name).join(" / ")})`);
+    S.look = id;
+  }
   for (const k of ["distinct", "shadow", "sidoLines", "halo", "subLabel", "leaders"]) if (spec[k] != null) S[k] = !!spec[k];
   if (spec.background != null) S.fillBg = !!spec.background;
   if (spec.fontScale != null) S.fontScale = +spec.fontScale;
@@ -285,6 +311,9 @@ export async function specToState(D, spec, opts = {}) {
   if (spec.title) S.heading.title = spec.title;
   if (spec.subtitle) S.heading.subtitle = spec.subtitle;
   if (spec.source) S.heading.note = true;
+  // 출처 문구를 직접: "통계청 KOSIS, 주민등록인구현황 (DT_1B04005N, 2026.09.)" 처럼. 경계 출처는 뒤에 붙는다
+  if (typeof spec.source === "string") S.heading.noteText = spec.source;
+  if (spec.sourceText) { S.heading.note = true; S.heading.noteText = String(spec.sourceText); }
   if (spec.legend != null) S.legend.pos = spec.legend === false ? "none" : spec.legend;
   if (spec.legendTitle) S.legend.title = spec.legendTitle;
 
@@ -305,8 +334,10 @@ export async function specToState(D, spec, opts = {}) {
     if (spec.statLabels) S.data.labels = [].concat(spec.statLabels).map((q) => indicatorId(opts.stats, q));
   }
   if (spec.data) {
-    const d = typeof spec.data === "string" ? { table: spec.data } : spec.data;
-    const text = d.file ? decodeText(fs.readFileSync(path.resolve(base || process.cwd(), d.file))) : readMaybeFile(d.table, base);
+    const d = typeof spec.data === "string" ? { table: spec.data } : Array.isArray(spec.data) ? { rows: spec.data } : spec.data;
+    // rows: 통계 MCP 결과를 그대로 [{지역:"광진구", 값: 12.3}, …] 또는 [["지역","값"],["광진구",12.3]]
+    const text = d.rows ? rowsToTable(d.rows) : d.file ? decodeText(fs.readFileSync(path.resolve(base || process.cwd(), d.file))) : readMaybeFile(d.table, base);
+    if (!text || !String(text).trim()) throw new Error("data 가 비어 있습니다 (table · file · rows 가운데 하나)");
     S.data.source = "table";
     if (text.length > 150000) { S.data.file = d.file || "data.csv"; bigText = text; } else S.data.text = text;
     const ds = X.analyze(X.readTable(text));
@@ -381,7 +412,12 @@ export function svgToPng(svg, width, opts = {}) {
 }
 export async function sceneToPptx(scene, footnote, title) {
   const PptxGenJS = require("pptxgenjs");
-  const pptx = Px.buildPptx(PptxGenJS, scene, { footnote, title });
+  // 유리 · 네온처럼 그라데이션 바탕이면 슬라이드 크기 그림으로 깐다
+  const backgrounds = [].concat(scene).map((sc) => {
+    const svg = R.backdropSVG(sc, 1600, 900);
+    return svg ? "image/png;base64," + Buffer.from(svgToPng(svg, 1600)).toString("base64") : null;
+  });
+  const pptx = Px.buildPptx(PptxGenJS, scene, { footnote, title, backgrounds });
   return pptx.write({ outputType: "nodebuffer" });
 }
 const safeName = (t) => String(t).replace(/[\\/:*?"<>|]/g, "").replace(/[\s,]+/g, "_").slice(0, 80) || "지도";

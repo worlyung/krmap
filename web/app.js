@@ -2,6 +2,7 @@
 (function () {
   const R = window.KRMapRender;
   const X = window.KRMapData;
+  const Cl = window.KRMapColors;
   const Pn = window.KRMapPins;
   const $ = (id) => document.getElementById(id);
   const ORDER = R.LEVEL_ORDER;
@@ -285,7 +286,15 @@
     $("labelPlace")._sync();
     $("leadersRow").hidden = S.labelPlace === "side";
     $("clickMain").textContent = S.mode === "pick" ? "영역 넣기·빼기" : "그 지역으로 이동";
-    ["layout", "legPos", "ptab"].forEach((id) => $(id)._sync());
+    ["layout", "legPos", "ptab", "look"].forEach((id) => $(id)._sync());
+    const LOOK_NOTE = {
+      glass: "유리: 색 그라데이션 바탕 위에 반투명한 면. 지역 색의 색상을 바탕에 씁니다.",
+      paper: "입체: 지역이 종이를 오려 붙인 듯 아래로 두께가 생깁니다.",
+      soft: "소프트: 바탕과 같은 색의 지역이 빛과 그늘로 살짝 솟아 보입니다.",
+      neon: "네온: 어두운 바탕에 빛나는 경계선.",
+    };
+    $("lookNote").hidden = !LOOK_NOTE[S.look];
+    $("lookNote").textContent = LOOK_NOTE[S.look] || "";
     $("explodeRow").hidden = S.layout !== "explode";
     $("tileGapRow").hidden = $("tileNote").hidden = !(S.layout === "square" || S.layout === "hex");
     document.querySelectorAll(".pane").forEach((el) => (el.hidden = el.dataset.pane !== S.panel));
@@ -296,6 +305,7 @@
     setVal("legTitle", S.legend.title);
     if (!S.data.file) setVal("dataText", S.data.text);
     $("hNote").checked = S.heading.note;
+    setVal("hNoteText", S.heading.noteText || "");
     $("dataSteps").value = String(S.data.steps);
     $("dataSymbol")._sync();
     const bubble = S.data.symbol === "bubble";
@@ -306,6 +316,11 @@
     $("dataMethod").value = S.data.method;
     $("dataValues").checked = S.data.showValues;
     document.querySelectorAll(".pal").forEach((b) => b.classList.toggle("on", b.dataset.v === S.data.palette));
+    const tp = (k) => document.querySelector(`.pal[data-v="${k}"] i`);
+    if (tp("theme")) tp("theme").style.background = `linear-gradient(90deg,${Cl.rampStops(S.colors.target).join(",")})`;
+    if (tp("themeDiverge")) tp("themeDiverge").style.background = `linear-gradient(90deg,${Cl.divergingStops(S.colors.target).join(",")})`;
+    if (document.activeElement !== $("baseColor")) $("baseColor").value = (S.colors.base || S.colors.target).toLowerCase();
+    $("baseDark").checked = !!(S.colors.base && S.colors.fillBg);
     renderGroups();
     $("dataSrc")._sync();
     $("srcStats").hidden = S.data.source !== "stats";
@@ -446,6 +461,7 @@
       S.clickAction = v;
     });
     seg("layout", () => S.layout, (v) => (S.layout = v));
+    seg("look", () => S.look || "flat", (v) => (S.look = v));
     seg("legPos", () => S.legend.pos, (v) => (S.legend.pos = v));
     seg("ptab", () => S.panel, (v) => (S.panel = v));
     $("tileGap").addEventListener("input", (e) => { S.tileGap = +e.target.value; clearTimeout(bindControls._t); bindControls._t = setTimeout(render, 40); });
@@ -491,6 +507,18 @@
     col("cTarget", "target");
     col("cNeighbor", "neighbor");
     col("cContext", "context");
+
+    // 기준 색 하나 → 색 조합 전체
+    let sugN = 0;
+    const applyBase = (hex) => {
+      S.colors = Cl.themeFrom(hex, { dark: $("baseDark").checked });
+      S.fillBg = $("baseDark").checked ? true : S.fillBg && !!S.colors.fillBg;
+      if (!["theme", "themeDiverge"].includes(S.data.palette)) S.data.palette = S.data.palette === "diverge" ? "themeDiverge" : "theme";
+      render();
+    };
+    $("baseColor").addEventListener("input", (e) => { clearTimeout(t); const v = e.target.value; t = setTimeout(() => applyBase(v), 60); });
+    $("baseSuggest").onclick = () => { const hex = Cl.suggest(sugN++); $("baseColor").value = hex.toLowerCase(); applyBase(hex); };
+    $("baseDark").addEventListener("change", () => applyBase($("baseColor").value));
 
     const ps = $("presets");
     PRESETS.forEach((p) => {
@@ -775,6 +803,7 @@
     $("hTitle").addEventListener("input", (e) => { S.heading.title = e.target.value; later(200); });
     $("hSub").addEventListener("input", (e) => { S.heading.subtitle = e.target.value; later(200); });
     $("hNote").addEventListener("change", (e) => { S.heading.note = e.target.checked; render(); });
+    $("hNoteText").addEventListener("input", (e) => { S.heading.noteText = e.target.value; if (e.target.value) S.heading.note = true; clearTimeout(bindControls._n); bindControls._n = setTimeout(render, 200); });
     $("legTitle").addEventListener("input", (e) => { S.legend.title = e.target.value; later(200); });
     $("dataText").addEventListener("input", (e) => { S.data.text = e.target.value; S.data.file = ""; ctx.bigText = ""; });
     const newData = () => { S.data.by = null; S.data.labels = null; };
@@ -859,6 +888,15 @@
       b.className = "pal";
       b.dataset.v = k;
       b.innerHTML = `<i style="background:linear-gradient(90deg,${p.stops.join(",")})"></i>${p.name}`;
+      b.onclick = () => { S.data.palette = k; render(); };
+      pal.appendChild(b);
+    }
+    // 지금 색 조합에서 만든 단계 (색 조합을 바꾸면 따라 바뀐다)
+    for (const [k, name] of [["theme", "테마 색"], ["themeDiverge", "테마 ↔ 반대"]]) {
+      const b = document.createElement("button");
+      b.className = "pal";
+      b.dataset.v = k;
+      b.innerHTML = `<i></i>${name}`;
       b.onclick = () => { S.data.palette = k; render(); };
       pal.appendChild(b);
     }
@@ -998,7 +1036,9 @@
         scenes.push(R.buildScene(D, St.sceneOptions(D, S2, c2, 1600)));
         notes.push(S2.heading.note ? "" : `${St.sourceNote(D, S2, c2)} · github.com/vuski/admdongkor`);
       }
-      const pptx = window.KRMapPptx.buildPptx(window.PptxGenJS, scenes, { footnote: notes, title: "지도 묶음" });
+      const backgrounds = [];
+      for (const sc of scenes) backgrounds.push(await backdropImage(sc));
+      const pptx = window.KRMapPptx.buildPptx(window.PptxGenJS, scenes, { footnote: notes, title: "지도 묶음", backgrounds });
       const blob = await pptx.write({ outputType: "blob" });
       await saveFile(`지도묶음_${scenes.length}장.pptx`, blob, "application/vnd.openxmlformats-officedocument.presentationml.presentation");
     } catch (e) {
@@ -1231,6 +1271,24 @@
       document.head.appendChild(s);
     });
   }
+  // 그라데이션 바탕(유리 · 네온)은 슬라이드 크기 그림으로 만들어 PPTX 배경에 깐다
+  function backdropImage(scene) {
+    const svg = R.backdropSVG(scene, 1600, 900);
+    if (!svg) return Promise.resolve(null);
+    return new Promise((ok) => {
+      const img = new Image();
+      const url = URL.createObjectURL(new Blob([svg], { type: "image/svg+xml" }));
+      img.onload = () => {
+        const c = document.createElement("canvas");
+        c.width = 1600; c.height = 900;
+        c.getContext("2d").drawImage(img, 0, 0, 1600, 900);
+        URL.revokeObjectURL(url);
+        ok(c.toDataURL("image/png").replace(/^data:/, ""));
+      };
+      img.onerror = () => ok(null);
+      img.src = url;
+    });
+  }
   async function exportPPTX() {
     const scene = D && freshScene();
     if (!scene) return;
@@ -1238,7 +1296,8 @@
     btn.disabled = true;
     try {
       await loadPptx();
-      const pptx = window.KRMapPptx.buildPptx(window.PptxGenJS, scene, { footnote: S.heading.note ? "" : `${sourceNote()} · github.com/vuski/admdongkor` });
+      const backgrounds = [await backdropImage(scene)];
+      const pptx = window.KRMapPptx.buildPptx(window.PptxGenJS, scene, { footnote: S.heading.note ? "" : `${sourceNote()} · github.com/vuski/admdongkor`, backgrounds });
       const blob = await pptx.write({ outputType: "blob" });
       await saveFile(baseName(scene) + ".pptx", blob, "application/vnd.openxmlformats-officedocument.presentationml.presentation");
     } catch (e) {

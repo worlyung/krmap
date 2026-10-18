@@ -29,6 +29,8 @@ render 옵션
   --insets 서울,부산         전국 지도에 확대 상자 (all 이면 특별시·광역시 전부)
   --layout 육각              실제 / 벌려 / 네모 / 육각
   --theme 코랄               코발트 / 코랄 / 에메랄드 / 라벤더 / 먹 / 미드나잇
+  --base-color "#13A07F"     색 하나로 색 조합 전체를 만들기 (--dark-base: 어두운 바탕)
+  --look 유리                디자인: 기본 / 유리(글라스모피즘) / 입체 / 소프트(뉴모피즘) / 네온
   --stat old60R              기본 통계로 칠하기 (지표 id 나 이름, krmap indicators)
   --stat-labels pop,old60R   이름 아래 보일 기본 통계 값
   --data 표.csv              내 표·CSV 로 칠하기 (엑셀 붙여넣기 형식도 됨)
@@ -64,7 +66,7 @@ const opts = {
   json: { type: "boolean" }, help: { type: "boolean", short: "h" },
   region: { type: "string" }, neighbors: { type: "string" }, "neighbor-unit": { type: "string" }, inner: { type: "string" },
   regions: { type: "string" }, unit: { type: "string" }, "hide-others": { type: "boolean" }, "no-fit": { type: "boolean" }, national: { type: "string" }, insets: { type: "string" },
-  layout: { type: "string" }, theme: { type: "string" }, distinct: { type: "boolean" }, "no-shadow": { type: "boolean" }, background: { type: "boolean" },
+  layout: { type: "string" }, theme: { type: "string" }, look: { type: "string" }, "base-color": { type: "string" }, "dark-base": { type: "boolean" }, distinct: { type: "boolean" }, "no-shadow": { type: "boolean" }, background: { type: "boolean" },
   stat: { type: "string" }, "stat-labels": { type: "string" },
   data: { type: "string" }, by: { type: "string" }, ratio: { type: "string" }, poll: { type: "boolean" }, "data-labels": { type: "string" },
   palette: { type: "string" }, steps: { type: "string" }, method: { type: "string" },
@@ -90,6 +92,9 @@ function specFromFlags(v) {
   if (v.insets) spec.insets = ["all", "true", "전부"].includes(v.insets) ? true : list(v.insets);
   if (v.layout) spec.layout = v.layout;
   if (v.theme) spec.theme = v.theme;
+  if (v.look) spec.look = v.look;
+  if (v["base-color"]) spec.baseColor = v["base-color"];
+  if (v["dark-base"]) spec.darkBase = true;
   if (v.distinct) spec.distinct = true;
   if (v["no-shadow"]) spec.shadow = false;
   if (v.background) spec.background = true;

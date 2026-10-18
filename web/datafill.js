@@ -32,7 +32,8 @@
   }
   /** 팔레트 stops 를 steps 개의 색으로 고르게 나눈다 */
   function ramp(key, steps) {
-    const st = (PALETTES[key] || PALETTES.blue).stops;
+    // key: 팔레트 이름, 또는 색 목록(stops) · {stops} (테마 색에서 만든 단계)
+    const st = Array.isArray(key) ? key : key && key.stops ? key.stops : (PALETTES[key] || PALETTES.blue).stops;
     const out = [];
     for (let i = 0; i < steps; i++) {
       const t = steps === 1 ? 1 : i / (steps - 1);
@@ -422,11 +423,11 @@
     out.nums = {};
     for (const [k, v] of vals) if (isFinite(+v)) out.nums[k] = +v;
     out.fmt = f;
-    if (opt.palette === "diverge" && lo0 < 0 && hi0 > 0) {
+    if ((opt.palette === "diverge" || (opt.palette && opt.palette.diverge)) && lo0 < 0 && hi0 > 0) {
       // 증감처럼 부호가 갈리는 값: 0 을 가운데(회색)로 두고 음수는 파랑, 양수는 빨강 쪽 단계로 따로 나눈다
       const k = Math.max(1, Math.floor(steps / 2));
       const neg = breaks(nums.filter((v) => v < 0), k, opt.method), pos = breaks(nums.filter((v) => v > 0), k, opt.method);
-      const colors = ramp("diverge", 2 * k + 1);
+      const colors = ramp(opt.palette, 2 * k + 1);
       const nc = neg.cuts.length + 1, pc = pos.cuts.length + 1;
       const negColor = (i) => colors[k - nc + i], posColor = (i) => colors[k + 1 + i];
       for (const [kk, v] of vals) {

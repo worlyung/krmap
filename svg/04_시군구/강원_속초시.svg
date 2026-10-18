@@ -24,14 +24,19 @@
 <g id="시도경계">
 <path d="M1325.9 0L1323.4 53.1 1290.7 85.7 1333.4 166.9 1376.1 223.9 1412.1 242.3 1407.1 275 1363.6 275 1363.6 311 1366.9 314.3 1370.3 347.8 1383.7 388 1426.4 445 1451.5 486 1474.9 524.5 1514.3 543.8 1514.3 560.5 1482.5 568.9 1485.8 620 1463.2 625 1475.8 707.1 1475.8 734.7 1492.5 759 1494.2 788.3 1483.3 795 1480.8 826.8 1506.7 881.2 1549.5 953.2 1587.1 992.6 1588 1013.5 1600 1027.4" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
+<g id="지시선">
+<path id="지시점_청호동" d="M1386.9 438.3L1386.7 439.2 1386.2 439.9 1385.4 440.5 1384.5 440.7 1383.6 440.5 1382.8 439.9 1382.3 439.2 1382.1 438.3 1382.3 437.3 1382.8 436.6 1383.6 436 1384.5 435.9 1385.4 436 1386.2 436.6 1386.7 437.3Z" fill="#6D727A" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.8" stroke-linejoin="round"><title>지시점 청호동</title></path>
+<path id="지시점_동명동" d="M1339.2 279.1L1339 280.1 1338.5 280.8 1337.7 281.4 1336.8 281.5 1335.8 281.4 1335.1 280.8 1334.5 280.1 1334.4 279.1 1334.5 278.2 1335.1 277.5 1335.8 276.9 1336.8 276.7 1337.7 276.9 1338.5 277.5 1339 278.2Z" fill="#6D727A" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.8" stroke-linejoin="round"><title>지시점 동명동</title></path>
+<path d="M1384.5 438.3L1431.9 424.3M1336.8 279.1L1386.8 306.1" fill="none" stroke="#6D727A" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
 <g id="지명" text-anchor="middle">
 <text  x="523.7" y="738.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">대포동</text>
 <text  x="940.7" y="495" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">노학동</text>
 <text  x="966.6" y="292.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">영랑동</text>
 <text  x="1241.3" y="528.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">조양동</text>
-<text  x="1384.5" y="447.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">청호동</text>
 <text  x="1240.5" y="269.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">금호동</text>
 <text  x="1278.1" y="358.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">교동</text>
-<text  x="1336.8" y="288.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">동명동</text>
+<text  x="1470.3" y="421.3" font-size="23" font-weight="500" letter-spacing="-0.5" fill="none" stroke="#FFFFFF" stroke-width="5.1" stroke-linejoin="round">청호동</text><text  x="1470.3" y="421.3" font-size="23" font-weight="500" letter-spacing="-0.5" fill="#1E2633">청호동</text>
+<text  x="1415.4" y="329.9" font-size="23" font-weight="500" letter-spacing="-0.5" fill="none" stroke="#FFFFFF" stroke-width="5.1" stroke-linejoin="round">동명동</text><text  x="1415.4" y="329.9" font-size="23" font-weight="500" letter-spacing="-0.5" fill="#1E2633">동명동</text>
 </g>
 </svg>

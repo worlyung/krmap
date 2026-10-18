@@ -230,6 +230,19 @@ details.more[open] summary { margin-bottom: 10px; }
 .labelpick { grid-column: 1 / -1; border-top: 1px solid var(--rule); padding-top: 12px; }
 .labelpick .chips { max-height: 220px; overflow-y: auto; }
 .empty { color: var(--muted); font-size: 13px; }
+/* 슬라이드 묶음 */
+.deck { background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; }
+.deckhead { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: flex-start; justify-content: space-between; }
+.deckintro { min-width: 0; flex: 1 1 280px; }
+.deck h3 { margin: 0 0 4px; font-size: 12.5px; font-weight: 700; letter-spacing: -0.01em; }
+.decklist { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 6px; max-height: 232px; overflow-y: auto; counter-reset: slide; }
+.decklist:empty { display: none; }
+.decklist li { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; gap: 6px; align-items: center; border: 1px solid var(--rule); border-radius: 7px; padding: 4px 6px 4px 8px; font-size: 12.5px; counter-increment: slide; }
+.decklist li::before { content: counter(slide, decimal-leading-zero); font: 11px var(--font-data); color: var(--faint); font-variant-numeric: tabular-nums; }
+.decklist .open { border: 0; background: none; padding: 2px 0; font: inherit; color: var(--ink); text-align: left; cursor: pointer; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.decklist .open:hover { color: var(--accent); }
+.decklist .x { border: 0; background: none; color: var(--faint); cursor: pointer; font-size: 15px; padding: 0 4px; }
+.decklist .x:hover { color: var(--ink); }
 .credit { font-size: 11.5px; color: var(--faint); line-height: 1.6; margin: 0; padding: 14px 18px 16px; }
 .credit a { color: inherit; }
 .btn:focus-visible, .seg button:focus-visible, .tabs button:focus-visible, .ptabs button:focus-visible, .theme:focus-visible, .crumbs button:focus-visible, .chip:focus-visible, .pal:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -358,6 +371,10 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
         <div class="seg" id="allLv">
           <button data-v="sido">시도</button><button data-v="si">시군구</button><button data-v="emd">읍면동</button>
         </div>
+        <div class="datacols" id="insetBox">
+          <span class="lbl">확대 상자 <span class="note">구가 작게 몰린 곳을 오른쪽에 크게</span></span>
+          <div class="chips" id="insetList"></div>
+        </div>
       </section>
 
       <section class="card">
@@ -404,6 +421,9 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
           <button data-v="all">모두 넣기</button><button data-v="none">모두 빼기</button><button data-v="pick">고른 것만</button>
         </div>
         <p class="note" id="labelHint" hidden>지도에서 누르거나 아래 목록에서 이름을 하나씩 켜고 끕니다.</p>
+        <span class="lbl">이름 자리</span>
+        <div class="seg" id="labelPlace" aria-label="이름 자리"><button data-v="auto">지역 안</button><button data-v="side">양옆으로 모두 빼기</button></div>
+        <label class="chk" id="leadersRow"><input type="checkbox" id="leaders" checked> 안 들어가는 이름은 밖에 쓰고 선으로 잇기</label>
         <div class="slider"><span>글자 크기</span><input type="range" id="fontScale" min="0.5" max="2" step="0.05" value="1" aria-label="글자 크기"></div>
         <details class="more">
           <summary>이름 · 선 세부 설정</summary>
@@ -471,7 +491,11 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
           <div class="chips" id="labelCols"></div>
         </div>
         <div class="datacols" id="dataLook" hidden>
-          <span class="lbl">색 단계</span>
+          <span class="lbl">나타내는 법</span>
+          <div class="seg" id="dataSymbol" aria-label="나타내는 법"><button data-v="fill">면 색</button><button data-v="bubble">원 크기</button></div>
+          <p class="note" id="bubbleNote">인구·매출·지점 수처럼 "개수"인 값은 원 크기가 정직합니다. 면적이 넓은 곳이 커 보이지 않습니다. 비율은 면 색이 낫습니다.</p>
+          <div class="slider" id="bubbleRow"><span>원 크기</span><input type="range" id="bubbleScale" min="0.4" max="2.5" step="0.05" value="1" aria-label="원 크기"></div>
+          <span class="lbl" id="paletteLbl">색 단계</span>
           <div class="palettes" id="palettes"></div>
           <div class="row">
             <label class="ed">단계 <select id="dataSteps"><option>3</option><option>4</option><option selected>5</option><option>6</option><option>7</option></select></label>
@@ -563,6 +587,24 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
           <div class="chips" id="labelPickList"></div>
         </div>
       </div>
+      <section class="deck" id="deck" aria-label="PPT 슬라이드 묶음">
+        <div class="deckhead">
+          <div class="deckintro">
+            <h3>PPT 슬라이드 묶음 <span class="note" id="deckCount">비어 있음</span></h3>
+            <p class="note">지도를 한 장씩 담아 PPTX 하나로 저장합니다. 제목에 <b>{지역}</b>을 쓰면 장마다 그 지역 이름으로 바뀝니다.</p>
+          </div>
+          <div class="row">
+            <button class="btn sm" id="deckAdd">+ 지금 지도 담기</button>
+            <button class="btn sm" id="deckEachSido">시도마다 한 장씩</button>
+            <button class="btn sm" id="deckEachSi">이 시도의 시군구마다</button>
+          </div>
+        </div>
+        <ol class="decklist" id="deckList"></ol>
+        <div class="row" id="deckActions" hidden>
+          <button class="btn sm primary" id="deckSave">묶음 PPTX 저장</button>
+          <button class="btn sm" id="deckClear">모두 비우기</button>
+        </div>
+      </section>
     </main>
   </div>
 </div>

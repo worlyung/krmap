@@ -26,6 +26,7 @@ render 옵션
   --regions 충청남도,세종     여러 지역 직접 고르기 (--unit 시군구 로 단위)
   --hide-others              고르지 않은 지역은 빼기
   --national 시군구          전국 지도 (--region·--regions 가 없을 때, 기본 시도)
+  --insets 서울,부산         전국 지도에 확대 상자 (all 이면 특별시·광역시 전부)
   --layout 육각              실제 / 벌려 / 네모 / 육각
   --theme 코랄               코발트 / 코랄 / 에메랄드 / 라벤더 / 먹 / 미드나잇
   --stat old60R              기본 통계로 칠하기 (지표 id 나 이름, krmap indicators)
@@ -38,11 +39,15 @@ render 옵션
   --color-by-pins            지역별 지점 수로 칠하기
   --title 제목 --subtitle 부제 --source    제목·부제·출처
   --legend br                범례 자리: tl / tr / bl / br / none
-  --labels none              지역 이름: all / none / 넣을 지역1,지역2
+  --labels none              지역 이름: all / none / side(양옆 줄로 모두 빼기) / 넣을 지역1,지역2
+  --label-place side         이름 자리: auto(지역 안, 안 들어가면 지시선) / side(양옆 줄)
+  --no-leaders               안 들어가는 이름을 지시선으로 빼지 않고 생략
+  --bubbles                  색 대신 원 크기로 (인구·매출 같은 개수)
   --distinct                 이웃끼리 색 다르게
   --aspect 16:9              그림 비율: 16:9 / 4:3 / 1:1
   --sido17                   광주·전남 나눠 보기 (17개 시도)
-  --format svg,png,pptx      만들 파일 (기본: 셋 다)
+  --each 시도 | --each 충청남도 [--each-unit 시군구]   지역마다 한 장씩 → 슬라이드 여러 장 PPTX (제목의 {지역} 은 지역 이름으로)
+  --format svg,png,pptx      만들 파일 (기본: 셋 다, 묶음은 pptx)
   --out 폴더 | 폴더/이름.pptx 저장 위치 (기본: ./out)
   --width 1600 --png-scale 2 --font 글꼴.ttf
 
@@ -51,21 +56,23 @@ render 옵션
   krmap render --regions 충청남도 --unit 시군구 --layout 육각 --data 여론조사.csv --poll
   krmap render --national 시도 --stat yoyR --theme 에메랄드 --format pptx --out out/전국_인구증감.pptx
   krmap render 작업.json --format png
+  krmap render --each 시도 --stat old60R --title "{지역} 고령 인구"                    시도마다 한 장씩 PPTX 하나로
+  krmap render --each 충청남도 --each-unit 시군구 --inner 읍면동 --title "{지역} 읍면동"   충남 시군마다 한 장씩
 `;
 
 const opts = {
   json: { type: "boolean" }, help: { type: "boolean", short: "h" },
   region: { type: "string" }, neighbors: { type: "string" }, "neighbor-unit": { type: "string" }, inner: { type: "string" },
-  regions: { type: "string" }, unit: { type: "string" }, "hide-others": { type: "boolean" }, "no-fit": { type: "boolean" }, national: { type: "string" },
+  regions: { type: "string" }, unit: { type: "string" }, "hide-others": { type: "boolean" }, "no-fit": { type: "boolean" }, national: { type: "string" }, insets: { type: "string" },
   layout: { type: "string" }, theme: { type: "string" }, distinct: { type: "boolean" }, "no-shadow": { type: "boolean" }, background: { type: "boolean" },
   stat: { type: "string" }, "stat-labels": { type: "string" },
   data: { type: "string" }, by: { type: "string" }, ratio: { type: "string" }, poll: { type: "boolean" }, "data-labels": { type: "string" },
   palette: { type: "string" }, steps: { type: "string" }, method: { type: "string" },
   pins: { type: "string" }, "no-geocode": { type: "boolean" }, "color-by-pins": { type: "boolean" }, "pin-shape": { type: "string" }, "pin-color": { type: "string" },
   title: { type: "string" }, subtitle: { type: "string" }, source: { type: "boolean" }, legend: { type: "string" }, "legend-title": { type: "string" },
-  labels: { type: "string" }, aspect: { type: "string" }, sido17: { type: "boolean" }, "split-gu": { type: "boolean" },
+  labels: { type: "string" }, "label-place": { type: "string" }, bubbles: { type: "boolean" }, "no-leaders": { type: "boolean" }, aspect: { type: "string" }, sido17: { type: "boolean" }, "split-gu": { type: "boolean" },
   format: { type: "string" }, out: { type: "string" }, width: { type: "string" }, "png-scale": { type: "string" }, font: { type: "string" },
-  depth: { type: "string" }, indicators: { type: "string" }, in: { type: "string" }, limit: { type: "string" },
+  depth: { type: "string" }, each: { type: "string" }, "each-unit": { type: "string" }, indicators: { type: "string" }, in: { type: "string" }, limit: { type: "string" },
 };
 const list = (v) => (v == null ? undefined : String(v).split(/\s*,\s*/).filter(Boolean));
 
@@ -80,6 +87,7 @@ function specFromFlags(v) {
   if (v["hide-others"]) spec.hideOthers = true;
   if (v["no-fit"]) spec.fit = false;
   if (v.national) spec.nationalUnit = v.national;
+  if (v.insets) spec.insets = ["all", "true", "전부"].includes(v.insets) ? true : list(v.insets);
   if (v.layout) spec.layout = v.layout;
   if (v.theme) spec.theme = v.theme;
   if (v.distinct) spec.distinct = true;
@@ -106,10 +114,15 @@ function specFromFlags(v) {
   if (v.source) spec.source = true;
   if (v.legend) spec.legend = v.legend;
   if (v["legend-title"]) spec.legendTitle = v["legend-title"];
-  if (v.labels) spec.labels = ["all", "none"].includes(v.labels) ? v.labels : list(v.labels);
+  if (v.labels) spec.labels = ["all", "none", "side"].includes(v.labels) ? v.labels : list(v.labels);
+  if (v["label-place"]) spec.labelPlace = v["label-place"];
+  if (v.bubbles) spec.bubbles = true;
+  if (v["no-leaders"]) spec.leaders = false;
   if (v.aspect) spec.aspect = v.aspect;
   if (v.sido17) spec.sido17 = true;
   if (v["split-gu"]) spec.splitGu = true;
+  // 여러 장: --each 시도 | --each 충청남도 [--each-unit 시군구]
+  if (v.each) spec.each = ["시도", "sido"].includes(v.each) ? { unit: "시도" } : { in: v.each, unit: v["each-unit"] };
   return spec;
 }
 
@@ -142,6 +155,10 @@ async function main() {
       pngScale: v["png-scale"] ? +v["png-scale"] : undefined,
       fontFile: v.font,
     });
+    if (res.slides) {
+      print(res, v.json, (r) => [`만든 파일 (${r.slides}장):`, ...r.files.map((f) => "  " + f), ...r.items.filter((it) => it.unmatched.length || it.warnings.length).map((it) => `  ${it.slide}. ${it.title}: ${[...it.warnings, it.unmatched.length ? "못 찾은 이름 " + it.unmatched.join(", ") : ""].filter(Boolean).join(" · ")}`)].join("\n"));
+      return;
+    }
     print(res, v.json, (r) => [
       `만든 파일:`, ...r.files.map((f) => "  " + f),
       `제목: ${r.title}`,

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1768" viewBox="0 0 1600 1768" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1768" viewBox="0 0 1600 1768" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>강원특별자치도 동해시</title>
 <g id="배경">
 <path d="M0 0L797.3 0 805.9 18.2 876.9 94.7 813.8 134.1 793.3 168.8 753.9 172 749.9 194.8 767.3 206.7 786.2 235.8 771.2 265.8 765.7 294.2 726.3 355.7 730.2 383.3 726.3 439.3 712.1 463.7 708.9 516.5 720 550.4 696.3 623.8 658.5 615.9 633.2 602.5 557.5 629.3 534.7 675 504.7 694 470 673.5 366.7 656.9 313.9 693.2 288.7 735 249.3 742.8 208.3 733.4 191.7 737.3 183 722.3 114.4 656.1 117.6 624.6 101.8 606.4 91.6 634 60.8 675 34.8 681.3 9.6 671.9 0 677.4Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -27,14 +27,15 @@
 <path d="M797.3 0L805.9 18.2 876.9 94.7 1000.7 192.5 1137.9 304.4 1148.1 304.4 1176.5 321 1187.5 351 1184.4 395.9 1210.4 448.7 1212 497.6 1226.2 511 1197.8 586.7 1160.7 582.8 1164.7 652.2 1164.7 673.5 1177.3 701.8 1227 760.2 1249 790.9 1232.5 828.8 1252.2 865.8 1327.9 981 1298.7 1003.8 1334.2 1047.2 1249.8 1100.8 1264 1126.8 1373.6 1057.4 1375.2 1083.5 1409.9 1086.6 1483.2 1170.2 1505.3 1200.9 1502.1 1215.9 1526.6 1244.3 1587.3 1302.7 1600 1310" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="593.8" y="1009.1" font-size="25.6" font-weight="500" fill="#FFFFFF">삼화동</text>
-<text  x="925" y="354.7" font-size="25.6" font-weight="500" fill="#FFFFFF">망상동</text>
-<text  x="1266.4" y="1271.7" font-size="25.6" font-weight="500" fill="#FFFFFF">북평동</text>
-<text  x="1063" y="1050.9" font-size="25.6" font-weight="500" fill="#FFFFFF">북삼동</text>
-<text  x="1047.2" y="818.3" font-size="25.6" font-weight="500" fill="#FFFFFF">천곡동</text>
-<text  x="873.7" y="727.6" font-size="25.6" font-weight="500" fill="#FFFFFF">부곡동</text>
-<text  x="1260.1" y="978.3" font-size="25.6" font-weight="500" fill="#FFFFFF">송정동</text>
-<text  x="1135.5" y="404.3" font-size="25.6" font-weight="500" fill="#FFFFFF">묵호동</text>
-<text  x="1051.9" y="636.9" font-size="25.6" font-weight="500" fill="#FFFFFF">동호동</text>
+<text  x="593.8" y="1008.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">삼화동</text>
+<text  x="925" y="354.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">망상동</text>
+<text  x="1266.4" y="1271.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">북평동</text>
+<text  x="1063" y="1050.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">북삼동</text>
+<text  x="1047.2" y="818.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">천곡동</text>
+<text  x="873.7" y="727.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">부곡동</text>
+<text  x="1260.1" y="978.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">송정동</text>
+<text  x="1135.5" y="404.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">묵호동</text>
+<text  x="1051.9" y="636.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">동호동</text>
+<text  x="1132.3" y="641.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">발한동</text>
 </g>
 </svg>

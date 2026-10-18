@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="933" viewBox="0 0 1600 933" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="933" viewBox="0 0 1600 933" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>서울특별시 중구</title>
 <g id="배경">
 <path d="M10.3 0L1441.1 0 1442.4 85.7 1343.2 105.6 1313.4 125.4 1139.8 137.8 1077.8 140.3 966.2 142.8 730.6 177.5 636.3 177.5 428 150.2 390.8 145.2 251.9 177.5 202.3 242 180 217.2 46 43.6Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -35,20 +35,20 @@
 <path d="M894.2 683.4L824.8 755.4 777.7 705.8 760.3 678.5 661.1 638.8 609 576.8 415.6 604.1 323.8 556.9 249.4 569.3 237 529.7 103.1 633.8 85.7 432.9 98.1 420.5 264.3 346.1 202.3 242 251.9 177.5 390.8 145.2 428 150.2 636.3 177.5 730.6 177.5 966.2 142.8 1077.8 140.3 1139.8 137.8 1313.4 125.4 1343.2 105.6 1442.4 85.7 1447.3 266.8 1514.3 271.7 1504.4 326.3 1439.9 388.3 1430 467.7 1353.1 477.6 1355.6 480.1 1310.9 517.3 1286.1 599.1 1216.7 683.4 1162.1 735.5 1115 847.1 1033.1 785.1 1043.1 745.4 1020.7 671 894.2 683.4" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="777.7" y="501.7" font-size="25.6" font-weight="500" fill="#FFFFFF">필동</text>
-<text  x="606.5" y="357.8" font-size="25.6" font-weight="500" fill="#FFFFFF">명동</text>
-<text  x="1067.9" y="407.4" font-size="25.6" font-weight="500" fill="#FFFFFF">장충동</text>
-<text  x="457.7" y="499.2" font-size="25.6" font-weight="500" fill="#FFFFFF">회현동</text>
-<text  x="343.7" y="278.5" font-size="25.6" font-weight="500" fill="#FFFFFF">소공동</text>
-<text  x="1085.2" y="261.1" font-size="25.6" font-weight="500" fill="#FFFFFF">광희동</text>
-<text  x="755.4" y="266.1" font-size="25.6" font-weight="500" fill="#FFFFFF">을지로동</text>
-<text  x="1253.9" y="226.4" font-size="25.6" font-weight="500" fill="#FFFFFF">신당동</text>
-<text  x="170" y="486.8" font-size="25.6" font-weight="500" fill="#FFFFFF">중림동</text>
-<text  x="1077.8" y="618.2" font-size="25.6" font-weight="500" fill="#FFFFFF">다산동</text>
-<text  x="1184.4" y="643" font-size="25.6" font-weight="500" fill="#FFFFFF">약수동</text>
-<text  x="1256.3" y="491.8" font-size="25.6" font-weight="500" fill="#FFFFFF">청구동</text>
-<text  x="1353.1" y="407.4" font-size="25.6" font-weight="500" fill="#FFFFFF">동화동</text>
-<text  x="1382.8" y="199.1" font-size="25.6" font-weight="500" fill="#FFFFFF">황학동</text>
-<text  x="1434.9" y="323.1" font-size="25.6" font-weight="500" fill="#FFFFFF">신당5동</text>
+<text  x="777.7" y="501.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">필동</text>
+<text  x="606.5" y="357.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">명동</text>
+<text  x="1067.9" y="407.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">장충동</text>
+<text  x="457.7" y="499" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">회현동</text>
+<text  x="343.7" y="278.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">소공동</text>
+<text  x="1085.2" y="260.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">광희동</text>
+<text  x="755.4" y="265.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">을지로동</text>
+<text  x="1253.9" y="226.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">신당동</text>
+<text  x="170" y="486.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">중림동</text>
+<text  x="1077.8" y="618" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">다산동</text>
+<text  x="1184.4" y="642.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">약수동</text>
+<text  x="1256.3" y="491.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">청구동</text>
+<text  x="1353.1" y="407.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">동화동</text>
+<text  x="1382.8" y="198.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">황학동</text>
+<text  x="1434.9" y="322.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">신당5동</text>
 </g>
 </svg>

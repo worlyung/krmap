@@ -331,14 +331,22 @@ export async function specToState(D, spec, opts = {}) {
 }
 
 // ---------- 만들기 ----------
+// npm 으로 함께 설치되는 프리텐다드(SIL OFL)를 먼저 쓴다 — 어느 컴퓨터에서 만들어도 PNG 글꼴이 같다
+const pretendardFiles = () => {
+  try {
+    const dir = path.join(path.dirname(require.resolve("pretendard/package.json")), "dist", "public", "static");
+    return ["Regular", "Medium", "SemiBold", "Bold"].map((w) => path.join(dir, `Pretendard-${w}.otf`));
+  } catch (e) { return []; }
+};
 const FONT_CANDIDATES = [
+  ["Pretendard", pretendardFiles()],
   ["Malgun Gothic", ["C:/Windows/Fonts/malgun.ttf", "C:/Windows/Fonts/malgunbd.ttf"]],
   ["Apple SD Gothic Neo", ["/System/Library/Fonts/AppleSDGothicNeo.ttc"]],
   ["Noto Sans CJK KR", ["/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc", "/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc", "/usr/share/fonts/google-noto-cjk/NotoSansCJK-Regular.ttc"]],
   ["NanumGothic", ["/usr/share/fonts/truetype/nanum/NanumGothic.ttf"]],
   ["WenQuanYi Zen Hei", ["/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc"]],
 ];
-/** PNG 에 쓸 한글 글꼴: 직접 준 파일 → 컴퓨터에 있는 맑은 고딕·애플 SD 고딕·Noto·나눔 순 */
+/** PNG 에 쓸 한글 글꼴: 직접 준 파일 → 프리텐다드 → 컴퓨터에 있는 맑은 고딕·애플 SD 고딕·Noto·나눔 순 */
 function koreanFont(fontFile) {
   if (fontFile) return { files: [fontFile], family: null };
   for (const [family, files] of FONT_CANDIDATES) {

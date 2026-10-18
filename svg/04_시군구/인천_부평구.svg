@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1423" viewBox="0 0 1600 1423" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1423" viewBox="0 0 1600 1423" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>인천광역시 부평구</title>
 <g id="배경">
 <path d="M0 1423L0 1131.7 91.5 1158.6 126.1 1187.4 97.3 1239.3 145.3 1252.8 137.6 1310.5 241.5 1343.2 314.5 1418.2 305.8 1423Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -43,27 +43,27 @@
 <path d="M1399.7 0L1397 85.7 1406.6 216.5 1383.5 268.4 1304.7 245.3 1254.7 249.1 1252.8 270.3 1137.4 297.2 1112.4 376 1075.9 406.8 1085.5 460.6 1108.6 566.4 1091.3 656.8 1074 702.9 1087.4 843.3 1087.4 845.2 1089.4 883.6 1212.4 912.5 1291.3 947.1 1302.8 1008.6 1354.7 1050.9 1368.2 1095.1 1414.3 1104.7 1472 1129.7 1514.3 1202.8 1585.4 1191.3 1600 1198.2M1600 1198.2L1585.4 1191.3 1514.3 1202.8 1472 1129.7 1414.3 1104.7 1368.2 1095.1 1354.7 1050.9 1302.8 1008.6 1291.3 947.1 1212.4 912.5 1089.4 883.6 1087.4 845.2 1087.4 843.3 1074 702.9 1091.3 656.8 1108.6 566.4 1085.5 460.6 1075.9 406.8 1112.4 376 1137.4 297.2 1252.8 270.3 1254.7 249.1 1304.7 245.3 1383.5 268.4 1406.6 216.5 1397 85.7 1399.7 0" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="1154.7" y="1110.1" font-size="25.6" font-weight="500" fill="#FFFFFF">일신동</text>
-<text  x="583.7" y="250.7" font-size="25.6" font-weight="500" fill="#FFFFFF">청천2동</text>
-<text  x="310.7" y="412.2" font-size="25.6" font-weight="500" fill="#FFFFFF">산곡1동</text>
-<text  x="795.2" y="1129.3" font-size="25.6" font-weight="500" fill="#FFFFFF">부평2동</text>
-<text  x="258.8" y="200.7" font-size="25.6" font-weight="500" fill="#FFFFFF">청천1동</text>
-<text  x="1320.1" y="175.7" font-size="25.6" font-weight="500" fill="#FFFFFF">삼산1동</text>
-<text  x="304.9" y="1027.4" font-size="25.6" font-weight="500" fill="#FFFFFF">십정1동</text>
-<text  x="443.3" y="773.6" font-size="25.6" font-weight="500" fill="#FFFFFF">산곡3동</text>
-<text  x="1004.8" y="343" font-size="25.6" font-weight="500" fill="#FFFFFF">삼산2동</text>
-<text  x="831.7" y="194.9" font-size="25.6" font-weight="500" fill="#FFFFFF">갈산1동</text>
-<text  x="697.1" y="691" font-size="25.6" font-weight="500" fill="#FFFFFF">부평1동</text>
-<text  x="418.3" y="1194.7" font-size="25.6" font-weight="500" fill="#FFFFFF">십정2동</text>
-<text  x="816.3" y="531.4" font-size="25.6" font-weight="500" fill="#FFFFFF">부평4동</text>
-<text  x="508.7" y="940.9" font-size="25.6" font-weight="500" fill="#FFFFFF">부평3동</text>
-<text  x="1027.8" y="562.1" font-size="25.6" font-weight="500" fill="#FFFFFF">부개3동</text>
-<text  x="981.7" y="921.7" font-size="25.6" font-weight="500" fill="#FFFFFF">부개1동</text>
-<text  x="458.7" y="581.4" font-size="25.6" font-weight="500" fill="#FFFFFF">산곡2동</text>
-<text  x="824" y="937.1" font-size="25.6" font-weight="500" fill="#FFFFFF">부평6동</text>
-<text  x="883.6" y="727.5" font-size="25.6" font-weight="500" fill="#FFFFFF">부평5동</text>
-<text  x="1008.6" y="733.3" font-size="25.6" font-weight="500" fill="#FFFFFF">부개2동</text>
-<text  x="824" y="379.5" font-size="25.6" font-weight="500" fill="#FFFFFF">갈산2동</text>
-<text  x="576" y="566" font-size="25.6" font-weight="500" fill="#FFFFFF">산곡4동</text>
+<text  x="1154.7" y="1109.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">일신동</text>
+<text  x="583.7" y="250.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">청천2동</text>
+<text  x="310.7" y="411.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">산곡1동</text>
+<text  x="795.2" y="1129.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">부평2동</text>
+<text  x="258.8" y="200.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">청천1동</text>
+<text  x="1320.1" y="175.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">삼산1동</text>
+<text  x="304.9" y="1027.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">십정1동</text>
+<text  x="443.3" y="773.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">산곡3동</text>
+<text  x="1004.8" y="342.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">삼산2동</text>
+<text  x="831.7" y="194.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">갈산1동</text>
+<text  x="697.1" y="690.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">부평1동</text>
+<text  x="418.3" y="1194.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">십정2동</text>
+<text  x="816.3" y="531.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">부평4동</text>
+<text  x="508.7" y="940.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">부평3동</text>
+<text  x="1027.8" y="561.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">부개3동</text>
+<text  x="981.7" y="921.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">부개1동</text>
+<text  x="458.7" y="581.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">산곡2동</text>
+<text  x="824" y="936.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">부평6동</text>
+<text  x="883.6" y="727.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">부평5동</text>
+<text  x="1008.6" y="733" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">부개2동</text>
+<text  x="824" y="379.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">갈산2동</text>
+<text  x="576" y="565.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">산곡4동</text>
 </g>
 </svg>

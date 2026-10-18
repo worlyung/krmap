@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1993" viewBox="0 0 1400 1993" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1993" viewBox="0 0 1400 1993" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>전국 시도</title>
 <g id="지역">
 <path id="서울특별시" d="M418.2 121.6L685.2 121.6 685.2 388.6 418.2 388.6Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.9" stroke-linejoin="round"><title>서울특별시</title></path>
@@ -20,22 +20,22 @@
 <path id="전북특별자치도" d="M121.6 1011.4L388.6 1011.4 388.6 1278.4 121.6 1278.4Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.9" stroke-linejoin="round"><title>전북특별자치도</title></path>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="1144.9" y="563.3" font-size="32.2" font-weight="700" fill="#1E2633">경북</text>
-<text  x="848.3" y="266.7" font-size="32.2" font-weight="700" fill="#1E2633">강원</text>
-<text  x="551.7" y="1453.1" font-size="32.2" font-weight="700" fill="#1E2633">전남</text>
-<text  x="848.3" y="1156.5" font-size="32.2" font-weight="700" fill="#1E2633">경남</text>
-<text  x="551.7" y="563.3" font-size="32.2" font-weight="700" fill="#1E2633">경기</text>
-<text  x="255.1" y="859.9" font-size="32.2" font-weight="700" fill="#1E2633">충남</text>
-<text  x="255.1" y="1156.5" font-size="32.2" font-weight="700" fill="#1E2633">전북</text>
-<text  x="848.3" y="563.3" font-size="32.2" font-weight="700" fill="#1E2633">충북</text>
-<text  x="255.1" y="1749.7" font-size="32.2" font-weight="700" fill="#1E2633">제주</text>
-<text  x="1144.9" y="859.9" font-size="32.2" font-weight="700" fill="#1E2633">대구</text>
-<text  x="255.1" y="563.3" font-size="32.2" font-weight="700" fill="#1E2633">인천</text>
-<text  x="1144.9" y="1156.5" font-size="32.2" font-weight="700" fill="#1E2633">울산</text>
-<text  x="1144.9" y="1453.1" font-size="32.2" font-weight="700" fill="#1E2633">부산</text>
-<text  x="551.7" y="266.7" font-size="32.2" font-weight="700" fill="#1E2633">서울</text>
-<text  x="848.3" y="859.9" font-size="32.2" font-weight="700" fill="#1E2633">대전</text>
-<text  x="551.7" y="1156.5" font-size="32.2" font-weight="700" fill="#1E2633">광주</text>
-<text  x="551.7" y="859.9" font-size="32.2" font-weight="700" fill="#1E2633">세종</text>
+<text  x="1144.9" y="563.3" font-size="32.2" font-weight="700" letter-spacing="-0.6" fill="#1E2633">경북</text>
+<text  x="848.3" y="266.7" font-size="32.2" font-weight="700" letter-spacing="-0.6" fill="#1E2633">강원</text>
+<text  x="551.7" y="1453.1" font-size="32.2" font-weight="700" letter-spacing="-0.6" fill="#1E2633">전남</text>
+<text  x="848.3" y="1156.5" font-size="32.2" font-weight="700" letter-spacing="-0.6" fill="#1E2633">경남</text>
+<text  x="551.7" y="563.3" font-size="32.2" font-weight="700" letter-spacing="-0.6" fill="#1E2633">경기</text>
+<text  x="255.1" y="859.9" font-size="32.2" font-weight="700" letter-spacing="-0.6" fill="#1E2633">충남</text>
+<text  x="255.1" y="1156.5" font-size="32.2" font-weight="700" letter-spacing="-0.6" fill="#1E2633">전북</text>
+<text  x="848.3" y="563.3" font-size="32.2" font-weight="700" letter-spacing="-0.6" fill="#1E2633">충북</text>
+<text  x="255.1" y="1749.7" font-size="32.2" font-weight="700" letter-spacing="-0.6" fill="#1E2633">제주</text>
+<text  x="1144.9" y="859.9" font-size="32.2" font-weight="700" letter-spacing="-0.6" fill="#1E2633">대구</text>
+<text  x="255.1" y="563.3" font-size="32.2" font-weight="700" letter-spacing="-0.6" fill="#1E2633">인천</text>
+<text  x="1144.9" y="1156.5" font-size="32.2" font-weight="700" letter-spacing="-0.6" fill="#1E2633">울산</text>
+<text  x="1144.9" y="1453.1" font-size="32.2" font-weight="700" letter-spacing="-0.6" fill="#1E2633">부산</text>
+<text  x="551.7" y="266.7" font-size="32.2" font-weight="700" letter-spacing="-0.6" fill="#1E2633">서울</text>
+<text  x="848.3" y="859.9" font-size="32.2" font-weight="700" letter-spacing="-0.6" fill="#1E2633">대전</text>
+<text  x="551.7" y="1156.5" font-size="32.2" font-weight="700" letter-spacing="-0.6" fill="#1E2633">광주</text>
+<text  x="551.7" y="859.9" font-size="32.2" font-weight="700" letter-spacing="-0.6" fill="#1E2633">세종</text>
 </g>
 </svg>

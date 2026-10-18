@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1565" viewBox="0 0 1600 1565" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1565" viewBox="0 0 1600 1565" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>경기도 수원시</title>
 <g id="배경">
 <path d="M1600 0L1600 185.6 1572.5 180.4 1533 138 1502.5 123.2 1485.7 95.6 1456.1 83.7 1407.8 115.3 1377.2 70.9 1345.7 21.6 1297.6 0Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -64,48 +64,48 @@
 <path d="M594.4 1385.1L548.1 1389.1 528.4 1418.7 481.1 1427.5 460.4 1422.6 430.8 1351.6 350.9 1306.3 351.9 1274.7 341.1 1246.1 312.5 1214.6 302.6 1177.1 282.9 1151.5 283.9 1129.8 253.3 1111.1 227.7 1118 159.7 1118.9 116.3 1071.6 100.5 1043 85.7 958.2 98.5 900.1 87.7 877.4 104.4 798.5 137 737.4 192.2 700.9 193.2 680.2 159.7 667.4 134 637.8 138 612.2 153.7 612.2 212.9 634.9 306.6 639.8 324.3 612.2 383.5 626 409.1 599.4 429.8 558 432.8 504.7 442.6 473.2 462.3 462.3 435.7 393.3 473.2 299.7 558 357.8 574.7 355.9 612.2 326.3 650.6 277 729.5 227.7 778.8 232.6 804.4 225.7 837 137 853.7 112.3 890.2 85.7 945.4 119.2 977 130.1 1018.4 161.6 1005.6 187.3 1000.6 245.4 1027.3 273 1039.1 311.5 1058.8 339.1 1049.9 362.8 1073.6 418 1079.5 431.8 1152.5 477.1 1227.4 481.1 1231.3 505.7 1254 532.3 1232.3 597.4 1255 607.3 1248.1 657.5 1263.9 692 1416.7 725.6 1420.6 702.9 1470.9 673.3 1508.4 670.4 1514.3 684.2 1494.6 727.5 1497.5 796.5 1458.1 802.5 1436.4 820.2 1381.2 846.8 1329.9 884.3 1317.1 918.8 1286.5 968.1 1340.8 1018.4 1386.1 1027.3 1468.9 975 1474.8 1038.1 1431.5 1083.4 1461 1126.8 1441.3 1150.5 1438.4 1205.7 1419.6 1226.4 1389.1 1226.4 1328.9 1240.2 1299.4 1265.8 1303.3 1306.3 1272.7 1317.1 1211.6 1386.1 1171.2 1369.4 1113 1382.2 1061.8 1336.8 1087.4 1251 1093.3 1233.3 1073.6 1238.2 1066.7 1268.8 1045 1301.3 1041.1 1324 978.9 1394 919.8 1420.6 928.7 1444.3 916.8 1471.9 906 1478.8 838 1449.2 789.6 1438.4 751.2 1422.6 698 1411.8 654.6 1404.9 615.1 1375.3 594.4 1385.1" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="907" y="348.3" font-size="25.6" font-weight="500" fill="#FFFFFF">연무동</text>
-<text  x="538.2" y="1261.3" font-size="25.6" font-weight="500" fill="#FFFFFF">평동</text>
-<text  x="666.4" y="440" font-size="25.6" font-weight="500" fill="#FFFFFF">파장동</text>
-<text  x="1123.9" y="639.1" font-size="25.6" font-weight="500" fill="#FFFFFF">광교1동</text>
-<text  x="289.8" y="746.6" font-size="25.6" font-weight="500" fill="#FFFFFF">입북동</text>
-<text  x="555" y="1012.8" font-size="25.6" font-weight="500" fill="#FFFFFF">서둔동</text>
-<text  x="344" y="1078.9" font-size="25.6" font-weight="500" fill="#FFFFFF">호매실동</text>
-<text  x="1349.6" y="793.9" font-size="25.6" font-weight="500" fill="#FFFFFF">광교2동</text>
-<text  x="302.6" y="916.2" font-size="25.6" font-weight="500" fill="#FFFFFF">금곡동</text>
-<text  x="800.5" y="1217.9" font-size="25.6" font-weight="500" fill="#FFFFFF">세류2동</text>
-<text  x="856.7" y="1408.2" font-size="25.6" font-weight="500" fill="#FFFFFF">곡선동</text>
-<text  x="1203.7" y="913.2" font-size="25.6" font-weight="500" fill="#FFFFFF">원천동</text>
-<text  x="1174.1" y="1136" font-size="25.6" font-weight="500" fill="#FFFFFF">매탄3동</text>
-<text  x="957.3" y="989.1" font-size="25.6" font-weight="500" fill="#FFFFFF">인계동</text>
-<text  x="503.7" y="731.8" font-size="25.6" font-weight="500" fill="#FFFFFF">율천동</text>
-<text  x="946.4" y="1217.9" font-size="25.6" font-weight="500" fill="#FFFFFF">권선2동</text>
-<text  x="472.2" y="870.8" font-size="25.6" font-weight="500" fill="#FFFFFF">구운동</text>
-<text  x="721.6" y="814.6" font-size="25.6" font-weight="500" fill="#FFFFFF">화서2동</text>
-<text  x="600.4" y="688.4" font-size="25.6" font-weight="500" fill="#FFFFFF">정자3동</text>
-<text  x="1386.1" y="1081.8" font-size="25.6" font-weight="500" fill="#FFFFFF">영통1동</text>
-<text  x="745.3" y="652" font-size="25.6" font-weight="500" fill="#FFFFFF">송죽동</text>
-<text  x="1349.6" y="1188.3" font-size="25.6" font-weight="500" fill="#FFFFFF">영통3동</text>
-<text  x="853.7" y="848.2" font-size="25.6" font-weight="500" fill="#FFFFFF">행궁동</text>
-<text  x="875.4" y="645.1" font-size="25.6" font-weight="500" fill="#FFFFFF">조원1동</text>
-<text  x="1122.9" y="1325.3" font-size="25.6" font-weight="500" fill="#FFFFFF">망포2동</text>
-<text  x="1018.4" y="788" font-size="25.6" font-weight="500" fill="#FFFFFF">우만1동</text>
-<text  x="713.7" y="734.8" font-size="25.6" font-weight="500" fill="#FFFFFF">정자2동</text>
-<text  x="855.7" y="546.5" font-size="25.6" font-weight="500" fill="#FFFFFF">조원2동</text>
-<text  x="867.5" y="746.6" font-size="25.6" font-weight="500" fill="#FFFFFF">영화동</text>
-<text  x="935.6" y="1101.5" font-size="25.6" font-weight="500" fill="#FFFFFF">권선1동</text>
-<text  x="1249.1" y="1231.7" font-size="25.6" font-weight="500" fill="#FFFFFF">영통2동</text>
-<text  x="612.2" y="603.7" font-size="25.6" font-weight="500" fill="#FFFFFF">정자1동</text>
-<text  x="702.9" y="882.7" font-size="25.6" font-weight="500" fill="#FFFFFF">화서1동</text>
-<text  x="1244.1" y="1305.6" font-size="25.6" font-weight="500" fill="#FFFFFF">망포1동</text>
-<text  x="750.2" y="947.7" font-size="25.6" font-weight="500" fill="#FFFFFF">고등동</text>
-<text  x="764" y="1022.7" font-size="25.6" font-weight="500" fill="#FFFFFF">매산동</text>
-<text  x="1056.8" y="874.8" font-size="25.6" font-weight="500" fill="#FFFFFF">우만2동</text>
-<text  x="945.4" y="876.8" font-size="25.6" font-weight="500" fill="#FFFFFF">지동</text>
-<text  x="1126.8" y="1025.6" font-size="25.6" font-weight="500" fill="#FFFFFF">매탄4동</text>
-<text  x="774.9" y="1081.8" font-size="25.6" font-weight="500" fill="#FFFFFF">세류1동</text>
-<text  x="847.8" y="999" font-size="25.6" font-weight="500" fill="#FFFFFF">매교동</text>
-<text  x="1079.5" y="956.6" font-size="25.6" font-weight="500" fill="#FFFFFF">매탄1동</text>
-<text  x="1176.1" y="981.3" font-size="25.6" font-weight="500" fill="#FFFFFF">매탄2동</text>
+<text  x="907" y="348.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">연무동</text>
+<text  x="538.2" y="1261" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">평동</text>
+<text  x="666.4" y="439.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">파장동</text>
+<text  x="1123.9" y="638.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">광교1동</text>
+<text  x="289.8" y="746.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">입북동</text>
+<text  x="555" y="1012.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">서둔동</text>
+<text  x="344" y="1078.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">호매실동</text>
+<text  x="1349.6" y="793.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">광교2동</text>
+<text  x="302.6" y="916" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">금곡동</text>
+<text  x="800.5" y="1217.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">세류2동</text>
+<text  x="856.7" y="1407.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">곡선동</text>
+<text  x="1203.7" y="913" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">원천동</text>
+<text  x="1174.1" y="1135.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">매탄3동</text>
+<text  x="957.3" y="988.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">인계동</text>
+<text  x="503.7" y="731.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">율천동</text>
+<text  x="946.4" y="1217.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">권선2동</text>
+<text  x="472.2" y="870.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">구운동</text>
+<text  x="721.6" y="814.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">화서2동</text>
+<text  x="600.4" y="688.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">정자3동</text>
+<text  x="1386.1" y="1081.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">영통1동</text>
+<text  x="745.3" y="651.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">송죽동</text>
+<text  x="1349.6" y="1188.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">영통3동</text>
+<text  x="853.7" y="847.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">행궁동</text>
+<text  x="875.4" y="644.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">조원1동</text>
+<text  x="1122.9" y="1325.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">망포2동</text>
+<text  x="1018.4" y="787.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">우만1동</text>
+<text  x="713.7" y="734.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">정자2동</text>
+<text  x="855.7" y="546.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">조원2동</text>
+<text  x="867.5" y="746.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">영화동</text>
+<text  x="935.6" y="1101.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">권선1동</text>
+<text  x="1249.1" y="1231.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">영통2동</text>
+<text  x="612.2" y="603.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">정자1동</text>
+<text  x="702.9" y="882.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">화서1동</text>
+<text  x="1244.1" y="1305.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">망포1동</text>
+<text  x="750.2" y="947.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">고등동</text>
+<text  x="764" y="1022.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">매산동</text>
+<text  x="1056.8" y="874.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">우만2동</text>
+<text  x="945.4" y="876.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">지동</text>
+<text  x="1126.8" y="1025.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">매탄4동</text>
+<text  x="774.9" y="1081.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">세류1동</text>
+<text  x="847.8" y="998.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">매교동</text>
+<text  x="1079.5" y="956.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">매탄1동</text>
+<text  x="1176.1" y="981" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">매탄2동</text>
 </g>
 </svg>

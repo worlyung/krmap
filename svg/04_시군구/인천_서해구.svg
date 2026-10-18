@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1665" viewBox="0 0 1600 1665" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1665" viewBox="0 0 1600 1665" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>인천광역시 서해구</title>
 <g id="배경">
 <path d="M326.7 1665L326.4 1651.7 350.8 1619.2 342.6 1615.2 306 1512.2 277.6 1521.6 274.9 1630.1 251.8 1659.9 239.9 1665 149.8 1665 104.1 1588 129.9 1506.7 165.1 1443 234.2 1372.6 255.9 1364.4 276.2 1422.7 212.5 1447.1 219.3 1464.7 358.9 1414.6 297.9 1414.6 276.2 1356.3 353.5 1321.1 474.1 1280.4 482.2 1310.2 543.2 1353.6 489 1270.9 544.5 1266.9 648.9 1231.6 822.4 1349.5 934.8 1436.3 1008 1508.1 1002.6 1521.6 864.4 1432.2 816.9 1411.9 792.5 1447.1 808.8 1495.9 783.1 1535.2 784.4 1615.2 758.7 1630.1 701.7 1623.3 669.2 1643.6 665.9 1665Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -41,21 +41,21 @@
 <path d="M326.7 1665L326.4 1651.7 350.8 1619.2 342.6 1615.2 306 1512.2 277.6 1521.6 274.9 1630.1 251.8 1659.9 239.9 1665M149.8 1665L104.1 1588 129.9 1506.7 165.1 1443 234.2 1372.6 255.9 1364.4 276.2 1422.7 212.5 1447.1 219.3 1464.7 358.9 1414.6 297.9 1414.6 276.2 1356.3 353.5 1321.1 474.1 1280.4 482.2 1310.2 543.2 1353.6 489 1270.9 544.5 1266.9 648.9 1231.6 651.6 1182.8 639.4 1131.3 654.3 1096.1 578.4 1102.9 517.4 1132.7 516.1 1176.1 480.9 1209.9 212.5 1214 211.2 1014.8 194.9 909.1 194.9 665.2 158.3 662.4 155.6 577.1 227.4 575.7 232.8 423.9 226.1 372.4 247.8 358.9 223.4 330.4 93.3 349.4 89.2 272.2 0 155.2M0 1188.9L32.3 1181.5 56.7 1226.2 0 1220.9M0 420.3L7.9 415.8 52.6 447 28.2 482.2 0 455.5" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="792.5" y="277.3" font-size="25.6" font-weight="500" fill="#FFFFFF">검암경서동</text>
-<text  x="376.5" y="786.9" font-size="25.6" font-weight="500" fill="#FFFFFF">청라3동</text>
-<text  x="1161.2" y="475.2" font-size="25.6" font-weight="500" fill="#FFFFFF">연희동</text>
-<text  x="325" y="1110.7" font-size="25.6" font-weight="500" fill="#FFFFFF">신현원창동</text>
-<text  x="654.3" y="652.7" font-size="25.6" font-weight="500" fill="#FFFFFF">청라2동</text>
-<text  x="947" y="1310" font-size="25.6" font-weight="500" fill="#FFFFFF">가좌1동</text>
-<text  x="860.3" y="1128.4" font-size="25.6" font-weight="500" fill="#FFFFFF">석남2동</text>
-<text  x="999.9" y="686.6" font-size="25.6" font-weight="500" fill="#FFFFFF">가정1동</text>
-<text  x="838.6" y="698.8" font-size="25.6" font-weight="500" fill="#FFFFFF">청라1동</text>
-<text  x="1176.1" y="1421.1" font-size="25.6" font-weight="500" fill="#FFFFFF">가좌4동</text>
-<text  x="1101.5" y="1513.2" font-size="25.6" font-weight="500" fill="#FFFFFF">가좌3동</text>
-<text  x="1140.8" y="1075.5" font-size="25.6" font-weight="500" fill="#FFFFFF">석남3동</text>
-<text  x="1150.3" y="781.4" font-size="25.6" font-weight="500" fill="#FFFFFF">가정2동</text>
-<text  x="995.8" y="1032.1" font-size="25.6" font-weight="500" fill="#FFFFFF">석남1동</text>
-<text  x="1218.1" y="1230" font-size="25.6" font-weight="500" fill="#FFFFFF">가좌2동</text>
-<text  x="1127.3" y="937.3" font-size="25.6" font-weight="500" fill="#FFFFFF">가정3동</text>
+<text  x="792.5" y="277.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">검암경서동</text>
+<text  x="376.5" y="786.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">청라3동</text>
+<text  x="1161.2" y="474.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">연희동</text>
+<text  x="325" y="1110.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">신현원창동</text>
+<text  x="654.3" y="652.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">청라2동</text>
+<text  x="947" y="1309.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">가좌1동</text>
+<text  x="860.3" y="1128.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">석남2동</text>
+<text  x="999.9" y="686.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">가정1동</text>
+<text  x="838.6" y="698.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">청라1동</text>
+<text  x="1176.1" y="1420.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">가좌4동</text>
+<text  x="1101.5" y="1513" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">가좌3동</text>
+<text  x="1140.8" y="1075.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">석남3동</text>
+<text  x="1150.3" y="781.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">가정2동</text>
+<text  x="995.8" y="1031.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">석남1동</text>
+<text  x="1218.1" y="1229.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">가좌2동</text>
+<text  x="1127.3" y="937.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">가정3동</text>
 </g>
 </svg>

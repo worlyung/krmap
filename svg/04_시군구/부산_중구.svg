@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1851" viewBox="0 0 1600 1851" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1851" viewBox="0 0 1600 1851" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>부산광역시 중구</title>
 <g id="배경">
 <path d="M0 1851L0 0 284.3 0 284.3 0 376.9 145.5 502.5 224.8 522.3 416.5 436.4 601.7 403.3 562 191.7 720.7 158.7 826.4 99.2 1137.2 119 1236.4 337.2 1514 403.3 1692.6 350.5 1851Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -26,14 +26,14 @@
 <path d="M1600 257.3L1520.7 205 1381.8 568.6 1276 766.9 1500.8 932.2 1362 1216.5 1104.1 1077.7 1117.4 1507.4 1209.9 1712.4 1560.3 1560.3 1600 1576.2M729.3 1851L733.9 1805 834 1851M1050.8 1851L1038 1752.1 866.1 1593.4 403.3 1692.6 350.5 1851" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="1124" y="888.6" font-size="25.6" font-weight="500" fill="#FFFFFF">중앙동</text>
-<text  x="674.4" y="571.2" font-size="25.6" font-weight="500" fill="#FFFFFF">영주2동</text>
-<text  x="324" y="954.7" font-size="25.6" font-weight="500" fill="#FFFFFF">보수동</text>
-<text  x="694.2" y="981.1" font-size="25.6" font-weight="500" fill="#FFFFFF">대청동</text>
-<text  x="555.4" y="1562.9" font-size="25.6" font-weight="500" fill="#FFFFFF">남포동</text>
-<text  x="350.4" y="1285.2" font-size="25.6" font-weight="500" fill="#FFFFFF">부평동</text>
-<text  x="628.1" y="1331.5" font-size="25.6" font-weight="500" fill="#FFFFFF">광복동</text>
-<text  x="965.3" y="524.9" font-size="25.6" font-weight="500" fill="#FFFFFF">영주1동</text>
-<text  x="879.3" y="789.4" font-size="25.6" font-weight="500" fill="#FFFFFF">동광동</text>
+<text  x="1124" y="888.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">중앙동</text>
+<text  x="674.4" y="571" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">영주2동</text>
+<text  x="324" y="954.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">보수동</text>
+<text  x="694.2" y="980.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">대청동</text>
+<text  x="555.4" y="1562.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">남포동</text>
+<text  x="350.4" y="1285" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">부평동</text>
+<text  x="628.1" y="1331.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">광복동</text>
+<text  x="965.3" y="524.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">영주1동</text>
+<text  x="879.3" y="789.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">동광동</text>
 </g>
 </svg>

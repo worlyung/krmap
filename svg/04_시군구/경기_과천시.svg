@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1548" viewBox="0 0 1600 1548" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1548" viewBox="0 0 1600 1548" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>경기도 과천시</title>
 <g id="배경">
 <path d="M0 0L466 0 540.8 121.1 527.7 225.6 546.4 274.1 443.8 333.8 303.9 490.4 251.7 492.3 216.3 505.3 145.4 531.4 136.1 630.3 0 673.3Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -30,12 +30,12 @@
 <path d="M1600 864.9L1572.1 867.1 1514.3 842.9 1497.5 788.8 1409.8 691.8 1324.1 669.5 1316.6 628.4 1367 535.2 1325.9 289 1286.8 216.3 1309.1 158.4 1228.9 124.9 1227.1 165.9 1165.5 268.5 1074.2 317 1001.4 333.8 917.5 331.9 820.5 173.4 792.5 85.7 675 96.9 682.5 190.2 546.4 274.1 443.8 333.8 303.9 490.4 251.7 492.3 216.3 505.3 145.4 531.4 136.1 630.3 0 673.3M0 673.3L136.1 630.3 145.4 531.4 216.3 505.3 251.7 492.3 303.9 490.4 443.8 333.8 546.4 274.1 682.5 190.2 675 96.9 792.5 85.7 820.5 173.4 917.5 331.9 1001.4 333.8 1074.2 317 1165.5 268.5 1227.1 165.9 1228.9 124.9 1309.1 158.4 1286.8 216.3 1325.9 289 1367 535.2 1316.6 628.4 1324.1 669.5 1409.8 691.8 1497.5 788.8 1514.3 842.9 1572.1 867.1 1600 864.9" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="1145" y="962.1" font-size="25.6" font-weight="500" fill="#FFFFFF">문원동</text>
-<text  x="731" y="378.4" font-size="25.6" font-weight="500" fill="#FFFFFF">과천동</text>
-<text  x="369.2" y="777.5" font-size="25.6" font-weight="500" fill="#FFFFFF">중앙동</text>
-<text  x="456.8" y="1079.6" font-size="25.6" font-weight="500" fill="#FFFFFF">원문동</text>
-<text  x="428.9" y="1271.7" font-size="25.6" font-weight="500" fill="#FFFFFF">갈현동</text>
-<text  x="660.1" y="923" font-size="25.6" font-weight="500" fill="#FFFFFF">별양동</text>
-<text  x="725.4" y="803.6" font-size="25.6" font-weight="500" fill="#FFFFFF">부림동</text>
+<text  x="1145" y="961.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">문원동</text>
+<text  x="731" y="378.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">과천동</text>
+<text  x="369.2" y="777.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">중앙동</text>
+<text  x="456.8" y="1079.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">원문동</text>
+<text  x="428.9" y="1271.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">갈현동</text>
+<text  x="660.1" y="922.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">별양동</text>
+<text  x="725.4" y="803.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">부림동</text>
 </g>
 </svg>

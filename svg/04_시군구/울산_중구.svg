@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1153" viewBox="0 0 1600 1153" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1153" viewBox="0 0 1600 1153" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>울산광역시 중구</title>
 <g id="배경">
 <path d="M0 1153L0 1034.7 34.1 959.6 82.5 898.4 147 945.1 211.5 851.6 250.2 893.5 311.4 922.5 416.3 922.5 535.6 970.9 571 999.9 616.2 1049.9 645.2 1056.4 693.6 1067.7 761.3 1043.5 788.7 929 850 929 959.6 958 1041.9 946.7 1175.7 964.5 1312.7 974.1 1428.8 964.5 1514.3 991.9 1600 1050.6 1600 1153Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -26,17 +26,17 @@
 <path d="M1041.9 946.7L959.6 958 850 929 788.7 929 761.3 1043.5 693.6 1067.7 645.2 1056.4 616.2 1049.9 571 999.9 535.6 970.9 416.3 922.5 311.4 922.5 250.2 893.5 211.5 851.6 150.2 759.7 145.4 704.9 159.9 642 155 587.2 85.7 474.3 130.9 429.2 208.3 427.5 206.6 390.5 235.7 321.1 276 311.4 326 334 451.7 369.5 477.5 367.9 509.8 377.6 575.9 338.9 580.7 251.8 564.6 172.8 613 214.7 724.2 190.5 771 211.5 816.1 271.1 864.5 266.3 917.7 206.6 975.7 179.2 1029 156.7 1037 122.8 1161.2 85.7 1159.6 140.5 1219.2 184.1 1267.6 145.4 1312.7 130.9 1415.9 148.6 1414.3 316.3 1433.7 409.8 1467.5 484 1480.4 561.4 1475.6 625.9 1504.6 748.4 1493.3 766.1 1453 822.6 1451.4 854.8 1494.9 975.7 1514.3 991.9 1428.8 964.5 1312.7 974.1 1175.7 964.5 1041.9 946.7" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="911.3" y="423.9" font-size="25.6" font-weight="500" fill="#FFFFFF">성안동</text>
-<text  x="279.2" y="735" font-size="25.6" font-weight="500" fill="#FFFFFF">다운동</text>
-<text  x="654.9" y="688.3" font-size="25.6" font-weight="500" fill="#FFFFFF">태화동</text>
-<text  x="1293.4" y="291.6" font-size="25.6" font-weight="500" fill="#FFFFFF">병영2동</text>
-<text  x="1203.1" y="502.9" font-size="25.6" font-weight="500" fill="#FFFFFF">약사동</text>
-<text  x="1075.7" y="897.9" font-size="25.6" font-weight="500" fill="#FFFFFF">중앙동</text>
-<text  x="879" y="804.4" font-size="25.6" font-weight="500" fill="#FFFFFF">우정동</text>
-<text  x="1127.3" y="715.7" font-size="25.6" font-weight="500" fill="#FFFFFF">복산동</text>
-<text  x="1414.3" y="702.8" font-size="25.6" font-weight="500" fill="#FFFFFF">병영1동</text>
-<text  x="1393.4" y="907.6" font-size="25.6" font-weight="500" fill="#FFFFFF">반구1동</text>
-<text  x="1248.2" y="910.8" font-size="25.6" font-weight="500" fill="#FFFFFF">학성동</text>
-<text  x="1295" y="739.9" font-size="25.6" font-weight="500" fill="#FFFFFF">반구2동</text>
+<text  x="911.3" y="423.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">성안동</text>
+<text  x="279.2" y="734.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">다운동</text>
+<text  x="654.9" y="688.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">태화동</text>
+<text  x="1293.4" y="291.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">병영2동</text>
+<text  x="1203.1" y="502.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">약사동</text>
+<text  x="1075.7" y="897.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">중앙동</text>
+<text  x="879" y="804.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">우정동</text>
+<text  x="1127.3" y="715.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">복산동</text>
+<text  x="1414.3" y="702.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">병영1동</text>
+<text  x="1393.4" y="907.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">반구1동</text>
+<text  x="1248.2" y="910.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">학성동</text>
+<text  x="1295" y="739.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">반구2동</text>
 </g>
 </svg>

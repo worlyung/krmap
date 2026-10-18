@@ -40,20 +40,20 @@
 <path d="M1214.6 0L1190 92.4 1268 173.2 1248.5 212.2 1192.8 510.3 1270.8 515.9 1385 515.9 1412.9 560.4 1504.8 546.5 1577.2 513.1 1600 491.2M1600 491.2L1577.2 513.1 1504.8 546.5 1412.9 560.4 1385 515.9 1270.8 515.9 1192.8 510.3 1248.5 212.2 1268 173.2 1190 92.4 1214.6 0" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="1307" y="809.2" font-size="25.6" font-weight="500" fill="#FFFFFF">광장동</text>
-<text x="1028.4" y="408.1" font-size="25.6" font-weight="500" fill="#FFFFFF">중곡4동</text>
-<text x="644" y="1505.6" font-size="25.6" font-weight="500" fill="#FFFFFF">자양2동</text>
-<text x="1084.1" y="1321.8" font-size="25.6" font-weight="500" fill="#FFFFFF">구의3동</text>
-<text x="978.3" y="873.3" font-size="25.6" font-weight="500" fill="#FFFFFF">구의2동</text>
-<text x="501.9" y="1034.9" font-size="25.6" font-weight="500" fill="#FFFFFF">화양동</text>
-<text x="234.5" y="1419.3" font-size="25.6" font-weight="500" fill="#FFFFFF">자양4동</text>
-<text x="437.9" y="1436" font-size="25.6" font-weight="500" fill="#FFFFFF">자양3동</text>
-<text x="699.7" y="825.9" font-size="25.6" font-weight="500" fill="#FFFFFF">능동</text>
-<text x="510.3" y="750.7" font-size="25.6" font-weight="500" fill="#FFFFFF">군자동</text>
-<text x="733.1" y="271.6" font-size="25.6" font-weight="500" fill="#FFFFFF">중곡3동</text>
-<text x="618.9" y="452.6" font-size="25.6" font-weight="500" fill="#FFFFFF">중곡1동</text>
-<text x="777.7" y="558.5" font-size="25.6" font-weight="500" fill="#FFFFFF">중곡2동</text>
-<text x="825.1" y="1082.2" font-size="25.6" font-weight="500" fill="#FFFFFF">구의1동</text>
-<text x="674.6" y="1293.9" font-size="25.6" font-weight="500" fill="#FFFFFF">자양1동</text>
+<text  x="1307" y="809.2" font-size="25.6" font-weight="500" fill="#FFFFFF">광장동</text>
+<text  x="1028.4" y="408.1" font-size="25.6" font-weight="500" fill="#FFFFFF">중곡4동</text>
+<text  x="644" y="1505.6" font-size="25.6" font-weight="500" fill="#FFFFFF">자양2동</text>
+<text  x="1084.1" y="1321.8" font-size="25.6" font-weight="500" fill="#FFFFFF">구의3동</text>
+<text  x="978.3" y="873.3" font-size="25.6" font-weight="500" fill="#FFFFFF">구의2동</text>
+<text  x="501.9" y="1034.9" font-size="25.6" font-weight="500" fill="#FFFFFF">화양동</text>
+<text  x="234.5" y="1419.3" font-size="25.6" font-weight="500" fill="#FFFFFF">자양4동</text>
+<text  x="437.9" y="1436" font-size="25.6" font-weight="500" fill="#FFFFFF">자양3동</text>
+<text  x="699.7" y="825.9" font-size="25.6" font-weight="500" fill="#FFFFFF">능동</text>
+<text  x="510.3" y="750.7" font-size="25.6" font-weight="500" fill="#FFFFFF">군자동</text>
+<text  x="733.1" y="271.6" font-size="25.6" font-weight="500" fill="#FFFFFF">중곡3동</text>
+<text  x="618.9" y="452.6" font-size="25.6" font-weight="500" fill="#FFFFFF">중곡1동</text>
+<text  x="777.7" y="558.5" font-size="25.6" font-weight="500" fill="#FFFFFF">중곡2동</text>
+<text  x="825.1" y="1082.2" font-size="25.6" font-weight="500" fill="#FFFFFF">구의1동</text>
+<text  x="674.6" y="1293.9" font-size="25.6" font-weight="500" fill="#FFFFFF">자양1동</text>
 </g>
 </svg>

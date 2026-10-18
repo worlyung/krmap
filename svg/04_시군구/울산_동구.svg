@@ -24,14 +24,14 @@
 <path d="M1353.2 0L1349.6 140.5 1362 192.3 1418 310.6 1459.5 455.7 1453.3 553.2 1366.2 737.8 1376.6 843.6 1330.9 949.3 1347.5 1042.7 1335.1 1142.2 1310.2 1173.3 1279.1 1229.3 1324.7 1243.8 1268.7 1407.7 1239.7 1561.1 1013.6 1559.1 994.9 1646.2 1021.9 1720.8 1086.2 1662.8 1167.1 1637.9 1204.4 1683.5 1204.4 1766.5 1123.5 1818.3 997 1834.9 982.5 1949 1038.5 1998.7 1189.9 1917.9 1231.4 1949 1206.5 2005 1144.3 2046.4 1136 2148.1 1111.1 2170.9 1003.2 2270.4 939 2172.9 849.8 2185.4 860.1 2258 764.7 2243.5 706.7 2276.6 677.6 2322.3 708.7 2380.3 621.6 2479.9 515.9 2482 528.3 2444.6 474.4 2349.2 468.2 2135.6 542.8 1984.2 445.4 1837 306.4 1805.9 345.8 1650.3 320.9 1488.5 140.5 1208.6 55.5 1071.7 0 1006.4M0 1452.4L99 1472 146.7 1718.8 150.9 1789.3 111.5 1816.2 7.8 1774.7 0 1777.7M0 1839.8L155 2071.3 194.4 2116.9 105.2 2210.3 101.1 2432.2 36.8 2500.6 0 2480.4" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="1090.4" y="593.5" font-size="25.6" font-weight="500" fill="#FFFFFF">남목3동</text>
-<text x="632" y="2157.3" font-size="25.6" font-weight="500" fill="#FFFFFF">방어동</text>
-<text x="797.9" y="1201.2" font-size="25.6" font-weight="500" fill="#FFFFFF">남목2동</text>
-<text x="642.4" y="904.6" font-size="25.6" font-weight="500" fill="#FFFFFF">남목1동</text>
-<text x="646.5" y="1730" font-size="25.6" font-weight="500" fill="#FFFFFF">대송동</text>
-<text x="1144.3" y="1468.7" font-size="25.6" font-weight="500" fill="#FFFFFF">전하1동</text>
-<text x="936.9" y="1792.3" font-size="25.6" font-weight="500" fill="#FFFFFF">일산동</text>
-<text x="787.6" y="1952" font-size="25.6" font-weight="500" fill="#FFFFFF">화정동</text>
-<text x="912" y="1622.2" font-size="25.6" font-weight="500" fill="#FFFFFF">전하2동</text>
+<text  x="1090.4" y="593.5" font-size="25.6" font-weight="500" fill="#FFFFFF">남목3동</text>
+<text  x="632" y="2157.3" font-size="25.6" font-weight="500" fill="#FFFFFF">방어동</text>
+<text  x="797.9" y="1201.2" font-size="25.6" font-weight="500" fill="#FFFFFF">남목2동</text>
+<text  x="642.4" y="904.6" font-size="25.6" font-weight="500" fill="#FFFFFF">남목1동</text>
+<text  x="646.5" y="1730" font-size="25.6" font-weight="500" fill="#FFFFFF">대송동</text>
+<text  x="1144.3" y="1468.7" font-size="25.6" font-weight="500" fill="#FFFFFF">전하1동</text>
+<text  x="936.9" y="1792.3" font-size="25.6" font-weight="500" fill="#FFFFFF">일산동</text>
+<text  x="787.6" y="1952" font-size="25.6" font-weight="500" fill="#FFFFFF">화정동</text>
+<text  x="912" y="1622.2" font-size="25.6" font-weight="500" fill="#FFFFFF">전하2동</text>
 </g>
 </svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="2255" viewBox="0 0 1400 2255" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<title>대구광역시 중구 외 8곳</title>
+<g id="선택">
+<path id="대구광역시_중구" d="M779.2 962.6L921.9 1044.9 921.9 1209.7 779.2 1292 636.6 1209.7 636.6 1044.9Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>대구광역시 중구</title></path>
+<path id="대구광역시_동구" d="M1096.2 413.6L1238.9 495.9 1238.9 660.6 1096.2 743 953.6 660.6 953.6 495.9Z" fill="#F8DFA0" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>대구광역시 동구</title></path>
+<path id="대구광역시_서구" d="M620.8 1237.1L763.4 1319.5 763.4 1484.2 620.8 1566.5 478.1 1484.2 478.1 1319.5Z" fill="#F8DFA0" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>대구광역시 서구</title></path>
+<path id="대구광역시_남구" d="M462.3 1511.6L604.9 1594 604.9 1758.7 462.3 1841 319.6 1758.7 319.6 1594Z" fill="#F8DFA0" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>대구광역시 남구</title></path>
+<path id="대구광역시_북구" d="M779.2 413.6L921.9 495.9 921.9 660.6 779.2 743 636.6 660.6 636.6 495.9Z" fill="#C9E5AE" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>대구광역시 북구</title></path>
+<path id="대구광역시_수성구" d="M779.2 1511.6L921.9 1594 921.9 1758.7 779.2 1841 636.6 1758.7 636.6 1594Z" fill="#C9E5AE" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>대구광역시 수성구</title></path>
+<path id="대구광역시_달서구" d="M303.8 1237.1L446.4 1319.5 446.4 1484.2 303.8 1566.5 161.1 1484.2 161.1 1319.5Z" fill="#C9E5AE" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>대구광역시 달서구</title></path>
+<path id="대구광역시_달성군" d="M303.8 1786.1L446.4 1868.5 446.4 2033.2 303.8 2115.5 161.1 2033.2 161.1 1868.5Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>대구광역시 달성군</title></path>
+<path id="대구광역시_군위군" d="M620.8 139.1L763.4 221.4 763.4 386.1 620.8 468.5 478.1 386.1 478.1 221.4Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>대구광역시 군위군</title></path>
+</g>
+<g id="지명" text-anchor="middle">
+<text  x="620.8" y="315.4" font-size="32.2" font-weight="600" fill="#1E2633">군위</text>
+<text  x="303.8" y="1962.4" font-size="32.2" font-weight="600" fill="#1E2633">달성</text>
+<text  x="1096.2" y="589.9" font-size="32.2" font-weight="600" fill="#1E2633">동구</text>
+<text  x="779.2" y="589.9" font-size="32.2" font-weight="600" fill="#1E2633">북구</text>
+<text  x="779.2" y="1687.9" font-size="32.2" font-weight="600" fill="#1E2633">수성</text>
+<text  x="303.8" y="1413.4" font-size="32.2" font-weight="600" fill="#1E2633">달서</text>
+<text  x="462.3" y="1687.9" font-size="32.2" font-weight="600" fill="#1E2633">남구</text>
+<text  x="620.8" y="1413.4" font-size="32.2" font-weight="600" fill="#1E2633">서구</text>
+<text  x="779.2" y="1138.9" font-size="32.2" font-weight="600" fill="#1E2633">중구</text>
+</g>
+</svg>

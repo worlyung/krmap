@@ -1,6 +1,7 @@
 /* 행정구역 지도 추출기 — 화면 조작, 검색, 내보내기(SVG/PNG/PPTX). 지도 그리기는 render.js */
 (function () {
   const R = window.KRMapRender;
+  const X = window.KRMapData;
   const $ = (id) => document.getElementById(id);
   const ORDER = R.LEVEL_ORDER;
   const LV_KO = { sido: "시도", si: "시군구", sgg: "구", emd: "읍면동" };
@@ -34,8 +35,16 @@
     labelPick: new Set(), // "lv:id"
     clickAction: "main", // main | label | edit
     // 배치 · 하나씩 꾸미기
-    layout: "real", // real | explode
+    layout: "real", // real | explode | square | hex
     explodeAmt: 0.25,
+    tileGap: 0.1,
+    // 제목 · 데이터 · 그룹 · 범례
+    heading: { title: "", subtitle: "", note: false },
+    data: { text: "", palette: "blue", steps: 5, method: "quantile", showValues: true },
+    groups: [], // [{id, name, color}] — 지역의 styles[key].group 으로 연결
+    activeGroup: null,
+    legend: { title: "", pos: "br" },
+    panel: "region",
     offsets: {}, // "lv:id" → [dx, dy] (데이터 좌표)
     styles: {}, // "lv:id" → {fill, text, hideLabel}
     editKey: null,
@@ -145,12 +154,15 @@
       shadow: S.shadow,
       shortSido: "auto",
       explode: S.layout === "explode" ? S.explodeAmt : 0,
+      tiles: S.layout === "square" || S.layout === "hex" ? S.layout : null,
+      tileGap: S.tileGap,
       offsets: S.offsets,
       styles: S.styles,
       aspect: S.aspect,
       width: width || 1600,
       colors: Object.assign({}, S.colors, { bg: S.fillBg ? S.colors.bg : null }),
     };
+    Object.assign(o, extras());
     if (S.mode === "pick") {
       o.pick = { lv: eff(S.pick.lv), ids: S.pick.ids, fit: S.pick.fit, hideOthers: S.pick.hideOthers };
     } else if (S.mode === "all") {
@@ -160,6 +172,92 @@
       Object.assign(o, { target: S.target, depth: S.depth, nbLevel: eff(S.nbLevel), inner: innerFor(S.target), context: S.context });
     }
     return o;
+  }
+
+  // ---------- 데이터 색칠 · 색 그룹 · 범례 · 제목 ----------
+  /** 지금 지도에 그려지는 단위들 (붙여넣은 이름을 여기서 찾는다) */
+  function drawnLevels() {
+    if (S.mode === "pick") return [eff(S.pick.lv)];
+    if (S.mode === "all") return [eff(S.allLv)];
+    return [...new Set([eff(S.nbLevel), S.target.lv, innerFor(S.target)].filter(Boolean))];
+  }
+  let dataCache = { sig: null, res: null };
+  function dataResult() {
+    if (!S.data.text.trim()) return null;
+    const lv = drawnLevels();
+    if (lv.includes("emd") && emdState !== "ready") return null;
+    const sig = JSON.stringify([S.data, lv, S.sido17]);
+    if (dataCache.sig !== sig) dataCache = { sig, res: X.build(D, lv, S.data.text, S.data, R.sidoShort) };
+    return dataCache.res;
+  }
+  function extras() {
+    const fills = {}, values = {};
+    let items = [];
+    const dr = dataResult();
+    if (dr) {
+      Object.assign(fills, dr.fills);
+      if (S.data.showValues) Object.assign(values, dr.values);
+      items = dr.legend.items.slice();
+    }
+    if (S.groups.length) {
+      const used = new Set();
+      for (const k in S.styles) {
+        const g = S.groups.find((x) => x.id === S.styles[k].group);
+        if (g) { fills[k] = g.color; used.add(g.id); }
+      }
+      items = items.concat(S.groups.filter((g) => used.has(g.id)).map((g) => ({ color: g.color, label: g.name || "그룹" })));
+    }
+    return {
+      fills,
+      values,
+      legend: items.length ? { title: S.legend.title, items, pos: S.legend.pos } : null,
+      heading: { title: S.heading.title, subtitle: S.heading.subtitle, note: S.heading.note ? `출처: 통계청 SGIS 행정구역 경계(${ver()})` : "" },
+    };
+  }
+
+  // ---------- 되돌리기 · 자동 저장 · 작업 파일 ----------
+  const STORE = "krmap.work.v1";
+  const snapshot = () => JSON.stringify(Object.assign({}, S, { labelPick: [...S.labelPick], editKey: null }));
+  function restore(json) {
+    const o = typeof json === "string" ? JSON.parse(json) : json;
+    for (const k of Object.keys(S)) {
+      if (!(k in o)) continue;
+      if (k === "labelPick") S.labelPick = new Set(o.labelPick || []);
+      else if (S[k] && typeof S[k] === "object" && !Array.isArray(S[k]) && o[k] && typeof o[k] === "object") S[k] = Object.assign({}, S[k], o[k]);
+      else S[k] = o[k];
+    }
+    S.editKey = null;
+    R.useSido17(D, S.sido17);
+    buildIndex();
+  }
+  let hist = [], hpos = -1, histT = null, restoring = false;
+  function recordHistory() {
+    if (restoring) return;
+    clearTimeout(histT);
+    histT = setTimeout(() => {
+      const snap = snapshot();
+      if (hist[hpos] === snap) return;
+      hist = hist.slice(0, hpos + 1);
+      hist.push(snap);
+      if (hist.length > 80) hist.shift();
+      hpos = hist.length - 1;
+      try { localStorage.setItem(STORE, snap); } catch (e) { /* 저장소를 못 쓰는 환경 */ }
+      syncUndo();
+    }, 300);
+  }
+  function syncUndo() {
+    $("undo").disabled = hpos <= 0;
+    $("redo").disabled = hpos >= hist.length - 1;
+  }
+  function stepHistory(d) {
+    const to = hpos + d;
+    if (to < 0 || to >= hist.length) return;
+    hpos = to;
+    restoring = true;
+    restore(hist[hpos]);
+    render();
+    restoring = false;
+    syncUndo();
   }
 
   // ---------- 그리기 ----------
@@ -176,6 +274,9 @@
     $("map").innerHTML = R.toSVG(scene, { interactive: true });
     $("slide").style.background = S.fillBg ? S.colors.bg : "#FFFFFF";
     renderInfo(scene);
+    if (scene.warning) $("meta").innerHTML += ` · <span class="warn">${scene.warning}</span>`;
+    renderDataReport();
+    recordHistory();
     renderLabelPick(scene);
     renderEditor();
     try {
@@ -307,8 +408,22 @@
     $("sido17").closest("label").hidden = !D.sido17;
     $("labelHint").hidden = S.labelMode !== "pick";
     $("clickMain").textContent = S.mode === "pick" ? "영역 넣기·빼기" : "그 지역으로 이동";
-    ["layout"].forEach((id) => $(id)._sync());
+    ["layout", "legPos", "ptab"].forEach((id) => $(id)._sync());
     $("explodeRow").hidden = S.layout !== "explode";
+    $("tileGapRow").hidden = $("tileNote").hidden = !(S.layout === "square" || S.layout === "hex");
+    document.querySelectorAll(".pane").forEach((el) => (el.hidden = el.dataset.pane !== S.panel));
+    $("clickGroup").hidden = !S.groups.length;
+    const setVal = (id, v) => { if (document.activeElement !== $(id)) $(id).value = v; };
+    setVal("hTitle", S.heading.title);
+    setVal("hSub", S.heading.subtitle);
+    setVal("legTitle", S.legend.title);
+    setVal("dataText", S.data.text);
+    $("hNote").checked = S.heading.note;
+    $("dataSteps").value = String(S.data.steps);
+    $("dataMethod").value = S.data.method;
+    $("dataValues").checked = S.data.showValues;
+    document.querySelectorAll(".pal").forEach((b) => b.classList.toggle("on", b.dataset.v === S.data.palette));
+    renderGroups();
     $("map").classList.toggle("editing", S.clickAction === "edit");
     $("cTargetLbl").firstChild.textContent = S.mode === "pick" ? "고른 지역" : S.mode === "all" ? "강조" : "대상";
     $("cNeighborLbl").firstChild.textContent = S.mode === "all" ? "지역" : "주변";
@@ -425,6 +540,10 @@
       S.clickAction = v;
     });
     seg("layout", () => S.layout, (v) => (S.layout = v));
+    seg("legPos", () => S.legend.pos, (v) => (S.legend.pos = v));
+    seg("ptab", () => S.panel, (v) => (S.panel = v));
+    $("tileGap").addEventListener("input", (e) => { S.tileGap = +e.target.value; clearTimeout(bindControls._t); bindControls._t = setTimeout(render, 40); });
+    bindExtras();
     $("explodeAmt").addEventListener("input", (e) => { S.explodeAmt = +e.target.value; clearTimeout(bindControls._t); bindControls._t = setTimeout(render, 40); });
     $("resetEdits").onclick = () => { S.offsets = {}; S.styles = {}; S.editKey = null; render(); };
     bindEditor();
@@ -495,6 +614,7 @@
       if (!p) return;
       const lv = p.dataset.lv, id = p.dataset.id;
       if (S.clickAction === "edit") return; // 끌기·선택은 pointer 이벤트에서
+      if (S.clickAction === "group") return paintGroup(lv + ":" + id);
       if (S.labelMode === "pick" && S.clickAction === "label") return toggleLabel(lv + ":" + id);
       if (S.mode === "pick") return togglePick(id);
       setTarget({ lv, id });
@@ -505,6 +625,143 @@
     $("dlPptx").onclick = exportPPTX;
     $("copyList").onclick = copyList;
     bindSearch();
+  }
+
+  // ---------- 데이터 · 그룹 · 범례 · 제목 조작 ----------
+  function renderDataReport() {
+    const el = $("dataReport");
+    const dr = dataResult();
+    if (!S.data.text.trim()) {
+      el.className = "note";
+      el.textContent = "숫자면 크기에 따라 단계별로, 글자(예: 본사·지사)면 분류별로 칠합니다. 지금 지도에 그려진 단위(시도·시군구·읍면동)에 맞춰 이름을 찾습니다.";
+      return;
+    }
+    if (!dr) { el.textContent = "읍면동을 불러오는 중입니다…"; return; }
+    const parts = [`${dr.matched}곳을 칠했습니다` + (dr.kind === "cat" ? " (분류)" : dr.kind === "num" ? " (숫자 단계)" : "")];
+    if (dr.ambiguous.length) parts.push(`같은 이름이 여러 곳: ${dr.ambiguous.slice(0, 6).join(", ")} — "대전 중구"처럼 시도를 붙여 주세요`);
+    if (dr.unmatched.length) parts.push(`못 찾은 이름 ${dr.unmatched.length}개: ${dr.unmatched.slice(0, 6).join(", ")}${dr.unmatched.length > 6 ? " …" : ""}`);
+    el.textContent = parts.join(" · ");
+    el.className = "note" + (dr.unmatched.length || dr.ambiguous.length ? " warn" : "");
+  }
+  function renderGroups() {
+    const el = $("groupList");
+    const sig = JSON.stringify([S.groups, S.activeGroup, Object.values(S.styles).map((x) => x.group)]);
+    if (el._sig === sig) return;
+    el._sig = sig;
+    el.innerHTML = "";
+    if (!S.groups.length) { el.innerHTML = '<p class="note">예: 본사 · 지사 · 대리점처럼 지역을 묶어 같은 색으로 칠하고 범례에 이름을 넣습니다.</p>'; return; }
+    for (const g of S.groups) {
+      const n = Object.values(S.styles).filter((x) => x.group === g.id).length;
+      const row = document.createElement("div");
+      row.className = "grp" + (S.activeGroup === g.id ? " on" : "");
+      row.innerHTML = `<input type="radio" name="grp" aria-label="이 그룹으로 칠하기" ${S.activeGroup === g.id ? "checked" : ""}>` +
+        `<input type="color" value="${g.color}" aria-label="그룹 색"><input type="text" maxlength="20" aria-label="그룹 이름"><small>${n}곳</small><button class="x" aria-label="그룹 지우기">✕</button>`;
+      const [radio, color, name, , del] = row.children;
+      name.value = g.name;
+      radio.onchange = () => { S.activeGroup = g.id; S.clickAction = "group"; render(); };
+      color.oninput = (e) => { g.color = e.target.value.toUpperCase(); clearTimeout(renderGroups._t); renderGroups._t = setTimeout(render, 50); };
+      name.oninput = (e) => { g.name = e.target.value; clearTimeout(renderGroups._t); renderGroups._t = setTimeout(render, 250); };
+      del.onclick = () => {
+        S.groups = S.groups.filter((x) => x !== g);
+        for (const k in S.styles) if (S.styles[k].group === g.id) { delete S.styles[k].group; if (!Object.keys(S.styles[k]).length) delete S.styles[k]; }
+        if (S.activeGroup === g.id) { S.activeGroup = null; if (S.clickAction === "group") S.clickAction = "main"; }
+        render();
+      };
+      el.appendChild(row);
+    }
+  }
+  function paintGroup(key) {
+    if (!S.activeGroup) { toast("왼쪽 '데이터 · 범례'에서 칠할 그룹을 먼저 고르세요"); return; }
+    const st = Object.assign({}, S.styles[key]);
+    if (st.group === S.activeGroup) delete st.group;
+    else st.group = S.activeGroup;
+    if (Object.keys(st).length) S.styles[key] = st;
+    else delete S.styles[key];
+    render();
+  }
+  function bindExtras() {
+    let t;
+    const later = (ms) => { clearTimeout(t); t = setTimeout(render, ms); };
+    $("hTitle").addEventListener("input", (e) => { S.heading.title = e.target.value; later(200); });
+    $("hSub").addEventListener("input", (e) => { S.heading.subtitle = e.target.value; later(200); });
+    $("hNote").addEventListener("change", (e) => { S.heading.note = e.target.checked; render(); });
+    $("legTitle").addEventListener("input", (e) => { S.legend.title = e.target.value; later(200); });
+    $("dataText").addEventListener("input", (e) => { S.data.text = e.target.value; });
+    $("dataApply").onclick = () => {
+      S.data.text = $("dataText").value;
+      if (S.legend.pos === "none") S.legend.pos = "br";
+      if (S.labelMode === "none") S.labelMode = "all";
+      render();
+      const dr = dataResult();
+      if (dr && dr.matched) toast(`${dr.matched}곳을 칠했습니다`);
+    };
+    $("dataClear").onclick = () => { S.data.text = ""; $("dataText").value = ""; render(); };
+    $("dataSample").onclick = () => {
+      // 지금 보이는 지역 이름으로 예시 표를 만든다
+      const lv = drawnLevels()[0];
+      const keys = lastScene ? [...new Set(lastScene.polys.filter((p) => p.group !== "context" && p.group !== "shadow" && p.group !== "legend" && p.lv === lv).map((p) => p.id))] : [];
+      const ids = keys.length ? keys : Object.keys(D[lv]);
+      const text = "지역\t값(예시)\n" + ids.slice(0, 60).map((id) => {
+        const f = D[lv][id];
+        const nm = lv === "sido" ? f.nm : R.sidoShort(D.sido[f.sido].nm) + " " + (f.city && lv === "sgg" ? f.city + " " : "") + f.nm;
+        return nm + "\t" + Math.round(20 + Math.random() * 180);
+      }).join("\n");
+      S.data.text = text;
+      $("dataText").value = text;
+      $("dataApply").click();
+    };
+    const pal = $("palettes");
+    for (const [k, p] of Object.entries(X.PALETTES)) {
+      const b = document.createElement("button");
+      b.className = "pal";
+      b.dataset.v = k;
+      b.innerHTML = `<i style="background:linear-gradient(90deg,${p.stops.join(",")})"></i>${p.name}`;
+      b.onclick = () => { S.data.palette = k; render(); };
+      pal.appendChild(b);
+    }
+    $("dataSteps").onchange = (e) => { S.data.steps = +e.target.value; render(); };
+    $("dataMethod").onchange = (e) => { S.data.method = e.target.value; render(); };
+    $("dataValues").onchange = (e) => { S.data.showValues = e.target.checked; render(); };
+    const GROUP_COLORS = ["#EF6B4C", "#14A37F", "#F2B33D", "#8B5CF6", "#3361E0", "#E0559A", "#4BB3D9", "#8C6D46"];
+    $("groupAdd").onclick = () => {
+      const id = "g" + Date.now().toString(36);
+      const names = ["본사", "지사", "대리점", "예정", "그룹 5", "그룹 6", "그룹 7", "그룹 8"];
+      S.groups.push({ id, name: names[S.groups.length] || `그룹 ${S.groups.length + 1}`, color: GROUP_COLORS[S.groups.length % GROUP_COLORS.length] });
+      S.activeGroup = id;
+      S.clickAction = "group";
+      if (S.legend.pos === "none") S.legend.pos = "br";
+      render();
+      toast("지도에서 지역을 누르면 이 그룹 색으로 칠해집니다");
+    };
+
+    // 되돌리기 · 작업 파일 · 이미지 복사
+    $("undo").onclick = () => stepHistory(-1);
+    $("redo").onclick = () => stepHistory(1);
+    document.addEventListener("keydown", (e) => {
+      if (!(e.ctrlKey || e.metaKey) || /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;
+      const k = e.key.toLowerCase();
+      if (k === "z") { e.preventDefault(); stepHistory(e.shiftKey ? 1 : -1); }
+      else if (k === "y") { e.preventDefault(); stepHistory(1); }
+    });
+    $("saveWork").onclick = () => {
+      const body = JSON.stringify({ app: "행정구역 지도 추출기", version: 1, saved: new Date().toISOString(), state: JSON.parse(snapshot()) }, null, 1);
+      saveFile("지도작업_" + baseName(lastScene || { title: "지도" }) + ".json", body, "application/json");
+    };
+    $("loadWork").onclick = () => $("loadFile").click();
+    $("loadFile").onchange = async (e) => {
+      const f = e.target.files && e.target.files[0];
+      e.target.value = "";
+      if (!f) return;
+      try {
+        const o = JSON.parse(await f.text());
+        restore(o.state || o);
+        render();
+        toast("작업을 불러왔습니다");
+      } catch (err) {
+        toast("작업 파일을 읽지 못했습니다. 이 도구에서 저장한 .json 파일인지 확인해 주세요.");
+      }
+    };
+    $("copyImg").onclick = copyImage;
   }
 
   // ---------- 하나씩 꾸미기 ----------
@@ -667,24 +924,40 @@
     const scene = D && freshScene();
     if (scene) saveFile(baseName(scene) + ".svg", R.toSVG(scene), "image/svg+xml");
   }
+  function sceneToPng(scene, scale) {
+    return new Promise((ok, fail) => {
+      const img = new Image();
+      const url = URL.createObjectURL(new Blob([R.toSVG(scene)], { type: "image/svg+xml" }));
+      img.onload = () => {
+        const c = document.createElement("canvas");
+        c.width = Math.round(scene.width * scale);
+        c.height = Math.round(scene.height * scale);
+        c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(url);
+        c.toBlob((b) => (b ? ok(b) : fail(new Error("png"))), "image/png");
+      };
+      img.onerror = fail;
+      img.src = url;
+    });
+  }
   function exportPNG() {
     const scene = D && freshScene();
     if (!scene) return;
-    const svg = R.toSVG(scene);
-    const scale = 2.5;
-    const img = new Image();
-    const url = URL.createObjectURL(new Blob([svg], { type: "image/svg+xml" }));
-    img.onload = () => {
-      const c = document.createElement("canvas");
-      c.width = Math.round(scene.width * scale);
-      c.height = Math.round(scene.height * scale);
-      const g = c.getContext("2d");
-      g.drawImage(img, 0, 0, c.width, c.height);
-      URL.revokeObjectURL(url);
-      c.toBlob((b) => saveFile(baseName(scene) + ".png", b, "image/png"), "image/png");
-    };
-    img.onerror = () => toast("PNG를 만들지 못했습니다");
-    img.src = url;
+    sceneToPng(scene, 2.5).then((b) => saveFile(baseName(scene) + ".png", b, "image/png"), () => toast("PNG를 만들지 못했습니다"));
+  }
+  function copyImage() {
+    const scene = D && freshScene();
+    if (!scene) return;
+    // 바탕이 투명하면 PPT 에 붙였을 때 보기 어려워 흰 바탕(또는 테마 바탕)을 깐다
+    const solid = Object.assign({}, scene, { bg: scene.bg || "#FFFFFF" });
+    const png = sceneToPng(solid, 2);
+    try {
+      navigator.clipboard
+        .write([new ClipboardItem({ "image/png": png })])
+        .then(() => toast("이미지를 복사했습니다. PPT에서 붙여넣기(Ctrl+V) 하세요"), () => toast("이 화면에서는 이미지 복사가 막혀 있습니다. PNG 저장을 써 주세요"));
+    } catch (e) {
+      toast("이 브라우저는 이미지 복사를 지원하지 않습니다. PNG 저장을 써 주세요");
+    }
   }
 
   function loadPptx() {
@@ -728,7 +1001,7 @@
           x: r3(ox + x0 * k), y: r3(oy + y0 * k), w: Math.max(r3((x1 - x0) * k), 0.01), h: Math.max(r3((y1 - y0) * k), 0.01), points,
         }, opt));
       };
-      const ORDERG = ["context", "all", "neighbor", "shadow", "picked", "inner", "target", "sido"];
+      const ORDERG = ["context", "all", "neighbor", "shadow", "picked", "inner", "target", "sido", "legend"];
       const sh = scene.shadow;
       for (const g of ORDERG) {
         for (const p of scene.polys.filter((q) => q.group === g)) {
@@ -748,15 +1021,16 @@
       }
       for (const t of scene.texts) {
         const w = (t.text.length + 1) * t.size * k * 1.1, h = t.size * k * 1.5;
+        const left = t.anchor === "start";
         slide.addText(t.text, {
-          x: r3(ox + t.x * k - w / 2), y: r3(oy + t.y * k - h / 2), w: r3(w), h: r3(h),
+          x: r3(ox + t.x * k - (left ? 0 : w / 2)), y: r3(oy + t.y * k - h / 2), w: r3(w), h: r3(h), align: left ? "left" : "center",
           fontFace: "맑은 고딕", fontSize: Math.max(Math.round(t.size * k * 72 * 10) / 10, 4), bold: t.weight >= 600,
-          color: hex(t.fill), align: "center", valign: "middle", margin: 0,
+          color: hex(t.fill), valign: "middle", margin: 0,
           outline: t.halo ? { color: "FFFFFF", size: Math.max(t.size * k * 72 * 0.08, 0.5) } : undefined,
           objectName: "지명 " + t.text,
         });
       }
-      slide.addText(`출처: 통계청 SGIS 행정구역 경계(${ver()}), github.com/vuski/admdongkor`, {
+      if (!S.heading.note) slide.addText(`출처: 통계청 SGIS 행정구역 경계(${ver()}), github.com/vuski/admdongkor`, {
         x: SW - 6.2, y: SH - 0.32, w: 6, h: 0.22, fontFace: "맑은 고딕", fontSize: 7, color: "8A96A3", align: "right", margin: 0,
       });
       const blob = await pptx.write({ outputType: "blob" });
@@ -812,11 +1086,18 @@
   }
   function start() {
     initData();
+    // 주소에 지역이 없으면 지난번 작업을 이어서 연다
+    if (!location.hash) {
+      try {
+        const saved = localStorage.getItem(STORE);
+        if (saved) { restore(saved); setTimeout(() => toast("지난 작업을 이어서 열었습니다 (↶ 되돌리기로 이전 상태로)"), 600); }
+      } catch (e) { /* 저장소를 못 쓰는 환경 */ }
+    }
     readHash();
     bindControls();
     $("credit").innerHTML =
       `경계: 통계청 SGIS 행정구역 경계(공공누리 제1유형), <a href="https://github.com/vuski/admdongkor" target="_blank" rel="noopener">vuski/admdongkor</a> 가공본 (CC BY 4.0). 기준 시점 ${ver()}` +
-      (D.sido17 ? ". 이 시점에는 광주광역시와 전라남도가 전남광주통합특별시로 합쳐져 있습니다(2026.7.1). 17개 시도로 보려면 위에서 \"광주·전남 나눠 보기\"를 켜세요." : ".") +
+      (D.sido17 ? ". 이 시점에는 광주광역시와 전라남도가 전남광주통합특별시로 합쳐져 있습니다(2026.7.1). 17개 시도로 보려면 '지역' 탭의 \"광주·전남 나눠 보기\"를 켜세요." : ".") +
       " 슬라이드에 쓸 때 출처를 함께 적어 주세요.";
     render();
     // 검색이 바로 되도록 읍면동은 뒤에서 미리 받아 둔다

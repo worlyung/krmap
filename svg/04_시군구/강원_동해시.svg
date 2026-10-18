@@ -27,14 +27,14 @@
 <path d="M797.3 0L805.9 18.2 876.9 94.7 1000.7 192.5 1137.9 304.4 1148.1 304.4 1176.5 321 1187.5 351 1184.4 395.9 1210.4 448.7 1212 497.6 1226.2 511 1197.8 586.7 1160.7 582.8 1164.7 652.2 1164.7 673.5 1177.3 701.8 1227 760.2 1249 790.9 1232.5 828.8 1252.2 865.8 1327.9 981 1298.7 1003.8 1334.2 1047.2 1249.8 1100.8 1264 1126.8 1373.6 1057.4 1375.2 1083.5 1409.9 1086.6 1483.2 1170.2 1505.3 1200.9 1502.1 1215.9 1526.6 1244.3 1587.3 1302.7 1600 1310" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="593.8" y="1009.1" font-size="25.6" font-weight="500" fill="#FFFFFF">삼화동</text>
-<text x="925" y="354.7" font-size="25.6" font-weight="500" fill="#FFFFFF">망상동</text>
-<text x="1266.4" y="1271.7" font-size="25.6" font-weight="500" fill="#FFFFFF">북평동</text>
-<text x="1063" y="1050.9" font-size="25.6" font-weight="500" fill="#FFFFFF">북삼동</text>
-<text x="1047.2" y="818.3" font-size="25.6" font-weight="500" fill="#FFFFFF">천곡동</text>
-<text x="873.7" y="727.6" font-size="25.6" font-weight="500" fill="#FFFFFF">부곡동</text>
-<text x="1260.1" y="978.3" font-size="25.6" font-weight="500" fill="#FFFFFF">송정동</text>
-<text x="1135.5" y="404.3" font-size="25.6" font-weight="500" fill="#FFFFFF">묵호동</text>
-<text x="1051.9" y="636.9" font-size="25.6" font-weight="500" fill="#FFFFFF">동호동</text>
+<text  x="593.8" y="1009.1" font-size="25.6" font-weight="500" fill="#FFFFFF">삼화동</text>
+<text  x="925" y="354.7" font-size="25.6" font-weight="500" fill="#FFFFFF">망상동</text>
+<text  x="1266.4" y="1271.7" font-size="25.6" font-weight="500" fill="#FFFFFF">북평동</text>
+<text  x="1063" y="1050.9" font-size="25.6" font-weight="500" fill="#FFFFFF">북삼동</text>
+<text  x="1047.2" y="818.3" font-size="25.6" font-weight="500" fill="#FFFFFF">천곡동</text>
+<text  x="873.7" y="727.6" font-size="25.6" font-weight="500" fill="#FFFFFF">부곡동</text>
+<text  x="1260.1" y="978.3" font-size="25.6" font-weight="500" fill="#FFFFFF">송정동</text>
+<text  x="1135.5" y="404.3" font-size="25.6" font-weight="500" fill="#FFFFFF">묵호동</text>
+<text  x="1051.9" y="636.9" font-size="25.6" font-weight="500" fill="#FFFFFF">동호동</text>
 </g>
 </svg>

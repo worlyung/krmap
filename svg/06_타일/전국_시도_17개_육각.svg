@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1619" viewBox="0 0 1400 1619" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<title>전국 시도</title>
+<g id="지역">
+<path id="서울특별시" d="M502.4 101.9L620.9 170.4 620.9 307.3 502.4 375.8 383.8 307.3 383.8 170.4Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.9" stroke-linejoin="round"><title>서울특별시</title></path>
+<path id="부산광역시" d="M1029.4 1014.8L1148 1083.2 1148 1220.1 1029.4 1288.6 910.8 1220.1 910.8 1083.2Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.9" stroke-linejoin="round"><title>부산광역시</title></path>
+<path id="대구광역시" d="M1029.4 558.3L1148 626.8 1148 763.7 1029.4 832.2 910.8 763.7 910.8 626.8Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.9" stroke-linejoin="round"><title>대구광역시</title></path>
+<path id="인천광역시" d="M370.6 330.1L489.2 398.6 489.2 535.5 370.6 604 252 535.5 252 398.6Z" fill="#F8DFA0" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.9" stroke-linejoin="round"><title>인천광역시</title></path>
+<path id="광주광역시" d="M634.1 786.6L752.7 855 752.7 991.9 634.1 1060.4 515.5 991.9 515.5 855Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.9" stroke-linejoin="round"><title>광주광역시</title></path>
+<path id="대전광역시" d="M765.9 558.3L884.5 626.8 884.5 763.7 765.9 832.2 647.3 763.7 647.3 626.8Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.9" stroke-linejoin="round"><title>대전광역시</title></path>
+<path id="울산광역시" d="M1161.1 786.6L1279.7 855 1279.7 991.9 1161.1 1060.4 1042.6 991.9 1042.6 855Z" fill="#F8DFA0" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.9" stroke-linejoin="round"><title>울산광역시</title></path>
+<path id="세종특별자치시" d="M502.4 558.3L620.9 626.8 620.9 763.7 502.4 832.2 383.8 763.7 383.8 626.8Z" fill="#F8DFA0" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.9" stroke-linejoin="round"><title>세종특별자치시</title></path>
+<path id="경기도" d="M634.1 330.1L752.7 398.6 752.7 535.5 634.1 604 515.5 535.5 515.5 398.6Z" fill="#C9E5AE" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.9" stroke-linejoin="round"><title>경기도</title></path>
+<path id="충청북도" d="M897.6 330.1L1016.2 398.6 1016.2 535.5 897.6 604 779.1 535.5 779.1 398.6Z" fill="#A8DCD1" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.9" stroke-linejoin="round"><title>충청북도</title></path>
+<path id="충청남도" d="M238.9 558.3L357.4 626.8 357.4 763.7 238.9 832.2 120.3 763.7 120.3 626.8Z" fill="#B6CCF4" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.9" stroke-linejoin="round"><title>충청남도</title></path>
+<path id="전라남도" d="M502.4 1014.8L620.9 1083.2 620.9 1220.1 502.4 1288.6 383.8 1220.1 383.8 1083.2Z" fill="#F8DFA0" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.9" stroke-linejoin="round"><title>전라남도</title></path>
+<path id="경상북도" d="M1161.1 330.1L1279.7 398.6 1279.7 535.5 1161.1 604 1042.6 535.5 1042.6 398.6Z" fill="#C9E5AE" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.9" stroke-linejoin="round"><title>경상북도</title></path>
+<path id="경상남도" d="M897.6 786.6L1016.2 855 1016.2 991.9 897.6 1060.4 779.1 991.9 779.1 855Z" fill="#A8DCD1" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.9" stroke-linejoin="round"><title>경상남도</title></path>
+<path id="제주특별자치도" d="M370.6 1243L489.2 1311.4 489.2 1448.4 370.6 1516.8 252 1448.4 252 1311.4Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.9" stroke-linejoin="round"><title>제주특별자치도</title></path>
+<path id="강원특별자치도" d="M765.9 101.9L884.5 170.4 884.5 307.3 765.9 375.8 647.3 307.3 647.3 170.4Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.9" stroke-linejoin="round"><title>강원특별자치도</title></path>
+<path id="전북특별자치도" d="M370.6 786.6L489.2 855 489.2 991.9 370.6 1060.4 252 991.9 252 855Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.9" stroke-linejoin="round"><title>전북특별자치도</title></path>
+</g>
+<g id="지명" text-anchor="middle">
+<text  x="1161.1" y="478.7" font-size="32.2" font-weight="700" fill="#1E2633">경북</text>
+<text  x="765.9" y="250.4" font-size="32.2" font-weight="700" fill="#1E2633">강원</text>
+<text  x="502.4" y="1163.3" font-size="32.2" font-weight="700" fill="#1E2633">전남</text>
+<text  x="897.6" y="935.1" font-size="32.2" font-weight="700" fill="#1E2633">경남</text>
+<text  x="634.1" y="478.7" font-size="32.2" font-weight="700" fill="#1E2633">경기</text>
+<text  x="238.9" y="706.9" font-size="32.2" font-weight="700" fill="#1E2633">충남</text>
+<text  x="370.6" y="935.1" font-size="32.2" font-weight="700" fill="#1E2633">전북</text>
+<text  x="897.6" y="478.7" font-size="32.2" font-weight="700" fill="#1E2633">충북</text>
+<text  x="370.6" y="1391.5" font-size="32.2" font-weight="700" fill="#1E2633">제주</text>
+<text  x="1029.4" y="706.9" font-size="32.2" font-weight="700" fill="#1E2633">대구</text>
+<text  x="370.6" y="478.7" font-size="32.2" font-weight="700" fill="#1E2633">인천</text>
+<text  x="1161.1" y="935.1" font-size="32.2" font-weight="700" fill="#1E2633">울산</text>
+<text  x="1029.4" y="1163.3" font-size="32.2" font-weight="700" fill="#1E2633">부산</text>
+<text  x="502.4" y="250.4" font-size="32.2" font-weight="700" fill="#1E2633">서울</text>
+<text  x="765.9" y="706.9" font-size="32.2" font-weight="700" fill="#1E2633">대전</text>
+<text  x="634.1" y="935.1" font-size="32.2" font-weight="700" fill="#1E2633">광주</text>
+<text  x="502.4" y="706.9" font-size="32.2" font-weight="700" fill="#1E2633">세종</text>
+</g>
+</svg>

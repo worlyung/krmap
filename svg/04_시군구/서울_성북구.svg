@@ -47,25 +47,25 @@
 <path d="M0 88.9L37.1 164.5 85.7 181.3 137.7 136 228.2 85.7 255.1 10.3 246.4 0M246.4 0L255.1 10.3 228.2 85.7 137.7 136 85.7 181.3 37.1 164.5 0 88.9" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="424.4" y="371.6" font-size="25.6" font-weight="500" fill="#FFFFFF">정릉4동</text>
-<text x="349" y="621.4" font-size="25.6" font-weight="500" fill="#FFFFFF">정릉3동</text>
-<text x="347.3" y="826" font-size="25.6" font-weight="500" fill="#FFFFFF">성북동</text>
-<text x="1405.3" y="596.3" font-size="25.6" font-weight="500" fill="#FFFFFF">석관동</text>
-<text x="945.9" y="822.6" font-size="25.6" font-weight="500" fill="#FFFFFF">종암동</text>
-<text x="1125.3" y="717" font-size="25.6" font-weight="500" fill="#FFFFFF">월곡2동</text>
-<text x="846.9" y="1022.2" font-size="25.6" font-weight="500" fill="#FFFFFF">안암동</text>
-<text x="570.3" y="725.4" font-size="25.6" font-weight="500" fill="#FFFFFF">정릉2동</text>
-<text x="612.2" y="1027.2" font-size="25.6" font-weight="500" fill="#FFFFFF">삼선동</text>
-<text x="979.4" y="634.8" font-size="25.6" font-weight="500" fill="#FFFFFF">월곡1동</text>
-<text x="744.7" y="621.4" font-size="25.6" font-weight="500" fill="#FFFFFF">길음1동</text>
-<text x="1316.4" y="505.7" font-size="25.6" font-weight="500" fill="#FFFFFF">장위3동</text>
-<text x="1110.2" y="507.4" font-size="25.6" font-weight="500" fill="#FFFFFF">장위1동</text>
-<text x="749.7" y="898.1" font-size="25.6" font-weight="500" fill="#FFFFFF">동선동</text>
-<text x="1234.3" y="554.4" font-size="25.6" font-weight="500" fill="#FFFFFF">장위2동</text>
-<text x="850.3" y="614.7" font-size="25.6" font-weight="500" fill="#FFFFFF">길음2동</text>
-<text x="721.2" y="1072.5" font-size="25.6" font-weight="500" fill="#FFFFFF">보문동</text>
-<text x="622.3" y="827.7" font-size="25.6" font-weight="500" fill="#FFFFFF">돈암2동</text>
-<text x="796.6" y="789.1" font-size="25.6" font-weight="500" fill="#FFFFFF">돈암1동</text>
-<text x="697.7" y="740.5" font-size="25.6" font-weight="500" fill="#FFFFFF">정릉1동</text>
+<text  x="424.4" y="371.6" font-size="25.6" font-weight="500" fill="#FFFFFF">정릉4동</text>
+<text  x="349" y="621.4" font-size="25.6" font-weight="500" fill="#FFFFFF">정릉3동</text>
+<text  x="347.3" y="826" font-size="25.6" font-weight="500" fill="#FFFFFF">성북동</text>
+<text  x="1405.3" y="596.3" font-size="25.6" font-weight="500" fill="#FFFFFF">석관동</text>
+<text  x="945.9" y="822.6" font-size="25.6" font-weight="500" fill="#FFFFFF">종암동</text>
+<text  x="1125.3" y="717" font-size="25.6" font-weight="500" fill="#FFFFFF">월곡2동</text>
+<text  x="846.9" y="1022.2" font-size="25.6" font-weight="500" fill="#FFFFFF">안암동</text>
+<text  x="570.3" y="725.4" font-size="25.6" font-weight="500" fill="#FFFFFF">정릉2동</text>
+<text  x="612.2" y="1027.2" font-size="25.6" font-weight="500" fill="#FFFFFF">삼선동</text>
+<text  x="979.4" y="634.8" font-size="25.6" font-weight="500" fill="#FFFFFF">월곡1동</text>
+<text  x="744.7" y="621.4" font-size="25.6" font-weight="500" fill="#FFFFFF">길음1동</text>
+<text  x="1316.4" y="505.7" font-size="25.6" font-weight="500" fill="#FFFFFF">장위3동</text>
+<text  x="1110.2" y="507.4" font-size="25.6" font-weight="500" fill="#FFFFFF">장위1동</text>
+<text  x="749.7" y="898.1" font-size="25.6" font-weight="500" fill="#FFFFFF">동선동</text>
+<text  x="1234.3" y="554.4" font-size="25.6" font-weight="500" fill="#FFFFFF">장위2동</text>
+<text  x="850.3" y="614.7" font-size="25.6" font-weight="500" fill="#FFFFFF">길음2동</text>
+<text  x="721.2" y="1072.5" font-size="25.6" font-weight="500" fill="#FFFFFF">보문동</text>
+<text  x="622.3" y="827.7" font-size="25.6" font-weight="500" fill="#FFFFFF">돈암2동</text>
+<text  x="796.6" y="789.1" font-size="25.6" font-weight="500" fill="#FFFFFF">돈암1동</text>
+<text  x="697.7" y="740.5" font-size="25.6" font-weight="500" fill="#FFFFFF">정릉1동</text>
 </g>
 </svg>

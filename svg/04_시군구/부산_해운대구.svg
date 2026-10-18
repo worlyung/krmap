@@ -41,23 +41,23 @@
 <path d="M1600 1192.6L1588.2 1191.8 1563.4 1289.3 1527.8 1261.4 1493.7 1272.3 1486 1304.8 1414.7 1300.2 1368.3 1334.2 1348.2 1379.1 1357.4 1422.5 1349.7 1501.5 1332.7 1564.9 1306.3 1633.1 1280 1654.8 1216.5 1659.4 1173.2 1710.5 1125.2 1746.1 1075.6 1743 945.6 1668.7 834.1 1684.2 753.5 1721.3 728.8 1801.9 683.9 1787.9 700.9 1722.9 724.1 1707.4 668.4 1721.3 634.3 1777.1 577 1760 549.1 1715.1 457.8 1630 499.6 1705.9 495 1772.4 416 1877.7 334.2 1984M323.9 1984L409.8 1873.1 487.2 1769.3 491.9 1707.4 436.1 1637.7 417.5 1647 476.4 1724.4 464 1757 366.4 1797.2 326.2 1800.3 315.3 1763.1 267.3 1772.4 228.6 1808.1 194.5 1877.7 233.3 1911.8 234.3 1984" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="708.6" y="679.1" font-size="25.6" font-weight="500" fill="#FFFFFF">반송1동</text>
-<text x="988.9" y="1132.8" font-size="25.6" font-weight="500" fill="#FFFFFF">좌4동</text>
-<text x="736.5" y="1321.8" font-size="25.6" font-weight="500" fill="#FFFFFF">우1동</text>
-<text x="385" y="795.3" font-size="25.6" font-weight="500" fill="#FFFFFF">반여1동</text>
-<text x="1348.2" y="1187" font-size="25.6" font-weight="500" fill="#FFFFFF">송정동</text>
-<text x="539.9" y="1478.2" font-size="25.6" font-weight="500" fill="#FFFFFF">우2동</text>
-<text x="618.8" y="333.8" font-size="25.6" font-weight="500" fill="#FFFFFF">반송2동</text>
-<text x="340.1" y="1317.1" font-size="25.6" font-weight="500" fill="#FFFFFF">재송1동</text>
-<text x="529" y="957.9" font-size="25.6" font-weight="500" fill="#FFFFFF">반여3동</text>
-<text x="975" y="1574.2" font-size="25.6" font-weight="500" fill="#FFFFFF">중1동</text>
-<text x="1171.6" y="1513.8" font-size="25.6" font-weight="500" fill="#FFFFFF">좌2동</text>
-<text x="426.8" y="1154.5" font-size="25.6" font-weight="500" fill="#FFFFFF">재송2동</text>
-<text x="1128.3" y="1668.6" font-size="25.6" font-weight="500" fill="#FFFFFF">중2동</text>
-<text x="183.7" y="852.6" font-size="25.6" font-weight="500" fill="#FFFFFF">반여4동</text>
-<text x="611.1" y="1702.7" font-size="25.6" font-weight="500" fill="#FFFFFF">우3동</text>
-<text x="398.9" y="1055.4" font-size="25.6" font-weight="500" fill="#FFFFFF">반여2동</text>
-<text x="931.6" y="1428.6" font-size="25.6" font-weight="500" fill="#FFFFFF">좌3동</text>
-<text x="1057" y="1434.8" font-size="25.6" font-weight="500" fill="#FFFFFF">좌1동</text>
+<text  x="708.6" y="679.1" font-size="25.6" font-weight="500" fill="#FFFFFF">반송1동</text>
+<text  x="988.9" y="1132.8" font-size="25.6" font-weight="500" fill="#FFFFFF">좌4동</text>
+<text  x="736.5" y="1321.8" font-size="25.6" font-weight="500" fill="#FFFFFF">우1동</text>
+<text  x="385" y="795.3" font-size="25.6" font-weight="500" fill="#FFFFFF">반여1동</text>
+<text  x="1348.2" y="1187" font-size="25.6" font-weight="500" fill="#FFFFFF">송정동</text>
+<text  x="539.9" y="1478.2" font-size="25.6" font-weight="500" fill="#FFFFFF">우2동</text>
+<text  x="618.8" y="333.8" font-size="25.6" font-weight="500" fill="#FFFFFF">반송2동</text>
+<text  x="340.1" y="1317.1" font-size="25.6" font-weight="500" fill="#FFFFFF">재송1동</text>
+<text  x="529" y="957.9" font-size="25.6" font-weight="500" fill="#FFFFFF">반여3동</text>
+<text  x="975" y="1574.2" font-size="25.6" font-weight="500" fill="#FFFFFF">중1동</text>
+<text  x="1171.6" y="1513.8" font-size="25.6" font-weight="500" fill="#FFFFFF">좌2동</text>
+<text  x="426.8" y="1154.5" font-size="25.6" font-weight="500" fill="#FFFFFF">재송2동</text>
+<text  x="1128.3" y="1668.6" font-size="25.6" font-weight="500" fill="#FFFFFF">중2동</text>
+<text  x="183.7" y="852.6" font-size="25.6" font-weight="500" fill="#FFFFFF">반여4동</text>
+<text  x="611.1" y="1702.7" font-size="25.6" font-weight="500" fill="#FFFFFF">우3동</text>
+<text  x="398.9" y="1055.4" font-size="25.6" font-weight="500" fill="#FFFFFF">반여2동</text>
+<text  x="931.6" y="1428.6" font-size="25.6" font-weight="500" fill="#FFFFFF">좌3동</text>
+<text  x="1057" y="1434.8" font-size="25.6" font-weight="500" fill="#FFFFFF">좌1동</text>
 </g>
 </svg>

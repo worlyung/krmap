@@ -39,23 +39,23 @@
 <path d="M0 1464.9L36.1 1445.8 95.2 1266.4 140 1209.7 137.7 1084.5 111.7 1001.9 161.3 907.4 170.7 796.5 222.7 728 85.7 513.1 88.1 399.8 95.2 359.6 0 359.6M0 359.6L95.2 359.6 88.1 399.8 85.7 513.1 222.7 728 170.7 796.5 161.3 907.4 111.7 1001.9 137.7 1084.5 140 1209.7 95.2 1266.4 36.1 1445.8 0 1464.9" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="406.8" y="1211.8" font-size="25.6" font-weight="500" fill="#FFFFFF">신정3동</text>
-<text x="1325.4" y="468" font-size="25.6" font-weight="500" fill="#FFFFFF">목5동</text>
-<text x="1221.5" y="734.8" font-size="25.6" font-weight="500" fill="#FFFFFF">목1동</text>
-<text x="288.8" y="888.3" font-size="25.6" font-weight="500" fill="#FFFFFF">신월7동</text>
-<text x="1027.9" y="1207.1" font-size="25.6" font-weight="500" fill="#FFFFFF">신정7동</text>
-<text x="1143.6" y="319.3" font-size="25.6" font-weight="500" fill="#FFFFFF">목2동</text>
-<text x="815.3" y="777.3" font-size="25.6" font-weight="500" fill="#FFFFFF">신정4동</text>
-<text x="158.9" y="515.2" font-size="25.6" font-weight="500" fill="#FFFFFF">신월3동</text>
-<text x="1042" y="1022.9" font-size="25.6" font-weight="500" fill="#FFFFFF">신정6동</text>
-<text x="843.7" y="952.1" font-size="25.6" font-weight="500" fill="#FFFFFF">신정1동</text>
-<text x="1197.9" y="945" font-size="25.6" font-weight="500" fill="#FFFFFF">신정2동</text>
-<text x="314.8" y="550.7" font-size="25.6" font-weight="500" fill="#FFFFFF">신월1동</text>
-<text x="267.5" y="416.1" font-size="25.6" font-weight="500" fill="#FFFFFF">신월5동</text>
-<text x="586.3" y="803.3" font-size="25.6" font-weight="500" fill="#FFFFFF">신월2동</text>
-<text x="1027.9" y="489.3" font-size="25.6" font-weight="500" fill="#FFFFFF">목4동</text>
-<text x="1004.3" y="189.4" font-size="25.6" font-weight="500" fill="#FFFFFF">목3동</text>
-<text x="477.7" y="893" font-size="25.6" font-weight="500" fill="#FFFFFF">신월4동</text>
-<text x="520.2" y="1018.2" font-size="25.6" font-weight="500" fill="#FFFFFF">신월6동</text>
+<text  x="406.8" y="1211.8" font-size="25.6" font-weight="500" fill="#FFFFFF">신정3동</text>
+<text  x="1325.4" y="468" font-size="25.6" font-weight="500" fill="#FFFFFF">목5동</text>
+<text  x="1221.5" y="734.8" font-size="25.6" font-weight="500" fill="#FFFFFF">목1동</text>
+<text  x="288.8" y="888.3" font-size="25.6" font-weight="500" fill="#FFFFFF">신월7동</text>
+<text  x="1027.9" y="1207.1" font-size="25.6" font-weight="500" fill="#FFFFFF">신정7동</text>
+<text  x="1143.6" y="319.3" font-size="25.6" font-weight="500" fill="#FFFFFF">목2동</text>
+<text  x="815.3" y="777.3" font-size="25.6" font-weight="500" fill="#FFFFFF">신정4동</text>
+<text  x="158.9" y="515.2" font-size="25.6" font-weight="500" fill="#FFFFFF">신월3동</text>
+<text  x="1042" y="1022.9" font-size="25.6" font-weight="500" fill="#FFFFFF">신정6동</text>
+<text  x="843.7" y="952.1" font-size="25.6" font-weight="500" fill="#FFFFFF">신정1동</text>
+<text  x="1197.9" y="945" font-size="25.6" font-weight="500" fill="#FFFFFF">신정2동</text>
+<text  x="314.8" y="550.7" font-size="25.6" font-weight="500" fill="#FFFFFF">신월1동</text>
+<text  x="267.5" y="416.1" font-size="25.6" font-weight="500" fill="#FFFFFF">신월5동</text>
+<text  x="586.3" y="803.3" font-size="25.6" font-weight="500" fill="#FFFFFF">신월2동</text>
+<text  x="1027.9" y="489.3" font-size="25.6" font-weight="500" fill="#FFFFFF">목4동</text>
+<text  x="1004.3" y="189.4" font-size="25.6" font-weight="500" fill="#FFFFFF">목3동</text>
+<text  x="477.7" y="893" font-size="25.6" font-weight="500" fill="#FFFFFF">신월4동</text>
+<text  x="520.2" y="1018.2" font-size="25.6" font-weight="500" fill="#FFFFFF">신월6동</text>
 </g>
 </svg>

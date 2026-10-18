@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2100" viewBox="0 0 1600 2100" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2100" viewBox="0 0 1600 2100" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>서울특별시 강북구</title>
 <g id="배경">
 <path d="M0 2100L0 1427.6 19.2 1434.2 50.3 1496.4 119.2 1509.7 99.2 1603 132.5 1647.4 170.2 1796.3 245.8 1847.4 250.2 1947.3 228 2031.7 244.5 2100Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -38,18 +38,18 @@
 <path d="M0 1427.6L19.2 1434.2 88.1 1374.2 208 1307.6 243.5 1207.6 181.4 1134.3 214.7 1078.8 192.5 981 112.5 854.4 145.8 792.2 219.1 747.8 276.9 647.8 372.4 605.6 401.3 570.1 376.8 296.9 352.4 250.2 394.6 230.2 476.8 143.6 585.6 112.5 678.9 123.6 674.5 14.7 676.2 0M1496.1 0L1509.7 70.3 1585.3 14.7 1600 16.8M1600 16.8L1585.3 14.7 1509.7 70.3 1496.1 0M676.2 0L674.5 14.7 678.9 123.6 585.6 112.5 476.8 143.6 394.6 230.2 352.4 250.2 376.8 296.9 401.3 570.1 372.4 605.6 276.9 647.8 219.1 747.8 145.8 792.2 112.5 854.4 192.5 981 214.7 1078.8 181.4 1134.3 243.5 1207.6 208 1307.6 88.1 1374.2 19.2 1434.2 0 1427.6" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="472.3" y="877" font-size="25.6" font-weight="500" fill="#FFFFFF">우이동</text>
-<text  x="696.7" y="1256.8" font-size="25.6" font-weight="500" fill="#FFFFFF">인수동</text>
-<text  x="678.9" y="1501.2" font-size="25.6" font-weight="500" fill="#FFFFFF">수유1동</text>
-<text  x="1352" y="1616.7" font-size="25.6" font-weight="500" fill="#FFFFFF">번3동</text>
-<text  x="1178.7" y="1821" font-size="25.6" font-weight="500" fill="#FFFFFF">송중동</text>
-<text  x="1201" y="1456.7" font-size="25.6" font-weight="500" fill="#FFFFFF">번2동</text>
-<text  x="796.7" y="1641.1" font-size="25.6" font-weight="500" fill="#FFFFFF">삼양동</text>
-<text  x="1012.1" y="1803.3" font-size="25.6" font-weight="500" fill="#FFFFFF">송천동</text>
-<text  x="1027.7" y="1523.4" font-size="25.6" font-weight="500" fill="#FFFFFF">미아동</text>
-<text  x="934.4" y="1267.9" font-size="25.6" font-weight="500" fill="#FFFFFF">수유3동</text>
-<text  x="903.3" y="1101.3" font-size="25.6" font-weight="500" fill="#FFFFFF">수유2동</text>
-<text  x="1105.4" y="1285.7" font-size="25.6" font-weight="500" fill="#FFFFFF">번1동</text>
-<text  x="858.9" y="1803.3" font-size="25.6" font-weight="500" fill="#FFFFFF">삼각산동</text>
+<text  x="472.3" y="876.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">우이동</text>
+<text  x="696.7" y="1256.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">인수동</text>
+<text  x="678.9" y="1500.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">수유1동</text>
+<text  x="1352" y="1616.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">번3동</text>
+<text  x="1178.7" y="1820.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">송중동</text>
+<text  x="1201" y="1456.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">번2동</text>
+<text  x="796.7" y="1640.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">삼양동</text>
+<text  x="1012.1" y="1803" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">송천동</text>
+<text  x="1027.7" y="1523.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">미아동</text>
+<text  x="934.4" y="1267.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">수유3동</text>
+<text  x="903.3" y="1101.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">수유2동</text>
+<text  x="1105.4" y="1285.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">번1동</text>
+<text  x="858.9" y="1803" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">삼각산동</text>
 </g>
 </svg>

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="0 0 1600 1280" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="0 0 1600 1280" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>대구광역시 서구</title>
 <g id="배경">
 <path d="M1538.7 1138.2L1355.6 1038.1 1345.8 967.3 1338.5 896.5 1423.9 818.3 1458.1 757.3 1460.6 693.8 1402 715.8 1375.1 659.6 1423.9 513.1 1472.8 522.8 1600 550 1600 1132.1 1570.5 1135.8Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -35,22 +35,22 @@
 <path d="M598.5 1150.4L591.2 1074.7 447.1 1074.7 459.3 986.8 298.2 945.3 259.1 854.9 171.2 845.2 132.1 793.9 176.1 698.7 154.1 564.3 85.7 437.4 166.3 337.2 264 317.7 276.2 268.9 391 303.1 557 256.7 644.9 168.7 825.6 85.7 850.1 119.9 918.4 212.7 1091.8 242 1213.9 261.5 1382.4 293.3 1514.3 359.2 1472.8 522.8 1423.9 513.1 1375.1 659.6 1402 715.8 1460.6 693.8 1458.1 757.3 1423.9 818.3 1338.5 896.5 1345.8 967.3 1204.2 1013.7 1001.5 1091.8 974.6 1104 796.3 1187.1 771.9 1194.4 706 1155.3 598.5 1150.4" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="466.7" y="685.9" font-size="25.6" font-weight="500" fill="#FFFFFF">상중이동</text>
-<text  x="771.9" y="285.4" font-size="25.6" font-weight="500" fill="#FFFFFF">비산7동</text>
-<text  x="823.2" y="1081.5" font-size="25.6" font-weight="500" fill="#FFFFFF">내당4동</text>
-<text  x="1008.8" y="622.4" font-size="25.6" font-weight="500" fill="#FFFFFF">평리3동</text>
-<text  x="833" y="532" font-size="25.6" font-weight="500" fill="#FFFFFF">평리6동</text>
-<text  x="962.4" y="856.8" font-size="25.6" font-weight="500" fill="#FFFFFF">평리4동</text>
-<text  x="1406.8" y="405.1" font-size="25.6" font-weight="500" fill="#FFFFFF">원대동</text>
-<text  x="1035.7" y="1005.8" font-size="25.6" font-weight="500" fill="#FFFFFF">내당1동</text>
-<text  x="1343.3" y="561.4" font-size="25.6" font-weight="500" fill="#FFFFFF">비산2·3동</text>
-<text  x="1270.1" y="927.7" font-size="25.6" font-weight="500" fill="#FFFFFF">내당2·3동</text>
-<text  x="1211.5" y="461.2" font-size="25.6" font-weight="500" fill="#FFFFFF">비산1동</text>
-<text  x="1270.1" y="783.6" font-size="25.6" font-weight="500" fill="#FFFFFF">비산4동</text>
-<text  x="830.5" y="722.5" font-size="25.6" font-weight="500" fill="#FFFFFF">평리5동</text>
-<text  x="1150.4" y="561.4" font-size="25.6" font-weight="500" fill="#FFFFFF">평리1동</text>
-<text  x="1201.7" y="334.2" font-size="25.6" font-weight="500" fill="#FFFFFF">비산5동</text>
-<text  x="1238.3" y="617.5" font-size="25.6" font-weight="500" fill="#FFFFFF">비산6동</text>
-<text  x="1155.3" y="798.2" font-size="25.6" font-weight="500" fill="#FFFFFF">평리2동</text>
+<text  x="466.7" y="685.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">상중이동</text>
+<text  x="771.9" y="285.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">비산7동</text>
+<text  x="823.2" y="1081.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">내당4동</text>
+<text  x="1008.8" y="622.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">평리3동</text>
+<text  x="833" y="531.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">평리6동</text>
+<text  x="962.4" y="856.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">평리4동</text>
+<text  x="1406.8" y="404.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">원대동</text>
+<text  x="1035.7" y="1005.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">내당1동</text>
+<text  x="1343.3" y="561.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">비산2·3동</text>
+<text  x="1270.1" y="927.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">내당2·3동</text>
+<text  x="1211.5" y="461" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">비산1동</text>
+<text  x="1270.1" y="783.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">비산4동</text>
+<text  x="830.5" y="722.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">평리5동</text>
+<text  x="1150.4" y="561.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">평리1동</text>
+<text  x="1201.7" y="334" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">비산5동</text>
+<text  x="1238.3" y="617.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">비산6동</text>
+<text  x="1155.3" y="798" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">평리2동</text>
 </g>
 </svg>

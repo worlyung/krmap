@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2250" viewBox="0 0 1600 2250" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2250" viewBox="0 0 1600 2250" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>부산광역시 수영구</title>
 <g id="배경">
 <path d="M816.4 0L829.4 47.9 839.8 120.5 829.4 296.9 680.7 51.4 611.5 23.7 443.1 0Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -29,15 +29,15 @@
 <path d="M1600 1246.7L1438 1095.6 1531.3 1265.1 1521 1413.8 1344.6 1648.9 1043.8 2039.6 964.2 2084.6 753.3 2129.5 915.8 2226.3 913.5 2250M976 2250L1033.4 2184.9 1049.7 2250M870.9 1970.5L760.2 2095 960.8 2063.8 1033.4 2022.3 1330.8 1638.5 1503.7 1406.8 1514 1268.5 1389.6 1112.9 1348.1 1133.7 1479.5 1306.6 1451.8 1379.2 1234 1469.1 1144.1 1476 1119.8 1393 1012.7 1413.8 926.2 1493.3 850.1 1648.9 936.6 1725 940 1960.1 870.9 1970.5" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="421.4" y="665.7" font-size="25.6" font-weight="500" fill="#FFFFFF">망미1동</text>
-<text  x="1213.2" y="1246.6" font-size="25.6" font-weight="500" fill="#FFFFFF">민락동</text>
-<text  x="542.4" y="1367.7" font-size="25.6" font-weight="500" fill="#FFFFFF">광안4동</text>
-<text  x="594.3" y="1803.3" font-size="25.6" font-weight="500" fill="#FFFFFF">남천1동</text>
-<text  x="836.3" y="1097.9" font-size="25.6" font-weight="500" fill="#FFFFFF">광안1동</text>
-<text  x="853.6" y="568.9" font-size="25.6" font-weight="500" fill="#FFFFFF">망미2동</text>
-<text  x="846.7" y="786.7" font-size="25.6" font-weight="500" fill="#FFFFFF">수영동</text>
-<text  x="870.9" y="1326.2" font-size="25.6" font-weight="500" fill="#FFFFFF">광안2동</text>
-<text  x="625.4" y="869.7" font-size="25.6" font-weight="500" fill="#FFFFFF">광안3동</text>
-<text  x="829.4" y="1810.3" font-size="25.6" font-weight="500" fill="#FFFFFF">남천2동</text>
+<text  x="421.4" y="665.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">망미1동</text>
+<text  x="1213.2" y="1246.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">민락동</text>
+<text  x="542.4" y="1367.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">광안4동</text>
+<text  x="594.3" y="1803.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">남천1동</text>
+<text  x="836.3" y="1097.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">광안1동</text>
+<text  x="853.6" y="568.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">망미2동</text>
+<text  x="846.7" y="786.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">수영동</text>
+<text  x="870.9" y="1325.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">광안2동</text>
+<text  x="625.4" y="869.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">광안3동</text>
+<text  x="829.4" y="1810" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">남천2동</text>
 </g>
 </svg>

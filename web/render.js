@@ -11,7 +11,8 @@
 })(typeof self !== "undefined" ? self : this, function () {
   const LEVEL_ORDER = { sido: 0, si: 1, sgg: 2, emd: 3 };
   const LEVEL_NAME = { sido: "시도", si: "시군구", sgg: "시군구(일반구)", emd: "읍면동" };
-  const FONT = "'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif";
+  // 프리텐다드(Pretendard)가 있으면 그것으로, 없으면 컴퓨터의 한글 글꼴로
+  const FONT = "Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif";
 
   const SIDO_SHORT = {
     서울특별시: "서울", 부산광역시: "부산", 대구광역시: "대구", 인천광역시: "인천", 광주광역시: "광주",
@@ -115,8 +116,11 @@
     const a = hexRgb(h), b = hexRgb(toward);
     return "#" + a.map((v, i) => Math.round(v + (b[i] - v) * t).toString(16).padStart(2, "0")).join("").toUpperCase();
   }
-  function textOn(fill, dark) {
-    return luminance(fill) < 0.32 ? "#FFFFFF" : dark;
+  // 칠한 색 위의 글자색: 흰 글자가 3:1 이상 읽히면 흰색, 아니면 진한 글자 (어두운 테마의 밝은 글자색은 쓰지 않는다)
+  function textOn(fill, ink) {
+    const L = luminance(fill);
+    if (1.05 / (L + 0.05) >= 3) return "#FFFFFF";
+    return luminance(ink) < 0.3 ? ink : "#1C2330";
   }
 
   // ---- 사각형 자르기 ----
@@ -478,27 +482,33 @@
     let w = x1 - x0, h = y1 - y0;
     const padU = Math.max(w, h) * o.pad;
     x0 -= padU; y0 -= padU; x1 += padU; y1 += padU;
-    w = x1 - x0;
-    const s0 = o.width / w;
-    y0 -= headPx / s0;
-    y1 += footPx / s0;
-    // 범례 자리: 지도 옆(왼쪽·오른쪽)에 따로 비워 두어 지역을 가리지 않게 한다
+    w = x1 - x0; h = y1 - y0;
+    const W = o.width;
+    // 범례 자리: 지도 옆(왼쪽·오른쪽)에 따로 비워 두어 지역을 가리지 않게 한다 (px)
     const lgOn = o.legend && o.legend.items && o.legend.items.length && o.legend.pos !== "none";
+    let room = 0;
     if (lgOn) {
       const tw0 = (t, size) => [...String(t)].reduce((a, ch) => a + (/[ㄱ-힣]/.test(ch) ? 1 : 0.58), 0) * size;
       const ls = fs * 0.62;
       const bw = Math.max(o.legend.title ? tw0(o.legend.title, ls * 1.05) : 0, ls * 1.75 + Math.max(...o.legend.items.map((it) => tw0(it.label, ls)))) + ls * 1.8;
-      const room = bw + fs * 0.9 * 1.6;
-      const e = (room * w) / Math.max(o.width - room, 1);
-      if ((o.legend.pos || "br")[1] === "l") x0 -= e; else x1 += e;
-      w = x1 - x0;
+      room = bw + fs * 0.9 * 1.6;
     }
-    h = y1 - y0;
+    let s = (W - room) / w;
+    // 제목·출처 자리는 px 로 정해져 있으니, 배율을 정한 다음에 그만큼 위아래로 늘린다
+    let H = h * s + headPx + footPx;
     if (o.aspect) {
-      if (w / h < o.aspect) { const nw = h * o.aspect; x0 -= (nw - w) / 2; x1 = x0 + nw; w = nw; }
-      else { const nh = w / o.aspect; y0 -= (nh - h) / 2; y1 = y0 + nh; h = nh; }
+      const Ht = W / o.aspect;
+      if (H > Ht) s = Math.max((Ht - headPx - footPx) / h, 1e-9);
+      else { const e = (Ht - H) / 2 / s; y0 -= e; y1 += e; h = y1 - y0; }
+      H = Ht;
     }
-    const W = o.width, s = W / w, H = Math.round(h * s);
+    // 가로 남는 자리(px): 넉넉하면 지도를 가운데에, 모자라면 범례 쪽에 범례 폭만큼 둔다
+    const slack = W - w * s;
+    const lgLeft = room && (o.legend.pos || "br")[1] === "l";
+    const padL = slack >= 2 * room ? slack / 2 : lgLeft ? room : slack - room;
+    x0 -= padL / s; x1 += (slack - padL) / s; w = x1 - x0;
+    y0 -= headPx / s; y1 += footPx / s; h = y1 - y0;
+    H = Math.round(H);
     scene.width = W;
     scene.height = H;
     scene.scale = s; // 데이터 좌표 1 단위 = s px
@@ -506,7 +516,7 @@
     const view = [x0, y0, x1, y1];
     const tf = (p) => [(p[0] - x0) * s, (p[1] - y0) * s];
     // 흐린 배경·시도 경계선은 제목 아래, 출처 위까지만 그린다
-    const cy0 = headPx * (s / s0), cy1 = H - footPx * (s / s0);
+    const cy0 = headPx, cy1 = H - footPx;
     const minStep = 0.35; // px — 이보다 가까운 점은 생략
     const ringsOf = (lv, id, f) => (inTiles(lv, id) ? [[tileRing(L, K(lv, id), o.tileGap)]] : decode(f));
     const project = (f, d, lv, id) =>
@@ -678,13 +688,13 @@
       const lines = [];
       const val = values[K(lv, id)];
       const vals = Array.isArray(val) ? val : val != null && val !== "" ? [val] : [];
-      vals.forEach((v, i) => lines.push({ text: String(v), k: i ? 0.66 : 0.78, weight: i ? 600 : 700 }));
+      vals.forEach((v, i) => lines.push({ text: String(v), k: i ? 0.64 : 0.74, weight: i ? 500 : 600 }));
       if (o.subLabel && !tile) {
         const sub = [];
         if (lv === "sgg" && f.city) sub.push(f.city);
         const sShort = sidoShort(D.sido[f.sido].nm);
         if (homeSido && f.sido !== homeSido && lv !== "sido" && !f.nm.startsWith(sShort)) sub.push(sShort);
-        if (sub.length) lines.push({ text: sub.join(" · "), k: 0.64, weight: 500, muted: true });
+        if (sub.length) lines.push({ text: sub.join(" · "), k: 0.6, weight: 500, muted: true });
       }
       if (tile) {
         // 칸 안에 들어가게 글자 크기를 맞춘다
@@ -704,21 +714,21 @@
       placed.push(box);
       const color = textOn(fill, C.text);
       let y = p[1] - th / 2;
-      scene.texts.push({ lv, id, x: p[0], y: y + size * 0.5, text: main, size, weight, fill: color, halo: o.halo });
+      scene.texts.push({ lv, id, x: p[0], y: y + size * 0.5, text: main, size, weight, fill: color, halo: o.halo, track: -0.02 });
       y += size;
       for (const l of lines) {
         const ls = size * l.k;
-        scene.texts.push({ lv, id, x: p[0], y: y + ls * 0.62, text: l.text, size: ls, weight: l.weight, fill: l.muted ? mix(color, fill, 0.38) : color, halo: o.halo, sub: true });
+        scene.texts.push({ lv, id, x: p[0], y: y + ls * 0.62, text: l.text, size: ls, weight: l.weight, fill: l.muted ? mix(color, fill, 0.42) : color, halo: o.halo, track: -0.01, sub: true });
         y += ls * 1.15;
       }
     };
     const style = (p) => {
       switch (p.group) {
-        case "target": return [fs * 1.3, 700];
-        case "neighbor": return [fs * (p.ring === 2 ? 0.82 : 1.0), 600];
-        case "picked": return [fs * (p.lv === "sido" ? 1.0 : p.lv === "emd" ? 0.6 : 0.85), 600];
-        case "all": return [allLv === "sido" ? fs * 0.9 : allLv === "emd" ? fs * 0.3 : fs * 0.45, allLv === "sido" ? 700 : 500];
-        default: return [fs * 0.8, 500];
+        case "target": return [fs * 1.25, 700];
+        case "neighbor": return [fs * (p.ring === 2 ? 0.8 : 0.95), 600];
+        case "picked": return [fs * (p.lv === "sido" ? 0.95 : p.lv === "emd" ? 0.6 : 0.82), 600];
+        case "all": return [allLv === "sido" ? fs * 0.85 : allLv === "emd" ? fs * 0.3 : fs * 0.45, allLv === "sido" ? 700 : 500];
+        default: return [fs * 0.78, 500];
       }
     };
     const byArea = (a, b) => D[b.lv][b.id].a - D[a.lv][a.id].a;
@@ -798,17 +808,17 @@
 
     // 8) 제목 · 부제 · 출처
     const margin = fs * 0.9;
-    const muted = mix(C.text, C.bg || "#FFFFFF", 0.4);
+    const muted = mix(C.text, C.bg || "#FFFFFF", 0.45);
     if (head.title || head.subtitle) {
       let y = margin;
       if (head.title) {
         const ts = fs * 1.55;
-        scene.texts.push({ x: margin, y: y + ts * 0.5, text: head.title, size: ts, weight: 700, fill: C.text, anchor: "start", role: "heading" });
+        scene.texts.push({ x: margin, y: y + ts * 0.5, text: head.title, size: ts, weight: 700, fill: C.text, anchor: "start", role: "heading", track: -0.03 });
         y += ts * 1.5;
       }
       if (head.subtitle) {
         const ss = fs * 0.85;
-        scene.texts.push({ x: margin, y: y + ss * 0.5, text: head.subtitle, size: ss, weight: 400, fill: muted, anchor: "start", role: "heading" });
+        scene.texts.push({ x: margin, y: y + ss * 0.5, text: head.subtitle, size: ss, weight: 500, fill: muted, anchor: "start", role: "heading", track: -0.01 });
       }
     }
     if (head.note) {
@@ -825,17 +835,26 @@
       const pos = lg.pos || "br";
       const bx = pos[1] === "l" ? margin : W - margin - bw;
       const by = pos[0] === "t" ? margin + headPx : H - margin - bh - footPx;
-      const rect = (x, y, rw, rh) => [[[x, y], [x + rw, y], [x + rw, y + rh], [x, y + rh]]];
-      const panel = C.bg && luminance(C.bg) < 0.2 ? mix(C.bg, "#FFFFFF", 0.08) : "#FFFFFF";
-      scene.polys.push({ name: "범례", rings: [rect(bx, by, bw, bh)], fill: panel, stroke: mix(panel, C.text, 0.15), width: base * 1.2, group: "legend" });
+      // 둥근 모서리 사각형 (모서리마다 점 몇 개로)
+      const rect = (x, y, rw, rh, rr) => {
+        rr = Math.min(rr || 0, rw / 2, rh / 2);
+        if (!rr) return [[[x, y], [x + rw, y], [x + rw, y + rh], [x, y + rh]]];
+        const pts = [];
+        const corner = (cx, cy, a0) => { for (let i = 0; i <= 4; i++) { const a = a0 + (Math.PI / 2) * (i / 4); pts.push([cx + rr * Math.cos(a), cy + rr * Math.sin(a)]); } };
+        corner(x + rw - rr, y + rr, -Math.PI / 2); corner(x + rw - rr, y + rh - rr, 0); corner(x + rr, y + rh - rr, Math.PI / 2); corner(x + rr, y + rr, Math.PI);
+        return [pts];
+      };
+      const dark = C.bg && luminance(C.bg) < 0.2;
+      const panel = dark ? mix(C.bg, "#FFFFFF", 0.08) : "#FFFFFF";
+      scene.polys.push({ name: "범례", rings: [rect(bx, by, bw, bh, ls * 0.6)], fill: panel, stroke: mix(panel, C.text, 0.1), width: base * 1.2, group: "legend" });
       let y = by + pad;
       if (lg.title) {
-        scene.texts.push({ x: bx + pad, y: y + ls * 0.55, text: lg.title, size: ls * 1.05, weight: 700, fill: C.text, anchor: "start", role: "legend" });
+        scene.texts.push({ x: bx + pad, y: y + ls * 0.55, text: lg.title, size: ls * 1.05, weight: 700, fill: C.text, anchor: "start", role: "legend", track: -0.02 });
         y += ls * 1.05 * 1.7;
       }
       for (const it of lg.items) {
-        scene.polys.push({ name: "범례 " + it.label, rings: [rect(bx + pad, y, sw, sw)], fill: it.color, stroke: null, width: 0, group: "legend" });
-        scene.texts.push({ x: bx + pad + sw + ls * 0.6, y: y + sw / 2, text: it.label, size: ls, weight: 500, fill: C.text, anchor: "start", role: "legend" });
+        scene.polys.push({ name: "범례 " + it.label, rings: [rect(bx + pad, y, sw, sw, sw * 0.22)], fill: it.color, stroke: null, width: 0, group: "legend" });
+        scene.texts.push({ x: bx + pad + sw + ls * 0.6, y: y + sw / 2, text: it.label, size: ls, weight: 500, fill: mix(C.text, panel, 0.15), anchor: "start", role: "legend", track: -0.01 });
         y += row;
       }
     }
@@ -909,7 +928,8 @@
     const textEl = (t) => {
       const dk = opt.interactive && t.lv ? ` data-k="${t.lv}:${t.id}"` : "";
       const anchor = t.anchor === "start" ? ` text-anchor="start"` : "";
-      const common = `${dk}${anchor} x="${num(t.x)}" y="${num(t.y + t.size * 0.36)}" font-size="${num(t.size)}" font-weight="${t.weight}"`;
+      const track = t.track ? ` letter-spacing="${num(t.size * t.track)}"` : "";
+      const common = `${dk}${anchor} x="${num(t.x)}" y="${num(t.y + t.size * 0.36)}" font-size="${num(t.size)}" font-weight="${t.weight}"${track}`;
       const halo = t.halo ? `<text ${common} fill="none" stroke="#FFFFFF" stroke-width="${num(t.size * 0.22)}" stroke-linejoin="round">${esc(t.text)}</text>` : "";
       return halo + `<text ${common} fill="${t.fill}">${esc(t.text)}</text>`;
     };

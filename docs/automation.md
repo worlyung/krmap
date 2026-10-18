@@ -11,8 +11,8 @@ npm install          # Node 18 이상
 npm test             # 7개 확인 (인터넷 필요 없음)
 ```
 
-PNG 의 한글은 컴퓨터에 있는 글꼴(맑은 고딕 → 애플 SD 고딕 → Noto Sans CJK → 나눔고딕 순)로 그립니다.
-글꼴이 없는 서버라면 `--font 글꼴.ttf` 로 직접 주세요. SVG · PPTX 는 글꼴을 따로 넣지 않습니다(열 때 컴퓨터 글꼴을 씀).
+PNG 의 한글은 `npm install` 로 함께 받는 프리텐다드(Pretendard, SIL OFL)로 그립니다. 다른 글꼴은 `--font 글꼴.ttf`.
+SVG 는 프리텐다드가 있으면 그것을, 없으면 애플 SD 고딕 · 맑은 고딕 순으로 씁니다. PPTX 는 어느 PC 에나 있는 맑은 고딕으로 넣습니다.
 
 ## Claude Code 에 붙이기
 

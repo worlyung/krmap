@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1564" viewBox="0 0 1600 1564" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1564" viewBox="0 0 1600 1564" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>서울특별시 서대문구</title>
 <g id="배경">
 <path d="M1185.7 864.3L1178.6 852.4 1219 850 1254.8 781 1328.6 802.4 1271.4 723.8 1250 681 1271.4 590.5 1238.1 409.5 1257.1 342.9 1192.9 333.3 1164.3 283.3 1178.6 152.4 1116.7 85.7 1109.5 38.1 1120 0 1600 0 1600 1115.4 1502.4 1138.1 1454.8 1200 1433.3 1176.2 1304.8 1009.5Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -37,19 +37,19 @@
 <path d="M0 583L52.4 554.8 33.3 481 66.7 438.1 85.7 333.3 61.9 204.8 100 188.1 92.9 138.1 104.8 100 87.8 0M87.8 0L104.8 100 92.9 138.1 100 188.1 61.9 204.8 85.7 333.3 66.7 438.1 33.3 481 52.4 554.8 0 583" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="695.2" y="1071.1" font-size="25.6" font-weight="500" fill="#FFFFFF">연희동</text>
-<text  x="926.2" y="1287.8" font-size="25.6" font-weight="500" fill="#FFFFFF">신촌동</text>
-<text  x="690.5" y="754.5" font-size="25.6" font-weight="500" fill="#FFFFFF">홍은2동</text>
-<text  x="1026.2" y="790.2" font-size="25.6" font-weight="500" fill="#FFFFFF">홍제1동</text>
-<text  x="1069" y="256.8" font-size="25.6" font-weight="500" fill="#FFFFFF">홍은1동</text>
-<text  x="1178.6" y="1235.4" font-size="25.6" font-weight="500" fill="#FFFFFF">충현동</text>
-<text  x="1161.9" y="506.8" font-size="25.6" font-weight="500" fill="#FFFFFF">홍제3동</text>
-<text  x="1250" y="1071.1" font-size="25.6" font-weight="500" fill="#FFFFFF">천연동</text>
-<text  x="497.6" y="906.8" font-size="25.6" font-weight="500" fill="#FFFFFF">남가좌2동</text>
-<text  x="309.5" y="811.6" font-size="25.6" font-weight="500" fill="#FFFFFF">북가좌2동</text>
-<text  x="1190.5" y="740.2" font-size="25.6" font-weight="500" fill="#FFFFFF">홍제2동</text>
-<text  x="197.6" y="940.2" font-size="25.6" font-weight="500" fill="#FFFFFF">북가좌1동</text>
-<text  x="395.2" y="1044.9" font-size="25.6" font-weight="500" fill="#FFFFFF">남가좌1동</text>
-<text  x="1271.4" y="1375.9" font-size="25.6" font-weight="500" fill="#FFFFFF">북아현동</text>
+<text  x="695.2" y="1070.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">연희동</text>
+<text  x="926.2" y="1287.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">신촌동</text>
+<text  x="690.5" y="754.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">홍은2동</text>
+<text  x="1026.2" y="789.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">홍제1동</text>
+<text  x="1069" y="256.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">홍은1동</text>
+<text  x="1178.6" y="1235.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">충현동</text>
+<text  x="1161.9" y="506.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">홍제3동</text>
+<text  x="1250" y="1070.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">천연동</text>
+<text  x="497.6" y="906.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">남가좌2동</text>
+<text  x="309.5" y="811.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">북가좌2동</text>
+<text  x="1190.5" y="739.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">홍제2동</text>
+<text  x="197.6" y="939.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">북가좌1동</text>
+<text  x="395.2" y="1044.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">남가좌1동</text>
+<text  x="1271.4" y="1375.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">북아현동</text>
 </g>
 </svg>

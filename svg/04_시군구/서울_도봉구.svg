@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2713" viewBox="0 0 1600 2713" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2713" viewBox="0 0 1600 2713" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>서울특별시 도봉구</title>
 <g id="배경">
 <path d="M0 2713L0 701.1 20.3 695.3 151.6 710.9 151.6 829.7 248.4 898.4 320.3 1067.2 426.6 1220.3 348.4 1335.9 367.2 1514.1 320.3 1535.9 260.9 1835.9 345.3 1945.3 501.6 1951.6 607.8 2032.8 764.1 2164.1 814.1 2207.8 864.1 2339.1 917.2 2373.4 973.4 2476.6 1054.7 2567.2 1070.3 2576.6 1217.5 2713Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -33,19 +33,19 @@
 <path d="M0 701.1L20.3 695.3 151.6 710.9 145.3 557.8 167.2 370.3 251.6 242.2 323.4 242.2 360.9 145.3 464.1 145.3 610.9 201.6 698.4 164.1 729.7 217.2 779.7 426.6 817.2 470.3 910.9 454.7 1070.3 345.3 1164.1 448.4 1251.6 395.3 1276.6 410.9 1320.3 635.9 1426.6 557.8 1585.9 579.7 1600 575.3M1600 575.3L1585.9 579.7 1426.6 557.8 1320.3 635.9 1276.6 410.9 1251.6 395.3 1164.1 448.4 1070.3 345.3 910.9 454.7 817.2 470.3 779.7 426.6 729.7 217.2 698.4 164.1 610.9 201.6 464.1 145.3 360.9 145.3 323.4 242.2 251.6 242.2 167.2 370.3 145.3 557.8 151.6 710.9 20.3 695.3 0 701.1" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="582.8" y="754.5" font-size="25.6" font-weight="500" fill="#FFFFFF">도봉1동</text>
-<text  x="557.8" y="1470.2" font-size="25.6" font-weight="500" fill="#FFFFFF">방학3동</text>
-<text  x="1264.1" y="754.5" font-size="25.6" font-weight="500" fill="#FFFFFF">도봉2동</text>
-<text  x="385.9" y="1813.9" font-size="25.6" font-weight="500" fill="#FFFFFF">쌍문1동</text>
-<text  x="1151.6" y="2004.5" font-size="25.6" font-weight="500" fill="#FFFFFF">창1동</text>
-<text  x="1267.2" y="1638.9" font-size="25.6" font-weight="500" fill="#FFFFFF">창4동</text>
-<text  x="785.9" y="1232.7" font-size="25.6" font-weight="500" fill="#FFFFFF">방학2동</text>
-<text  x="1126.6" y="1379.5" font-size="25.6" font-weight="500" fill="#FFFFFF">방학1동</text>
-<text  x="929.7" y="2182.7" font-size="25.6" font-weight="500" fill="#FFFFFF">창2동</text>
-<text  x="1092.2" y="1751.4" font-size="25.6" font-weight="500" fill="#FFFFFF">창5동</text>
-<text  x="1048.4" y="2392" font-size="25.6" font-weight="500" fill="#FFFFFF">창3동</text>
-<text  x="751.6" y="1729.5" font-size="25.6" font-weight="500" fill="#FFFFFF">쌍문4동</text>
-<text  x="939.1" y="1629.5" font-size="25.6" font-weight="500" fill="#FFFFFF">쌍문2동</text>
-<text  x="751.6" y="1998.3" font-size="25.6" font-weight="500" fill="#FFFFFF">쌍문3동</text>
+<text  x="582.8" y="754.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">도봉1동</text>
+<text  x="557.8" y="1469.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">방학3동</text>
+<text  x="1264.1" y="754.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">도봉2동</text>
+<text  x="385.9" y="1813.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">쌍문1동</text>
+<text  x="1151.6" y="2004.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">창1동</text>
+<text  x="1267.2" y="1638.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">창4동</text>
+<text  x="785.9" y="1232.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">방학2동</text>
+<text  x="1126.6" y="1379.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">방학1동</text>
+<text  x="929.7" y="2182.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">창2동</text>
+<text  x="1092.2" y="1751.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">창5동</text>
+<text  x="1048.4" y="2391.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">창3동</text>
+<text  x="751.6" y="1729.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">쌍문4동</text>
+<text  x="939.1" y="1629.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">쌍문2동</text>
+<text  x="751.6" y="1998" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">쌍문3동</text>
 </g>
 </svg>

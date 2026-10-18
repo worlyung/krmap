@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="912" viewBox="0 0 1400 912" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="912" viewBox="0 0 1400 912" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>전북특별자치도 전주시 외 13곳</title>
 <g id="선택">
 <path id="전북특별자치도_전주시" d="M598.5 262.6L689.8 315.4 689.8 420.9 598.5 473.7 507.1 420.9 507.1 315.4Z" fill="#F7C6B3" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>전북특별자치도 전주시</title></path>
@@ -17,19 +17,19 @@
 <path id="전북특별자치도_부안군" d="M293.8 438.5L385.2 491.3 385.2 596.8 293.8 649.6 202.4 596.8 202.4 491.3Z" fill="#A8DCD1" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"><title>전북특별자치도 부안군</title></path>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="801.5" y="379.7" font-size="32.2" font-weight="600" fill="#1E2633">완주</text>
-<text  x="1004.6" y="379.7" font-size="32.2" font-weight="600" fill="#1E2633">진안</text>
-<text  x="801.5" y="731.5" font-size="32.2" font-weight="600" fill="#1E2633">남원</text>
-<text  x="395.4" y="731.5" font-size="32.2" font-weight="600" fill="#1E2633">정읍</text>
-<text  x="1207.7" y="379.7" font-size="32.2" font-weight="600" fill="#1E2633">무주</text>
-<text  x="192.3" y="731.5" font-size="32.2" font-weight="600" fill="#1E2633">고창</text>
-<text  x="700" y="555.6" font-size="32.2" font-weight="600" fill="#1E2633">임실</text>
-<text  x="903.1" y="555.6" font-size="32.2" font-weight="600" fill="#1E2633">장수</text>
-<text  x="496.9" y="555.6" font-size="32.2" font-weight="600" fill="#1E2633">김제</text>
-<text  x="700" y="203.8" font-size="32.2" font-weight="600" fill="#1E2633">익산</text>
-<text  x="598.5" y="731.5" font-size="32.2" font-weight="600" fill="#1E2633">순창</text>
-<text  x="293.8" y="555.6" font-size="32.2" font-weight="600" fill="#1E2633">부안</text>
-<text  x="496.9" y="203.8" font-size="32.2" font-weight="600" fill="#1E2633">군산</text>
-<text  x="598.5" y="379.7" font-size="32.2" font-weight="600" fill="#1E2633">전주</text>
+<text  x="801.5" y="379.7" font-size="32.2" font-weight="600" letter-spacing="-0.6" fill="#1E2633">완주</text>
+<text  x="1004.6" y="379.7" font-size="32.2" font-weight="600" letter-spacing="-0.6" fill="#1E2633">진안</text>
+<text  x="801.5" y="731.5" font-size="32.2" font-weight="600" letter-spacing="-0.6" fill="#1E2633">남원</text>
+<text  x="395.4" y="731.5" font-size="32.2" font-weight="600" letter-spacing="-0.6" fill="#1E2633">정읍</text>
+<text  x="1207.7" y="379.7" font-size="32.2" font-weight="600" letter-spacing="-0.6" fill="#1E2633">무주</text>
+<text  x="192.3" y="731.5" font-size="32.2" font-weight="600" letter-spacing="-0.6" fill="#1E2633">고창</text>
+<text  x="700" y="555.6" font-size="32.2" font-weight="600" letter-spacing="-0.6" fill="#1E2633">임실</text>
+<text  x="903.1" y="555.6" font-size="32.2" font-weight="600" letter-spacing="-0.6" fill="#1E2633">장수</text>
+<text  x="496.9" y="555.6" font-size="32.2" font-weight="600" letter-spacing="-0.6" fill="#1E2633">김제</text>
+<text  x="700" y="203.8" font-size="32.2" font-weight="600" letter-spacing="-0.6" fill="#1E2633">익산</text>
+<text  x="598.5" y="731.5" font-size="32.2" font-weight="600" letter-spacing="-0.6" fill="#1E2633">순창</text>
+<text  x="293.8" y="555.6" font-size="32.2" font-weight="600" letter-spacing="-0.6" fill="#1E2633">부안</text>
+<text  x="496.9" y="203.8" font-size="32.2" font-weight="600" letter-spacing="-0.6" fill="#1E2633">군산</text>
+<text  x="598.5" y="379.7" font-size="32.2" font-weight="600" letter-spacing="-0.6" fill="#1E2633">전주</text>
 </g>
 </svg>

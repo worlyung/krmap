@@ -48,32 +48,30 @@
 <g id="대상">
 <path d="M524.5 1003.8L506.8 1002.9 489.9 996.2 460.4 919.4 411.4 906.7 392.9 911 393.7 903.4 352.4 900 273 894.1 141.4 856.1 110.2 836.7 130.4 803.8 158.3 802.1 174.3 825.7 198.8 825.7 216.5 800.4 243.5 803 267.1 786.9 277.3 768.4 267.1 725.3 269.7 695.8 263.8 684.8 214.8 663.7 214 649.4 237.6 629.1 238.4 581.9 223.3 543.1 217.3 533.8 227.5 498.3 251.1 473 243.5 467.1 222.4 466.3 221.6 430 168.4 429.1 159.1 392.9 109.3 410.6 85.7 364.2 125.4 340.5 130.4 311.9 156.6 311.9 156.6 289.9 174.3 284 187.8 300 203.8 284.9 268 262.9 285.7 245.2 295.8 212.3 326.2 202.2 354.9 202.2 381 173.5 428.3 154.1 424.1 185.3 480.6 203 505.1 196.3 527.9 163.3 574.3 138.9 596.2 108.5 629.1 85.7 657.8 86.6 712.7 105.1 743.9 136.3 784.4 141.4 822.4 156.6 843.5 197.9 835 249.4 846.8 268 884.8 284 912.6 314.4 918.6 340.5 951.5 350.7 981.8 404.7 963.3 424.9 958.2 462.9 973.4 495 1015.6 568.4 1065.4 607.2 1082.3 604.7 1083.1 635.9 1031.6 702.5 1037.5 721.9 1089.8 787.8 1108.4 818.1 1132 829.1 1135.4 778.5 1160.7 765.8 1195.3 787.8 1223.2 786.9 1233.3 748.9 1300 752.3 1330.3 748.9 1363.2 754 1405.4 781.9 1431.6 813.1 1477.2 834.2 1490.7 878.1 1514.3 889.9 1509.2 947.2 1451.8 970 1453.5 1002.9 1435 1021.5 1409.7 1062.8 1425.7 1111.8 1408.8 1132 1405.4 1168.3 1432.4 1214.7 1427.4 1261.1 1416.4 1348.9 1376.7 1370 1366.6 1404.6 1346.4 1415.6 1327.8 1440 1302.5 1395.3 1296.6 1369.2 1253.5 1307.6 1230.8 1251 1211.4 1232.5 1179.3 1215.6 1144.7 1221.5 1120.2 1235 1099.1 1231.6 1049.3 1194.5 1005.5 1194.5 997 1180.1 1016.4 1162.4 1000.4 1116.9 1004.6 1088.2 975.1 1068.8 944.7 1064.5 922.8 1051 914.3 1023.2 883.1 1021.5 880.6 996.2 849.4 996.2 821.5 1008 811.4 1001.2 796.2 988.6 731.2 966.7 731.2 968.3 705.1 959.9 679.8 1038.4 679.8 1039.2 675.5 1051 635 1090.7 596.2 1056.9 576 1033.3 524.5 1003.8" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
-<g id="시도경계">
-</g>
 <g id="지명" text-anchor="middle">
-<text x="1213" y="1025.7" font-size="25.6" font-weight="500" fill="#FFFFFF">석곡동</text>
-<text x="659.5" y="265.4" font-size="25.6" font-weight="500" fill="#FFFFFF">건국동</text>
-<text x="406.4" y="630.8" font-size="25.6" font-weight="500" fill="#FFFFFF">양산동</text>
-<text x="275.6" y="851" font-size="25.6" font-weight="500" fill="#FFFFFF">동림동</text>
-<text x="654.4" y="596.2" font-size="25.6" font-weight="500" fill="#FFFFFF">삼각동</text>
-<text x="603" y="851.8" font-size="25.6" font-weight="500" fill="#FFFFFF">용봉동</text>
-<text x="890.7" y="802" font-size="25.6" font-weight="500" fill="#FFFFFF">문화동</text>
-<text x="554.9" y="518.5" font-size="25.6" font-weight="500" fill="#FFFFFF">일곡동</text>
-<text x="795.4" y="734.5" font-size="25.6" font-weight="500" fill="#FFFFFF">문흥1동</text>
-<text x="683.1" y="724.4" font-size="25.6" font-weight="500" fill="#FFFFFF">오치1동</text>
-<text x="304.3" y="522.7" font-size="25.6" font-weight="500" fill="#FFFFFF">신용동</text>
-<text x="509.3" y="724.4" font-size="25.6" font-weight="500" fill="#FFFFFF">매곡동</text>
-<text x="919.4" y="909.2" font-size="25.6" font-weight="500" fill="#FFFFFF">두암2동</text>
-<text x="458.7" y="878" font-size="25.6" font-weight="500" fill="#FFFFFF">운암2동</text>
-<text x="869.6" y="965.7" font-size="25.6" font-weight="500" fill="#FFFFFF">두암3동</text>
-<text x="397.9" y="796.1" font-size="25.6" font-weight="500" fill="#FFFFFF">운암3동</text>
-<text x="519.4" y="980.1" font-size="25.6" font-weight="500" fill="#FFFFFF">임동</text>
-<text x="585.3" y="941.3" font-size="25.6" font-weight="500" fill="#FFFFFF">신안동</text>
-<text x="752.3" y="872.9" font-size="25.6" font-weight="500" fill="#FFFFFF">우산동</text>
-<text x="675.5" y="925.2" font-size="25.6" font-weight="500" fill="#FFFFFF">중흥동</text>
-<text x="670.5" y="992.7" font-size="25.6" font-weight="500" fill="#FFFFFF">중흥1동</text>
-<text x="634.2" y="1060.2" font-size="25.6" font-weight="500" fill="#FFFFFF">중앙동</text>
-<text x="730.4" y="797.8" font-size="25.6" font-weight="500" fill="#FFFFFF">문흥2동</text>
-<text x="751.5" y="959" font-size="25.6" font-weight="500" fill="#FFFFFF">풍향동</text>
+<text  x="1213" y="1025.7" font-size="25.6" font-weight="500" fill="#FFFFFF">석곡동</text>
+<text  x="659.5" y="265.4" font-size="25.6" font-weight="500" fill="#FFFFFF">건국동</text>
+<text  x="406.4" y="630.8" font-size="25.6" font-weight="500" fill="#FFFFFF">양산동</text>
+<text  x="275.6" y="851" font-size="25.6" font-weight="500" fill="#FFFFFF">동림동</text>
+<text  x="654.4" y="596.2" font-size="25.6" font-weight="500" fill="#FFFFFF">삼각동</text>
+<text  x="603" y="851.8" font-size="25.6" font-weight="500" fill="#FFFFFF">용봉동</text>
+<text  x="890.7" y="802" font-size="25.6" font-weight="500" fill="#FFFFFF">문화동</text>
+<text  x="554.9" y="518.5" font-size="25.6" font-weight="500" fill="#FFFFFF">일곡동</text>
+<text  x="795.4" y="734.5" font-size="25.6" font-weight="500" fill="#FFFFFF">문흥1동</text>
+<text  x="683.1" y="724.4" font-size="25.6" font-weight="500" fill="#FFFFFF">오치1동</text>
+<text  x="304.3" y="522.7" font-size="25.6" font-weight="500" fill="#FFFFFF">신용동</text>
+<text  x="509.3" y="724.4" font-size="25.6" font-weight="500" fill="#FFFFFF">매곡동</text>
+<text  x="919.4" y="909.2" font-size="25.6" font-weight="500" fill="#FFFFFF">두암2동</text>
+<text  x="458.7" y="878" font-size="25.6" font-weight="500" fill="#FFFFFF">운암2동</text>
+<text  x="869.6" y="965.7" font-size="25.6" font-weight="500" fill="#FFFFFF">두암3동</text>
+<text  x="397.9" y="796.1" font-size="25.6" font-weight="500" fill="#FFFFFF">운암3동</text>
+<text  x="519.4" y="980.1" font-size="25.6" font-weight="500" fill="#FFFFFF">임동</text>
+<text  x="585.3" y="941.3" font-size="25.6" font-weight="500" fill="#FFFFFF">신안동</text>
+<text  x="752.3" y="872.9" font-size="25.6" font-weight="500" fill="#FFFFFF">우산동</text>
+<text  x="675.5" y="925.2" font-size="25.6" font-weight="500" fill="#FFFFFF">중흥동</text>
+<text  x="670.5" y="992.7" font-size="25.6" font-weight="500" fill="#FFFFFF">중흥1동</text>
+<text  x="634.2" y="1060.2" font-size="25.6" font-weight="500" fill="#FFFFFF">중앙동</text>
+<text  x="730.4" y="797.8" font-size="25.6" font-weight="500" fill="#FFFFFF">문흥2동</text>
+<text  x="751.5" y="959" font-size="25.6" font-weight="500" fill="#FFFFFF">풍향동</text>
 </g>
 </svg>

@@ -42,18 +42,18 @@
 <path d="M682.8 0L681.7 6 685.6 18.3 679.4 21.2 684.3 31.9 709.3 60.5 741.1 89.7 752.8 102.4 763.2 109.2 784.6 129 799.8 131.6 798.5 145.8 811.2 156.2 812.2 171.8 807.3 186.4 811.2 203 801.1 212.7 820.9 238.3 839.4 259.8 849.8 262.4 853.4 268.5 854.4 283.1 888.4 317.5 890.1 323.4 894.6 324.4 907.6 338.6 921.9 351.3 932.6 364 936.5 378.9 933.2 387.3 943.3 406.1 978.7 442.8 1013.4 478.8 1030.3 492.5 1032.2 497 1049.1 514.9 1057.9 526.2 1082.9 551.9 1144.2 610.3 1151 610.6 1153.3 622 1159.1 633.3 1196.1 668.1 1209.1 678.5 1250 716.4 1260.7 713.8 1269.2 750.8 1283.8 775.8 1293.5 782.3 1316.5 807 1329.2 818 1336.3 839.8 1346.1 851.1 1373.7 878.1 1385.3 887.5 1412 912.8 1426.9 917 1437.9 935.2 1455.8 948.2 1463.6 963.7 1454.8 987.8 1461.6 1006.3 1460.3 1010.8 1461.6 1013.4 1447.7 1036.4 1439.2 1038.1 1425.6 1070.5 1425.9 1080.6 1434 1103.6 1449.6 1130.6 1455.5 1132.5 1455.8 1148.1 1472.7 1153.3 1481.1 1171.1 1510.3 1202.6 1561.3 1242.9 1600 1274.5" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="760.9" y="1159.9" font-size="25.6" font-weight="500" fill="#FFFFFF">왕산면</text>
-<text x="426.6" y="453" font-size="25.6" font-weight="500" fill="#FFFFFF">연곡면</text>
-<text x="1276" y="1278" font-size="25.6" font-weight="500" fill="#FFFFFF">옥계면</text>
-<text x="1236.7" y="948.3" font-size="25.6" font-weight="500" fill="#FFFFFF">강동면</text>
-<text x="690.1" y="778.9" font-size="25.6" font-weight="500" fill="#FFFFFF">성산면</text>
-<text x="791.7" y="457.2" font-size="25.6" font-weight="500" fill="#FFFFFF">사천면</text>
-<text x="679.1" y="212.2" font-size="25.6" font-weight="500" fill="#FFFFFF">주문진읍</text>
-<text x="968.6" y="910" font-size="25.6" font-weight="500" fill="#FFFFFF">구정면</text>
-<text x="900.5" y="571.1" font-size="25.6" font-weight="500" fill="#FFFFFF">경포동</text>
-<text x="1026.7" y="768.2" font-size="25.6" font-weight="500" fill="#FFFFFF">강남동</text>
-<text x="1079.6" y="683.1" font-size="25.6" font-weight="500" fill="#FFFFFF">성덕동</text>
-<text x="921.2" y="699.4" font-size="25.6" font-weight="500" fill="#FFFFFF">홍제동</text>
-<text x="1083.8" y="598.1" font-size="25.6" font-weight="500" fill="#FFFFFF">송정동</text>
+<text  x="760.9" y="1159.9" font-size="25.6" font-weight="500" fill="#FFFFFF">왕산면</text>
+<text  x="426.6" y="453" font-size="25.6" font-weight="500" fill="#FFFFFF">연곡면</text>
+<text  x="1276" y="1278" font-size="25.6" font-weight="500" fill="#FFFFFF">옥계면</text>
+<text  x="1236.7" y="948.3" font-size="25.6" font-weight="500" fill="#FFFFFF">강동면</text>
+<text  x="690.1" y="778.9" font-size="25.6" font-weight="500" fill="#FFFFFF">성산면</text>
+<text  x="791.7" y="457.2" font-size="25.6" font-weight="500" fill="#FFFFFF">사천면</text>
+<text  x="679.1" y="212.2" font-size="25.6" font-weight="500" fill="#FFFFFF">주문진읍</text>
+<text  x="968.6" y="910" font-size="25.6" font-weight="500" fill="#FFFFFF">구정면</text>
+<text  x="900.5" y="571.1" font-size="25.6" font-weight="500" fill="#FFFFFF">경포동</text>
+<text  x="1026.7" y="768.2" font-size="25.6" font-weight="500" fill="#FFFFFF">강남동</text>
+<text  x="1079.6" y="683.1" font-size="25.6" font-weight="500" fill="#FFFFFF">성덕동</text>
+<text  x="921.2" y="699.4" font-size="25.6" font-weight="500" fill="#FFFFFF">홍제동</text>
+<text  x="1083.8" y="598.1" font-size="25.6" font-weight="500" fill="#FFFFFF">송정동</text>
 </g>
 </svg>

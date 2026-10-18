@@ -22,10 +22,10 @@
 <path d="M0 208.2L109.8 393.9 312 285.8 427.9 276.1 543.7 298.9 702.8 421.1 793.9 453.6 825.9 233.9 844.4 237.8 898.7 225.2 925.3 223.7 926.3 244.1 933.6 248.4 963.2 253.3 996.1 262 1057.7 257.7 1089.2 246 1138.7 218.4 1220.6 161.2 1309.9 109.8 1320 103.9 1425.7 51.6 1510.1 0" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="511.7" y="685.3" font-size="25.6" font-weight="500" fill="#FFFFFF">방산면</text>
-<text x="585" y="1302.6" font-size="25.6" font-weight="500" fill="#FFFFFF">양구읍</text>
-<text x="1000.5" y="1523.7" font-size="25.6" font-weight="500" fill="#FFFFFF">국토정중앙면</text>
-<text x="1049" y="791" font-size="25.6" font-weight="500" fill="#FFFFFF">동면</text>
-<text x="1308.4" y="366.8" font-size="25.6" font-weight="500" fill="#FFFFFF">해안면</text>
+<text  x="511.7" y="685.3" font-size="25.6" font-weight="500" fill="#FFFFFF">방산면</text>
+<text  x="585" y="1302.6" font-size="25.6" font-weight="500" fill="#FFFFFF">양구읍</text>
+<text  x="1000.5" y="1523.7" font-size="25.6" font-weight="500" fill="#FFFFFF">국토정중앙면</text>
+<text  x="1049" y="791" font-size="25.6" font-weight="500" fill="#FFFFFF">동면</text>
+<text  x="1308.4" y="366.8" font-size="25.6" font-weight="500" fill="#FFFFFF">해안면</text>
 </g>
 </svg>

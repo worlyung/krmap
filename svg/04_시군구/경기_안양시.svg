@@ -58,35 +58,35 @@
 <path d="M1536.3 0L1514 12.9 1406.6 133.3 1366.5 134.7 1339.3 144.7 1284.8 164.8 1277.7 240.7 1168.8 275.1 1135.9 265 1080 275.1 1037 298 992.6 292.2 958.3 313.7 948.2 247.8 916.7 204.9 856.6 166.2 862.3 126.1 833.7 88.9 736.3 184.8 697.6 250.7 661.8 247.8 613.1 288 587.3 340.9 524.3 342.4 492.8 306.6 474.2 289.4 461.3 277.9 446.9 173.4 419.7 154.7 395.4 47.3 339.5 51.6 304.7 0M304.7 0L339.5 51.6 395.4 47.3 419.7 154.7 446.9 173.4 461.3 277.9 474.2 289.4 492.8 306.6 524.3 342.4 587.3 340.9 613.1 288 661.8 247.8 697.6 250.7 736.3 184.8 833.7 88.9 862.3 126.1 856.6 166.2 916.7 204.9 948.2 247.8 958.3 313.7 992.6 292.2 1037 298 1080 275.1 1135.9 265 1168.8 275.1 1277.7 240.7 1284.8 164.8 1339.3 144.7 1366.5 134.7 1406.6 133.3 1514 12.9 1536.3 0" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="785" y="414.6" font-size="25.6" font-weight="500" fill="#FFFFFF">석수1동</text>
-<text x="315.2" y="984.7" font-size="25.6" font-weight="500" fill="#FFFFFF">호현동</text>
-<text x="502.8" y="1289.8" font-size="25.6" font-weight="500" fill="#FFFFFF">병목안동</text>
-<text x="1064.3" y="671" font-size="25.6" font-weight="500" fill="#FFFFFF">비산3동</text>
-<text x="1290.6" y="721.1" font-size="25.6" font-weight="500" fill="#FFFFFF">관양동</text>
-<text x="475.6" y="606.5" font-size="25.6" font-weight="500" fill="#FFFFFF">석수2동</text>
-<text x="726.2" y="729.7" font-size="25.6" font-weight="500" fill="#FFFFFF">안양2동</text>
-<text x="899.5" y="840" font-size="25.6" font-weight="500" fill="#FFFFFF">비산1동</text>
-<text x="1049.9" y="1176.6" font-size="25.6" font-weight="500" fill="#FFFFFF">호계2동</text>
-<text x="1355" y="891.6" font-size="25.6" font-weight="500" fill="#FFFFFF">인덕원동</text>
-<text x="839.4" y="1076.3" font-size="25.6" font-weight="500" fill="#FFFFFF">안양6동</text>
-<text x="853.7" y="1192.4" font-size="25.6" font-weight="500" fill="#FFFFFF">명학동</text>
-<text x="936.8" y="1049.1" font-size="25.6" font-weight="500" fill="#FFFFFF">안양7동</text>
-<text x="1107.2" y="1348.5" font-size="25.6" font-weight="500" fill="#FFFFFF">호계1동</text>
-<text x="1210.4" y="968.9" font-size="25.6" font-weight="500" fill="#FFFFFF">부림동</text>
-<text x="438.3" y="759.8" font-size="25.6" font-weight="500" fill="#FFFFFF">충훈동</text>
-<text x="1289.1" y="1053.4" font-size="25.6" font-weight="500" fill="#FFFFFF">평안동</text>
-<text x="1236.1" y="1411.5" font-size="25.6" font-weight="500" fill="#FFFFFF">호계3동</text>
-<text x="1280.5" y="1249.6" font-size="25.6" font-weight="500" fill="#FFFFFF">갈산동</text>
-<text x="617.4" y="933.1" font-size="25.6" font-weight="500" fill="#FFFFFF">안양3동</text>
-<text x="739.1" y="1017.6" font-size="25.6" font-weight="500" fill="#FFFFFF">안양5동</text>
-<text x="1330.7" y="1139.4" font-size="25.6" font-weight="500" fill="#FFFFFF">귀인동</text>
-<text x="787.8" y="911.6" font-size="25.6" font-weight="500" fill="#FFFFFF">안양1동</text>
-<text x="1148.8" y="1097.8" font-size="25.6" font-weight="500" fill="#FFFFFF">범계동</text>
-<text x="1438.1" y="997.6" font-size="25.6" font-weight="500" fill="#FFFFFF">평촌동</text>
-<text x="574.4" y="820" font-size="25.6" font-weight="500" fill="#FFFFFF">박달동</text>
-<text x="1035.6" y="970.4" font-size="25.6" font-weight="500" fill="#FFFFFF">부흥동</text>
-<text x="943.9" y="947.4" font-size="25.6" font-weight="500" fill="#FFFFFF">비산2동</text>
-<text x="1092.9" y="933.1" font-size="25.6" font-weight="500" fill="#FFFFFF">달안동</text>
-<text x="1190.3" y="1195.2" font-size="25.6" font-weight="500" fill="#FFFFFF">신촌동</text>
+<text  x="785" y="414.6" font-size="25.6" font-weight="500" fill="#FFFFFF">석수1동</text>
+<text  x="315.2" y="984.7" font-size="25.6" font-weight="500" fill="#FFFFFF">호현동</text>
+<text  x="502.8" y="1289.8" font-size="25.6" font-weight="500" fill="#FFFFFF">병목안동</text>
+<text  x="1064.3" y="671" font-size="25.6" font-weight="500" fill="#FFFFFF">비산3동</text>
+<text  x="1290.6" y="721.1" font-size="25.6" font-weight="500" fill="#FFFFFF">관양동</text>
+<text  x="475.6" y="606.5" font-size="25.6" font-weight="500" fill="#FFFFFF">석수2동</text>
+<text  x="726.2" y="729.7" font-size="25.6" font-weight="500" fill="#FFFFFF">안양2동</text>
+<text  x="899.5" y="840" font-size="25.6" font-weight="500" fill="#FFFFFF">비산1동</text>
+<text  x="1049.9" y="1176.6" font-size="25.6" font-weight="500" fill="#FFFFFF">호계2동</text>
+<text  x="1355" y="891.6" font-size="25.6" font-weight="500" fill="#FFFFFF">인덕원동</text>
+<text  x="839.4" y="1076.3" font-size="25.6" font-weight="500" fill="#FFFFFF">안양6동</text>
+<text  x="853.7" y="1192.4" font-size="25.6" font-weight="500" fill="#FFFFFF">명학동</text>
+<text  x="936.8" y="1049.1" font-size="25.6" font-weight="500" fill="#FFFFFF">안양7동</text>
+<text  x="1107.2" y="1348.5" font-size="25.6" font-weight="500" fill="#FFFFFF">호계1동</text>
+<text  x="1210.4" y="968.9" font-size="25.6" font-weight="500" fill="#FFFFFF">부림동</text>
+<text  x="438.3" y="759.8" font-size="25.6" font-weight="500" fill="#FFFFFF">충훈동</text>
+<text  x="1289.1" y="1053.4" font-size="25.6" font-weight="500" fill="#FFFFFF">평안동</text>
+<text  x="1236.1" y="1411.5" font-size="25.6" font-weight="500" fill="#FFFFFF">호계3동</text>
+<text  x="1280.5" y="1249.6" font-size="25.6" font-weight="500" fill="#FFFFFF">갈산동</text>
+<text  x="617.4" y="933.1" font-size="25.6" font-weight="500" fill="#FFFFFF">안양3동</text>
+<text  x="739.1" y="1017.6" font-size="25.6" font-weight="500" fill="#FFFFFF">안양5동</text>
+<text  x="1330.7" y="1139.4" font-size="25.6" font-weight="500" fill="#FFFFFF">귀인동</text>
+<text  x="787.8" y="911.6" font-size="25.6" font-weight="500" fill="#FFFFFF">안양1동</text>
+<text  x="1148.8" y="1097.8" font-size="25.6" font-weight="500" fill="#FFFFFF">범계동</text>
+<text  x="1438.1" y="997.6" font-size="25.6" font-weight="500" fill="#FFFFFF">평촌동</text>
+<text  x="574.4" y="820" font-size="25.6" font-weight="500" fill="#FFFFFF">박달동</text>
+<text  x="1035.6" y="970.4" font-size="25.6" font-weight="500" fill="#FFFFFF">부흥동</text>
+<text  x="943.9" y="947.4" font-size="25.6" font-weight="500" fill="#FFFFFF">비산2동</text>
+<text  x="1092.9" y="933.1" font-size="25.6" font-weight="500" fill="#FFFFFF">달안동</text>
+<text  x="1190.3" y="1195.2" font-size="25.6" font-weight="500" fill="#FFFFFF">신촌동</text>
 </g>
 </svg>

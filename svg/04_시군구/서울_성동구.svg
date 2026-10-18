@@ -38,25 +38,23 @@
 <g id="대상">
 <path d="M353.6 1127.4L219.6 1023.2 100.6 1000.9 85.7 881.8 132.8 770.2 187.4 718.2 256.8 633.8 281.6 552 326.3 514.8 323.8 512.3 400.7 502.4 410.6 423 475.1 361 485 306.4 418.1 301.5 413.1 120.4 566.9 172.5 609 165.1 700.8 100.6 824.8 85.7 966.2 175 1144.7 343.7 1164.6 363.5 1286.1 405.7 1479.6 447.8 1514.3 462.7 1377.9 770.2 1298.5 938.9 1273.7 993.5 1134.8 1296 971.1 1201.8 919 1162.1 780.2 1107.5 683.4 1110 368.5 1115 353.6 1127.4" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
-<g id="시도경계">
-</g>
 <g id="지명" text-anchor="middle">
-<text x="1196.8" y="563.7" font-size="25.6" font-weight="500" fill="#FFFFFF">용답동</text>
-<text x="842.2" y="987.8" font-size="25.6" font-weight="500" fill="#FFFFFF">성수1가1동</text>
-<text x="194.8" y="918.3" font-size="25.6" font-weight="500" fill="#FFFFFF">옥수동</text>
-<text x="1115" y="1064.7" font-size="25.6" font-weight="500" fill="#FFFFFF">성수2가1동</text>
-<text x="896.7" y="521.5" font-size="25.6" font-weight="500" fill="#FFFFFF">사근동</text>
-<text x="809.9" y="253.7" font-size="25.6" font-weight="500" fill="#FFFFFF">마장동</text>
-<text x="1211.7" y="873.7" font-size="25.6" font-weight="500" fill="#FFFFFF">성수2가3동</text>
-<text x="924" y="747.2" font-size="25.6" font-weight="500" fill="#FFFFFF">성수1가2동</text>
-<text x="442.9" y="863.8" font-size="25.6" font-weight="500" fill="#FFFFFF">금호4가동</text>
-<text x="539.6" y="256.1" font-size="25.6" font-weight="500" fill="#FFFFFF">왕십리도선동</text>
-<text x="333.7" y="677.8" font-size="25.6" font-weight="500" fill="#FFFFFF">금호2·3가동</text>
-<text x="678.5" y="675.3" font-size="25.6" font-weight="500" fill="#FFFFFF">응봉동</text>
-<text x="1358" y="707.5" font-size="25.6" font-weight="500" fill="#FFFFFF">송정동</text>
-<text x="703.3" y="529" font-size="25.6" font-weight="500" fill="#FFFFFF">행당1동</text>
-<text x="554.5" y="531.4" font-size="25.6" font-weight="500" fill="#FFFFFF">행당2동</text>
-<text x="492.5" y="650.5" font-size="25.6" font-weight="500" fill="#FFFFFF">금호1가동</text>
-<text x="524.7" y="390.1" font-size="25.6" font-weight="500" fill="#FFFFFF">왕십리2동</text>
+<text  x="1196.8" y="563.7" font-size="25.6" font-weight="500" fill="#FFFFFF">용답동</text>
+<text  x="842.2" y="987.8" font-size="25.6" font-weight="500" fill="#FFFFFF">성수1가1동</text>
+<text  x="194.8" y="918.3" font-size="25.6" font-weight="500" fill="#FFFFFF">옥수동</text>
+<text  x="1115" y="1064.7" font-size="25.6" font-weight="500" fill="#FFFFFF">성수2가1동</text>
+<text  x="896.7" y="521.5" font-size="25.6" font-weight="500" fill="#FFFFFF">사근동</text>
+<text  x="809.9" y="253.7" font-size="25.6" font-weight="500" fill="#FFFFFF">마장동</text>
+<text  x="1211.7" y="873.7" font-size="25.6" font-weight="500" fill="#FFFFFF">성수2가3동</text>
+<text  x="924" y="747.2" font-size="25.6" font-weight="500" fill="#FFFFFF">성수1가2동</text>
+<text  x="442.9" y="863.8" font-size="25.6" font-weight="500" fill="#FFFFFF">금호4가동</text>
+<text  x="539.6" y="256.1" font-size="25.6" font-weight="500" fill="#FFFFFF">왕십리도선동</text>
+<text  x="333.7" y="677.8" font-size="25.6" font-weight="500" fill="#FFFFFF">금호2·3가동</text>
+<text  x="678.5" y="675.3" font-size="25.6" font-weight="500" fill="#FFFFFF">응봉동</text>
+<text  x="1358" y="707.5" font-size="25.6" font-weight="500" fill="#FFFFFF">송정동</text>
+<text  x="703.3" y="529" font-size="25.6" font-weight="500" fill="#FFFFFF">행당1동</text>
+<text  x="554.5" y="531.4" font-size="25.6" font-weight="500" fill="#FFFFFF">행당2동</text>
+<text  x="492.5" y="650.5" font-size="25.6" font-weight="500" fill="#FFFFFF">금호1가동</text>
+<text  x="524.7" y="390.1" font-size="25.6" font-weight="500" fill="#FFFFFF">왕십리2동</text>
 </g>
 </svg>

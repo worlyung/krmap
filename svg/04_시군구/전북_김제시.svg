@@ -42,24 +42,24 @@
 <path d="M0 615.4L91.2 610.8 134 611.6 170.7 623.5 198 636.1 237.5 635.7 258.1 646 283.4 661.8 290.5 659 304.8 664.6 323 675.3 340.7 696.2 356.6 704.5 381.1 726.7 389.8 737.7 396.1 755.9 393.3 772.9 401.2 787.1 402 798.6 411.1 797 409.5 758.3 402.4 741.3 385.4 709.7 378.3 675.3 398.9 623.5 411.1 604.5 395.3 596.2 372 591 371.2 578.4 341.5 572.1 319.4 557 260.5 531.3 255.7 528.2 218.2 487.8 135.5 434.1 113 432.1 103.1 426.2 91.2 425.4 85.7 415.9 119.7 381.5 128.8 368.8 143 364.1 177.4 357.4 195.2 343.9 209.5 346.3 243.1 328.1 249.4 317.4 300.8 315.8 337.2 322.6 375.1 339.2 370 321 453 326.9 458.6 323.7 491.4 287.4 494.6 270 484.7 253 497.7 220.5 500.1 200.8 566.9 188.9 587.5 180.2 598.5 165.6 613.2 152.5 630.2 123.3 597.4 144.2 566.1 137.9 529.7 136.3 521.8 137.5 493.4 143 465.7 151.7 440.4 162.4 417.5 188.5 407.6 202 389.4 220.5 366.1 214.6 364.9 209.5 288.9 215.4 269.6 208.3 247.4 219.8 228.8 233.6 186.5 217.8 136.7 198 55.7 193.3 50.9 197.6 50.1 217.4 24 242.3 5.4 241.9 0 239.7" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="1297.6" y="996.4" font-size="25.6" font-weight="500" fill="#FFFFFF">금산면</text>
-<text x="1311.8" y="736.7" font-size="25.6" font-weight="500" fill="#FFFFFF">금구면</text>
-<text x="534.5" y="736.7" font-size="25.6" font-weight="500" fill="#FFFFFF">죽산면</text>
-<text x="1086.9" y="447.2" font-size="25.6" font-weight="500" fill="#FFFFFF">용지면</text>
-<text x="433.7" y="411.2" font-size="25.6" font-weight="500" fill="#FFFFFF">진봉면</text>
-<text x="797.8" y="405.3" font-size="25.6" font-weight="500" fill="#FFFFFF">백산면</text>
-<text x="837.8" y="227.4" font-size="25.6" font-weight="500" fill="#FFFFFF">공덕면</text>
-<text x="749.2" y="732.3" font-size="25.6" font-weight="500" fill="#FFFFFF">교월동</text>
-<text x="1074.2" y="881" font-size="25.6" font-weight="500" fill="#FFFFFF">봉남면</text>
-<text x="924.7" y="761.6" font-size="25.6" font-weight="500" fill="#FFFFFF">신풍동</text>
-<text x="1035.9" y="223.4" font-size="25.6" font-weight="500" fill="#FFFFFF">백구면</text>
-<text x="573.2" y="527.5" font-size="25.6" font-weight="500" fill="#FFFFFF">성덕면</text>
-<text x="627.8" y="403.3" font-size="25.6" font-weight="500" fill="#FFFFFF">만경읍</text>
-<text x="702.1" y="872.7" font-size="25.6" font-weight="500" fill="#FFFFFF">부량면</text>
-<text x="674.1" y="211.2" font-size="25.6" font-weight="500" fill="#FFFFFF">청하면</text>
-<text x="300" y="486.4" font-size="25.6" font-weight="500" fill="#FFFFFF">광활면</text>
-<text x="1073" y="661.9" font-size="25.6" font-weight="500" fill="#FFFFFF">황산면</text>
-<text x="944.5" y="567.8" font-size="25.6" font-weight="500" fill="#FFFFFF">검산동</text>
-<text x="793.1" y="574.5" font-size="25.6" font-weight="500" fill="#FFFFFF">요촌동</text>
+<text  x="1297.6" y="996.4" font-size="25.6" font-weight="500" fill="#FFFFFF">금산면</text>
+<text  x="1311.8" y="736.7" font-size="25.6" font-weight="500" fill="#FFFFFF">금구면</text>
+<text  x="534.5" y="736.7" font-size="25.6" font-weight="500" fill="#FFFFFF">죽산면</text>
+<text  x="1086.9" y="447.2" font-size="25.6" font-weight="500" fill="#FFFFFF">용지면</text>
+<text  x="433.7" y="411.2" font-size="25.6" font-weight="500" fill="#FFFFFF">진봉면</text>
+<text  x="797.8" y="405.3" font-size="25.6" font-weight="500" fill="#FFFFFF">백산면</text>
+<text  x="837.8" y="227.4" font-size="25.6" font-weight="500" fill="#FFFFFF">공덕면</text>
+<text  x="749.2" y="732.3" font-size="25.6" font-weight="500" fill="#FFFFFF">교월동</text>
+<text  x="1074.2" y="881" font-size="25.6" font-weight="500" fill="#FFFFFF">봉남면</text>
+<text  x="924.7" y="761.6" font-size="25.6" font-weight="500" fill="#FFFFFF">신풍동</text>
+<text  x="1035.9" y="223.4" font-size="25.6" font-weight="500" fill="#FFFFFF">백구면</text>
+<text  x="573.2" y="527.5" font-size="25.6" font-weight="500" fill="#FFFFFF">성덕면</text>
+<text  x="627.8" y="403.3" font-size="25.6" font-weight="500" fill="#FFFFFF">만경읍</text>
+<text  x="702.1" y="872.7" font-size="25.6" font-weight="500" fill="#FFFFFF">부량면</text>
+<text  x="674.1" y="211.2" font-size="25.6" font-weight="500" fill="#FFFFFF">청하면</text>
+<text  x="300" y="486.4" font-size="25.6" font-weight="500" fill="#FFFFFF">광활면</text>
+<text  x="1073" y="661.9" font-size="25.6" font-weight="500" fill="#FFFFFF">황산면</text>
+<text  x="944.5" y="567.8" font-size="25.6" font-weight="500" fill="#FFFFFF">검산동</text>
+<text  x="793.1" y="574.5" font-size="25.6" font-weight="500" fill="#FFFFFF">요촌동</text>
 </g>
 </svg>

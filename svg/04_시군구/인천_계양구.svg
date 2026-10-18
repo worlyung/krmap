@@ -35,17 +35,17 @@
 <path d="M1600 926.3L1576.8 947.5 1576.8 991.1 1517.2 1017.3 1483.8 889.4 1428.5 856 1303.6 842.9 1274.5 802.2 1228 815.3 1206.2 771.7 1174.2 755.7 1158.2 720.8 1162.6 678.7 1246.9 667 1232.3 645.2 1280.3 597.3 1297.7 524.6 1369 462.1 1374.8 406.9 1434.4 376.4 1466.3 344.4 1473.6 300.8 1514.3 280.5 1556.4 238.3 1573.9 180.2 1600 168.8M1600 145.8L1560.8 39.2 1566.6 0M537.5 0L546.4 11.6 594.4 42.1 627.8 90.1 635.1 104.6 685.9 90.1 761.5 130.8 789.1 87.2 873.4 85.7 908.3 190.4 953.3 242.7 951.9 286.3 976.6 308.1 1014.4 295 1052.1 225.2 1121.9 223.8 1175.7 174.4 1252.7 220.9 1339.9 233.9 1390.8 263 1428.5 215.1 1514.3 280.5 1473.6 300.8 1466.3 344.4 1434.4 376.4 1374.8 406.9 1369 462.1 1297.7 524.6 1280.3 597.3 1232.3 645.2 1246.9 667 1162.6 678.7 1158.2 720.8 1121.9 838.5 1097.2 943.1 1088.5 982.4 1084.1 1018.7 1078.3 1203.3 1084.8 1292M1084.8 1292L1078.3 1203.3 1084.1 1018.7 1088.5 982.4 1097.2 943.1 1121.9 838.5 1158.2 720.8 1174.2 755.7 1206.2 771.7 1228 815.3 1274.5 802.2 1303.6 842.9 1428.5 856 1483.8 889.4 1517.2 1017.3 1576.8 991.1 1576.8 947.5 1600 926.3M1566.6 0L1560.8 39.2 1600 145.8M1600 168.8L1573.9 180.2 1556.4 238.3 1514.3 280.5 1428.5 215.1 1390.8 263 1339.9 233.9 1252.7 220.9 1175.7 174.4 1121.9 223.8 1052.1 225.2 1014.4 295 976.6 308.1 951.9 286.3 953.3 242.7 908.3 190.4 873.4 85.7 789.1 87.2 761.5 130.8 685.9 90.1 635.1 104.6 627.8 90.1 594.4 42.1 546.4 11.6 537.5 0" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="624.9" y="462.6" font-size="25.6" font-weight="500" fill="#FFFFFF">계양1동</text>
-<text x="1063.8" y="565.8" font-size="25.6" font-weight="500" fill="#FFFFFF">계양3동</text>
-<text x="794.9" y="809.9" font-size="25.6" font-weight="500" fill="#FFFFFF">계양2동</text>
-<text x="966.4" y="1102.1" font-size="25.6" font-weight="500" fill="#FFFFFF">작전서운동</text>
-<text x="226.7" y="1097.7" font-size="25.6" font-weight="500" fill="#FFFFFF">효성2동</text>
-<text x="417.1" y="1048.3" font-size="25.6" font-weight="500" fill="#FFFFFF">효성1동</text>
-<text x="555.1" y="818.7" font-size="25.6" font-weight="500" fill="#FFFFFF">계산2동</text>
-<text x="611.8" y="955.3" font-size="25.6" font-weight="500" fill="#FFFFFF">계산1동</text>
-<text x="592.9" y="1071.5" font-size="25.6" font-weight="500" fill="#FFFFFF">작전2동</text>
-<text x="812.4" y="987.2" font-size="25.6" font-weight="500" fill="#FFFFFF">계산4동</text>
-<text x="683" y="1154.4" font-size="25.6" font-weight="500" fill="#FFFFFF">작전1동</text>
-<text x="710.6" y="969.8" font-size="25.6" font-weight="500" fill="#FFFFFF">계산3동</text>
+<text  x="624.9" y="462.6" font-size="25.6" font-weight="500" fill="#FFFFFF">계양1동</text>
+<text  x="1063.8" y="565.8" font-size="25.6" font-weight="500" fill="#FFFFFF">계양3동</text>
+<text  x="794.9" y="809.9" font-size="25.6" font-weight="500" fill="#FFFFFF">계양2동</text>
+<text  x="966.4" y="1102.1" font-size="25.6" font-weight="500" fill="#FFFFFF">작전서운동</text>
+<text  x="226.7" y="1097.7" font-size="25.6" font-weight="500" fill="#FFFFFF">효성2동</text>
+<text  x="417.1" y="1048.3" font-size="25.6" font-weight="500" fill="#FFFFFF">효성1동</text>
+<text  x="555.1" y="818.7" font-size="25.6" font-weight="500" fill="#FFFFFF">계산2동</text>
+<text  x="611.8" y="955.3" font-size="25.6" font-weight="500" fill="#FFFFFF">계산1동</text>
+<text  x="592.9" y="1071.5" font-size="25.6" font-weight="500" fill="#FFFFFF">작전2동</text>
+<text  x="812.4" y="987.2" font-size="25.6" font-weight="500" fill="#FFFFFF">계산4동</text>
+<text  x="683" y="1154.4" font-size="25.6" font-weight="500" fill="#FFFFFF">작전1동</text>
+<text  x="710.6" y="969.8" font-size="25.6" font-weight="500" fill="#FFFFFF">계산3동</text>
 </g>
 </svg>

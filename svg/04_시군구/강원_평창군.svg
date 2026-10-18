@@ -35,13 +35,13 @@
 <path d="M0 2032L4.2 2028.7 21.9 2028.1 25.2 2035 33 2039.2 40.6 2036.5 41.8 2051.2 53.2 2056 60.4 2070M60.4 2070L53.2 2056 41.8 2051.2 40.6 2036.5 33 2039.2 25.2 2035 21.9 2028.1 4.2 2028.7 0 2032" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="940.5" y="843.9" font-size="25.6" font-weight="500" fill="#FFFFFF">진부면</text>
-<text x="1272.4" y="547.6" font-size="25.6" font-weight="500" fill="#FFFFFF">대관령면</text>
-<text x="377.5" y="735.1" font-size="25.6" font-weight="500" fill="#FFFFFF">봉평면</text>
-<text x="649.9" y="1236.8" font-size="25.6" font-weight="500" fill="#FFFFFF">대화면</text>
-<text x="478.8" y="1616.4" font-size="25.6" font-weight="500" fill="#FFFFFF">평창읍</text>
-<text x="698.3" y="706.6" font-size="25.6" font-weight="500" fill="#FFFFFF">용평면</text>
-<text x="280.1" y="1334.2" font-size="25.6" font-weight="500" fill="#FFFFFF">방림면</text>
-<text x="816.1" y="1731.6" font-size="25.6" font-weight="500" fill="#FFFFFF">미탄면</text>
+<text  x="940.5" y="843.9" font-size="25.6" font-weight="500" fill="#FFFFFF">진부면</text>
+<text  x="1272.4" y="547.6" font-size="25.6" font-weight="500" fill="#FFFFFF">대관령면</text>
+<text  x="377.5" y="735.1" font-size="25.6" font-weight="500" fill="#FFFFFF">봉평면</text>
+<text  x="649.9" y="1236.8" font-size="25.6" font-weight="500" fill="#FFFFFF">대화면</text>
+<text  x="478.8" y="1616.4" font-size="25.6" font-weight="500" fill="#FFFFFF">평창읍</text>
+<text  x="698.3" y="706.6" font-size="25.6" font-weight="500" fill="#FFFFFF">용평면</text>
+<text  x="280.1" y="1334.2" font-size="25.6" font-weight="500" fill="#FFFFFF">방림면</text>
+<text  x="816.1" y="1731.6" font-size="25.6" font-weight="500" fill="#FFFFFF">미탄면</text>
 </g>
 </svg>

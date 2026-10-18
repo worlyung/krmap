@@ -45,9 +45,23 @@ for (const id of Object.keys(D.si)) {
   write("04_시군구", nm, R.buildScene(D, { target: { lv: "si", id }, inner: "emd", depth: 0, nbLevel: "si" }));
   write("05_시군구_주변", `${nm}_주변`, R.buildScene(D, { target: { lv: "si", id }, depth: 1, nbLevel: "si" }));
 }
+// 타일 지도: 전국 시도·시군구, 시도별 시군구 (지역 하나 = 같은 크기 칸 하나)
+const tile = (opts) => R.buildScene(D, Object.assign({ distinct: true, width: 1400 }, opts));
+for (const t of ["square", "hex"]) {
+  const nm = t === "square" ? "네모" : "육각";
+  write("06_타일", `전국_시도_${nm}`, tile({ inner: "sido", tiles: t }));
+  write("06_타일", `전국_시군구_${nm}`, tile({ inner: "si", tiles: t }));
+}
+for (const id of sidoIds) {
+  const ids = Object.keys(D.si).filter((k) => D.si[k].sido === id);
+  if (ids.length > 1) write("06_타일", `${D.sido[id].nm}_시군구_육각`, tile({ pick: { lv: "si", ids, fit: true, hideOthers: true }, tiles: "hex" }));
+}
+
 // 17개 시도(광주·전남 나눔) 판: 전국 시도 지도와 광주·전남 지도만 따로 둔다
 if (R.useSido17(D, true)) {
   write("01_전국", "전국_시도_17개", R.buildScene(D, { inner: "sido", width: 1200, shortSido: true }));
+  write("06_타일", "전국_시도_17개_네모", tile({ inner: "sido", tiles: "square" }));
+  write("06_타일", "전국_시도_17개_육각", tile({ inner: "sido", tiles: "hex" }));
   for (const id of Object.keys(D.sido17)) {
     const nm = D.sido[id].nm;
     write("02_시도", nm, R.buildScene(D, { target: { lv: "sido", id }, inner: "si", depth: 0, nbLevel: "si" }));

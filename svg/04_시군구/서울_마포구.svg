@@ -45,21 +45,21 @@
 <path d="M0 323.3L60.6 372.6 85.7 396.3 93.1 362.3 192.2 331.2 233.6 331.2 273.5 306.1 344.5 282.4 393.3 282.4 388.9 196.6 436.2 106.4 461.3 85.7 502.8 82.8 526.4 124.2 653.6 124.2 692 103.5 680.2 57.6 700.9 31 706.6 0M706.6 0L700.9 31 680.2 57.6 692 103.5 653.6 124.2 526.4 124.2 502.8 82.8 461.3 85.7 436.2 106.4 388.9 196.6 393.3 282.4 344.5 282.4 273.5 306.1 233.6 331.2 192.2 331.2 93.1 362.3 85.7 396.3 60.6 372.6 0 323.3" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text x="403.7" y="457.2" font-size="25.6" font-weight="500" fill="#FFFFFF">상암동</text>
-<text x="717.2" y="466.1" font-size="25.6" font-weight="500" fill="#FFFFFF">성산2동</text>
-<text x="933.1" y="707.2" font-size="25.6" font-weight="500" fill="#FFFFFF">서교동</text>
-<text x="789.6" y="813.7" font-size="25.6" font-weight="500" fill="#FFFFFF">합정동</text>
-<text x="1008.5" y="841.8" font-size="25.6" font-weight="500" fill="#FFFFFF">서강동</text>
-<text x="665.4" y="732.3" font-size="25.6" font-weight="500" fill="#FFFFFF">망원1동</text>
-<text x="1455.1" y="781.1" font-size="25.6" font-weight="500" fill="#FFFFFF">공덕동</text>
-<text x="850.3" y="574.1" font-size="25.6" font-weight="500" fill="#FFFFFF">성산1동</text>
-<text x="1230.3" y="727.9" font-size="25.6" font-weight="500" fill="#FFFFFF">대흥동</text>
-<text x="1159.4" y="828.4" font-size="25.6" font-weight="500" fill="#FFFFFF">신수동</text>
-<text x="1237.7" y="906.8" font-size="25.6" font-weight="500" fill="#FFFFFF">용강동</text>
-<text x="1391.5" y="699.8" font-size="25.6" font-weight="500" fill="#FFFFFF">아현동</text>
-<text x="712.7" y="609.6" font-size="25.6" font-weight="500" fill="#FFFFFF">망원2동</text>
-<text x="1341.3" y="948.2" font-size="25.6" font-weight="500" fill="#FFFFFF">도화동</text>
-<text x="983.4" y="553.4" font-size="25.6" font-weight="500" fill="#FFFFFF">연남동</text>
-<text x="1308.7" y="785.6" font-size="25.6" font-weight="500" fill="#FFFFFF">염리동</text>
+<text  x="403.7" y="457.2" font-size="25.6" font-weight="500" fill="#FFFFFF">상암동</text>
+<text  x="717.2" y="466.1" font-size="25.6" font-weight="500" fill="#FFFFFF">성산2동</text>
+<text  x="933.1" y="707.2" font-size="25.6" font-weight="500" fill="#FFFFFF">서교동</text>
+<text  x="789.6" y="813.7" font-size="25.6" font-weight="500" fill="#FFFFFF">합정동</text>
+<text  x="1008.5" y="841.8" font-size="25.6" font-weight="500" fill="#FFFFFF">서강동</text>
+<text  x="665.4" y="732.3" font-size="25.6" font-weight="500" fill="#FFFFFF">망원1동</text>
+<text  x="1455.1" y="781.1" font-size="25.6" font-weight="500" fill="#FFFFFF">공덕동</text>
+<text  x="850.3" y="574.1" font-size="25.6" font-weight="500" fill="#FFFFFF">성산1동</text>
+<text  x="1230.3" y="727.9" font-size="25.6" font-weight="500" fill="#FFFFFF">대흥동</text>
+<text  x="1159.4" y="828.4" font-size="25.6" font-weight="500" fill="#FFFFFF">신수동</text>
+<text  x="1237.7" y="906.8" font-size="25.6" font-weight="500" fill="#FFFFFF">용강동</text>
+<text  x="1391.5" y="699.8" font-size="25.6" font-weight="500" fill="#FFFFFF">아현동</text>
+<text  x="712.7" y="609.6" font-size="25.6" font-weight="500" fill="#FFFFFF">망원2동</text>
+<text  x="1341.3" y="948.2" font-size="25.6" font-weight="500" fill="#FFFFFF">도화동</text>
+<text  x="983.4" y="553.4" font-size="25.6" font-weight="500" fill="#FFFFFF">연남동</text>
+<text  x="1308.7" y="785.6" font-size="25.6" font-weight="500" fill="#FFFFFF">염리동</text>
 </g>
 </svg>

@@ -140,7 +140,7 @@ node tools/krmap.mjs stats --in 경기도 --unit 시군구 --indicators pop,old6
 
 - 파일은 기본으로 `out/` 에 저장됩니다(git 에 올라가지 않음). 모든 명령에 `--json` 을 붙이면 결과가 JSON 입니다.
 - 전체 옵션은 `node tools/krmap.mjs help`. `npm link` 를 하면 `krmap` 으로 바로 부릅니다.
-- PNG 의 한글은 컴퓨터에 있는 글꼴(맑은 고딕 → 애플 SD 고딕 → Noto Sans CJK → 나눔고딕)로 그립니다. 한글 글꼴이 없는 서버는 `--font 글꼴.ttf`.
+- 글꼴은 **프리텐다드**(Pretendard)입니다. PNG 는 `npm install` 로 함께 받는 프리텐다드로 그려서 어느 컴퓨터에서 만들어도 같고, 다른 글꼴을 쓰려면 `--font 글꼴.ttf`.
 
 설정(spec) 예:
 
@@ -201,13 +201,13 @@ args = ["/절대/경로/tools/mcp-server.mjs"]
 
 ### 예시 그림 다시 만들기
 
-맨 위 그림 세 장은 이렇게 만들었습니다 (파일 이름은 제목으로 저장됩니다).
+맨 위 그림 세 장은 이렇게 만들었습니다.
 
 ```bash
-K="node tools/krmap.mjs render --format png --width 1000 --png-scale 1 --background --aspect 4:3 --out docs/images"
-$K --region 대전광역시 --stat old60R --stat-labels old60R --title "대전과 주변 시군" --subtitle "60세 이상 인구 비율" --source --theme 코랄
-$K --national 시군구 --stat youngR --labels none --title "전국 시군구 20~39세 비율" --source
-$K --regions 경기도 --unit 시군구 --layout 육각 --stat yoyR --palette diverge --title "경기도 시군 1년 인구 증감률"
+K="node tools/krmap.mjs render --format png --width 1000 --png-scale 1 --background --aspect 4:3"
+$K --out docs/images/around.png --region 대전광역시 --stat old60R --stat-labels old60R --title "대전과 주변 시군" --subtitle "60세 이상 인구 비율" --source --theme 코랄
+$K --out docs/images/national.png --national 시군구 --stat youngR --labels none --title "전국 시군구 20~39세 비율" --source
+$K --out docs/images/tiles.png --regions 경기도 --unit 시군구 --layout 육각 --stat yoyR --palette diverge --title "경기도 시군 1년 인구 증감률"
 ```
 
 ---
@@ -260,4 +260,5 @@ AGENTS.md            Codex 등 에이전트 안내
 - **인구 통계**: 행정안전부 주민등록 인구통계(2026년 7월말, 거주자 기준). 원본 CSV 는 [SimpleisNice/korea-population-dashboard](https://github.com/SimpleisNice/korea-population-dashboard) 에 공개된 사본을 썼습니다.
 - **주소 검색**: © OpenStreetMap 기여자 (Nominatim).
 - `web/vendor/pptxgen.bundle.js`: [PptxGenJS](https://github.com/gitbrent/PptxGenJS) 4.0.1 (MIT).
+- 글꼴: [Pretendard](https://github.com/orioncactus/pretendard) 1.3.9 (SIL OFL 1.1, `web/vendor/fonts/`).
 - 단순화한 경계라 실제와 수십 m 차이가 날 수 있습니다. 측량 · 법적 용도로는 쓰지 마세요.

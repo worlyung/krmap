@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1676" viewBox="0 0 1600 1676" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1676" viewBox="0 0 1600 1676" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>인천광역시 제물포구</title>
 <g id="배경">
 <path d="M73.4 81.6L0 74.8 0 22.4 36.6 14Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -37,22 +37,22 @@
 <path d="M34.6 1676L32.5 1508.2 357.9 1647.4 413.2 1649.4 413.2 1583.9 456.1 1477.5 474.6 1405.8 366.1 1340.3 411.1 1256.4 517.5 1315.8 548.2 1256.4 396.8 1180.7 454.1 1066.1 413.2 1047.7 235.1 1389.5 165.5 1389.5 153.2 1321.9 89.8 1321.9 91.8 1111.1 153.2 1098.8 100 1012.9 163.5 1012.9 253.5 961.7 220.8 916.7 124.6 978.1 106.1 924.9 100 812.3 216.7 773.4 310.8 795.9 282.2 896.2 443.9 845 654.7 951.5 675.1 924.9 581 859.4 482.8 810.2 480.7 724.3 517.5 675.1 505.3 669 450 513.5 407 527.8 402.9 691.5 368.1 736.6 282.2 773.4 222.8 759.1 145 628.1 183.9 505.3 237.1 409.1 341.5 302.6 374.3 290.4 405 378.4 308.8 415.2 319 441.8 529.8 366.1 437.7 366.1 405 278.1 521.6 224.9 703.8 163.5 716.1 208.5 808.2 274 726.3 149.1 810.2 143 967.8 89.8 971.9 16.1 968.1 0M767.4 0L767.3 5.9 714 57 308.8 63.2 308.3 0M0 22.4L36.6 14 73.4 81.6 0 74.8" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="574.9" y="1061" font-size="25.6" font-weight="500" fill="#FFFFFF">연안동</text>
-<text  x="675.1" y="1443.7" font-size="25.6" font-weight="500" fill="#FFFFFF">신흥동</text>
-<text  x="282.2" y="625" font-size="25.6" font-weight="500" fill="#FFFFFF">개항동</text>
-<text  x="965.8" y="250.4" font-size="25.6" font-weight="500" fill="#FFFFFF">송현3동</text>
-<text  x="640.4" y="749.9" font-size="25.6" font-weight="500" fill="#FFFFFF">신포동</text>
-<text  x="593.3" y="303.7" font-size="25.6" font-weight="500" fill="#FFFFFF">만석동</text>
-<text  x="1242.1" y="336.4" font-size="25.6" font-weight="500" fill="#FFFFFF">송림4동</text>
-<text  x="775.4" y="328.2" font-size="25.6" font-weight="500" fill="#FFFFFF">화수2동</text>
-<text  x="775.4" y="600.4" font-size="25.6" font-weight="500" fill="#FFFFFF">동인천동</text>
-<text  x="1113.2" y="381.4" font-size="25.6" font-weight="500" fill="#FFFFFF">송림6동</text>
-<text  x="1098.8" y="616.8" font-size="25.6" font-weight="500" fill="#FFFFFF">송림3·5동</text>
-<text  x="869.6" y="516.5" font-size="25.6" font-weight="500" fill="#FFFFFF">송현1·2동</text>
-<text  x="980.1" y="649.6" font-size="25.6" font-weight="500" fill="#FFFFFF">금창동</text>
-<text  x="951.5" y="741.7" font-size="25.6" font-weight="500" fill="#FFFFFF">도원동</text>
-<text  x="857.3" y="684.4" font-size="25.6" font-weight="500" fill="#FFFFFF">율목동</text>
-<text  x="1002.6" y="541.1" font-size="25.6" font-weight="500" fill="#FFFFFF">송림2동</text>
-<text  x="926.9" y="577.9" font-size="25.6" font-weight="500" fill="#FFFFFF">송림1동</text>
+<text  x="574.9" y="1060.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">연안동</text>
+<text  x="675.1" y="1443.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">신흥동</text>
+<text  x="282.2" y="624.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">개항동</text>
+<text  x="965.8" y="250.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">송현3동</text>
+<text  x="640.4" y="749.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">신포동</text>
+<text  x="593.3" y="303.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">만석동</text>
+<text  x="1242.1" y="336.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">송림4동</text>
+<text  x="775.4" y="328" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">화수2동</text>
+<text  x="775.4" y="600.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">동인천동</text>
+<text  x="1113.2" y="381.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">송림6동</text>
+<text  x="1098.8" y="616.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">송림3·5동</text>
+<text  x="869.6" y="516.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">송현1·2동</text>
+<text  x="980.1" y="649.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">금창동</text>
+<text  x="951.5" y="741.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">도원동</text>
+<text  x="857.3" y="684.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">율목동</text>
+<text  x="1002.6" y="540.9" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">송림2동</text>
+<text  x="926.9" y="577.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">송림1동</text>
 </g>
 </svg>

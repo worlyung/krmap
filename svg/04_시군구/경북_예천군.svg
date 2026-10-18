@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2159" viewBox="0 0 1600 2159" font-family="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2159" viewBox="0 0 1600 2159" font-family="Pretendard,'Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','Noto Sans KR','Noto Sans CJK KR',sans-serif">
 <title>경상북도 예천군</title>
 <g id="배경">
 <path d="M17.5 43.4L0 54.9 0 59.5 2.9 64.6 0 80 0 95.1 4.2 106 13.5 113.5 9.5 127.1 0 128.7 0 0 29 0 28.5 6.4 22.7 13.9Z" fill="#EDF0F4" fill-rule="evenodd"></path>
@@ -37,17 +37,17 @@
 <path d="M802.7 0L817.8 21.4 841.6 45.2 837.2 55.3 835 88.4 843.4 115.7 834.1 142.1 813.9 170.7 785.7 189.2 782.2 221 776 237.7 752.6 263.3 750.9 281.8 733.3 300.3 703.3 301.6 653.1 294.5 628.9 281.8 580.4 289.2 570.7 302.9 548.3 320.5 540.8 334.6 521.4 354.9 506 355.3 480.9 338.1 472.9 313.5 461.9 305.5 433.7 297.2 402.9 283.1 393.2 276 351.4 284 324.5 278.2 320.1 247 309.9 238.6 300.7 220.5 292.3 219.6 280.4 221 272.9 206 244.8 191.9 218.8 150 206.4 142.6 196.7 101.1 186.6 84 166.8 81.8 135.5 67.2 115.7 47.4 68.1 32.9 39 18.3 28.5 6.4 22.7 13.9 17.5 43.4 0 54.9M0 59.5L2.9 64.6 0 80M0 95.1L4.2 106 13.5 113.5 9.5 127.1 0 128.7M0 128.7L9.5 127.1 13.5 113.5 4.2 106 0 95.1M0 80L2.9 64.6 0 59.5M0 54.9L17.5 43.4 22.7 13.9 28.5 6.4 39 18.3 68.1 32.9 115.7 47.4 135.5 67.2 166.8 81.8 186.6 84 196.7 101.1 206.4 142.6 218.8 150 244.8 191.9 272.9 206 280.4 221 292.3 219.6 300.7 220.5 309.9 238.6 320.1 247 324.5 278.2 351.4 284 393.2 276 402.9 283.1 433.7 297.2 461.9 305.5 472.9 313.5 480.9 338.1 506 355.3 521.4 354.9 540.8 334.6 548.3 320.5 570.7 302.9 580.4 289.2 628.9 281.8 653.1 294.5 703.3 301.6 733.3 300.3 750.9 281.8 752.6 263.3 776 237.7 782.2 221 785.7 189.2 813.9 170.7 834.1 142.1 843.4 115.7 835 88.4 837.2 55.3 841.6 45.2 817.8 21.4 802.7 0" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
 <g id="지명" text-anchor="middle">
-<text  x="653.1" y="1568" font-size="25.6" font-weight="500" fill="#FFFFFF">지보면</text>
-<text  x="572.5" y="792.3" font-size="25.6" font-weight="500" fill="#FFFFFF">용문면</text>
-<text  x="654.4" y="434.6" font-size="25.6" font-weight="500" fill="#FFFFFF">효자면</text>
-<text  x="1320" y="963.6" font-size="25.6" font-weight="500" fill="#FFFFFF">보문면</text>
-<text  x="1090.9" y="698.4" font-size="25.6" font-weight="500" fill="#FFFFFF">감천면</text>
-<text  x="286.6" y="1754.7" font-size="25.6" font-weight="500" fill="#FFFFFF">풍양면</text>
-<text  x="892.3" y="1356.5" font-size="25.6" font-weight="500" fill="#FFFFFF">호명읍</text>
-<text  x="863.2" y="1075.9" font-size="25.6" font-weight="500" fill="#FFFFFF">예천읍</text>
-<text  x="563.7" y="1125.3" font-size="25.6" font-weight="500" fill="#FFFFFF">유천면</text>
-<text  x="655.7" y="1297.1" font-size="25.6" font-weight="500" fill="#FFFFFF">개포면</text>
-<text  x="812.1" y="651.3" font-size="25.6" font-weight="500" fill="#FFFFFF">은풍면</text>
-<text  x="249.6" y="1332.3" font-size="25.6" font-weight="500" fill="#FFFFFF">용궁면</text>
+<text  x="653.1" y="1567.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">지보면</text>
+<text  x="572.5" y="792" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">용문면</text>
+<text  x="654.4" y="434.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">효자면</text>
+<text  x="1320" y="963.4" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">보문면</text>
+<text  x="1090.9" y="698.2" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">감천면</text>
+<text  x="286.6" y="1754.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">풍양면</text>
+<text  x="892.3" y="1356.3" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">호명읍</text>
+<text  x="863.2" y="1075.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">예천읍</text>
+<text  x="563.7" y="1125" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">유천면</text>
+<text  x="655.7" y="1296.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">개포면</text>
+<text  x="812.1" y="651.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">은풍면</text>
+<text  x="249.6" y="1332.1" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">용궁면</text>
 </g>
 </svg>

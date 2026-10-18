@@ -37,6 +37,10 @@
 <g id="시도경계">
 <path d="M0 1314.2L6.5 1311.2 47.8 1267.6 102.5 1252 149.3 1257.6 147.1 1202.9 154.9 1135.9 185 1090.2 210.7 1090.2 224.1 1055.6 260.9 1055.6 313.4 1075.7 344.6 1062.3 355.8 1081.3 373.7 1156 387.1 1171.7 420.5 1166.1 477.5 1127 510.9 1163.8 542.2 1144.9 551.1 1150.4 566.7 1230.8 604.7 1202.9 661.6 1210.7 708.5 1196.2 745.3 1144.9 782.1 1141.5 829 1115.8 865.8 1120.3 891.5 1138.2 903.8 1185 942.9 1198.4 980.8 1199.6 1010.9 1224.1 1015.4 1246.4 980.8 1297.8 974.8 1317M974.8 1317L980.8 1297.8 1015.4 1246.4 1010.9 1224.1 980.8 1199.6 942.9 1198.4 903.8 1185 891.5 1138.2 865.8 1120.3 829 1115.8 782.1 1141.5 745.3 1144.9 708.5 1196.2 661.6 1210.7 604.7 1202.9 566.7 1230.8 551.1 1150.4 542.2 1144.9 510.9 1163.8 477.5 1127 420.5 1166.1 387.1 1171.7 373.7 1156 355.8 1081.3 344.6 1062.3 313.4 1075.7 260.9 1055.6 224.1 1055.6 210.7 1090.2 185 1090.2 154.9 1135.9 147.1 1202.9 149.3 1257.6 102.5 1252 47.8 1267.6 6.5 1311.2 0 1314.2" fill="none" stroke="#9AA6B5" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
 </g>
+<g id="지시선">
+<path id="지시점_의정부1동" d="M564.7 527.7L564.5 528.6 564 529.4 563.2 529.9 562.3 530.1 561.4 529.9 560.6 529.4 560.1 528.6 559.9 527.7 560.1 526.8 560.6 526 561.4 525.5 562.3 525.3 563.2 525.5 564 526 564.5 526.8Z" fill="#6D727A" fill-rule="evenodd" stroke="#FFFFFF" stroke-width="0.8" stroke-linejoin="round"><title>지시점 의정부1동</title></path>
+<path d="M562.3 527.7L557.3 285.5" fill="none" stroke="#6D727A" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
 <g id="지명" text-anchor="middle">
 <text  x="974.1" y="287.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">자금동</text>
 <text  x="1163.8" y="708.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">고산동</text>
@@ -51,7 +55,7 @@
 <text  x="698.4" y="681.8" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">신곡1동</text>
 <text  x="419.4" y="641.6" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">의정부2동</text>
 <text  x="724.1" y="527.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">신곡2동</text>
-<text  x="562.3" y="536.7" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">의정부1동</text>
 <text  x="992" y="583.5" font-size="25" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">송산2동</text>
+<text  x="557" y="278.2" font-size="23" font-weight="500" letter-spacing="-0.5" fill="none" stroke="#FFFFFF" stroke-width="5.1" stroke-linejoin="round">의정부1동</text><text  x="557" y="278.2" font-size="23" font-weight="500" letter-spacing="-0.5" fill="#1E2633">의정부1동</text>
 </g>
 </svg>

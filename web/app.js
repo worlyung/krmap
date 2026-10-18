@@ -267,6 +267,9 @@
     $("secAround").hidden = S.mode !== "around";
     $("secPick").hidden = S.mode !== "pick";
     $("secAll").hidden = S.mode !== "all";
+    $("insetBox").hidden = S.allLv === "sido";
+    const ins = new Set(S.insets || []);
+    $("insetList").querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.v === "*" ? ins.size === Object.keys(R.INSETS).length : ins.has(b.dataset.v))));
     $("crumbs").hidden = S.mode !== "around";
     $("q").placeholder = S.mode === "pick" ? "찾아서 넣기 — 충청남도, 공주시…" : "지역 찾기 — 대전, 유성구, 정자동";
     $("inner").querySelectorAll("button").forEach((b) => {
@@ -278,6 +281,9 @@
     $("sido17").checked = S.sido17;
     $("sido17").closest("label").hidden = !D.sido17;
     $("labelHint").hidden = S.labelMode !== "pick";
+    $("leaders").checked = S.leaders !== false;
+    $("labelPlace")._sync();
+    $("leadersRow").hidden = S.labelPlace === "side";
     $("clickMain").textContent = S.mode === "pick" ? "영역 넣기·빼기" : "그 지역으로 이동";
     ["layout", "legPos", "ptab"].forEach((id) => $(id)._sync());
     $("explodeRow").hidden = S.layout !== "explode";
@@ -291,6 +297,12 @@
     if (!S.data.file) setVal("dataText", S.data.text);
     $("hNote").checked = S.heading.note;
     $("dataSteps").value = String(S.data.steps);
+    $("dataSymbol")._sync();
+    const bubble = S.data.symbol === "bubble";
+    $("bubbleRow").hidden = !bubble;
+    $("bubbleScale").value = String(S.data.bubbleScale || 1);
+    ["paletteLbl", "palettes"].forEach((id) => ($(id).hidden = bubble));
+    $("dataSteps").closest(".row").hidden = bubble;
     $("dataMethod").value = S.data.method;
     $("dataValues").checked = S.data.showValues;
     document.querySelectorAll(".pal").forEach((b) => b.classList.toggle("on", b.dataset.v === S.data.palette));
@@ -407,6 +419,16 @@
     seg("pickLv", () => S.pick.lv, setPickLv);
     seg("pickFit", () => (S.pick.fit ? "1" : "0"), (v) => (S.pick.fit = v === "1"));
     seg("allLv", () => S.allLv, (v) => (S.allLv = v));
+    $("insetList").innerHTML = Object.keys(R.INSETS).map((n) => `<button class="chip sm" data-v="${n}" aria-pressed="false">${n}</button>`).join("")
+      + `<button class="chip sm" data-v="*" aria-pressed="false">모두</button>`;
+    $("insetList").addEventListener("click", (e) => {
+      const b = e.target.closest("button");
+      if (!b) return;
+      const all = Object.keys(R.INSETS), cur = new Set(S.insets || []);
+      if (b.dataset.v === "*") S.insets = cur.size === all.length ? [] : all;
+      else { cur.has(b.dataset.v) ? cur.delete(b.dataset.v) : cur.add(b.dataset.v); S.insets = all.filter((n) => cur.has(n)); }
+      render();
+    });
     seg("labelMode", () => S.labelMode, (v) => {
       if (v === "pick" && S.labelMode !== "pick" && !S.labelPick.size && lastScene) {
         // 지금 보이는 이름들에서 시작해 빼고 싶은 것만 끄면 되도록
@@ -431,6 +453,7 @@
     $("explodeAmt").addEventListener("input", (e) => { S.explodeAmt = +e.target.value; clearTimeout(bindControls._t); bindControls._t = setTimeout(render, 40); });
     $("resetEdits").onclick = () => { S.offsets = {}; S.styles = {}; S.editKey = null; render(); };
     bindEditor();
+    bindDeck();
 
     const chk = (id, set) => $(id).addEventListener("change", (e) => { set(e.target.checked); render(); });
     chk("splitGu", (v) => {
@@ -454,6 +477,8 @@
     chk("hideOthers", (v) => (S.pick.hideOthers = v));
     chk("sidoLines", (v) => (S.sidoLines = v));
     chk("subLabel", (v) => (S.subLabel = v));
+    chk("leaders", (v) => (S.leaders = v));
+    seg("labelPlace", () => S.labelPlace || "auto", (v) => (S.labelPlace = v));
     chk("halo", (v) => (S.halo = v));
     chk("distinct", (v) => (S.distinct = v));
     chk("shadow", (v) => (S.shadow = v));
@@ -838,6 +863,8 @@
       pal.appendChild(b);
     }
     $("dataSteps").onchange = (e) => { S.data.steps = +e.target.value; render(); };
+    seg("dataSymbol", () => S.data.symbol || "fill", (v) => (S.data.symbol = v));
+    $("bubbleScale").addEventListener("input", (e) => { S.data.bubbleScale = +e.target.value; clearTimeout(bindControls._b); bindControls._b = setTimeout(render, 50); });
     $("dataMethod").onchange = (e) => { S.data.method = e.target.value; render(); };
     $("dataValues").onchange = (e) => { S.data.showValues = e.target.checked; render(); };
     const GROUP_COLORS = ["#EF6B4C", "#14A37F", "#F2B33D", "#8B5CF6", "#3361E0", "#E0559A", "#4BB3D9", "#8C6D46"];
@@ -862,7 +889,7 @@
       else if (k === "y") { e.preventDefault(); stepHistory(1); }
     });
     $("saveWork").onclick = () => {
-      const body = JSON.stringify({ app: "행정구역 지도 추출기", version: 1, saved: new Date().toISOString(), state: JSON.parse(snapshot()), fileText: S.data.file ? ctx.bigText : undefined }, null, 1);
+      const body = JSON.stringify({ app: "행정구역 지도 추출기", version: 1, saved: new Date().toISOString(), state: JSON.parse(snapshot()), deck: deck.length ? deck.map((it) => it.state) : undefined, fileText: S.data.file ? ctx.bigText : undefined }, null, 1);
       saveFile("지도작업_" + baseName(lastScene || { title: "지도" }) + ".json", body, "application/json");
     };
     $("loadWork").onclick = () => $("loadFile").click();
@@ -874,6 +901,7 @@
         const o = JSON.parse(await f.text());
         ctx.bigText = o.fileText || "";
         restore(o.state || o);
+        if (Array.isArray(o.deck)) { deck = o.deck.map((st, i) => ({ state: st, title: (st.heading && st.heading.title) || `지도 ${i + 1}` })); saveDeck(); }
         if (S.data.file && ctx.bigText) $("dataText").value = `[파일] ${S.data.file}`;
         render();
         toast("작업을 불러왔습니다");
@@ -882,6 +910,104 @@
       }
     };
     $("copyImg").onclick = copyImage;
+  }
+
+  // ---------- 슬라이드 묶음 ----------
+  const DECK = "krmap.deck.v1", DECK_MAX = 300;
+  let deck = [];
+  try { deck = JSON.parse(localStorage.getItem(DECK) || "[]") || []; } catch (e) { deck = []; }
+  function saveDeck() {
+    try { localStorage.setItem(DECK, JSON.stringify(deck)); } catch (e) { /* 저장소를 못 쓰는 환경 */ }
+    renderDeck();
+  }
+  // 제목에 {지역} 이 있으면 바꿔 넣고, 없으면 지역 이름을 앞에 붙인다 (명령줄 --each 와 같은 규칙)
+  const titledFor = (title, name) => (title && title.includes("{지역}") ? title.split("{지역}").join(name) : [name, title].filter(Boolean).join(" "));
+  function renderDeck() {
+    const list = $("deckList");
+    list.innerHTML = "";
+    deck.forEach((it, i) => {
+      const li = document.createElement("li");
+      li.innerHTML = `<button class="open" title="이 장을 편집기로 불러오기"></button><button class="x" aria-label="빼기">×</button>`;
+      li.querySelector(".open").textContent = it.title;
+      li.querySelector(".open").onclick = () => { restore(it.state); render(); toast(`${i + 1}번째 장을 불러왔습니다`); };
+      li.querySelector(".x").onclick = () => { deck.splice(i, 1); saveDeck(); };
+      list.appendChild(li);
+    });
+    $("deckCount").textContent = deck.length ? `${deck.length}장` : "비어 있음";
+    $("deckActions").hidden = !deck.length;
+  }
+  function pushSlides(states) {
+    const room = DECK_MAX - deck.length;
+    if (room <= 0) { toast(`묶음은 ${DECK_MAX}장까지 담을 수 있습니다`); return; }
+    const add = states.slice(0, room);
+    for (const st of add) deck.push({ state: st, title: st.heading.title || st._label || "지도" });
+    add.forEach((st) => delete st._label);
+    saveDeck();
+    toast(add.length === 1 ? "묶음에 담았습니다" : `${add.length}장을 담았습니다`);
+  }
+  const baseState = () => { const st = JSON.parse(snapshot()); st.offsets = {}; st.editKey = null; return st; };
+  function bindDeck() {
+    renderDeck();
+    $("deckAdd").onclick = () => {
+      const st = JSON.parse(snapshot());
+      const name = S.mode === "around" && D[S.target.lv][S.target.id] ? D[S.target.lv][S.target.id].nm : "";
+      if (st.heading.title && st.heading.title.includes("{지역}")) st.heading.title = titledFor(st.heading.title, name);
+      st._label = (lastScene && lastScene.title) || "지도";
+      pushSlides([st]);
+    };
+    $("deckEachSido").onclick = () => {
+      const base = baseState();
+      pushSlides(Object.keys(D.sido).map((id) => {
+        const st = JSON.parse(JSON.stringify(base));
+        st.mode = "around";
+        st.target = { lv: "sido", id };
+        st.heading.title = titledFor(base.heading.title, D.sido[id].nm);
+        return st;
+      }));
+    };
+    $("deckEachSi").onclick = () => {
+      const t = S.mode === "around" ? S.target : S.mode === "pick" && S.pick.ids.length ? { lv: S.pick.lv, id: S.pick.ids[0] } : null;
+      const sid = t && (t.lv === "sido" ? t.id : D[t.lv][t.id] && D[t.lv][t.id].sido);
+      if (!sid || !D.sido[sid]) { toast("먼저 시도나 시군구 하나를 고르세요"); return; }
+      const base = baseState();
+      pushSlides(R.featuresInside(D, "sido", sid, "si").map((id) => {
+        const st = JSON.parse(JSON.stringify(base));
+        st.mode = "around";
+        st.target = { lv: "si", id };
+        st.heading.title = titledFor(base.heading.title, D.si[id].nm);
+        return st;
+      }));
+    };
+    $("deckClear").onclick = () => { deck = []; saveDeck(); };
+    $("deckSave").onclick = exportDeck;
+  }
+  async function exportDeck() {
+    if (!D || !deck.length) return;
+    const btn = $("deckSave");
+    btn.disabled = true;
+    toast(`${deck.length}장을 만드는 중입니다…`);
+    const keep = S.sido17;
+    try {
+      const states = deck.map((it) => St.mergeState(St.defaultState(), it.state));
+      if (states.some((st) => St.needsEmd(st))) await waitEmd();
+      await loadPptx();
+      const scenes = [], notes = [];
+      for (const S2 of states) {
+        R.useSido17(D, S2.sido17);
+        const c2 = St.createContext({ stats: window.KRMAP.stats || null, bigText: ctx.bigText, emdReady: emdState === "ready" });
+        scenes.push(R.buildScene(D, St.sceneOptions(D, S2, c2, 1600)));
+        notes.push(S2.heading.note ? "" : `${St.sourceNote(D, S2, c2)} · github.com/vuski/admdongkor`);
+      }
+      const pptx = window.KRMapPptx.buildPptx(window.PptxGenJS, scenes, { footnote: notes, title: "지도 묶음" });
+      const blob = await pptx.write({ outputType: "blob" });
+      await saveFile(`지도묶음_${scenes.length}장.pptx`, blob, "application/vnd.openxmlformats-officedocument.presentationml.presentation");
+    } catch (e) {
+      console.error(e);
+      toast("묶음 PPTX를 만들지 못했습니다");
+    } finally {
+      R.useSido17(D, keep);
+      btn.disabled = false;
+    }
   }
 
   // ---------- 하나씩 꾸미기 ----------

@@ -418,6 +418,10 @@
     const bare = (x) => String(f(x)).replace(/%$/, ""); // "18.1 ~ 24.0%" 처럼 단위는 뒤에 한 번만
     const range = (a, b) => `${bare(a)} ~ ${f(b)}`;
     const lo0 = Math.min(...nums), hi0 = Math.max(...nums);
+    // 원 크기(버블) 지도에 쓸 값 그대로와 표기법
+    out.nums = {};
+    for (const [k, v] of vals) if (isFinite(+v)) out.nums[k] = +v;
+    out.fmt = f;
     if (opt.palette === "diverge" && lo0 < 0 && hi0 > 0) {
       // 증감처럼 부호가 갈리는 값: 0 을 가운데(회색)로 두고 음수는 파랑, 양수는 빨강 쪽 단계로 따로 나눈다
       const k = Math.max(1, Math.floor(steps / 2));

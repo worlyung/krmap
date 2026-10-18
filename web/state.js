@@ -31,6 +31,7 @@
       context: true,
       pick: { lv: "sido", ids: [], fit: true, hideOthers: false },
       allLv: "sido",
+      insets: [], // 전국 지도 확대 상자: ["서울", "부산", ...]
       labelMode: "all", // all | none | pick
       labelPick: new Set(), // "lv:id"
       clickAction: "main",
@@ -38,7 +39,7 @@
       explodeAmt: 0.25,
       tileGap: 0.1,
       heading: { title: "", subtitle: "", note: false },
-      data: { source: "", text: "", file: "", palette: "blue", steps: 5, method: "quantile", showValues: true, by: null, labels: null },
+      data: { source: "", text: "", file: "", palette: "blue", steps: 5, method: "quantile", showValues: true, by: null, labels: null, symbol: "fill", bubbleScale: 1 },
       pins: { text: "", items: [], shape: "pin", color: "#E5484D", size: 1, labels: true, byCat: true, online: true },
       groups: [], // [{id, name, color}] — 지역의 styles[key].group 으로 연결
       activeGroup: null,
@@ -48,6 +49,8 @@
       styles: {}, // "lv:id" → {fill, text, hideLabel, group}
       editKey: null,
       subLabel: true,
+      leaders: true, // 안 들어가는 이름은 밖에 놓고 지시선으로 잇기
+      labelPlace: "auto", // auto(지역 안, 안 들어가면 지시선) | side(양옆 줄로 모두 빼기)
       halo: false,
       fontScale: 1,
       sidoLines: true,
@@ -164,15 +167,47 @@
     if (S.pins.items.some((it) => it.q === "인터넷 검색")) parts.push("지점 위치: © OpenStreetMap");
     return "출처: " + parts.join(", ");
   }
+  /** 제목의 {지역} → 지금 지도의 지역 이름 (슬라이드 묶음에서 장마다 바뀌는 제목을 미리 보기에도) */
+  function regionTitle(D, S, title) {
+    if (!title || !title.includes("{지역}")) return title;
+    let name = "전국";
+    if (S.mode === "around" && D[S.target.lv] && D[S.target.lv][S.target.id]) name = D[S.target.lv][S.target.id].nm;
+    else if (S.mode === "pick" && S.pick.ids.length) {
+      const lv = eff(S, S.pick.lv), f = D[lv] && D[lv][S.pick.ids[0]];
+      if (f) name = S.pick.ids.length > 1 ? `${f.nm} 외 ${S.pick.ids.length - 1}곳` : f.nm;
+    }
+    return title.split("{지역}").join(name);
+  }
+  /** 1 · 2 · 5 로 끝나는 보기 좋은 수 (이하) */
+  function niceDown(x) {
+    const p = Math.pow(10, Math.floor(Math.log10(x)));
+    const m = x / p;
+    return (m >= 5 ? 5 : m >= 2 ? 2 : 1) * p;
+  }
+  /** 원 크기(버블) 지도인가: 숫자 데이터이고 타일 배치가 아닐 때 */
+  const bubbleOn = (S, dr) => S.data.symbol === "bubble" && dr && dr.kind === "num" && dr.nums && S.layout !== "square" && S.layout !== "hex";
   /** 데이터 색 · 그룹 색 · 값 · 범례 · 제목 · 핀 */
   function extras(D, S, ctx) {
     const fills = {}, values = {};
     let items = [];
+    let bubbles = null, sizes = null;
     const dr = dataResult(D, S, ctx);
     if (dr) {
-      Object.assign(fills, dr.fills);
       if (S.data.showValues) Object.assign(values, dr.values);
-      items = dr.legend.items.slice();
+      if (bubbleOn(S, dr)) {
+        // 원 넓이가 값에 비례한다. 음수·0 은 원을 그리지 않는다
+        const pos = {};
+        for (const k in dr.nums) if (dr.nums[k] > 0) pos[k] = dr.nums[k];
+        const max = Math.max(0, ...Object.values(pos));
+        if (max > 0) {
+          bubbles = { values: pos, max, color: S.colors.target, scale: S.data.bubbleScale || 1 };
+          const top = niceDown(max);
+          sizes = [top, niceDown(top / 4), niceDown(top / 16)].filter((v, i, a) => v > 0 && a.indexOf(v) === i).map((v) => ({ value: v, label: dr.fmt ? dr.fmt(v) : String(v) }));
+        }
+      } else {
+        Object.assign(fills, dr.fills);
+        items = dr.legend.items.slice();
+      }
     }
     const cats = pinCats(S);
     if (cats.length && S.pins.byCat) items = items.concat(cats.map((c) => ({ color: c.color, label: c.name })));
@@ -187,8 +222,9 @@
     return {
       fills,
       values,
-      legend: items.length ? { title: S.legend.title || (dr && dr.legend.title) || "", items, pos: S.legend.pos } : null,
-      heading: { title: S.heading.title, subtitle: S.heading.subtitle, note: S.heading.note ? sourceNote(D, S, ctx) : "" },
+      bubbles,
+      legend: items.length || sizes ? { title: S.legend.title || (dr && dr.legend.title) || "", items, sizes, pos: S.legend.pos } : null,
+      heading: { title: regionTitle(D, S, S.heading.title), subtitle: S.heading.subtitle, note: S.heading.note ? sourceNote(D, S, ctx) : "" },
       pins: S.pins.items.filter((it) => it.x != null).map((it) => ({
         x: it.x, y: it.y, keys: it.keys, label: it.name,
         color: S.pins.byCat && it.cat ? (cats.find((c) => c.name === it.cat) || {}).color : S.pins.color,
@@ -203,6 +239,8 @@
       labelMode: S.labelMode,
       labelPick: S.labelPick instanceof Set ? S.labelPick : new Set(S.labelPick || []),
       subLabel: S.subLabel,
+      leaders: S.leaders !== false,
+      labelPlace: S.labelPlace || "auto",
       halo: S.halo,
       fontScale: S.fontScale,
       lineScale: S.lineScale,
@@ -224,6 +262,7 @@
     } else if (S.mode === "all") {
       o.target = null;
       o.inner = eff(S, S.allLv);
+      o.insets = S.insets || [];
     } else {
       Object.assign(o, { target: S.target, depth: S.depth, nbLevel: eff(S, S.nbLevel), inner: innerFor(D, S, S.target), context: S.context });
     }
@@ -232,6 +271,6 @@
 
   return {
     PRESETS, PIN_COLORS, defaultState, mergeState, serialize, createContext,
-    eff, innerFor, needsEmd, drawnLevels, visibleKeys, dataText, dataset, dataResult, pinCats, sourceNote, extras, sceneOptions, version,
+    eff, innerFor, needsEmd, drawnLevels, visibleKeys, dataText, dataset, dataResult, bubbleOn, regionTitle, pinCats, sourceNote, extras, sceneOptions, version,
   };
 });

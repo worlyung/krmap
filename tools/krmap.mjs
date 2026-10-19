@@ -161,7 +161,7 @@ async function main() {
       fontFile: v.font,
     });
     if (res.slides) {
-      print(res, v.json, (r) => [`만든 파일 (${r.slides}장):`, ...r.files.map((f) => "  " + f), ...r.items.filter((it) => it.unmatched.length || it.warnings.length).map((it) => `  ${it.slide}. ${it.title}: ${[...it.warnings, it.unmatched.length ? "못 찾은 이름 " + it.unmatched.join(", ") : ""].filter(Boolean).join(" · ")}`)].join("\n"));
+      print(res, v.json, (r) => [`만든 파일 (${r.slides}장):`, ...r.files.map((f) => "  " + f), ...r.items.filter((it) => it.unmatched.length || it.ambiguous.length || it.warnings.length).map((it) => `  ${it.slide}. ${it.title}: ${[...it.warnings, it.unmatched.length ? "못 찾은 이름 " + it.unmatched.join(", ") : "", it.ambiguous.length ? "여러 곳인 이름 " + it.ambiguous.join(", ") + " — 시도를 붙여 주세요" : ""].filter(Boolean).join(" · ")}`)].join("\n"));
       return;
     }
     print(res, v.json, (r) => [

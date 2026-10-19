@@ -2,6 +2,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
+import { PNG } from "pngjs";
 import * as K from "./core.mjs";
 
 const out = K.tmpDir();
@@ -97,6 +99,56 @@ await t("색 하나로 색 조합 · 디자인 방식", async () => {
     assert.ok(fs.readFileSync(q.files[0], "utf8").includes(mark), look);
   }
   await assert.rejects(K.renderSpec({ region: "대전광역시", look: "없는디자인" }, { out, formats: ["svg"] }), /디자인 방식을 알 수 없습니다/);
+});
+await t("코드만 있는 표 (2·5·10자리)", async () => {
+  for (const [code, unit, key] of [["30", "sido", "sido:30"], ["30170", "si", "si:30170"], ["3017000000", "si", "si:30170"]]) {
+    const ds = K.X.analyze(K.X.readTable(`코드\t값\n${code}\t100`));
+    const res = K.X.resolve(D, ds, [unit], K.R.sidoShort);
+    assert.deepEqual(res.unmatched, []);
+    assert.equal(ds.columns[0].get(res.recs[key]), 100);
+  }
+  const r = await K.renderSpec({ nationalUnit: "시군구", data: { rows: [{ 코드: "3017000000", 값: 100 }, { 코드: "3020000000", 값: 200 }] } }, { out, formats: ["svg"], name: "코드" });
+  assert.equal(r.colored, 2);
+  assert.deepEqual(r.unmatched, []);
+});
+await t("상위 합계와 하위 지역의 중복 합산 방지", () => {
+  for (const rows of [
+    [["대전 서구", 100], ["대전광역시 서구 둔산1동", 40], ["대전 유성구", 200]],
+    [["대전광역시 서구 둔산1동", 40], ["대전 유성구", 200], ["대전 서구", 100]],
+    [["3017000000", 100], ["3017063000", 40], ["3020000000", 200]],
+  ]) {
+    const head = /^\d/.test(rows[0][0]) ? "코드" : "지역";
+    const ds = K.X.analyze(K.X.readTable([[head, "값"], ...rows].map(r => r.join("\t")).join("\n")));
+    const res = K.X.resolve(D, ds, ["sido", "si"], K.R.sidoShort);
+    assert.equal(ds.columns[0].get(res.recs["sido:30"]), 300);
+    assert.equal(ds.columns[0].get(res.recs["si:30170"]), 100);
+  }
+  const ds = K.X.analyze(K.X.readTable("지역\t값\n대전광역시 서구 둔산1동\t40\n대전광역시 서구 둔산2동\t60"));
+  const res = K.X.resolve(D, ds, ["sido", "si"], K.R.sidoShort);
+  assert.equal(ds.columns[0].get(res.recs["sido:30"]), 100);
+  assert.equal(ds.columns[0].get(res.recs["si:30170"]), 100);
+});
+await t("묶음의 애매한 지역명 경고 (JSON·명령줄)", async () => {
+  const spec = { slides: [{ nationalUnit: "시군구", data: { rows: [{ 지역: "중구", 값: 10 }] } }] };
+  const r = await K.renderSpec(spec, { out, formats: ["svg"], name: "경고" });
+  assert.deepEqual(r.items[0].ambiguous, ["중구"]);
+  const file = path.join(out, "경고.json");
+  fs.writeFileSync(file, JSON.stringify(spec));
+  const stdout = execFileSync(process.execPath, [path.join(K.ROOT, "tools/krmap.mjs"), "render", file, "--out", out, "--format", "svg"], { encoding: "utf8" });
+  assert.match(stdout, /여러 곳인 이름 중구/);
+});
+await t("PNG 투명·불투명 배경 (한 장·묶음)", async () => {
+  for (const background of [false, true]) {
+    const spec = { region: "대전광역시", background, context: false, aspect: "16:9" };
+    for (const deck of [false, true]) {
+      const r = await K.renderSpec(deck ? { slides: [spec] } : spec, { out, formats: ["png"], width: 400, pngScale: 1, name: `배경_${background}_${deck}` });
+      const png = PNG.sync.read(fs.readFileSync(r.files[0]));
+      const alpha = png.data.filter((_, i) => i % 4 === 3);
+      assert.equal(alpha.includes(0), !background);
+      assert.ok(alpha.includes(255));
+      if (background) assert.ok(alpha.every(a => a === 255));
+    }
+  }
 });
 fs.rmSync(out, { recursive: true, force: true });
 process.stdout.write(`\n${n}개 모두 통과\n`);

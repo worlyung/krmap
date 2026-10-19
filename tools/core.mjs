@@ -442,7 +442,7 @@ export async function renderState(D, stats, S, bigText, opts = {}) {
   const svg = R.toSVG(scene);
   if (formats.includes("svg")) { const f = path.join(dir, name + ".svg"); fs.writeFileSync(f, svg); files.push(f); }
   let png = null;
-  if (formats.includes("png") || opts.preview) png = svgToPng(svg, scene.width * (opts.pngScale || 2), { fontFile: opts.fontFile, background: scene.bg || (opts.transparent ? undefined : "#FFFFFF") });
+  if (formats.includes("png") || opts.preview) png = svgToPng(svg, scene.width * (opts.pngScale || 2), { fontFile: opts.fontFile, background: scene.bg || undefined });
   if (formats.includes("png")) { const f = path.join(dir, name + ".png"); fs.writeFileSync(f, png); files.push(f); }
   if (formats.includes("pptx")) {
     const f = path.join(dir, name + ".pptx");
@@ -527,12 +527,12 @@ export async function renderDeck(spec, opts = {}) {
     scenes.push(scene);
     notes.push(S.heading.note ? "" : `${St.sourceNote(D, S, ctx)} · github.com/vuski/admdongkor`);
     const dr = St.dataResult(D, S, ctx);
-    items.push({ slide: i + 1, title: S.heading.title || scene.title, colored: dr ? Object.keys(dr.fills).length : 0, unmatched: dr ? dr.unmatched.slice(0, 10) : [], warnings: scene.warning ? [scene.warning] : [] });
+    items.push({ slide: i + 1, title: S.heading.title || scene.title, colored: dr ? Object.keys(dr.fills).length : 0, unmatched: dr ? dr.unmatched.slice(0, 10) : [], ambiguous: dr ? dr.ambiguous.slice(0, 20) : [], warnings: scene.warning ? [scene.warning] : [] });
     const tag = String(i + 1).padStart(2, "0");
     if (formats.includes("svg") || formats.includes("png") || (opts.preview && i === 0)) {
       const svg = R.toSVG(scene);
       if (formats.includes("svg")) { const f = path.join(dir, `${name}_${tag}.svg`); fs.writeFileSync(f, svg); files.push(f); }
-      if (formats.includes("png")) { const f = path.join(dir, `${name}_${tag}.png`); fs.writeFileSync(f, svgToPng(svg, scene.width * (opts.pngScale || 2), { fontFile: opts.fontFile, background: scene.bg || "#FFFFFF" })); files.push(f); }
+      if (formats.includes("png")) { const f = path.join(dir, `${name}_${tag}.png`); fs.writeFileSync(f, svgToPng(svg, scene.width * (opts.pngScale || 2), { fontFile: opts.fontFile, background: scene.bg || undefined })); files.push(f); }
       if (opts.preview && i === 0) preview = svgToPng(svg, Math.min(opts.previewWidth || 900, scene.width), { fontFile: opts.fontFile, background: scene.bg || "#FFFFFF" });
     }
   }

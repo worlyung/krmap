@@ -1,2 +1,6 @@
 node_modules/
 out/
+.env
+.env.*
+credentials.json
+token.json

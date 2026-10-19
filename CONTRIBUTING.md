@@ -18,6 +18,8 @@ npm test             # 엔진 시험 (인터넷 필요 없음)
 웹 도구는 `web/index.html` 을 브라우저로 열거나, `web/` 에서 `python3 -m http.server` 로 띄워 봅니다.
 경계 · 통계 데이터를 다시 만들 때는 README 의 "데이터 다시 만들기"를 보세요 (Python 3, `scripts/requirements.txt`).
 
+의존성을 바꾼 뒤에는 `npm audit`도 확인합니다. 현재 PptxGenJS 4.0.1이 지정한 `image-size` 1.x에는 보안 수정판이 없어, `package.json`의 `overrides`로 2.0.4를 사용합니다. PptxGenJS를 올릴 때 이 설정이 여전히 필요한지 확인하고, PNG·PPTX 생성 검사도 함께 돌려 주세요.
+
 ## 코드 규칙
 
 - `web/render.js` · `datafill.js` · `pins.js` · `state.js` · `pptx.js` · `colors.js` 는 브라우저와 Node 가 함께 쓰는 UMD 모듈입니다. ES module 문법이나 Node 전용 API 를 넣지 마세요.

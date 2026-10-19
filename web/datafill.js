@@ -129,7 +129,7 @@
       if (isNum[c] || isCode[c]) continue;
       if (!nameCols.length || (head && REGION_HEAD.test(H(c)) && nameCols[nameCols.length - 1] === c - 1)) nameCols.push(c);
     }
-    if (!nameCols.length) nameCols.push(0);
+    if (!nameCols.length && !isCode.some(Boolean)) nameCols.push(0);
     const codeCol = isCode.findIndex((x, c) => x && !nameCols.includes(c));
     const textCols = [];
     for (let c = 0; c < width; c++) if (!isNum[c] && !isCode[c] && !nameCols.includes(c)) textCols.push(c);
@@ -279,6 +279,11 @@
         if (!p) continue;
         if (p === key) { res.recs[p] = r; continue; }
         if (exact.has(p)) continue; // 위 단위 숫자가 따로 있으면 그것을 쓴다
+        // 중간 단위의 합계도 우선한다 (시도 합산 때 구 합계와 그 안의 동을 중복으로 더하지 않음).
+        const lv = key.split(":")[0];
+        const covered = Object.keys(LEVEL_ORDER).some((a) =>
+          LEVEL_ORDER[a] >= LEVEL_ORDER[L] && LEVEL_ORDER[a] < LEVEL_ORDER[lv] && exact.has(parentAt(D, key, a)));
+        if (covered) continue;
         let a = agg.get(p);
         if (!a) { a = { base: {}, ages: r.ages ? new Array(101).fill(0) : null, text: Object.assign({}, r.text), n: 0, first: r }; agg.set(p, a); }
         a.n++;

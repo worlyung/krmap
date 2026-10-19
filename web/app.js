@@ -30,8 +30,9 @@
     const f=D[S.target.lv]?.[S.target.id];
     if (!f) return null;
     const off=S.offsets[S.target.lv+":"+S.target.id] || [0,0];
-    const a=scene.projectPoint([f.bb[0]+off[0],f.bb[1]+off[1]]);
-    const b=scene.projectPoint([f.bb[2]+off[0],f.bb[3]+off[1]]);
+    const bounds=V.regionBounds(R.decode(f),f.bb);
+    const a=scene.projectPoint([bounds[0]+off[0],bounds[1]+off[1]]);
+    const b=scene.projectPoint([bounds[2]+off[0],bounds[3]+off[1]]);
     return [...a,...b];
   }
   function showView() {
@@ -41,6 +42,22 @@
     const w=Math.max(viewBox[2],viewBox[3]*ratio),h=w/ratio;
     viewBox=[viewBox[0]+(viewBox[2]-w)/2,viewBox[1]+(viewBox[3]-h)/2,w,h];
     svg.setAttribute("viewBox",viewBox.join(" "));
+    // 섬 중심 확대에서 화면 밖으로 나간 대상 이름은 섬 안으로 옮겨 표시한다.
+    // 원본 장면은 바꾸지 않아 전체 맞춤·내보내기의 이름과 지시선은 유지된다.
+    svg.querySelectorAll('[data-view-label]').forEach(el=>{el.removeAttribute('transform');el.removeAttribute('data-view-label');});
+    svg.querySelectorAll('[data-view-hidden]').forEach(el=>{el.style.display='';el.removeAttribute('data-view-hidden');});
+    if(S.mode==='around') {
+      const key=S.target.lv+':'+S.target.id,bounds=targetBounds(lastScene);
+      for(const el of svg.querySelectorAll(`text[data-k="${key}"]`)) {
+        const b=el.getBBox();
+        if(bounds && (b.x<viewBox[0] || b.y<viewBox[1] || b.x+b.width>viewBox[0]+w || b.y+b.height>viewBox[1]+h)) {
+          const k=Math.min(1,24/Math.max(1,b.height*svg.getScreenCTM().a),(bounds[2]-bounds[0])*.6/Math.max(1,b.width));
+          el.setAttribute('transform',`translate(${(bounds[0]+bounds[2])/2} ${(bounds[1]+bounds[3])/2}) scale(${k}) translate(${-b.x-b.width/2} ${-b.y-b.height/2})`);
+          el.setAttribute('data-view-label','1');
+          svg.querySelectorAll(`#지시선 [data-k="${key}"]`).forEach(line=>{line.style.display='none';line.setAttribute('data-view-hidden','1');});
+        }
+      }
+    }
     const level=frame.width/viewBox[2];
     $("zoomLevel").textContent=Math.round(level*100)+"%";
     $("zoomIn").disabled=level>=16;
@@ -1182,6 +1199,7 @@
       const key = p.dataset.k;
       const svg = map.querySelector("svg");
       drag = { key, x: e.clientX, y: e.clientY, moved: false, els: [...svg.querySelectorAll(`[data-k="${key}"]`)], k: 1 / svg.getScreenCTM().a };
+      drag.transforms=new Map(drag.els.map(el=>[el,el.getAttribute("transform")||""]));
       map.setPointerCapture(e.pointerId);
       e.preventDefault();
     });
@@ -1192,7 +1210,7 @@
       if (!drag.moved) { drag.moved = true; map.classList.add("dragging"); drag.els.forEach((el) => el.parentNode.appendChild(el)); }
       const result=dragPosition(drag,e),old=S.offsets[drag.key]||[0,0];
       map.classList.toggle("snapping",!!result.neighbor);
-      drag.els.forEach((el) => el.setAttribute("transform", `translate(${(result.offset[0]-old[0])*lastScene.scale} ${(result.offset[1]-old[1])*lastScene.scale})`));
+      drag.els.forEach((el) => el.setAttribute("transform", `translate(${(result.offset[0]-old[0])*lastScene.scale} ${(result.offset[1]-old[1])*lastScene.scale}) ${drag.transforms.get(el)}`));
     });
     const end = (e) => {
       if (!drag) return;

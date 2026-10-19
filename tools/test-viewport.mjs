@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
-import {loadData,specToState,St} from './core.mjs';
+import {loadData,specToState,St,R} from './core.mjs';
 const V=createRequire(import.meta.url)('../web/viewport.js');
 const {D,stats}=loadData();
 const {S}=await specToState(D,{region:'부천시'},{stats});
@@ -21,3 +21,16 @@ assert.equal(V.zoom(scene,box,1e-6)[2],scene.width/.5);
 assert.deepEqual(V.full(scene),[0,0,scene.width,scene.height]);
 assert.deepEqual(V.focus(scene,null),V.full(scene));
 console.log('ok viewport 2 확대 중심 유지·배율 제한·전체 복원');
+for(const region of ['증평군','울릉군','옹진군','계룡시','부산 중구','홍천군']) {
+  const {S}=await specToState(D,{region},{stats});
+  const scene=St.buildScene(D,S,St.createContext({stats,emdReady:true}),1600);
+  const f=D[S.target.lv][S.target.id],bounds=V.regionBounds(R.decode(f),f.bb);
+  const a=scene.projectPoint(bounds.slice(0,2)),b=scene.projectPoint(bounds.slice(2));
+  const box=V.focus(scene,[...a,...b]);
+  assert.ok(Math.abs(box[0]+box[2]/2-(a[0]+b[0])/2)<1e-7,region);
+  assert.ok(Math.abs(box[1]+box[3]/2-(a[1]+b[1])/2)<1e-7,region);
+  assert.ok(Math.max((b[0]-a[0])/box[2],(b[1]-a[1])/box[3])>.45,region);
+  if(['울릉군','옹진군'].includes(region))assert.notDeepEqual(bounds,f.bb);
+  else assert.deepEqual(bounds,f.bb);
+  console.log('ok viewport 지역 검사 '+region);
+}

@@ -20,6 +20,37 @@
   let lastScene = null;
   const V = window.KRMapViewport;
   let viewBox = null, viewKey = "";
+  function openDokdo() {
+    const g=window.KRMapDokdo.geometry(R.decode(D.si['47940']));
+    if(!g)return;
+    $('dokdoArt').innerHTML=window.KRMapDokdo.svg(g);
+    if(!$('dokdoDialog').open)$('dokdoDialog').showModal();
+  }
+  function showDokdo(svg) {
+    svg.querySelector('[data-dokdo]')?.remove();
+    const owner=lastScene.projectPoint && !lastScene.tiles && !S.compare.enabled && lastScene.polys.find(p=>
+      ['target','neighbor','all','picked','inner'].includes(p.group) && p.lv &&
+      (R.contains(D,p.lv,p.id,'si','47940') || (p.lv==='emd' && p.id.startsWith('47940') && D.emd[p.id].bb[2]>64000)));
+    $('dokdoSecret').hidden=!owner;
+    if(!owner)return;
+    const g=window.KRMapDokdo.geometry(R.decode(D.si['47940']));
+    if(!g)return;
+    const off=lastScene.regionOffsets?.[owner.lv+':'+owner.id]||[0,0];
+    const [x,y]=lastScene.projectPoint(g.center.map((v,i)=>v+off[i]));
+    if(x<viewBox[0] || y<viewBox[1] || x>viewBox[0]+viewBox[2] || y>viewBox[1]+viewBox[3])return;
+    const ns='http://www.w3.org/2000/svg',marker=document.createElementNS(ns,'g');
+    marker.setAttribute('data-dokdo','1');marker.setAttribute('role','button');marker.setAttribute('tabindex','0');
+    marker.setAttribute('aria-label','독도 확대 상자 열기');marker.style.cursor='pointer';
+    marker.setAttribute('transform',`translate(${x} ${y}) scale(${1/svg.getScreenCTM().a})`);
+    const circle=document.createElementNS(ns,'circle');circle.setAttribute('r','18');circle.setAttribute('fill','transparent');
+    const label=document.createElementNS(ns,'text');label.textContent='독도 ↗';
+    for(const [k,v] of Object.entries({x:'-8',y:'-12','text-anchor':'end','font-size':'13',fill:'#1e2633',stroke:'white','stroke-width':'3','paint-order':'stroke','font-weight':'700'}))label.setAttribute(k,v);
+    marker.append(circle,label);
+    marker.addEventListener('pointerdown',e=>e.stopPropagation());
+    marker.addEventListener('click',e=>{e.stopPropagation();openDokdo();});
+    marker.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();openDokdo();}});
+    svg.append(marker);
+  }
   function viewFrame() {
     const rect=$("map").querySelector("svg").getBoundingClientRect();
     const ratio=rect.width/rect.height;
@@ -63,6 +94,7 @@
     $("zoomIn").disabled=level>=16;
     $("zoomOut").disabled=level<=.5;
     $("zoomTarget").disabled=!targetBounds(lastScene);
+    showDokdo(svg);
   }
   let lastList = []; // 목록 복사용 [{lv,id}]
 
@@ -485,6 +517,7 @@
   }
 
   function bindControls() {
+    $('dokdoSecret').onclick=openDokdo;
     // 지역 검색 바로 아래에서 색과 이름을 꾸미고, 나머지 지역·배치 설정을 이어서 사용한다.
     const regionPane=document.querySelector('[data-pane="region"]');
     regionPane.firstElementChild.after($("styleHeading").closest("section"),$("nameHeading").closest("section"));

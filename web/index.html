@@ -196,6 +196,10 @@ details.more[open] summary { margin-bottom: 10px; }
 .map-controls { display:flex; flex-direction:column; gap:8px; padding:14px; margin-bottom:12px; border:1px solid var(--rule); border-radius:10px; background:var(--panel); }
 .map-control-row { display:flex; flex-wrap:wrap; align-items:center; gap:12px 20px; }
 .map-control-row .chk { min-height:32px; }
+#dokdoDialog { width:min(360px, calc(100vw - 40px)); box-sizing:border-box; border:1px solid var(--rule); border-radius:18px; padding:24px; background:var(--panel); color:var(--ink); }
+#dokdoDialog::backdrop { background:#0008; }
+#dokdoDialog h2 { margin:12px 0; }
+#dokdoArt svg { width:100%; height:210px; background:#eaf2ff; border-radius:12px; }
 .map-control-row .seg { flex:1; min-width:220px; max-width:400px; }
 .map-controls label:has(input:disabled) { opacity:.5; }
 .toolbar .seg button { padding-inline: 10px; font-variant-numeric: tabular-nums; }
@@ -598,6 +602,7 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
           <button class="btn sm" id="zoomIn" aria-label="지도 확대">+</button>
           <button class="btn sm" id="zoomTarget">선택 지역 맞춤</button>
           <button class="btn sm" id="zoomFit">전체 맞춤</button>
+          <button class="btn sm" id="dokdoSecret" hidden aria-label="독도 확대 상자 열기" title="동쪽 끝에 작은 발견">작은 섬 하나 ↗</button>
           <span class="note">화면 보기만 확대 · Ctrl/⌘ + 휠 · 흩어진 섬은 큰 섬 중심, 모든 섬은 전체 맞춤</span>
         </div>
         <div class="clickbar" id="clickBar">
@@ -673,6 +678,15 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
 <script src="pptx.js"></script>
 <script src="advanced-ui.js"></script>
 <script src="viewport.js"></script>
+<dialog id="dokdoDialog" aria-labelledby="dokdoTitle">
+  <form method="dialog"><button class="btn sm" style="float:right" aria-label="독도 확대 상자 닫기">닫기 ×</button></form>
+  <p class="note">작은 섬을 찾으셨네요 👀</p>
+  <h2 id="dokdoTitle">안녕, 독도!</h2>
+  <div id="dokdoArt"></div>
+  <p>작아서 지나칠 뻔했죠.<br>여기, 독도도 함께 있어요.</p>
+  <p class="note">울릉군 경계 데이터의 독도 도형을 확대했습니다. 이 상자는 화면에서만 표시됩니다.</p>
+</dialog>
+<script src="dokdo.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

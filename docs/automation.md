@@ -5,12 +5,14 @@
 웹 도구와 **같은 그리기 코드**(`web/render.js` 등)를 Node 에서 돌려, 사람 손 없이 SVG · PNG · PPTX 지도를 만듭니다.
 Claude Code · Codex 같은 코딩 에이전트는 MCP 서버를 쓰거나 명령줄을 직접 부르면 됩니다.
 
+유용하게 쓰셨다면 **[GitHub Star로 응원해 주세요 ⭐](https://github.com/worlyung/krmap)**. 다음 개선을 이어가는 데 큰 힘이 됩니다.
+
 ## 준비
 
 ```bash
 git clone <이 저장소> && cd <저장소>
 npm install          # Node 20 이상
-npm test             # 17개 확인 (인터넷 필요 없음)
+npm test             # 32개 확인 (인터넷 필요 없음)
 ```
 
 PNG 의 한글은 `npm install` 로 함께 받는 프리텐다드(Pretendard, SIL OFL)로 그립니다. 다른 글꼴은 `--font 글꼴.ttf`.

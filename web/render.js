@@ -737,7 +737,9 @@
             lines.push([tf([mx + nx * half, my + ny * half]), tf([mx - nx * half, my - ny * half])]);
           }
         }
-      } else {
+      } else if (!(T && !o.context) && !(P && P.hideOthers)) {
+        // 배경을 숨긴 지도에는 화면 전체의 시도 윤곽을 덧그리지 않는다.
+        // 표시된 지역들의 경계는 각 도형의 stroke로 그대로 남는다.
         for (const k in D.sido) {
           const f = D.sido[k];
           if (!bbHit(f.bb, view)) continue;

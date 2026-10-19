@@ -60,6 +60,8 @@ render 옵션
   krmap render 작업.json --format png
   krmap render --each 시도 --stat old60R --title "{지역} 고령 인구"                    시도마다 한 장씩 PPTX 하나로
   krmap render --each 충청남도 --each-unit 시군구 --inner 읍면동 --title "{지역} 읍면동"   충남 시군마다 한 장씩
+유용하게 쓰셨다면 GitHub Star로 응원해 주세요 ⭐
+https://github.com/worlyung/krmap
 `;
 
 const opts = {

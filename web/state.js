@@ -35,6 +35,7 @@
       labelMode: "all", // all | none | pick
       labelPick: new Set(), // "lv:id"
       clickAction: "main",
+      snapRegions: true,
       layout: "real", // real | explode | square | hex
       explodeAmt: 0.25,
       tileGap: 0.1,

@@ -193,6 +193,11 @@ details.more[open] summary { margin-bottom: 10px; }
 .title h2 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.25; text-wrap: balance; }
 .title .meta { font: 11.5px/1.5 var(--font-data); color: var(--muted); margin-top: 4px; font-variant-numeric: tabular-nums; }
 .toolbar .seg { width: auto; }
+.map-controls { display:flex; flex-direction:column; gap:8px; padding:14px; margin-bottom:12px; border:1px solid var(--rule); border-radius:10px; background:var(--panel); }
+.map-control-row { display:flex; flex-wrap:wrap; align-items:center; gap:12px 20px; }
+.map-control-row .chk { min-height:32px; }
+.map-control-row .seg { flex:1; min-width:220px; max-width:400px; }
+.map-controls label:has(input:disabled) { opacity:.5; }
 .toolbar .seg button { padding-inline: 10px; font-variant-numeric: tabular-nums; }
 .slide { background: var(--sheet); border-radius: 2px; box-shadow: var(--sheet-shadow); padding: 3%; display: flex; align-items: center; justify-content: center; min-height: 380px; position: relative; overflow: hidden; }
 /* 네 귀퉁이 재단선 */
@@ -354,7 +359,6 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
         <div class="seg" id="inner">
           <button data-v="">나누지 않음</button><button data-v="si">시군구</button><button data-v="emd">읍면동</button>
         </div>
-        <label class="chk"><input type="checkbox" id="context" checked> 나머지 지역도 흐리게 보이기</label>
       </section>
 
       <section class="card" id="secPick" hidden>
@@ -367,7 +371,6 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
         <div class="seg" id="pickFit">
           <button data-v="1">고른 영역에 맞춤</button><button data-v="0">전국 전체</button>
         </div>
-        <label class="chk"><input type="checkbox" id="hideOthers"> 고르지 않은 지역은 빼기</label>
         <div class="pickbulk">
           <select id="pickSido" aria-label="시도 고르기"></select>
           <button class="btn sm" id="pickAddSido">시도 전체 넣기</button>
@@ -435,11 +438,8 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
       </section>
 
       <section class="card">
-        <h2>지역 이름</h2>
-        <div class="seg" id="labelMode">
-          <button data-v="all">모두 넣기</button><button data-v="none">모두 빼기</button><button data-v="pick">고른 것만</button>
-        </div>
-        <p class="note" id="labelHint" hidden>지도에서 누르거나 아래 목록에서 이름을 하나씩 켜고 끕니다.</p>
+        <h2>이름 꾸미기</h2>
+        <p class="note">이름 표시 여부는 지도 위 ‘지역 이름’에서 바꿀 수 있습니다.</p>
         <span class="lbl">이름 자리</span>
         <div class="seg" id="labelPlace" aria-label="이름 자리"><button data-v="auto">지역 안</button><button data-v="side">양옆으로 모두 빼기</button></div>
         <label class="chk" id="leadersRow"><input type="checkbox" id="leaders" checked> 안 들어가는 이름은 밖에 쓰고 선으로 잇기</label>
@@ -449,7 +449,6 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
           <div class="row" style="flex-direction:column;align-items:flex-start;gap:8px">
             <label class="chk"><input type="checkbox" id="subLabel" checked> 다른 시도 지역에 소속 시도 작게</label>
             <label class="chk"><input type="checkbox" id="halo"> 글자에 흰 테두리</label>
-            <label class="chk"><input type="checkbox" id="sidoLines" checked> 시도 경계선 표시</label>
           </div>
           <div class="slider" style="margin-top:8px"><span>선 굵기</span><input type="range" id="lineScale" min="0.3" max="3" step="0.1" value="1" aria-label="선 굵기"></div>
         </details>
@@ -578,12 +577,27 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
             <button data-v="">자동</button><button data-v="1.7778">16:9</button><button data-v="1.3333">4:3</button><button data-v="1">1:1</button>
           </div>
         </div>
+        <section class="map-controls" aria-label="지도 표시 설정">
+          <div class="map-control-row">
+            <label class="chk"><input type="checkbox" id="backgroundRegions" aria-describedby="backgroundHelp"> 배경 지역</label>
+            <label class="chk"><input type="checkbox" id="sidoLines" aria-describedby="boundaryHelp"> 시도 경계 강조</label>
+            <label class="chk"><input type="checkbox" id="snapRegions"> 자동 붙이기</label>
+          </div>
+          <p class="note" id="backgroundHelp">배경 지역을 끄면 바깥 회색 면과 선이 함께 사라집니다.</p>
+          <p class="note" id="boundaryHelp">표시한 지역 사이의 기본 경계는 유지됩니다.</p>
+          <div class="map-control-row"><span class="lbl">지역 이름</span>
+            <div class="seg" id="labelMode" aria-label="지역 이름 표시">
+              <button data-v="all">모두 표시</button><button data-v="none">숨기기</button><button data-v="pick">직접 선택</button>
+            </div>
+          </div>
+          <p class="note" id="labelHint" hidden>지도에서 누르거나 아래 목록에서 이름을 하나씩 켜고 끕니다.</p>
+        </section>
         <div class="clickbar" id="clickBar">
           <span>지도를 누르면</span>
           <div class="seg" id="clickAction"><button data-v="main" id="clickMain">지역 고르기</button><button data-v="label">이름 넣기·빼기</button><button data-v="edit">하나씩 꾸미기</button><button data-v="group" id="clickGroup">그룹 칠하기</button></div>
         </div>
         <div class="editbox" id="editBox" hidden>
-          <p class="note">실제 지도·벌려 놓기에서 원래 이웃의 경계 가까이 끌면 자동으로 붙습니다(12px). Alt/Option을 누르면 자유 이동합니다.</p>
+          <p class="note">‘자동 붙이기’를 켜면 실제 지도·벌려 놓기에서 원래 이웃의 경계 가까이 끌 때 붙습니다(12px). Alt/Option을 누르면 자유 이동합니다.</p>
           <p class="note" id="editEmpty">꾸밀 지역을 지도에서 누르세요. 누른 채로 끌면 그 지역만 옮겨집니다.</p>
           <div class="editrow" id="editForm" hidden>
             <b id="editName"></b>

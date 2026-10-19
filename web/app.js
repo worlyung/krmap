@@ -282,7 +282,16 @@
       b.disabled = !!(v && ORDER[eff(v)] <= ORDER[S.target.lv]);
     });
     $("nbLevel").querySelectorAll("button").forEach((b) => (b.disabled = !S.depth));
-    $("hideOthers").checked = S.pick.hideOthers;
+    const canBackground=S.mode!=="all" && S.layout!=="explode" && (S.mode==="pick" || S.layout==="real");
+    const background=S.mode==="pick" ? !S.pick.hideOthers : S.context;
+    $("backgroundRegions").disabled=!canBackground;
+    $("backgroundRegions").checked=canBackground && background;
+    $("backgroundHelp").textContent=canBackground ? "배경 지역을 끄면 바깥 회색 면과 선이 함께 사라집니다." : "현재 지도 방식에는 별도의 배경 지역이 없습니다.";
+    $("sidoLines").disabled=S.layout==="explode" || (S.layout==="real" && S.mode!=="all" && !background);
+    $("sidoLines").checked=!$("sidoLines").disabled && S.sidoLines;
+    $("boundaryHelp").textContent=$("sidoLines").disabled ? "현재는 시도 경계 강조가 적용되지 않습니다. 지역 사이의 기본 경계는 유지됩니다." : "표시한 지역 사이의 기본 경계는 유지됩니다.";
+    $("snapRegions").checked=S.snapRegions!==false;
+    $("snapRegions").disabled=!["real","explode"].includes(S.layout) || S.compare.enabled;
     $("sido17").checked = S.sido17;
     $("sido17").closest("label").hidden = !D.sido17;
     $("labelHint").hidden = S.labelMode !== "pick";
@@ -493,8 +502,8 @@
       if (S.target.lv === "sido" && !D.sido[S.target.id]) S.target = { lv: "sido", id: remapSido([S.target.id])[0] };
       if (S.pick.lv === "sido") S.pick.ids = remapSido(S.pick.ids);
     });
-    chk("context", (v) => (S.context = v));
-    chk("hideOthers", (v) => (S.pick.hideOthers = v));
+    chk("backgroundRegions", (v) => {if(S.mode==="pick")S.pick.hideOthers=!v;else S.context=v;});
+    chk("snapRegions", (v) => (S.snapRegions=v));
     chk("sidoLines", (v) => (S.sidoLines = v));
     chk("subLabel", (v) => (S.subLabel = v));
     chk("leaders", (v) => (S.leaders = v));
@@ -1111,7 +1120,7 @@
     const dragPosition = (d,e) => {
       const f=d.k/lastScene.scale, old=S.offsets[d.key] || [0,0];
       const proposed=[old[0]+(e.clientX-d.x)*f,old[1]+(e.clientY-d.y)*f];
-      return e.altKey ? {offset:proposed,neighbor:null} : R.snapOffset(D,lastScene,d.key,proposed,old,12*f);
+      return e.altKey || S.snapRegions===false ? {offset:proposed,neighbor:null} : R.snapOffset(D,lastScene,d.key,proposed,old,12*f);
     };
     map.addEventListener("pointerdown", (e) => {
       if (S.clickAction !== "edit" || !lastScene) return;

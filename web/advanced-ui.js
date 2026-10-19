@@ -6,7 +6,7 @@
     const panel=document.createElement("section");panel.className="panel advanced-panel";panel.style.padding="18px";
     panel.innerHTML=`<h2>비교·보고서 도구</h2>
       <p class="note">표를 넣은 뒤 색 기준·비교·연도·설명 요소를 설정하세요. 작업 저장 파일에 함께 보관됩니다.</p>
-      <details open><summary>색 기준과 자료 상태</summary>
+      <details><summary>색 기준과 자료 상태</summary>
         <label>색 경계값 (쉼표로 구분, 예: 10,20,30)<input class="field" id="advCuts" placeholder="비우면 자동"></label>
         <div class="row"><button class="btn sm" id="advApplyCuts">색 기준 적용</button><button class="btn sm" id="advDeckCuts">묶음 전체에 같은 기준 적용</button></div>
         <label><input type="checkbox" id="advStatuses"> 자료 없음·0·제외 지역 구분</label>

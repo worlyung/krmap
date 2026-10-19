@@ -961,6 +961,8 @@
   // 제목에 {지역} 이 있으면 바꿔 넣고, 없으면 지역 이름을 앞에 붙인다 (명령줄 --each 와 같은 규칙)
   const titledFor = (title, name) => (title && title.includes("{지역}") ? title.split("{지역}").join(name) : [name, title].filter(Boolean).join(" "));
   function renderDeck() {
+    $("deckWarnings").hidden = true;
+    $("deckWarnings").textContent = "";
     const list = $("deckList");
     list.innerHTML = "";
     deck.forEach((it, i) => {
@@ -1022,6 +1024,9 @@
   async function exportDeck() {
     if (!D || !deck.length) return;
     const btn = $("deckSave");
+    const warningBox = $("deckWarnings");
+    warningBox.hidden = true;
+    warningBox.textContent = "";
     btn.disabled = true;
     toast(`${deck.length}장을 만드는 중입니다…`);
     const keep = S.sido17;
@@ -1029,12 +1034,21 @@
       const states = deck.map((it) => St.mergeState(St.defaultState(), it.state));
       if (states.some((st) => St.needsEmd(st))) await waitEmd();
       await loadPptx();
-      const scenes = [], notes = [];
+      const scenes = [], notes = [], warnings = [];
       for (const S2 of states) {
         R.useSido17(D, S2.sido17);
         const c2 = St.createContext({ stats: window.KRMAP.stats || null, bigText: ctx.bigText, emdReady: emdState === "ready" });
         scenes.push(R.buildScene(D, St.sceneOptions(D, S2, c2, 1600)));
+        const dr = St.dataResult(D, S2, c2);
+        const problems = [];
+        if (dr && dr.ambiguous.length) problems.push(`같은 이름이 여러 곳: ${dr.ambiguous.join(", ")} — 시도를 붙여 주세요`);
+        if (dr && dr.unmatched.length) problems.push(`못 찾은 이름: ${dr.unmatched.join(", ")}`);
+        if (problems.length) warnings.push(`${scenes.length}번째 장 (${S2.heading.title || scenes[scenes.length - 1].title}): ${problems.join(" · ")}`);
         notes.push(S2.heading.note ? "" : `${St.sourceNote(D, S2, c2)} · github.com/vuski/admdongkor`);
+      }
+      if (warnings.length) {
+        warningBox.textContent = "일부 지역은 색칠하지 못했습니다. 아래 항목을 확인해 주세요.\n" + warnings.join("\n");
+        warningBox.hidden = false;
       }
       const backgrounds = [];
       for (const sc of scenes) backgrounds.push(await backdropImage(sc));

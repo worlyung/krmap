@@ -1022,7 +1022,8 @@
         if (!best) continue;
         placed.push(best.box);
         segs.push([c.p, best.e]);
-        scene.polys.push({ name: "지시점 " + c.main, rings: [[dot(c.p, base * 2.4)]], fill: lineColor, stroke: paper, width: base * 0.8, group: "leader" });
+        scene.lines.push({lv:c.lv,id:c.id,lines:[[c.p,best.e]],stroke:lineColor,width:base*1.3,group:"leader"});
+        scene.polys.push({ lv:c.lv,id:c.id,name: "지시점 " + c.main, rings: [[dot(c.p, base * 2.4)]], fill: lineColor, stroke: paper, width: base * 0.8, group: "leader" });
         let y = best.q[1] - th / 2;
         scene.texts.push({ lv: c.lv, id: c.id, x: best.q[0], y: y + size * 0.5, text: c.main, size, weight: c.weight, fill: ink, halo: true, haloColor: paper, track: -0.02, callout: true });
         y += size;
@@ -1032,7 +1033,6 @@
           y += ls * 1.15;
         }
       }
-      if (segs.length) scene.lines.push({ lines: segs, stroke: lineColor, width: base * 1.3, group: "leader" });
     }
     // 양옆 줄: 왼쪽 줄은 오른쪽 끝을, 오른쪽 줄은 왼쪽 끝을 맞추고, 위아래로 겹치지 않게 쌓는다
     const placeColumns = (items, reserved) => {
@@ -1078,10 +1078,10 @@
           if (left ? it.p[0] > ex : it.p[0] < ex) pts.push([ex, y]);
           pts.push(it.p);
           segs.push(pts);
-          scene.polys.push({ name: "지시점 " + it.name, rings: [[ringOf(it.p, base * 2.6, 16)]], fill: lineColor, stroke: paper, width: base * 0.8, group: "leader" });
+          scene.lines.push({lv:it.lv,id:it.id,lines:[pts],stroke:lineColor,width:base*1.2,group:"leader"});
+          scene.polys.push({lv:it.lv,id:it.id, name: "지시점 " + it.name, rings: [[ringOf(it.p, base * 2.6, 16)]], fill: lineColor, stroke: paper, width: base * 0.8, group: "leader" });
         });
       }
-      if (segs.length) scene.lines.push({ lines: segs, stroke: lineColor, width: base * 1.2, group: "leader" });
     };
     const valueOfLines = (lines) => lines.filter((l) => !l.muted).map((l) => l.text).join(" · ");
     if (callouts.length > 3) {
@@ -1294,6 +1294,11 @@
       });
       scene.lines.push({ lines: frames, stroke: frameInk, width: base * 1.2, group: "inset" });
     }
+    // 실제 위치에서의 총 이동량: 벌려 놓기 이동 + 사용자가 옮긴 이동.
+    scene.regionOffsets = {};
+    for (const p of scene.polys) if (p.lv && !["context", "shadow", "extrude", "inset", "bubble"].includes(p.group)) {
+      scene.regionOffsets[K(p.lv,p.id)] = offOf(p.lv,p.id).slice();
+    }
     return scene;
   }
 
@@ -1397,7 +1402,8 @@
       }
       for (const l of ls) {
         const d = l.lines.map((r) => ringD(r, false)).join("");
-        if (d) out.push(`<path d="${d}" fill="none" stroke="${l.stroke}" stroke-width="${num(l.width)}"${l.strokeOpacity != null ? ` stroke-opacity="${l.strokeOpacity}"` : ""} stroke-linejoin="round" stroke-linecap="round"/>`);
+        const dk=opt.interactive&&l.lv?` data-k="${l.lv}:${l.id}"`:"";
+        if (d) out.push(`<path${dk} d="${d}" fill="none" stroke="${l.stroke}" stroke-width="${num(l.width)}"${l.strokeOpacity != null ? ` stroke-opacity="${l.strokeOpacity}"` : ""} stroke-linejoin="round" stroke-linecap="round"/>`);
       }
       out.push(`</g>`);
     }
@@ -1448,5 +1454,21 @@
     return out.join("\n");
   }
 
-  return { INSETS, insetMembers, buildScene, toSVG, backdropSVG, useSido17, tileLayout, tileName, neighborsOf, featuresInside, contains, decode, sidoShort, DEFAULT_COLORS, DISTINCT, LEVEL_NAME, LEVEL_ORDER, FONT };
+  /** 원래 이웃인 두 지역의 총 이동량을 같게 하면 경계의 상대 위치가 복원된다. */
+  function snapOffset(D, scene, key, proposed, old, tolerance) {
+    const offsets=scene.regionOffsets;
+    if(scene.tiles || !offsets || !offsets[key] || !(tolerance>0)) return {offset:proposed,neighbor:null};
+    const [lv,id]=key.split(":"), base=offsets[key].map((v,i)=>v-old[i]);
+    let best={offset:proposed,neighbor:null}, distance=tolerance;
+    for(const other of Object.keys(offsets).sort()) {
+      const [to,oid]=other.split(":");
+      if(other===key || contains(D,lv,id,to,oid) || contains(D,to,oid,lv,id))continue;
+      if(!((D.nb[lv+">"+to]||{})[id]||[]).includes(oid))continue;
+      const target=offsets[other].map((v,i)=>v-base[i]);
+      const d=Math.hypot(target[0]-proposed[0],target[1]-proposed[1]);
+      if(d<=distance){distance=d;best={offset:target,neighbor:other};}
+    }
+    return best;
+  }
+  return { snapOffset, INSETS, insetMembers, buildScene, toSVG, backdropSVG, useSido17, tileLayout, tileName, neighborsOf, featuresInside, contains, decode, sidoShort, DEFAULT_COLORS, DISTINCT, LEVEL_NAME, LEVEL_ORDER, FONT };
 });

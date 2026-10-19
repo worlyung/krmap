@@ -1108,10 +1108,16 @@
     // 끌어서 옮기기: 끄는 동안은 transform 으로만 움직이고, 놓을 때 위치를 저장한 뒤 다시 그린다
     const map = $("map");
     let drag = null;
+    const dragPosition = (d,e) => {
+      const f=d.k/lastScene.scale, old=S.offsets[d.key] || [0,0];
+      const proposed=[old[0]+(e.clientX-d.x)*f,old[1]+(e.clientY-d.y)*f];
+      return e.altKey ? {offset:proposed,neighbor:null} : R.snapOffset(D,lastScene,d.key,proposed,old,12*f);
+    };
     map.addEventListener("pointerdown", (e) => {
       if (S.clickAction !== "edit" || !lastScene) return;
+      if (!Number.isFinite(lastScene.scale)) { toast("한 장 보기에서 지역을 옮겨 주세요"); return; }
       const p = e.target.closest("[data-id]");
-      if (!p || p.closest("#배경")) return;
+      if (!p || p.closest("#배경") || p.closest("#확대")) return;
       const key = p.dataset.k;
       const svg = map.querySelector("svg");
       drag = { key, x: e.clientX, y: e.clientY, moved: false, els: [...svg.querySelectorAll(`[data-k="${key}"]`)], k: lastScene.width / svg.getBoundingClientRect().width };
@@ -1123,23 +1129,25 @@
       const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
       if (!drag.moved && Math.hypot(dx, dy) < 4) return;
       if (!drag.moved) { drag.moved = true; map.classList.add("dragging"); drag.els.forEach((el) => el.parentNode.appendChild(el)); }
-      drag.els.forEach((el) => el.setAttribute("transform", `translate(${dx * drag.k} ${dy * drag.k})`));
+      const result=dragPosition(drag,e),old=S.offsets[drag.key]||[0,0];
+      map.classList.toggle("snapping",!!result.neighbor);
+      drag.els.forEach((el) => el.setAttribute("transform", `translate(${(result.offset[0]-old[0])*lastScene.scale} ${(result.offset[1]-old[1])*lastScene.scale})`));
     });
     const end = (e) => {
       if (!drag) return;
       const d = drag;
       drag = null;
-      map.classList.remove("dragging");
+      map.classList.remove("dragging","snapping");
       if (d.moved) {
-        const f = d.k / lastScene.scale; // 화면 px → 데이터 좌표
-        const old = S.offsets[d.key] || [0, 0];
-        S.offsets[d.key] = [old[0] + (e.clientX - d.x) * f, old[1] + (e.clientY - d.y) * f];
+        const result=dragPosition(d,e);
+        S.offsets[d.key] = result.offset;
+        if(result.neighbor)toast("원래 경계에 맞춰 붙였습니다");
       }
       S.editKey = d.key;
       render();
     };
     map.addEventListener("pointerup", end);
-    map.addEventListener("pointercancel", () => { drag = null; map.classList.remove("dragging"); render(); });
+    map.addEventListener("pointercancel", () => { drag = null; map.classList.remove("dragging","snapping"); render(); });
   }
 
   // ---------- 검색 ----------

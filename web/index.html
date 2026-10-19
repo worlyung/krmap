@@ -221,6 +221,7 @@ details.more[open] summary { margin-bottom: 10px; }
 .ed select { font: inherit; font-size: 12.5px; padding: 4px 6px; border: 1px solid var(--rule-strong); border-radius: 6px; background: var(--panel); color: var(--ink); }
 #map.editing svg [data-id] { cursor: grab; }
 #map.dragging svg [data-id] { cursor: grabbing; }
+#map.snapping { outline:2px solid #0F9F84; outline-offset:4px; }
 #map svg .sel { stroke: var(--sel); stroke-width: 3px; stroke-dasharray: 7 5; }
 #map svg .lift { opacity: 0.85; }
 
@@ -582,6 +583,7 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
           <div class="seg" id="clickAction"><button data-v="main" id="clickMain">지역 고르기</button><button data-v="label">이름 넣기·빼기</button><button data-v="edit">하나씩 꾸미기</button><button data-v="group" id="clickGroup">그룹 칠하기</button></div>
         </div>
         <div class="editbox" id="editBox" hidden>
+          <p class="note">실제 지도·벌려 놓기에서 원래 이웃의 경계 가까이 끌면 자동으로 붙습니다(12px). Alt/Option을 누르면 자유 이동합니다.</p>
           <p class="note" id="editEmpty">꾸밀 지역을 지도에서 누르세요. 누른 채로 끌면 그 지역만 옮겨집니다.</p>
           <div class="editrow" id="editForm" hidden>
             <b id="editName"></b>

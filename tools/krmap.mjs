@@ -49,7 +49,7 @@ render 옵션
   --aspect 16:9              그림 비율: 16:9 / 4:3 / 1:1
   --sido17                   광주·전남 나눠 보기 (17개 시도)
   --each 시도 | --each 충청남도 [--each-unit 시군구]   지역마다 한 장씩 → 슬라이드 여러 장 PPTX (제목의 {지역} 은 지역 이름으로)
-  --format svg,png,pptx      만들 파일 (기본: 셋 다, 묶음은 pptx)
+  --format svg,png,pptx,html 만들 파일 (기본: svg,png,pptx, 묶음은 pptx)
   --out 폴더 | 폴더/이름.pptx 저장 위치 (기본: ./out)
   --width 1600 --png-scale 2 --font 글꼴.ttf
 

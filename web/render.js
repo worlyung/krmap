@@ -592,6 +592,7 @@
     scene.tiles = !!L;
     const view = [x0, y0, x1, y1];
     const tf = (p) => [(p[0] - x0) * s, (p[1] - y0) * s];
+    scene.projectPoint = tf;
     // 흐린 배경·시도 경계선은 제목 아래, 출처 위까지만 그린다
     const cy0 = headPx, cy1 = H - footPx;
     const minStep = 0.35; // px — 이보다 가까운 점은 생략
@@ -1318,6 +1319,7 @@
 
   const GROUPS = [
     ["context", "배경"], ["extrude", "입체"], ["all", "지역"], ["neighbor", "주변"], ["shadow", "그림자"], ["picked", "선택"], ["inner", "대상_내부"], ["target", "대상"], ["sido", "시도경계"], ["bubble", "원"], ["leader", "지시선"], ["inset", "확대"],
+    ["annotation", "설명요소"],
   ];
 
   /** 바탕(단색 · 그라데이션 · 번진 빛) 마크업. defs 는 toSVG 가 넣는다 */
@@ -1383,9 +1385,9 @@
       const gf = g === "shadow" ? "liftShadow" : ps.some((p) => p.glow) || ls.some((l) => l.glow) ? "neonGlow" : ps.some((p) => p.soft) ? "softRaise" : null;
       out.push(gf ? `<g id="${gname}" filter="url(#${gf})">` : `<g id="${gname}">`);
       for (const p of ps) {
-        const dk = opt.interactive ? ` data-k="${p.lv}:${p.id}"` : "";
+        const dk = opt.interactive && p.lv ? ` data-k="${p.lv}:${p.id}"` : "";
         if (g === "shadow") { out.push(`<path${dk} d="${polyD(p.rings)}" fill="${p.fill}"${p.fillOpacity != null ? ` fill-opacity="${p.fillOpacity}"` : ""}/>`); continue; }
-        const attrs = opt.interactive ? ` data-lv="${p.lv}" data-id="${p.id}"${dk}` : "";
+        const attrs = opt.interactive && p.lv ? ` data-lv="${p.lv}" data-id="${p.id}"${dk}` : "";
         const stroke = p.stroke ? ` stroke="${p.stroke}" stroke-width="${num(p.width)}" stroke-linejoin="round"${p.strokeOpacity != null ? ` stroke-opacity="${p.strokeOpacity}"` : ""}` : "";
         const id = g === "context" || g === "extrude" ? "" : ` id="${safeId(p.name, used)}"`;
         const op = p.fillOpacity != null ? ` fill-opacity="${p.fillOpacity}"` : "";

@@ -141,13 +141,16 @@
       $("map").innerHTML = '<span class="loading">읍면동 경계를 불러오는 중입니다…</span>';
       return;
     }
-    const scene = R.buildScene(D, sceneOpts(1600));
+    let scene;
+    try { scene = St.buildScene(D, S, ctx, 1600); }
+    catch (e) { toast(e.message); return; }
     lastScene = scene;
     $("map").innerHTML = R.toSVG(scene, { interactive: true });
     $("slide").style.background = S.fillBg ? S.colors.bg : "#FFFFFF";
     renderInfo(scene);
     if (scene.warning) $("meta").innerHTML += ` · <span class="warn">${scene.warning}</span>`;
     renderDataReport();
+    if (advancedUI) advancedUI.refresh();
     recordHistory();
     renderLabelPick(scene);
     renderEditor();
@@ -222,6 +225,7 @@
     const seen = new Set();
     const items = [];
     for (const p of scene.polys) {
+      if (!p.lv || !D[p.lv] || !D[p.lv][p.id]) continue;
       const key = p.lv + ":" + p.id;
       if (seen.has(key)) continue;
       seen.add(key);
@@ -806,7 +810,7 @@
     $("hNoteText").addEventListener("input", (e) => { S.heading.noteText = e.target.value; if (e.target.value) S.heading.note = true; clearTimeout(bindControls._n); bindControls._n = setTimeout(render, 200); });
     $("legTitle").addEventListener("input", (e) => { S.legend.title = e.target.value; later(200); });
     $("dataText").addEventListener("input", (e) => { S.data.text = e.target.value; S.data.file = ""; ctx.bigText = ""; });
-    const newData = () => { S.data.by = null; S.data.labels = null; };
+    const newData = () => { S.data.by = null; S.data.labels = null; S.compare.enabled=false; S.timeline.enabled=false; };
     $("dataApply").onclick = () => {
       S.data.source = "table";
       if (!S.data.file) S.data.text = $("dataText").value;
@@ -1038,7 +1042,7 @@
       for (const S2 of states) {
         R.useSido17(D, S2.sido17);
         const c2 = St.createContext({ stats: window.KRMAP.stats || null, bigText: ctx.bigText, emdReady: emdState === "ready" });
-        scenes.push(R.buildScene(D, St.sceneOptions(D, S2, c2, 1600)));
+        scenes.push(St.buildScene(D, S2, c2, 1600));
         const dr = St.dataResult(D, S2, c2);
         const problems = [];
         if (dr && dr.ambiguous.length) problems.push(`같은 이름이 여러 곳: ${dr.ambiguous.join(", ")} — 시도를 붙여 주세요`);
@@ -1218,7 +1222,7 @@
   const baseName = (scene) => scene.title.replace(/[\\/:*?"<>|]/g, "").replace(/[\s,]+/g, "_").slice(0, 80);
   function freshScene() {
     if (needsEmd() && emdState !== "ready") { toast("읍면동을 불러오는 중입니다"); return null; }
-    return R.buildScene(D, sceneOpts(1600));
+    try { return St.buildScene(D, S, ctx, 1600); } catch(e) {toast(e.message);return null;}
   }
   function exportSVG() {
     const scene = D && freshScene();
@@ -1363,6 +1367,7 @@
     const m = h.match(/^(sido|si|sgg|emd)-(\d+)$/);
     if (m && (m[1] === "emd" || D[m[1]][m[2]])) S.target = { lv: m[1], id: m[2] };
   }
+  let advancedUI = null;
   function start() {
     initData();
     // 주소에 지역이 없으면 지난번 작업을 이어서 연다
@@ -1374,6 +1379,7 @@
     }
     readHash();
     bindControls();
+    advancedUI = window.KRMapAdvancedUI.bind({S,ctx,getD:()=>D,render,saveFile,toast,waitEmd, getDeck:()=>deck,saveDeck});
     $("credit").innerHTML =
       `경계: 통계청 SGIS 행정구역 경계(공공누리 제1유형), <a href="https://github.com/vuski/admdongkor" target="_blank" rel="noopener">vuski/admdongkor</a> 가공본 (CC BY 4.0). 기준 시점 ${ver()}` +
       (D.sido17 ? ". 이 시점에는 광주광역시와 전라남도가 전남광주통합특별시로 합쳐져 있습니다(2026.7.1). 17개 시도로 보려면 '지역' 탭의 \"광주·전남 나눠 보기\"를 켜세요." : ".") +

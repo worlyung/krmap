@@ -1,5 +1,7 @@
 # 자동화: 명령줄(krmap) · MCP 서버 · 에이전트
 
+고정 색 구간·전후 비교·연도·설명 요소·보고서·xlsx·HTML의 추가 설정은 [비교·보고서 도구](advanced.md)를 참고하세요.
+
 웹 도구와 **같은 그리기 코드**(`web/render.js` 등)를 Node 에서 돌려, 사람 손 없이 SVG · PNG · PPTX 지도를 만듭니다.
 Claude Code · Codex 같은 코딩 에이전트는 MCP 서버를 쓰거나 명령줄을 직접 부르면 됩니다.
 

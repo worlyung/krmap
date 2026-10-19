@@ -15,6 +15,7 @@ const Pn = require("../web/pins.js");
 const St = require("../web/state.js");
 const Px = require("../web/pptx.js");
 const Cl = require("../web/colors.js");
+const A = require("../web/advanced.js");
 export { R, X, Pn, St, Cl };
 
 export const LEVEL_KO = { sido: "시도", si: "시군구", sgg: "시군구(일반구)", emd: "읍면동" };
@@ -218,6 +219,24 @@ export function decodeText(buf) {
   try { return new TextDecoder("euc-kr").decode(buf); } catch (e) { return t; }
 }
 
+export async function readWorkbook(file, options = {}) {
+  const { default: read } = await import("read-excel-file/node");
+  const sheets = await read(file);
+  const sheet = options.sheet ? sheets.find(s => s.sheet === options.sheet) : sheets[0];
+  if (!sheet) throw new Error("엑셀 시트를 찾지 못했습니다: " + options.sheet);
+  return workbookTable(sheet.data, options);
+}
+export function workbookTable(rows, options = {}) {
+  if (!rows.length) throw new Error("빈 엑셀 시트입니다");
+  const header = rows[0].map(v => String(v == null ? "" : v));
+  const at = q => { const i=typeof q === "number" ? q : header.indexOf(q); if(i<0||i>=header.length)throw new Error("엑셀 열을 찾지 못했습니다: "+q);return i; };
+  const region = options.regionColumn == null ? 0 : at(options.regionColumn);
+  const values=options.valueColumns ? options.valueColumns.map(at) : header.map((_,i)=>i).filter(i=>i!==region);
+  if(!values.length)throw new Error("값 열을 하나 이상 선택하세요");
+  const cols=[region,...values.filter(i=>i!==region)];
+  return rowsToTable([[( /코드|code/i.test(header[region]) ? "코드" : "지역"),...cols.slice(1).map(i=>header[i])],...rows.slice(1).map(r=>cols.map(i=>r[i]))]);
+}
+
 /**
  * 사람이 쓰기 쉬운 spec(JSON) → 웹 도구와 같은 state.
  * 웹 도구의 "작업 저장" 파일({state: ...})을 그대로 넣어도 된다.
@@ -336,7 +355,7 @@ export async function specToState(D, spec, opts = {}) {
   if (spec.data) {
     const d = typeof spec.data === "string" ? { table: spec.data } : Array.isArray(spec.data) ? { rows: spec.data } : spec.data;
     // rows: 통계 MCP 결과를 그대로 [{지역:"광진구", 값: 12.3}, …] 또는 [["지역","값"],["광진구",12.3]]
-    const text = d.rows ? rowsToTable(d.rows) : d.file ? decodeText(fs.readFileSync(path.resolve(base || process.cwd(), d.file))) : readMaybeFile(d.table, base);
+    const text = d.rows ? rowsToTable(d.rows) : d.file ? (/\.xlsx$/i.test(d.file) ? await readWorkbook(path.resolve(base || process.cwd(), d.file),d) : decodeText(fs.readFileSync(path.resolve(base || process.cwd(), d.file)))) : readMaybeFile(d.table, base);
     if (!text || !String(text).trim()) throw new Error("data 가 비어 있습니다 (table · file · rows 가운데 하나)");
     S.data.source = "table";
     if (text.length > 150000) { S.data.file = d.file || "data.csv"; bigText = text; } else S.data.text = text;
@@ -353,7 +372,13 @@ export async function specToState(D, spec, opts = {}) {
   }
   // 데이터 색 단계: 따로 정하지 않으면 색 테마에 어울리는 것으로
   if (spec.palette == null && spec.theme != null) S.data.palette = { 코발트: "blue", 코랄: "red", 에메랄드: "green", 라벤더: "purple", 먹: "blue", 미드나잇: "viridis" }[S.colors.name] || "blue";
-  for (const k of ["palette", "steps", "method"]) if (spec[k] != null) S.data[k] = spec[k];
+  for (const k of ["palette", "steps", "method", "cuts", "statuses"]) if (spec[k] != null) S.data[k] = spec[k];
+  if(spec.mappings) S.mappings=spec.mappings;
+  if(spec.excluded) S.excluded=spec.excluded;
+  if(spec.annotations) S.annotations=spec.annotations;
+  if(spec.compare) S.compare=Object.assign(S.compare,{enabled:true},spec.compare);
+  if(spec.timeline) S.timeline=Object.assign(S.timeline,{enabled:true},spec.timeline);
+  if(spec.report) S.report=Object.assign(S.report,{enabled:true},typeof spec.report === "object"?spec.report:{});
   // 원 크기(버블): 인구·매출처럼 "개수"인 값은 면 색보다 원 크기가 정직하다
   if (spec.bubbles || spec.symbol === "bubble" || spec.symbol === "원") S.data.symbol = "bubble";
   if (spec.bubbleScale != null) S.data.bubbleScale = +spec.bubbleScale;
@@ -428,7 +453,7 @@ const safeName = (t) => String(t).replace(/[\\/:*?"<>|]/g, "").replace(/[\s,]+/g
  */
 export async function renderState(D, stats, S, bigText, opts = {}) {
   const ctx = St.createContext({ stats, bigText, emdReady: !!D.emd });
-  const scene = R.buildScene(D, St.sceneOptions(D, S, ctx, opts.width || 1600));
+  const scene = St.buildScene(D, S, ctx, opts.width || 1600);
   const formats = (opts.formats || ["svg", "png", "pptx"]).map((f) => String(f).toLowerCase());
   let out = opts.out || path.join(process.cwd(), "out");
   let dir = out, name = opts.name;
@@ -439,6 +464,7 @@ export async function renderState(D, stats, S, bigText, opts = {}) {
   }
   fs.mkdirSync(dir, { recursive: true });
   const files = [];
+  if(formats.includes("html")) {const f=path.join(dir,name+".html");fs.writeFileSync(f,A.html(St.htmlFrames(D,S,ctx,opts.width || 1600),scene.title));files.push(f);}
   const svg = R.toSVG(scene);
   if (formats.includes("svg")) { const f = path.join(dir, name + ".svg"); fs.writeFileSync(f, svg); files.push(f); }
   let png = null;
@@ -523,7 +549,7 @@ export async function renderDeck(spec, opts = {}) {
   for (let i = 0; i < slides.length; i++) {
     const { S, bigText } = await specToState(D, slides[i], { stats, baseDir: opts.baseDir });
     const ctx = St.createContext({ stats, bigText, emdReady: !!D.emd });
-    const scene = R.buildScene(D, St.sceneOptions(D, S, ctx, opts.width || spec.width || 1600));
+    const scene = St.buildScene(D, S, ctx, opts.width || spec.width || 1600);
     scenes.push(scene);
     notes.push(S.heading.note ? "" : `${St.sourceNote(D, S, ctx)} · github.com/vuski/admdongkor`);
     const dr = St.dataResult(D, S, ctx);
@@ -542,6 +568,7 @@ export async function renderDeck(spec, opts = {}) {
     files.unshift(f);
   }
   R.useSido17(D, false);
+  if(formats.includes("html")){const f=path.join(dir,name+".html");fs.writeFileSync(f,A.html(scenes.map((scene,i)=>({scene,label:items[i].title})),deckTitle));files.push(f);}
   return { files, title: deckTitle, slides: scenes.length, items, preview };
 }
 

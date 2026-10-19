@@ -19,6 +19,8 @@
 | 파일 | 원본 | 라이선스 |
 |---|---|---|
 | `web/vendor/pptxgen.bundle.js` | [PptxGenJS](https://github.com/gitbrent/PptxGenJS) 4.0.1 | MIT — `web/vendor/pptxgenjs.LICENSE` |
+| `web/vendor/read-excel-file.min.js` | [read-excel-file](https://gitlab.com/catamphetamine/read-excel-file) 9.3.12 | MIT — `web/vendor/read-excel-file.LICENSE` |
+| 위 엑셀 번들에 포함된 압축 해제 코드 | [fflate](https://github.com/101arrowz/fflate) | MIT — `web/vendor/fflate.LICENSE` |
 | `web/vendor/fonts/Pretendard-*.subset.woff2` | [Pretendard](https://github.com/orioncactus/pretendard) 1.3.9 | SIL Open Font License 1.1 — `web/vendor/fonts/Pretendard-LICENSE.txt` |
 
 ## npm 으로 받는 라이브러리 (저장소에는 없음)
@@ -30,3 +32,4 @@
 | `pptxgenjs` | MIT |
 | `pretendard` | OFL-1.1 |
 | `zod` | MIT |
+| `read-excel-file` | MIT |

@@ -3,9 +3,9 @@
  * state 는 웹 도구의 "작업 저장" 파일에 들어가는 것과 같은 모양이다.
  */
 (function (root, factory) {
-  if (typeof module === "object" && module.exports) module.exports = factory(require("./render.js"), require("./datafill.js"), require("./colors.js"));
-  else root.KRMapState = factory(root.KRMapRender, root.KRMapData, root.KRMapColors);
-})(typeof self !== "undefined" ? self : this, function (R, X, Cl) {
+  if (typeof module === "object" && module.exports) module.exports = factory(require("./render.js"), require("./datafill.js"), require("./colors.js"), require("./advanced.js"));
+  else root.KRMapState = factory(root.KRMapRender, root.KRMapData, root.KRMapColors, root.KRMapAdvanced);
+})(typeof self !== "undefined" ? self : this, function (R, X, Cl, A) {
   const ORDER = R.LEVEL_ORDER;
 
   // 색 테마: 대상 · 주변 · 나머지 · 경계선 · 시도 경계 · 글자 · 바탕
@@ -39,7 +39,7 @@
       explodeAmt: 0.25,
       tileGap: 0.1,
       heading: { title: "", subtitle: "", note: false, noteText: "" },
-      data: { source: "", text: "", file: "", palette: "blue", steps: 5, method: "quantile", showValues: true, by: null, labels: null, symbol: "fill", bubbleScale: 1 },
+      data: { source: "", text: "", file: "", palette: "blue", steps: 5, method: "quantile", showValues: true, by: null, labels: null, symbol: "fill", bubbleScale: 1, cuts:[], statuses:false },
       pins: { text: "", items: [], shape: "pin", color: "#E5484D", size: 1, labels: true, byCat: true, online: true },
       groups: [], // [{id, name, color}] — 지역의 styles[key].group 으로 연결
       activeGroup: null,
@@ -61,6 +61,12 @@
       fillBg: false,
       aspect: null,
       look: "flat", // 디자인: flat(기본) | glass(유리) | paper(입체) | soft(소프트) | neon(네온)
+      mappings: {},
+      excluded: [],
+      annotations: [],
+      compare: {enabled:false,before:"",after:"",difference:true},
+      timeline: {enabled:false,columns:[],index:0},
+      report: {enabled:false,title:"주요 수치",summary:""},
     };
   }
 
@@ -73,6 +79,7 @@
       else S[k] = o[k];
     }
     S.editKey = null;
+    S.data.cuts = S.data.cuts || [];
     // 예전 작업 파일: 데이터 출처가 없고 표만 있으면 표로 칠한다
     if (S.data.source == null || (S.data.source === "" && (S.data.text || S.data.file) && !("source" in (o.data || {})))) S.data.source = S.data.text || S.data.file ? "table" : "";
     return S;
@@ -158,9 +165,21 @@
     const lv = drawnLevels(D, S);
     if (lv.includes("emd") && !ctx.emdReady) return null;
     const only = visibleKeys(D, S);
-    const opt = { by: S.data.by, labels: S.data.labels, palette: paletteOf(S), steps: S.data.steps, method: S.data.method, only };
-    const sig = JSON.stringify([Object.assign({}, opt, { only: [...only].sort() }), lv, S.sido17, ctx.dsCache.ver, ctx.emdReady]);
-    if (ctx.dataCache.sig !== sig) ctx.dataCache = { sig, res: X.build(D, lv, null, opt, R.sidoShort, ds) };
+    const opt = { by: S.data.by, labels: S.data.labels, palette: paletteOf(S), steps: S.data.steps, method: S.data.method, only, cuts:S.data.cuts, mappings:S.mappings, excluded:S.excluded };
+    const sig = JSON.stringify([Object.assign({}, opt, { only: [...only].sort() }), lv, S.sido17, S.data.statuses, ctx.dsCache.ver, ctx.emdReady]);
+    if (ctx.dataCache.sig !== sig) {
+      const res=X.build(D, lv, null, opt, R.sidoShort, ds);
+      res.statuses={};
+      if(S.data.statuses) {
+        for(const key of only) {
+          const excluded=(S.excluded || []).includes(key), v=res.recs[key] ? X.valueOf(ds,res.recs[key],res.by) : null;
+          if(excluded)res.statuses[key]="excluded";
+          else if(!Object.prototype.hasOwnProperty.call(res.fills,key))res.statuses[key]="missing";
+          else if(v===0)res.statuses[key]="zero";
+        }
+      }
+      ctx.dataCache={sig,res};
+    }
     return ctx.dataCache.res;
   }
   function pinCats(S) {
@@ -219,6 +238,10 @@
         Object.assign(fills, dr.fills);
         items = dr.legend.items.slice();
       }
+      const statusColors={missing:"#E8ECF0",zero:"#FFFFFF",excluded:"#697586"};
+      const statusNames={missing:"자료 없음 (빗금)",zero:"0",excluded:"분석 제외"};
+      for(const key in dr.statuses)fills[key]=statusColors[dr.statuses[key]];
+      for(const s of Object.keys(statusColors))if(Object.values(dr.statuses).includes(s))items.push({color:statusColors[s],label:statusNames[s]});
     }
     const cats = pinCats(S);
     if (cats.length && S.pins.byCat) items = items.concat(cats.map((c) => ({ color: c.color, label: c.name })));
@@ -348,8 +371,15 @@
     return o;
   }
 
-  return {
+  function buildScene(D,S,ctx,width) { return A.build(D,S,ctx,width,api); }
+  function htmlFrames(D,S,ctx,width) {
+    const cols=S.timeline.enabled && S.timeline.columns.length ? S.timeline.columns : [null];
+    return cols.map((col,i)=>{const s=mergeState(defaultState(),A.clone(S));s.timeline.index=i;s.heading.note=true;return {label:col ? A.column(dataset(D,S,ctx),col).name : S.heading.title || "지도",scene:buildScene(D,s,createContext({stats:ctx.stats,bigText:ctx.bigText,emdReady:ctx.emdReady}),width)};});
+  }
+  const api = {
+    buildScene, htmlFrames,
     PRESETS, PIN_COLORS, LOOKS, lookId, lookStyle, paletteOf, defaultState, mergeState, serialize, createContext,
     eff, innerFor, needsEmd, drawnLevels, visibleKeys, dataText, dataset, dataResult, bubbleOn, regionTitle, pinCats, sourceNote, extras, sceneOptions, version,
   };
+  return api;
 });

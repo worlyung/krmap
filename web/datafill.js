@@ -92,7 +92,7 @@
         if (share >= 0.7) numericCols.push(c);
       }
       const firstText = rows[0].every((v) => num(v) == null || /^\d{4}$/.test(v));
-      if ((numericCols.length && numericCols.every((c) => num(rows[0][c]) == null)) || (!numericCols.length && firstText && /지역|시도|시군구|읍면동|이름|구분|행정/.test(rows[0].join(" ")))) head = rows.shift();
+      if (/^(지역|지역명|코드|행정기관코드|region|code)$/i.test(rows[0][0]) || (numericCols.length && numericCols.every((c) => num(rows[0][c]) == null)) || (!numericCols.length && firstText && /지역|시도|시군구|읍면동|이름|구분|행정/.test(rows[0].join(" ")))) head = rows.shift();
     }
     return { head, rows };
   }
@@ -111,7 +111,8 @@
     const share = (c, test) => rows.filter((r) => test(r[c])).length / Math.max(rows.length, 1);
     const isNum = [], isCode = [];
     for (let c = 0; c < width; c++) {
-      isNum[c] = share(c, (v) => num(v) != null) >= 0.8;
+      const present=rows.map(r=>r[c]).filter(v=>String(v).trim()!==""&&!/^(?:-|—|N\/A|null)$/i.test(String(v).trim()));
+      isNum[c] = present.length ? present.filter(v=>num(v)!=null).length/present.length>=0.8 : /^(?:\d{4}(?:년)?|값|value)$/i.test(H(c));
       isCode[c] = /코드|code/i.test(H(c)) || (isNum[c] && share(c, (v) => /^\d{10}$/.test(String(v).trim())) >= 0.8);
     }
     const ageCols = [];
@@ -253,14 +254,19 @@
   }
 
   /** 지도 단위(levels)별로 지역마다 합친 기록을 만든다 */
-  function resolve(D, ds, levels, sidoShort) {
+  function resolve(D, ds, levels, sidoShort, mappings) {
     const more = ["sido", "si", "sgg", "emd"].filter((lv) => D[lv] && !levels.includes(lv));
     const findDrawn = matcher(D, levels, sidoShort);
     const findMore = matcher(D, more, sidoShort);
     const res = { recs: {}, matched: 0, unmatched: [], ambiguous: [] };
     const exact = new Map();
     for (const r of ds.rows) {
-      let key = codeKey(D, r.code);
+      const mapped = mappings && Object.prototype.hasOwnProperty.call(mappings, r.name || r.code) ? mappings[r.name || r.code] : null;
+      let key = mapped || codeKey(D, r.code);
+      if (mapped) {
+        const [lv, id] = String(mapped).split(":");
+        if (!D[lv] || !D[lv][id]) throw new Error("연결한 지역이 현재 경계에 없습니다: " + mapped);
+      }
       if (!key) {
         key = findDrawn(r.name);
         if (!key || key === "ambiguous") {
@@ -331,6 +337,11 @@
   /** 기록 → 숫자/글자 값 */
   function valueOf(ds, rec, by) {
     if (!by) return null;
+    if (by.t === "diff") {
+      const a = ds.columns.find(c => c.id === by.a), b = ds.columns.find(c => c.id === by.b);
+      const av = a && a.get(rec), bv = b && b.get(rec);
+      return av == null || bv == null || !isFinite(av) || !isFinite(bv) ? null : bv - av;
+    }
     if (by.t === "ratio") {
       const A = ds.columns.find((c) => c.id === by.a), B = ds.columns.find((c) => c.id === by.b);
       if (!A || !B) return null;
@@ -378,7 +389,7 @@
     const out = { fills: {}, values: {}, legend: { title: "", items: [] }, kind: null, by };
     if (!by) return out;
     // 단계·범례는 지금 지도에 보이는 지역만으로 정한다
-    const keys = Object.keys(res.recs).filter((k) => !opt.only || opt.only.has(k));
+    const keys = Object.keys(res.recs).filter((k) => (!opt.only || opt.only.has(k)) && !(opt.excluded || []).includes(k));
     const labelIds = opt.labels || (by.t === "col" ? [by.c] : by.t === "win" ? [] : []);
     for (const k of keys) {
       const rec = res.recs[k];
@@ -406,7 +417,7 @@
     }
     const vals = keys.map((k) => [k, valueOf(ds, res.recs[k], by)]).filter(([, v]) => v != null && v !== "");
     if (!vals.length) return out;
-    const col = by.t === "col" ? ds.columns.find((c) => c.id === by.c) : null;
+    const col = by.t === "col" ? ds.columns.find((c) => c.id === by.c) : by.t === "diff" ? { name: "증감 (후 − 전)", kind: "count" } : null;
     if (col && col.kind === "text") {
       out.kind = "cat";
       const cats = [...new Set(vals.map(([, v]) => String(v)))];
@@ -428,7 +439,20 @@
     out.nums = {};
     for (const [k, v] of vals) if (isFinite(+v)) out.nums[k] = +v;
     out.fmt = f;
-    if ((opt.palette === "diverge" || (opt.palette && opt.palette.diverge)) && lo0 < 0 && hi0 > 0) {
+    if (by.t === "diff") {
+      const max=Math.max(...nums.map(Math.abs),0), neutral="#EEEDEA";
+      for(const [k,v] of vals) {
+        out.fills[k]=v===0?neutral:lerp(neutral,v<0?"#1F56B3":"#C23A2E",Math.abs(v)/(max||1));
+        out.values[k]=[(v>0?"+":"")+fmt(v)];
+      }
+      out.legend.items=max?[{color:"#1F56B3",label:"감소 (−"+fmt(max)+")"},{color:neutral,label:"0 (변화 없음)"},{color:"#C23A2E",label:"증가 (+"+fmt(max)+")"}]:[{color:neutral,label:"0 (변화 없음)"}];
+    } else if (opt.cuts && opt.cuts.length) {
+      const cuts = opt.cuts;
+      if (cuts.length > 8 || cuts.some((v, i) => typeof v !== "number" || !isFinite(v) || (i && v <= cuts[i - 1]))) throw new Error("색 경계값은 작은 수부터 서로 다르게 최대 8개를 입력하세요");
+      const colors = ramp(opt.palette, cuts.length + 1);
+      for (const [k, v] of vals) if (isFinite(+v)) out.fills[k] = colors[classOf(+v, cuts)];
+      out.legend.items = colors.map((color, i) => ({ color, label: i === 0 ? `${f(cuts[0])} 미만` : i === cuts.length ? `${f(cuts[i - 1])} 이상` : `${f(cuts[i - 1])} 이상 · ${f(cuts[i])} 미만` }));
+    } else if ((opt.palette === "diverge" || (opt.palette && opt.palette.diverge)) && lo0 < 0 && hi0 > 0) {
       // 증감처럼 부호가 갈리는 값: 0 을 가운데(회색)로 두고 음수는 파랑, 양수는 빨강 쪽 단계로 따로 나눈다
       const k = Math.max(1, Math.floor(steps / 2));
       const neg = breaks(nums.filter((v) => v < 0), k, opt.method), pos = breaks(nums.filter((v) => v > 0), k, opt.method);
@@ -479,10 +503,10 @@
   /** 한 번에: 표 글 → 칠할 결과 (ds 는 analyze 결과를 다시 쓸 때 넘긴다) */
   function build(D, levels, text, opt, sidoShort, ds) {
     ds = ds || analyze(readTable(text));
-    const res = resolve(D, ds, levels, sidoShort);
+    const res = resolve(D, ds, levels, sidoShort, opt.mappings);
     const col = colorize(ds, res, opt);
     return Object.assign(col, { ds, matched: res.matched, unmatched: res.unmatched, ambiguous: res.ambiguous, recs: res.recs });
   }
 
-  return { PALETTES, CATEGORY, ramp, readTable, analyze, matcher, resolve, colorize, build, breaks, fmt, compact, defaultBy, fromStats, fromPins, LEVEL_ORDER };
+  return { PALETTES, CATEGORY, ramp, readTable, analyze, matcher, resolve, colorize, build, breaks, fmt, compact, defaultBy, fromStats, fromPins, valueOf, LEVEL_ORDER };
 });

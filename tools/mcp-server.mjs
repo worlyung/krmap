@@ -105,6 +105,7 @@ const SPEC_HELP = `지도 설정(spec). 자주 쓰는 칸:
 - 디자인: look "기본"|"유리"(글라스모피즘)|"입체"|"소프트"(뉴모피즘)|"네온"
 - 통계 MCP 결과: data={rows:[{지역:"광진구", 값:31.2}, ...], by:"값"}, source="통계청 KOSIS, 표이름(DT_…)" (출처 문구로 들어감)
 - 기타: sido17(광주·전남 나눔), splitGu(일반구 나눔), fontScale, lineScale, shadow, background
+- 추가: cuts=[10,20,30](고정 색 경계), mappings={"별칭":"sido:30"}, statuses=true, excluded=["sido:11"], compare={before:"2024",after:"2025",difference:true}, timeline={columns:["2024","2025"],index:0}, report={title:"요약",summary:"설명"}, annotations=[{type:"text",region:"sido:30",text:"설명"},{type:"arrow",region:"sido:30",to:"sido:36"},{type:"radius",region:"sido:30",km:10}]. 비교와 연도는 하나씩 사용. data.file은 xlsx도 지원하며 sheet,regionColumn,valueColumns로 선택.
 웹 도구에서 "작업 저장"한 파일 내용({state, fileText})을 그대로 넣어도 된다. 모든 칸은 map_spec_reference 로 볼 수 있다.`;
 
 server.registerTool("render_map", {
@@ -112,7 +113,7 @@ server.registerTool("render_map", {
   description: "행정구역 지도를 SVG(벡터)·PNG·PPTX(지역마다 편집할 수 있는 도형)로 만들어 파일로 저장한다. 결과에 파일 경로와 요약(칠한 지역 수, 범례, 못 맞춘 이름)이 오고, preview=true 면 미리보기 그림도 온다. 지역 이름이 애매하면 find_region 으로 먼저 확인한다.\n\n" + SPEC_HELP,
   inputSchema: {
     spec: z.object({}).passthrough().describe("지도 설정 (위 설명). 예: {\"region\":\"대전광역시\",\"stat\":\"60세 이상 비율\",\"title\":\"대전 주변 고령 인구\"}"),
-    formats: z.array(z.enum(["svg", "png", "pptx"])).optional().describe("만들 파일 (기본: svg, png, pptx)"),
+    formats: z.array(z.enum(["svg", "png", "pptx", "html"])).optional().describe("만들 파일 (기본: svg, png, pptx). html은 오프라인 공유용"),
     out_dir: z.string().optional().describe("저장 폴더 (기본: 현재 폴더의 out/). 상대 경로는 서버를 띄운 폴더 기준"),
     name: z.string().optional().describe("파일 이름 (확장자 없이, 기본: 지도 제목)"),
     width: z.number().int().min(400).max(6000).optional().describe("그림 폭 px (기본 1600)"),

@@ -119,7 +119,7 @@ body {
 .note a { color: var(--accent); }
 
 /* 설정판 탭: 밑줄 */
-.ptabs { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--rule); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 4; background: var(--panel); border-radius: 12px 12px 0 0; padding-inline: 6px; }
+.ptabs { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--rule); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 4; background: var(--panel); border-radius: 12px 12px 0 0; padding-inline: 6px; }
 .ptabs button { border: 0; background: none; color: var(--muted); font: inherit; font-weight: 600; font-size: 13.5px; letter-spacing: -0.01em; padding: 13px 4px 11px; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; }
 .ptabs button:hover { color: var(--ink); }
 .ptabs button.on { color: var(--ink); border-bottom-color: var(--ink); }
@@ -209,7 +209,7 @@ details.more[open] summary { margin-bottom: 10px; }
     linear-gradient(var(--tick), var(--tick)) right bottom / 14px 1px no-repeat, linear-gradient(var(--tick), var(--tick)) right bottom / 1px 14px no-repeat; }
 .sheetcap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; font: 11px/1.4 var(--font-data); color: var(--faint); letter-spacing: 0.02em; padding-inline: 2px; }
 #map { width: 100%; display: flex; justify-content: center; }
-#map svg { max-width: 100%; height: auto; max-height: min(calc(100vh - 330px), 860px); min-height: 0; width: auto; display: block; }
+#map svg { width: 100%; height: clamp(360px, 60vh, 760px); display: block; }
 #map svg [data-id] { cursor: pointer; transition: opacity 0.12s; }
 #map svg [data-id]:hover { opacity: 0.8; }
 .loading { color: var(--muted); font-size: 13px; }
@@ -331,7 +331,7 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
   <div class="app">
     <aside class="panel">
       <nav class="ptabs" id="ptab">
-        <button data-v="region">지역</button><button data-v="look">모양</button><button data-v="data">데이터</button><button data-v="pins">지점</button>
+        <button data-v="region">지도 편집</button><button data-v="data">데이터</button><button data-v="pins">지점</button>
       </nav>
       <div class="pane" data-pane="region">
       <section class="card">
@@ -398,7 +398,7 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
 
       <div class="pane" data-pane="look" hidden>
       <section class="card">
-        <h2>스타일</h2>
+        <h2 id="styleHeading">색과 스타일</h2>
         <span class="lbl">디자인</span>
         <div class="seg" id="look" aria-label="디자인 방식"><button data-v="flat">기본</button><button data-v="glass">유리</button><button data-v="paper">입체</button><button data-v="soft">소프트</button><button data-v="neon">네온</button></div>
         <p class="note" id="lookNote" hidden></p>
@@ -438,7 +438,7 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
       </section>
 
       <section class="card">
-        <h2>이름 꾸미기</h2>
+        <h2 id="nameHeading">이름 꾸미기</h2>
         <p class="note">이름 표시 여부는 지도 위 ‘지역 이름’에서 바꿀 수 있습니다.</p>
         <span class="lbl">이름 자리</span>
         <div class="seg" id="labelPlace" aria-label="이름 자리"><button data-v="auto">지역 안</button><button data-v="side">양옆으로 모두 빼기</button></div>
@@ -592,6 +592,14 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
           </div>
           <p class="note" id="labelHint" hidden>지도에서 누르거나 아래 목록에서 이름을 하나씩 켜고 끕니다.</p>
         </section>
+        <div class="map-control-row" role="group" aria-label="지도 확대 축소" style="margin-bottom:12px">
+          <button class="btn sm" id="zoomOut" aria-label="지도 축소">−</button>
+          <output id="zoomLevel" aria-live="polite">100%</output>
+          <button class="btn sm" id="zoomIn" aria-label="지도 확대">+</button>
+          <button class="btn sm" id="zoomTarget">선택 지역 맞춤</button>
+          <button class="btn sm" id="zoomFit">전체 맞춤</button>
+          <span class="note">화면 보기만 확대 · Ctrl/⌘ + 휠</span>
+        </div>
         <div class="clickbar" id="clickBar">
           <span>지도를 누르면</span>
           <div class="seg" id="clickAction"><button data-v="main" id="clickMain">지역 고르기</button><button data-v="label">이름 넣기·빼기</button><button data-v="edit">하나씩 꾸미기</button><button data-v="group" id="clickGroup">그룹 칠하기</button></div>
@@ -664,6 +672,7 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
 <script src="state.js"></script>
 <script src="pptx.js"></script>
 <script src="advanced-ui.js"></script>
+<script src="viewport.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

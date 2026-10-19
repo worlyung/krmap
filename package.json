@@ -24,7 +24,7 @@
   "scripts": {
     "krmap": "node tools/krmap.mjs",
     "mcp": "node tools/mcp-server.mjs",
-    "test": "node tools/test.mjs && node tools/test-advanced.mjs && node tools/test-snap.mjs && node tools/test-context.mjs"
+    "test": "node tools/test.mjs && node tools/test-advanced.mjs && node tools/test-snap.mjs && node tools/test-context.mjs && node tools/test-viewport.mjs"
   },
   "engines": {
     "node": ">=20"

@@ -18,6 +18,35 @@
   let emdState = "none"; // none | loading | ready
   let index = [];
   let lastScene = null;
+  const V = window.KRMapViewport;
+  let viewBox = null, viewKey = "";
+  function viewFrame() {
+    const rect=$("map").querySelector("svg").getBoundingClientRect();
+    const ratio=rect.width/rect.height;
+    return {width:Math.max(lastScene.width,lastScene.height*ratio),height:Math.max(lastScene.height,lastScene.width/ratio)};
+  }
+  function targetBounds(scene) {
+    if (S.mode !== "around" || !scene.projectPoint || scene.tiles || S.compare.enabled) return null;
+    const f=D[S.target.lv]?.[S.target.id];
+    if (!f) return null;
+    const off=S.offsets[S.target.lv+":"+S.target.id] || [0,0];
+    const a=scene.projectPoint([f.bb[0]+off[0],f.bb[1]+off[1]]);
+    const b=scene.projectPoint([f.bb[2]+off[0],f.bb[3]+off[1]]);
+    return [...a,...b];
+  }
+  function showView() {
+    const svg=$("map").querySelector("svg");
+    if (!svg || !lastScene || !viewBox) return;
+    const frame=viewFrame(),ratio=frame.width/frame.height;
+    const w=Math.max(viewBox[2],viewBox[3]*ratio),h=w/ratio;
+    viewBox=[viewBox[0]+(viewBox[2]-w)/2,viewBox[1]+(viewBox[3]-h)/2,w,h];
+    svg.setAttribute("viewBox",viewBox.join(" "));
+    const level=frame.width/viewBox[2];
+    $("zoomLevel").textContent=Math.round(level*100)+"%";
+    $("zoomIn").disabled=level>=16;
+    $("zoomOut").disabled=level<=.5;
+    $("zoomTarget").disabled=!targetBounds(lastScene);
+  }
   let lastList = []; // 목록 복사용 [{lv,id}]
 
   // ---------- 데이터 ----------
@@ -146,6 +175,10 @@
     catch (e) { toast(e.message); return; }
     lastScene = scene;
     $("map").innerHTML = R.toSVG(scene, { interactive: true });
+    const nextViewKey=JSON.stringify([S.mode,S.target,S.layout,S.pick.ids,scene.width,scene.height,S.compare.enabled]);
+    if (!viewBox || viewKey!==nextViewKey) viewBox=V.focus(scene,targetBounds(scene));
+    viewKey=nextViewKey;
+    showView();
     $("slide").style.background = S.fillBg ? S.colors.bg : "#FFFFFF";
     renderInfo(scene);
     if (scene.warning) $("meta").innerHTML += ` · <span class="warn">${scene.warning}</span>`;
@@ -268,6 +301,7 @@
     el._sync = () => el.querySelectorAll("button").forEach((b) => b.classList.toggle("on", b.dataset.v === String(get())));
   }
   function syncControls() {
+    if (S.panel === "look") S.panel = "region";
     ["mode", "depth", "nbLevel", "inner", "aspect", "pickLv", "pickFit", "allLv", "labelMode", "clickAction"].forEach((id) => $(id)._sync());
     $("secAround").hidden = S.mode !== "around";
     $("secPick").hidden = S.mode !== "pick";
@@ -310,7 +344,7 @@
     $("lookNote").textContent = LOOK_NOTE[S.look] || "";
     $("explodeRow").hidden = S.layout !== "explode";
     $("tileGapRow").hidden = $("tileNote").hidden = !(S.layout === "square" || S.layout === "hex");
-    document.querySelectorAll(".pane").forEach((el) => (el.hidden = el.dataset.pane !== S.panel));
+    document.querySelectorAll(".pane").forEach((el) => (el.hidden = (el.dataset.pane === "look" ? "region" : el.dataset.pane) !== S.panel));
     $("clickGroup").hidden = !S.groups.length;
     const setVal = (id, v) => { if (document.activeElement !== $(id)) $(id).value = v; };
     setVal("hTitle", S.heading.title);
@@ -400,6 +434,7 @@
   }
 
   function setTarget(t) {
+    viewKey="";
     S.mode = "around";
     S.target = t;
     if (S.inner && ORDER[eff(S.inner)] <= ORDER[t.lv]) S.inner = "";
@@ -433,6 +468,23 @@
   }
 
   function bindControls() {
+    // 지역 검색 바로 아래에서 색과 이름을 꾸미고, 나머지 지역·배치 설정을 이어서 사용한다.
+    const regionPane=document.querySelector('[data-pane="region"]');
+    regionPane.firstElementChild.after($("styleHeading").closest("section"),$("nameHeading").closest("section"));
+    $("zoomIn").onclick=()=>{if(lastScene){viewBox=V.zoom(viewFrame(),viewBox,1.25);showView();}};
+    $("zoomOut").onclick=()=>{if(lastScene){viewBox=V.zoom(viewFrame(),viewBox,.8);showView();}};
+    $("zoomFit").onclick=()=>{if(lastScene){viewBox=V.full(lastScene);showView();}};
+    $("zoomTarget").onclick=()=>{if(lastScene){viewBox=V.focus(lastScene,targetBounds(lastScene));showView();}};
+    $("map").addEventListener("wheel",e=>{
+      if (!(e.ctrlKey || e.metaKey) || !lastScene) return;
+      const svg=$("map").querySelector("svg"), matrix=svg?.getScreenCTM();
+      if (!matrix) return;
+      e.preventDefault();
+      const p=new DOMPoint(e.clientX,e.clientY).matrixTransform(matrix.inverse());
+      viewBox=V.zoom(viewFrame(),viewBox,e.deltaY<0?1.15:1/1.15,[(p.x-viewBox[0])/viewBox[2],(p.y-viewBox[1])/viewBox[3]]);
+      showView();
+    },{passive:false});
+    window.addEventListener("resize",()=>{if(lastScene)showView();});
     seg("mode", () => S.mode, (v) => {
       if (v === "pick" && !S.pick.ids.length && S.mode === "around") {
         // 지금 보던 대상을 처음 고른 영역으로
@@ -1129,7 +1181,7 @@
       if (!p || p.closest("#배경") || p.closest("#확대")) return;
       const key = p.dataset.k;
       const svg = map.querySelector("svg");
-      drag = { key, x: e.clientX, y: e.clientY, moved: false, els: [...svg.querySelectorAll(`[data-k="${key}"]`)], k: lastScene.width / svg.getBoundingClientRect().width };
+      drag = { key, x: e.clientX, y: e.clientY, moved: false, els: [...svg.querySelectorAll(`[data-k="${key}"]`)], k: 1 / svg.getScreenCTM().a };
       map.setPointerCapture(e.pointerId);
       e.preventDefault();
     });
@@ -1399,7 +1451,7 @@
     advancedUI = window.KRMapAdvancedUI.bind({S,ctx,getD:()=>D,render,saveFile,toast,waitEmd, getDeck:()=>deck,saveDeck});
     $("credit").innerHTML =
       `경계: 통계청 SGIS 행정구역 경계(공공누리 제1유형), <a href="https://github.com/vuski/admdongkor" target="_blank" rel="noopener">vuski/admdongkor</a> 가공본 (CC BY 4.0). 기준 시점 ${ver()}` +
-      (D.sido17 ? ". 이 시점에는 광주광역시와 전라남도가 전남광주통합특별시로 합쳐져 있습니다(2026.7.1). 17개 시도로 보려면 '지역' 탭의 \"광주·전남 나눠 보기\"를 켜세요." : ".") +
+      (D.sido17 ? ". 이 시점에는 광주광역시와 전라남도가 전남광주통합특별시로 합쳐져 있습니다(2026.7.1). 17개 시도로 보려면 '지도 편집'의 \"광주·전남 나눠 보기\"를 켜세요." : ".") +
       (window.KRMAP.stats ? ` 기본 통계: 행정안전부 주민등록 인구통계 ${window.KRMAP.stats.meta.month}월말.` : "") +
       " 지점 인터넷 주소 검색: © OpenStreetMap 기여자. 슬라이드에 쓸 때 출처를 함께 적어 주세요.";
     render();

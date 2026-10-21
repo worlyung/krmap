@@ -68,6 +68,7 @@
       compare: {enabled:false,before:"",after:"",difference:true},
       timeline: {enabled:false,columns:[],index:0},
       report: {enabled:false,title:"주요 수치",summary:""},
+      infographic: {arrows:{enabled:false,first:"",second:"",scale:1,unit:"",firstColor:"#168CCD",secondColor:"#DB424D"},bars:{enabled:false,columns:[],colors:[],sort:"region",title:"지역별 비교",unit:""}},
     };
   }
 

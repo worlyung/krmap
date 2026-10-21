@@ -57,7 +57,7 @@
     return {width:Math.max(lastScene.width,lastScene.height*ratio),height:Math.max(lastScene.height,lastScene.width/ratio)};
   }
   function targetBounds(scene) {
-    if (S.mode !== "around" || !scene.projectPoint || scene.tiles || S.compare.enabled) return null;
+    if (S.mode !== "around" || !scene.projectPoint || scene.tiles || S.compare.enabled || S.report.enabled || S.infographic.bars?.enabled) return null;
     const f=D[S.target.lv]?.[S.target.id];
     if (!f) return null;
     const off=S.offsets[S.target.lv+":"+S.target.id] || [0,0];
@@ -374,7 +374,7 @@
     $("sidoLines").checked=!$("sidoLines").disabled && S.sidoLines;
     $("boundaryHelp").textContent=$("sidoLines").disabled ? "현재는 시도 경계 강조가 적용되지 않습니다. 지역 사이의 기본 경계는 유지됩니다." : "표시한 지역 사이의 기본 경계는 유지됩니다.";
     $("snapRegions").checked=S.snapRegions!==false;
-    $("snapRegions").disabled=!["real","explode"].includes(S.layout) || S.compare.enabled;
+    $("snapRegions").disabled=S.compare.enabled;
     $("sido17").checked = S.sido17;
     $("sido17").closest("label").hidden = !D.sido17;
     $("labelHint").hidden = S.labelMode !== "pick";
@@ -1253,7 +1253,7 @@
       if (d.moved) {
         const result=dragPosition(d,e);
         S.offsets[d.key] = result.offset;
-        if(result.neighbor)toast("원래 경계에 맞춰 붙였습니다");
+        if(result.neighbor)toast(result.neighbor==='grid'?"타일 격자에 맞췄습니다":"원래 경계에 맞춰 붙였습니다");
       }
       S.editKey = d.key;
       render();

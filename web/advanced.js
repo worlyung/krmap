@@ -1,8 +1,8 @@
 /* 보고서·비교·연도·설명 요소. 브라우저와 Node에서 같은 장면을 만든다. */
 (function(root, factory) {
-  if (typeof module === "object" && module.exports) module.exports = factory(require("./render.js"), require("./datafill.js"));
-  else root.KRMapAdvanced = factory(root.KRMapRender, root.KRMapData);
-})(typeof self !== "undefined" ? self : this, function(R, X) {
+  if (typeof module === "object" && module.exports) module.exports = factory(require("./render.js"), require("./datafill.js"), require("./infographic.js"));
+  else root.KRMapAdvanced = factory(root.KRMapRender, root.KRMapData, root.KRMapInfographic);
+})(typeof self !== "undefined" ? self : this, function(R, X, I) {
   const clone = s => JSON.parse(JSON.stringify(Object.assign({}, s, { labelPick: [...(s.labelPick || [])] })));
   const ink = "#23354D";
   const text = (sc, value, x, y, size, fill) => sc.texts.push({text:String(value),x,y,size,weight:500,fill:fill || ink,anchor:"start",role:"heading"});
@@ -93,7 +93,7 @@
       if(y>sc.height)sc.height=y+24*u;
       sc.title=originalTitle;
     }
-    return sc;
+    return I.decorate(sc,D,S,ctx,St);
   }
   function build(D,S,ctx,width,St) {
     const ds=St.dataset(D,S,ctx);
@@ -113,7 +113,7 @@
       const w=out.width/frames.length,gap=12,top=60*out.width/1600;
       frames.forEach((f,i)=>{const k=(w-gap)/f.width,part=move(f,k,i*w+gap/2,top);for(const key of ["polys","lines","texts"])out[key].push(...part[key]);out.height=Math.max(out.height,f.height*k+top);});
       text(out,out.title,20,25*out.width/1600,28*out.width/1600);
-      if(S.report.enabled){const st=St.mergeState(St.defaultState(),clone(S));st.annotations=[];st.data.statuses=false;st.data.by={t:"col",c:b.id};return decorate(out,D,st,ctx,St);}
+      if(S.report.enabled){const st=St.mergeState(St.defaultState(),clone(S));st.annotations=[];st.infographic={};st.data.statuses=false;st.data.by={t:"col",c:b.id};return decorate(out,D,st,ctx,St);}
       return out;
     }
     let st=S;

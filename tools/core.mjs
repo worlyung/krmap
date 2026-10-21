@@ -376,6 +376,7 @@ export async function specToState(D, spec, opts = {}) {
   if(spec.mappings) S.mappings=spec.mappings;
   if(spec.excluded) S.excluded=spec.excluded;
   if(spec.annotations) S.annotations=spec.annotations;
+  if(spec.infographic) S.infographic=Object.assign(S.infographic,spec.infographic);
   if(spec.compare) S.compare=Object.assign(S.compare,{enabled:true},spec.compare);
   if(spec.timeline) S.timeline=Object.assign(S.timeline,{enabled:true},spec.timeline);
   if(spec.report) S.report=Object.assign(S.report,{enabled:true},typeof spec.report === "object"?spec.report:{});

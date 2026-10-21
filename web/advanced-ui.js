@@ -26,12 +26,30 @@
         <label><input type="checkbox" id="advFreePosition"> 설명 상자 위치 직접 지정</label><div class="row"><label>가로 %<input class="field" id="advX" type="number" min="0" max="90" value="10"></label><label>세로 %<input class="field" id="advY" type="number" min="5" max="95" value="15"></label></div>
         <label>반경 km<input class="field" type="number" min="0.1" max="500" value="10" id="advRadius"></label><label>설명 문구<input class="field" id="advAnnoText" maxlength="160"></label><label>색<input type="color" id="advAnnoColor" value="#c23a2e"></label>
         <button class="btn sm" id="advAnnoAdd">요소 추가</button><div id="advAnnoList"></div><p class="note">반경은 선택한 지역의 대표점을 기준으로 합니다. 실제 지도에서만 사용할 수 있으며, 이동시간을 뜻하지 않습니다.</p></details>
+      <details><summary>데이터 화살표·비교 막대그래프</summary>
+        <p class="note">지도 배경색은 ‘데이터’의 색 기준을 유지합니다. 화살표는 두 열의 차이, 막대는 선택한 열의 실제 값을 보여 줍니다.</p>
+        <label><input type="checkbox" id="infoArrows">지역마다 두 값의 차이를 화살표로 표시</label>
+        <label>왼쪽 위 화살표 기준<select class="field" id="infoFirst"></select></label><label>색<input type="color" id="infoFirstColor" value="#168ccd"></label>
+        <label>오른쪽 위 화살표 기준<select class="field" id="infoSecond"></select></label><label>색<input type="color" id="infoSecondColor" value="#db424d"></label>
+        <label>화살표 크기<input class="field" id="infoScale" type="number" min="0.1" max="3" step="0.1" value="1"></label><label>차이 단위<input class="field" id="infoArrowUnit" placeholder="예: %p" maxlength="20"></label>
+        <label><input type="checkbox" id="infoBars">지도 옆에 지역별 비교 막대그래프 표시</label><label>비교할 열 (최대 6개)<select class="field" id="infoColumns" multiple size="5"></select></label>
+        <label>그래프 제목<input class="field" id="infoTitle" maxlength="80" value="지역별 비교"></label><label>값 단위<input class="field" id="infoUnit" placeholder="예: %" maxlength="20"></label>
+        <label>순서<select class="field" id="infoSort"><option value="region">지역 순서</option><option value="value">첫 값이 큰 순서</option></select></label>
+        <button class="btn sm" id="infoApply">화살표·그래프 적용</button><button class="btn sm" id="infoClear">모두 끄기</button>
+        <p class="note">빈 값은 ‘자료 없음’으로 표시합니다. 막대는 0 이상의 값만 지원하며, 합계 100%로 바꾸지 않습니다. 지역이 많으면 저장 그림의 높이가 늘어납니다. 확대 창에도 화살표가 표시됩니다.</p>
+      </details>
       <details><summary>보고서 서식</summary><label><input type="checkbox" id="advReport">지도와 요약표를 한 장에 배치</label><label>요약 제목<input class="field" id="advReportTitle" value="주요 수치"></label><label>설명<textarea class="field" id="advSummary" rows="3" maxlength="1000"></textarea></label><button class="btn sm" id="advReportApply">보고서 적용</button>
         <label>서식<select class="field" id="advPresets"><option value="proposal">제안서</option><option value="results">성과보고</option></select></label><button class="btn sm" id="advPresetApply">서식 불러오기</button><label>내 서식 이름<input class="field" id="advPresetName" maxlength="60"></label><button class="btn sm" id="advPresetSave">내 서식 저장</button><p class="note">내 서식은 이 브라우저에 저장됩니다. 지도 데이터는 바꾸지 않습니다.</p></details>`;
     document.querySelector("main").appendChild(panel);
     const $=id=>document.getElementById(id);
     const option=(s,v,t)=>{const o=document.createElement("option");o.value=v;o.textContent=t;s.appendChild(o);};
     const run=fn=>async()=>{try{await fn();}catch(e){toast(e.message || "입력을 확인해 주세요");}};
+    $("infoApply").onclick=run(()=>{
+      const next={arrows:{enabled:$("infoArrows").checked,first:$("infoFirst").value,second:$("infoSecond").value,firstColor:$("infoFirstColor").value,secondColor:$("infoSecondColor").value,scale:+$("infoScale").value,unit:$("infoArrowUnit").value},bars:{enabled:$("infoBars").checked,columns:[...$("infoColumns").selectedOptions].map(o=>o.value),title:$("infoTitle").value,unit:$("infoUnit").value,sort:$("infoSort").value}};
+      const candidate=St.mergeState(St.defaultState(),A.clone(S));candidate.infographic=next;
+      St.buildScene(getD(),candidate,ctx,800);S.infographic=next;render();
+    });
+    $("infoClear").onclick=()=>{S.infographic=St.defaultState().infographic;render();};
     const readCuts=()=>{const t=$("advCuts").value.trim();const c=t?t.split(",").map(v=>Number(v.trim())):[];if(c.length>8||c.some((v,i)=>!isFinite(v)||(i&&v<=c[i-1])))throw new Error("경계값은 작은 수부터 서로 다르게 최대 8개를 입력하세요");return c;};
     $("advApplyCuts").onclick=run(()=>{S.data.cuts=readCuts();render();});
     $("advDeckCuts").onclick=run(()=>{const c=readCuts();if(!c.length)throw new Error("묶음에 적용할 경계값을 먼저 입력하세요");S.data.cuts=c;for(const it of getDeck())it.state.data.cuts=c.slice();saveDeck();render();toast("묶음 전체에 같은 색 기준을 적용했습니다");});
@@ -68,7 +86,12 @@
       const keys=[...St.visibleKeys(D,S)].filter(k=>{const [lv,id]=k.split(":");return D[lv]&&D[lv][id];});
       const rs=keys.join();if(rs!==regionSig){regionSig=rs;for(const id of ["advExclude","advAnnoRegion","advAnnoTo"]){const el=$(id);el.replaceChildren();keys.forEach(k=>{const [lv,i]=k.split(":");option(el,k,D[lv][i].full);});}}
       const nums=ds?ds.columns.filter(c=>c.kind!=="text"):[],cs=JSON.stringify(nums.map(c=>[c.id,c.name]));
-      if(cs!==colSig){colSig=cs;for(const id of ["advBefore","advAfter","advYears"]){$(id).replaceChildren();nums.forEach(c=>option($(id),c.id,c.name));}if(nums.length>1)$("advAfter").selectedIndex=1;}
+      if(cs!==colSig){colSig=cs;for(const id of ["advBefore","advAfter","advYears","infoFirst","infoSecond","infoColumns"]){$(id).replaceChildren();nums.forEach(c=>option($(id),c.id,c.name));}if(nums.length>1){$("advAfter").selectedIndex=1;$("infoSecond").selectedIndex=1;}}
+      const ia=S.infographic.arrows||{},ib=S.infographic.bars||{};
+      $("infoArrows").checked=!!ia.enabled;$("infoBars").checked=!!ib.enabled;
+      for(const [id,v] of [["infoFirst",ia.first],["infoSecond",ia.second]])if(v){const c=nums.find(c=>c.id===v||c.name===v);$(id).value=c?c.id:'';}
+      for(const [id,v] of [["infoScale",ia.scale||1],["infoArrowUnit",ia.unit||''],["infoFirstColor",ia.firstColor||'#168ccd'],["infoSecondColor",ia.secondColor||'#db424d'],["infoTitle",ib.title||'지역별 비교'],["infoUnit",ib.unit||''],["infoSort",ib.sort||'region']])$(id).value=v;
+      for(const o of $("infoColumns").options)o.selected=(ib.columns||[]).includes(o.value)||(ib.columns||[]).includes(o.textContent);
       if(S.compare.enabled){for(const [id,q] of [["advBefore",S.compare.before],["advAfter",S.compare.after]]){const c=nums.find(c=>c.id===q||c.name===q);if(c)$(id).value=c.id;}$("advDiff").checked=S.compare.difference;}
       if(S.timeline.enabled)for(const o of $("advYears").options)o.selected=S.timeline.columns.includes(o.value)||S.timeline.columns.includes(o.textContent);
       $("advTimeBar").hidden=!S.timeline.enabled;$("advTime").max=Math.max(0,S.timeline.columns.length-1);$("advTime").value=S.timeline.index;const current=nums.find(c=>c.id===S.timeline.columns[S.timeline.index]||c.name===S.timeline.columns[S.timeline.index]);$("advTimeLabel").textContent=current?current.name:"";

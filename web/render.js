@@ -590,6 +590,7 @@
     scene.height = H;
     scene.scale = s; // 데이터 좌표 1 단위 = s px
     scene.tiles = !!L;
+    scene.tileGrid = L;
     const view = [x0, y0, x1, y1];
     const tf = (p) => [(p[0] - x0) * s, (p[1] - y0) * s];
     scene.projectPoint = tf;
@@ -725,14 +726,15 @@
     if (o.sidoLines && fineLv && fineLv !== "sido" && !ex) {
       const lines = [];
       if (L) {
-        const keys = Object.keys(L.cells).filter((k) => !moved[k]);
+        const keys = Object.keys(L.cells);
+        const cell=k=>L.cells[k].map((v,i)=>v+(moved[k]||[0,0])[i]);
         const near = L.c * 1.05, half = L.hex ? L.c / (2 * Math.sqrt(3)) : L.c / 2;
         for (let a = 0; a < keys.length; a++) {
-          const [la, ia] = keys[a].split(":"), pa = L.cells[keys[a]], sa = D[la][ia].sido;
+          const [la, ia] = keys[a].split(":"), pa = cell(keys[a]), sa = D[la][ia].sido;
           for (let b = a + 1; b < keys.length; b++) {
-            const [lb, ib] = keys[b].split(":"), pb = L.cells[keys[b]];
+            const [lb, ib] = keys[b].split(":"), pb = cell(keys[b]);
             const dx = pb[0] - pa[0], dy = pb[1] - pa[1], dist = Math.hypot(dx, dy);
-            if (dist > near || D[lb][ib].sido === sa) continue;
+            if (dist < L.c*.5 || dist > near || D[lb][ib].sido === sa) continue;
             const mx = (pa[0] + pb[0]) / 2, my = (pa[1] + pb[1]) / 2, nx = -dy / dist, ny = dx / dist;
             lines.push([tf([mx + nx * half, my + ny * half]), tf([mx - nx * half, my - ny * half])]);
           }
@@ -1459,6 +1461,13 @@
   /** 원래 이웃인 두 지역의 총 이동량을 같게 하면 경계의 상대 위치가 복원된다. */
   function snapOffset(D, scene, key, proposed, old, tolerance) {
     const offsets=scene.regionOffsets;
+    if(scene.tileGrid&&scene.tileGrid.cells[key]){
+      const L=scene.tileGrid,origin=L.cells[key],rh=L.hex?L.c*Math.sqrt(3)/2:L.c;
+      const row=Math.round(proposed[1]/rh),shift=L.hex&&Math.abs(row)%2?L.c/2:0;
+      const dx=Math.round((proposed[0]-shift)/L.c)*L.c+shift,dy=row*rh;
+      const occupied=Object.keys(L.cells).some(k=>k!==key&&Math.hypot(L.cells[k][0]+(offsets[k]||[0,0])[0]-origin[0]-dx,L.cells[k][1]+(offsets[k]||[0,0])[1]-origin[1]-dy)<L.c*.2);
+      return occupied?{offset:old.slice(),neighbor:null}:{offset:[dx,dy],neighbor:'grid'};
+    }
     if(scene.tiles || !offsets || !offsets[key] || !(tolerance>0)) return {offset:proposed,neighbor:null};
     const [lv,id]=key.split(":"), base=offsets[key].map((v,i)=>v-old[i]);
     let best={offset:proposed,neighbor:null}, distance=tolerance;

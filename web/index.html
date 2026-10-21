@@ -610,7 +610,7 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
           <div class="seg" id="clickAction"><button data-v="main" id="clickMain">지역 고르기</button><button data-v="label">이름 넣기·빼기</button><button data-v="edit">하나씩 꾸미기</button><button data-v="group" id="clickGroup">그룹 칠하기</button></div>
         </div>
         <div class="editbox" id="editBox" hidden>
-          <p class="note">‘자동 붙이기’를 켜면 실제 지도·벌려 놓기에서 원래 이웃의 경계 가까이 끌 때 붙습니다(12px). Alt/Option을 누르면 자유 이동합니다.</p>
+          <p class="note">‘자동 붙이기’를 켜면 실제 지도·벌려 놓기는 원래 이웃 경계에 붙고(12px), 타일은 빈 격자 칸에 맞습니다. Alt/Option을 누르면 자유 이동합니다.</p>
           <p class="note" id="editEmpty">꾸밀 지역을 지도에서 누르세요. 누른 채로 끌면 그 지역만 옮겨집니다.</p>
           <div class="editrow" id="editForm" hidden>
             <b id="editName"></b>
@@ -673,6 +673,7 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
 <script src="datafill.js"></script>
 <script src="pins.js"></script>
 <script src="colors.js"></script>
+<script src="infographic.js"></script>
 <script src="advanced.js"></script>
 <script src="state.js"></script>
 <script src="pptx.js"></script>

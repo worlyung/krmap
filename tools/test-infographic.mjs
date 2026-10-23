@@ -34,4 +34,32 @@ await test('확대 창 화살표·SVG·PNG·PPTX 저장',async()=>{
  const sc=K.St.buildScene(D,st,ctx,800);assert.ok(sc.lines.some(l=>l.group==='annotation'&&!l.lv));
  const result=await K.renderSpec(spec,{formats:['svg','png','pptx'],out:'out/infographic-test'});assert.equal(result.files.length,3);result.files.forEach(f=>assert.ok(fs.statSync(f).size>100));
 });
+await test('도트 스타일·색 보존·작업 복원·배경 숨김',()=>{
+ const st=K.St.mergeState(K.St.defaultState(),JSON.parse(K.St.serialize(S)));st.look='dots';
+ assert.equal(K.St.lookId('도트'),'dots');
+ const sc=K.St.buildScene(D,st,ctx,800),dots=sc.polys.filter(p=>p.group==='dots');
+ assert.ok(dots.length>=4);assert.ok(dots.some(p=>p.rings.length>10));
+ assert.ok(!dots.some(p=>p.sourceGroup==='context'));assert.ok(!sc.polys.some(p=>p.group==='shadow'));
+ for(const p of dots){const original=sc.polys.find(q=>q.lv===p.lv&&q.id===p.id&&q.group===p.sourceGroup);assert.equal(p.fill,original.fill);assert.equal(original.fillOpacity,0);}
+ assert.ok(K.R.toSVG(sc,{interactive:true}).includes('id="도트" pointer-events="none"'));
+ assert.ok(sc.texts.filter(t=>t.lv).every(t=>t.halo));
+ assert.equal(K.St.mergeState(K.St.defaultState(),JSON.parse(K.St.serialize(st))).look,'dots');
+});
+await test('도트 출력·작은 섬 보존',async()=>{
+ const st=K.St.defaultState();st.target={lv:'si',id:'47940'};st.depth=0;st.context=false;st.look='dots';
+ const sc=K.St.buildScene(D,st,ctx,800),dot=sc.polys.find(p=>p.group==='dots'&&p.id==='47940');
+ assert.ok(dot&&dot.rings.length>0);assert.ok(!/NaN|Infinity/.test(K.R.toSVG(sc)));
+ const files=(await K.renderSpec({...spec,look:'도트'},{formats:['svg','png','pptx'],out:'out/dots-test'})).files;
+ assert.equal(files.length,3);assert.ok(fs.readFileSync(files.find(f=>f.endsWith('.svg')),'utf8').includes('id="도트"'));
+ const {default:JSZip}=await import('jszip');const zip=await JSZip.loadAsync(fs.readFileSync(files.find(f=>f.endsWith('.pptx'))));
+ const xml=await zip.file('ppt/slides/slide1.xml').async('string');assert.ok(xml.includes('도트'));assert.ok(!xml.includes('<p:pic>'));
+});
+await test('읍면동당 점 하나·대표 위치·수치 색 보존',()=>{
+ const st=K.St.defaultState();st.target={lv:'sido',id:'30'};st.inner='emd';st.depth=0;st.context=false;st.look='regionDots';
+ const ids=K.R.featuresInside(D,'sido','30','emd');st.data={...st.data,source:'table',text:'코드\t값\n'+ids.map((id,i)=>id+'\t'+i).join('\n')};
+ const sc=K.St.buildScene(D,st,ctx,800),points=sc.polys.filter(p=>p.group==='dots'&&p.lv==='emd');assert.equal(points.length,ids.length);
+ assert.equal(new Set(points.map(p=>p.id)).size,ids.length);assert.ok(new Set(points.map(p=>p.fill)).size>1);
+ for(const p of points){assert.ok(p.circle);assert.deepEqual([p.circle.cx,p.circle.cy],sc.projectPoint(D.emd[p.id].lp));}
+ assert.equal(K.St.lookId('지역별 점'),'regionDots');
+});
 console.log(count+'개 인포그래픽 검사 통과');

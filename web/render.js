@@ -634,7 +634,8 @@
       if (bub && !fills[k] && group === "target") fill = mix(C.context, C.text, 0.16); // 원이 주인공이라 대상은 조금 진한 회색으로만
       if (fills[k] && group !== "context") fill = fills[k];
       if (styles[k] && styles[k].fill) fill = styles[k].fill;
-      if (rings.length) scene.polys.push(Object.assign({ lv, id, name: f.full, rings, fill, stroke, width, group }, extra));
+      const d=offOf(lv,id),lp=lpOf(lv,id);
+      if (rings.length) scene.polys.push(Object.assign({ lv, id, name: f.full, rings, fill, stroke, width, group,regionAnchor:tf([lp[0]+d[0],lp[1]+d[1]]) }, extra));
     };
     // 흐린 배경 지역: 화면 사각형으로 잘라서 채움과 경계선을 따로 둔다
     const addContext = (lv, k, f) => {
@@ -1263,7 +1264,7 @@
           for (const id of bx.d.ids) {
             const f = D[allLv][id];
             const fo = opacityOf[K(allLv, id)];
-            scene.polys.push(Object.assign({ lv: allLv, id, name: f.full, rings: decode(f).map((poly) => poly.map((ring) => ring.map(T2))), fill: fillOf[K(allLv, id)] || neutral, stroke: C.line, width: base * 0.9, group: "inset" }, fo != null ? { fillOpacity: fo, strokeOpacity: 0.6 } : {}));
+            scene.polys.push(Object.assign({ lv: allLv, id, name: f.full, regionAnchor:T2(f.lp), rings: decode(f).map((poly) => poly.map((ring) => ring.map(T2))), fill: fillOf[K(allLv, id)] || neutral, stroke: C.line, width: base * 0.9, group: "inset" }, fo != null ? { fillOpacity: fo, strokeOpacity: 0.6 } : {}));
           }
           // 원 크기 지도면 상자 안에도 같은 크기 기준으로 원을 그린다 (범례와 같은 눈금)
           if (bub) {
@@ -1303,7 +1304,46 @@
     for (const p of scene.polys) if (p.lv && !["context", "shadow", "extrude", "inset", "bubble"].includes(p.group)) {
       scene.regionOffsets[K(p.lv,p.id)] = offOf(p.lv,p.id).slice();
     }
+    if(o.look==='dots'||o.look==='regionDots') dotScene(scene,C,o.look==='regionDots');
     return scene;
+  }
+
+  // 점의 중심과 둘레가 모두 경계 안에 있는 것만 남긴다. 구멍·바다에는 점을 찍지 않는다.
+  function dotScene(scene,C,single){
+    const step=scene.width/150,r=step*.29;
+    const inside=(p,rings)=>{let yes=false;for(const poly of rings)for(const ring of poly)for(let i=0,j=ring.length-1;i<ring.length;j=i++){
+      const a=ring[i],b=ring[j];if((a[1]>p[1])!==(b[1]>p[1])&&p[0]<(b[0]-a[0])*(p[1]-a[1])/(b[1]-a[1])+a[0])yes=!yes;
+    }return yes;};
+    const dots=[];
+    for(const p of scene.polys){
+      if(!/^(context|all|picked|inner|neighbor|target|inset)$/.test(p.group)||!p.lv||p.circle)continue;
+      if(single&&p.group==='context')continue;
+      if(single){
+        const pts=p.rings[0][0],c=p.regionAnchor||[pts.reduce((s,p)=>s+p[0],0)/pts.length,pts.reduce((s,p)=>s+p[1],0)/pts.length],radius=scene.width/350;
+        const ring=Array.from({length:24},(_,i)=>[c[0]+radius*Math.cos(i*Math.PI/12),c[1]+radius*Math.sin(i*Math.PI/12)]);
+        dots.push({...p,lv:p.group==='inset'?undefined:p.lv,name:p.name+' 대표점',rings:[[ring]],circle:{cx:c[0],cy:c[1],r:radius},stroke:C.bg||'#FFFFFF',width:scene.width/1600*.8,group:'dots',sourceGroup:p.group});
+        p.fillOpacity=0;p.stroke=null;continue;
+      }
+      const rings=[];
+      for(const poly of p.rings){
+        const before=rings.length;
+        const pts=poly[0],xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]);
+        const x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys);
+        for(let y=Math.ceil(y0/step)*step;y<=y1;y+=step)for(let x=Math.ceil(x0/step)*step;x<=x1;x+=step){
+          const ring=Array.from({length:12},(_,i)=>[x+r*Math.cos(i*Math.PI/6),y+r*Math.sin(i*Math.PI/6)]);
+          if(inside([x,y],[poly])&&ring.every(q=>inside(q,[poly])))rings.push([ring]);
+        }
+        if(rings.length===before)rings.push(poly);
+      }
+      // 격자보다 작은 지역도 실제 경계 자체를 작은 점 무늬의 일부로 보존한다.
+      if(!rings.length)rings.push(...p.rings);
+      dots.push({...p,lv:['context','inset'].includes(p.group)?undefined:p.lv,name:p.name+' 도트',rings,stroke:null,width:0,group:'dots',sourceGroup:p.group});
+      p.fillOpacity=0;p.stroke=null;
+    }
+    scene.polys=scene.polys.filter(p=>p.group!=='shadow').concat(dots);
+    if(!single)scene.lines=scene.lines.filter(l=>!['sido','context','target'].includes(l.group));
+    scene.shadow=null;
+    for(const t of scene.texts)if(t.lv){t.fill=C.text;t.halo=true;t.haloColor=C.bg||'#FFFFFF';}
   }
 
   // ---- SVG ----
@@ -1328,7 +1368,7 @@
 
   const GROUPS = [
     ["context", "배경"], ["extrude", "입체"], ["all", "지역"], ["neighbor", "주변"], ["shadow", "그림자"], ["picked", "선택"], ["inner", "대상_내부"], ["target", "대상"], ["sido", "시도경계"], ["bubble", "원"], ["leader", "지시선"], ["inset", "확대"],
-    ["annotation", "설명요소"],
+    ["dots", "도트"], ["annotation", "설명요소"],
   ];
 
   /** 바탕(단색 · 그라데이션 · 번진 빛) 마크업. defs 는 toSVG 가 넣는다 */
@@ -1392,7 +1432,7 @@
       const ls = scene.lines.filter((l) => l.group === g);
       if (!ps.length && !ls.length) continue;
       const gf = g === "shadow" ? "liftShadow" : ps.some((p) => p.glow) || ls.some((l) => l.glow) ? "neonGlow" : ps.some((p) => p.soft) ? "softRaise" : null;
-      out.push(gf ? `<g id="${gname}" filter="url(#${gf})">` : `<g id="${gname}">`);
+      out.push(gf ? `<g id="${gname}" filter="url(#${gf})">` : `<g id="${gname}"${g==='dots'?' pointer-events="none"':''}>`);
       for (const p of ps) {
         const dk = opt.interactive && p.lv ? ` data-k="${p.lv}:${p.id}"` : "";
         if (g === "shadow") { out.push(`<path${dk} d="${polyD(p.rings)}" fill="${p.fill}"${p.fillOpacity != null ? ` fill-opacity="${p.fillOpacity}"` : ""}/>`); continue; }

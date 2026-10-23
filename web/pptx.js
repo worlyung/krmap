@@ -43,7 +43,7 @@
         x: r3(ox + x0 * k), y: r3(oy + y0 * k), w: Math.max(r3((x1 - x0) * k), 0.01), h: Math.max(r3((y1 - y0) * k), 0.01), points,
       }, o));
     };
-    const ORDERG = ["context", "extrude", "all", "neighbor", "shadow", "picked", "inner", "target", "sido", "bubble", "leader", "inset", "pin", "legend", "annotation"];
+    const ORDERG = ["context", "extrude", "all", "neighbor", "shadow", "picked", "inner", "target", "sido", "bubble", "leader", "inset", "dots", "pin", "legend", "annotation"];
     const sh = scene.shadow;
     const lineOf = (stroke, width, op) => {
       const l = { color: hex(stroke), width: Math.max(width * k * 72, 0.25) };

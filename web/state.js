@@ -271,10 +271,10 @@
   // 디자인 방식: 이름 → 렌더러 look. 한글 이름도 받는다
   const LOOKS = [
     { id: "flat", name: "기본" }, { id: "glass", name: "유리" }, { id: "paper", name: "입체" },
-    { id: "soft", name: "소프트" }, { id: "neon", name: "네온" },
+    { id: "soft", name: "소프트" }, { id: "neon", name: "네온" }, { id: "dots", name: "도트" }, { id: "regionDots", name: "지역별 점" },
   ];
   const LOOK_ALIAS = { 기본: "flat", 평면: "flat", 유리: "glass", 글라스: "glass", 글래스: "glass", 글라스모피즘: "glass", 입체: "paper", 종이: "paper", 페이퍼: "paper", 소프트: "soft", 뉴모피즘: "soft", 네온: "neon" };
-  const lookId = (v) => (LOOKS.some((l) => l.id === v) ? v : LOOK_ALIAS[String(v || "").replace(/\s/g, "")] || null);
+  const lookId = (v) => (LOOKS.some((l) => l.id === v) ? v : /^(지역별점|동별점)$/.test(String(v||'').replace(/\s/g,'')) ? 'regionDots' : /^(도트|점지도|도트지도)$/.test(String(v||'').replace(/\s/g,'')) ? 'dots' : LOOK_ALIAS[String(v || "").replace(/\s/g, "")] || null);
   /**
    * 디자인 방식에 맞춘 색과 배경. 대상 색의 색상(hue)을 그대로 살린다.
    * 반환: {colors(덮어쓸 색), backdrop(배경 그라데이션·빛 번짐), dark}
@@ -282,6 +282,7 @@
   function lookStyle(S) {
     const look = S.look || "flat";
     if (look === "flat") return null;
+    if (look === "dots" || look === "regionDots") return {colors:{}};
     const [, C0, H] = Cl.lch(S.colors.target);
     const C = Math.max(C0, 0.1), P = Cl.partnerHue(H), k = Cl.oklch;
     if (look === "glass" && S.data.source) {

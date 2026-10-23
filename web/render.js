@@ -1319,10 +1319,10 @@
       if(!/^(context|all|picked|inner|neighbor|target|inset)$/.test(p.group)||!p.lv||p.circle)continue;
       if(single&&p.group==='context')continue;
       if(single){
-        const pts=p.rings[0][0],c=p.regionAnchor||[pts.reduce((s,p)=>s+p[0],0)/pts.length,pts.reduce((s,p)=>s+p[1],0)/pts.length],radius=scene.width/350;
+        const pts=p.rings[0][0],c=p.regionAnchor||[pts.reduce((s,p)=>s+p[0],0)/pts.length,pts.reduce((s,p)=>s+p[1],0)/pts.length],radius=scene.width/260;
         const ring=Array.from({length:24},(_,i)=>[c[0]+radius*Math.cos(i*Math.PI/12),c[1]+radius*Math.sin(i*Math.PI/12)]);
         dots.push({...p,lv:p.group==='inset'?undefined:p.lv,name:p.name+' 대표점',rings:[[ring]],circle:{cx:c[0],cy:c[1],r:radius},stroke:C.bg||'#FFFFFF',width:scene.width/1600*.8,group:'dots',sourceGroup:p.group});
-        p.fillOpacity=0;p.stroke=null;continue;
+        p.fillOpacity=.035;p.stroke=C.sidoLine;p.width=scene.width/1600*.4;continue;
       }
       const rings=[];
       for(const poly of p.rings){
@@ -1343,6 +1343,13 @@
     scene.polys=scene.polys.filter(p=>p.group!=='shadow').concat(dots);
     if(!single)scene.lines=scene.lines.filter(l=>!['sido','context','target'].includes(l.group));
     scene.shadow=null;
+    if(single){
+      for(const p of dots.filter(p=>p.lv)){
+        const labels=scene.texts.filter(t=>t.lv===p.lv&&t.id===p.id&&!t.role);
+        const close=labels.some(t=>Math.abs(t.y-p.circle.cy)<t.size+p.circle.r&&Math.abs(t.x-p.circle.cx)<t.size*2+p.circle.r);
+        if(close){const shift=Math.max(...labels.map(t=>t.size))*1.4+p.circle.r;for(const t of labels)t.y-=shift;}
+      }
+    }
     for(const t of scene.texts)if(t.lv){t.fill=C.text;t.halo=true;t.haloColor=C.bg||'#FFFFFF';}
   }
 

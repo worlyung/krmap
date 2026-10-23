@@ -95,8 +95,9 @@
 
   const eff = (S, lv) => (lv === "si" && S.splitGu ? "sgg" : lv);
   function innerFor(D, S, target) {
-    if (!S.inner) return null;
-    const lv = eff(S, S.inner);
+    const requested=S.inner || (S.look==='regionDots'&&target.lv!=='emd'?'emd':'');
+    if (!requested) return null;
+    const lv = eff(S, requested);
     if (ORDER[lv] <= ORDER[target.lv]) return null;
     if (lv === "sgg" && !(target.lv === "sido" || (target.lv === "si" && D.si[target.id].gu))) return null;
     return lv;
@@ -104,7 +105,7 @@
   function needsEmd(S) {
     if (S.mode === "pick") return S.pick.lv === "emd";
     if (S.mode === "all") return S.allLv === "emd";
-    return S.nbLevel === "emd" || S.inner === "emd" || S.target.lv === "emd";
+    return S.nbLevel === "emd" || S.inner === "emd" || S.target.lv === "emd" || (S.look==='regionDots'&&!S.inner);
   }
   /** 지금 지도에 그려지는 단위들 (붙여넣은 이름을 여기서 찾는다) */
   function drawnLevels(D, S) {
@@ -282,7 +283,8 @@
   function lookStyle(S) {
     const look = S.look || "flat";
     if (look === "flat") return null;
-    if (look === "dots" || look === "regionDots") return {colors:{}};
+    if (look === "dots") return {colors:{neighbor:S.colors.target}};
+    if (look === "regionDots") return {colors:{}};
     const [, C0, H] = Cl.lch(S.colors.target);
     const C = Math.max(C0, 0.1), P = Cl.partnerHue(H), k = Cl.oklch;
     if (look === "glass" && S.data.source) {

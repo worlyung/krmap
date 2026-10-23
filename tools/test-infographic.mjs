@@ -62,4 +62,18 @@ await test('읍면동당 점 하나·대표 위치·수치 색 보존',()=>{
  for(const p of points){assert.ok(p.circle);assert.deepEqual([p.circle.cx,p.circle.cy],sc.projectPoint(D.emd[p.id].lp));}
  assert.equal(K.St.lookId('지역별 점'),'regionDots');
 });
+await test('제주 기본 선택은 43개 읍면동·시군구 선택 존중',()=>{
+ const st=K.St.defaultState();st.target={lv:'sido',id:'50'};st.look='regionDots';st.context=false;
+ assert.equal(K.St.needsEmd(st),true);assert.equal(K.St.innerFor(D,st,st.target),'emd');
+ let sc=K.St.buildScene(D,st,ctx,800);const points=sc.polys.filter(p=>p.group==='dots'&&p.lv==='emd');
+ assert.equal(points.length,43);assert.ok(points.some(p=>p.name.includes('추자면')));assert.ok(points.some(p=>p.name.includes('우도면')));
+ assert.ok(sc.polys.some(p=>p.group==='inner'&&p.fillOpacity>0&&p.fillOpacity<.1));
+ st.inner='si';sc=K.St.buildScene(D,st,ctx,800);assert.equal(sc.polys.filter(p=>p.group==='dots'&&p.lv==='si').length,2);
+});
+await test('전국 도트 표시·기본 색 대비',()=>{
+ const st=K.St.defaultState();st.mode='all';st.allLv='sido';st.look='dots';
+ const sc=K.St.buildScene(D,st,ctx,800),dots=sc.polys.filter(p=>p.group==='dots'&&p.lv==='sido');
+ assert.ok(dots.length>=16);assert.ok(dots.every(p=>p.fill===st.colors.target));
+ assert.ok(dots.some(p=>p.rings.length>100));assert.ok(!/NaN|Infinity/.test(K.R.toSVG(sc)));
+});
 console.log(count+'개 인포그래픽 검사 통과');

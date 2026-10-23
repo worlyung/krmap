@@ -213,6 +213,8 @@ details.more[open] summary { margin-bottom: 10px; }
     linear-gradient(var(--tick), var(--tick)) right bottom / 14px 1px no-repeat, linear-gradient(var(--tick), var(--tick)) right bottom / 1px 14px no-repeat; }
 .sheetcap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; font: 11px/1.4 var(--font-data); color: var(--faint); letter-spacing: 0.02em; padding-inline: 2px; }
 #map { width: 100%; display: flex; justify-content: center; }
+#map { cursor:grab; }
+#map.panning, #map.panning svg [data-id] { cursor:grabbing; }
 #map svg { width: 100%; height: clamp(360px, 60vh, 760px); display: block; }
 #map svg [data-id] { cursor: pointer; transition: opacity 0.12s; }
 #map svg [data-id]:hover { opacity: 0.8; }
@@ -603,7 +605,7 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
           <button class="btn sm" id="zoomTarget">선택 지역 맞춤</button>
           <button class="btn sm" id="zoomFit">전체 맞춤</button>
           <button class="btn sm" id="dokdoSecret" hidden aria-label="독도 확대 상자 열기" title="동쪽 끝에 작은 발견">작은 섬 하나 ↗</button>
-          <span class="note">화면 보기만 확대 · Ctrl/⌘ + 휠 · 흩어진 섬은 큰 섬 중심, 모든 섬은 전체 맞춤</span>
+          <span class="note">좌클릭 드래그로 지도 이동 · Ctrl/⌘ + 휠로 확대 · ‘하나씩 꾸미기’에서는 지역 이동, 빈 곳은 지도 이동 · 모든 섬은 전체 맞춤</span>
         </div>
         <div class="clickbar" id="clickBar">
           <span>지도를 누르면</span>
@@ -669,16 +671,16 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
 </script>
 <script src="data/base.js"></script>
 <script src="data/stats.js"></script>
-<script src="render.js"></script>
+<script src="render.js?v=20261023b"></script>
 <script src="datafill.js"></script>
 <script src="pins.js"></script>
 <script src="colors.js"></script>
 <script src="infographic.js"></script>
 <script src="advanced.js"></script>
-<script src="state.js"></script>
+<script src="state.js?v=20261023b"></script>
 <script src="pptx.js"></script>
 <script src="advanced-ui.js"></script>
-<script src="viewport.js"></script>
+<script src="viewport.js?v=20261023b"></script>
 <dialog id="dokdoDialog" aria-labelledby="dokdoTitle">
   <form method="dialog"><button class="btn sm" style="float:right" aria-label="독도 확대 상자 닫기">닫기 ×</button></form>
   <p class="note">작은 섬을 찾으셨네요 👀</p>
@@ -688,6 +690,6 @@ textarea.field { font-family: var(--font-data); font-size: 12px; line-height: 1.
   <p class="note">울릉군 경계 데이터의 독도 도형을 확대했습니다. 이 상자는 화면에서만 표시됩니다.</p>
 </dialog>
 <script src="dokdo.js"></script>
-<script src="app.js"></script>
+<script src="app.js?v=20261023b"></script>
 </body>
 </html>

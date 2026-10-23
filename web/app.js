@@ -19,7 +19,7 @@
   let index = [];
   let lastScene = null;
   const V = window.KRMapViewport;
-  let viewBox = null, viewKey = "";
+  let viewBox = null, viewKey = "", suppressMapClickUntil=0;
   function openDokdo() {
     const g=window.KRMapDokdo.geometry(R.decode(D.si['47940']));
     if(!g)return;
@@ -61,7 +61,7 @@
     const f=D[S.target.lv]?.[S.target.id];
     if (!f) return null;
     const off=S.offsets[S.target.lv+":"+S.target.id] || [0,0];
-    const bounds=V.regionBounds(R.decode(f),f.bb);
+    const bounds=V.regionBounds(R.decode(f),f.bb,S.look==='regionDots');
     const a=scene.projectPoint([bounds[0]+off[0],bounds[1]+off[1]]);
     const b=scene.projectPoint([bounds[2]+off[0],bounds[3]+off[1]]);
     return [...a,...b];
@@ -224,8 +224,8 @@
     catch (e) { toast(e.message); return; }
     lastScene = scene;
     $("map").innerHTML = R.toSVG(scene, { interactive: true });
-    const nextViewKey=JSON.stringify([S.mode,S.target,S.layout,S.pick.ids,scene.width,scene.height,S.compare.enabled]);
-    if (!viewBox || viewKey!==nextViewKey) viewBox=V.focus(scene,targetBounds(scene));
+    const nextViewKey=JSON.stringify([S.mode,S.target,S.layout,S.look,S.inner,S.pick.ids,scene.width,scene.height,S.compare.enabled]);
+    if (!viewBox || viewKey!==nextViewKey) viewBox=V.focus(S.look==='regionDots'?viewFrame():scene,targetBounds(scene));
     viewKey=nextViewKey;
     showView();
     $("slide").style.background = S.fillBg ? S.colors.bg : "#FFFFFF";
@@ -362,6 +362,7 @@
     $("q").placeholder = S.mode === "pick" ? "찾아서 넣기 — 충청남도, 공주시…" : "지역 찾기 — 대전, 유성구, 정자동";
     $("inner").querySelectorAll("button").forEach((b) => {
       const v = b.dataset.v;
+      if(v==='')b.textContent=S.look==='regionDots'&&S.target.lv!=='emd'?'자동 읍면동':'나누지 않음';
       b.disabled = !!(v && ORDER[eff(v)] <= ORDER[S.target.lv]);
     });
     $("nbLevel").querySelectorAll("button").forEach((b) => (b.disabled = !S.depth));
@@ -389,7 +390,7 @@
       soft: "소프트: 바탕과 같은 색의 지역이 빛과 그늘로 살짝 솟아 보입니다.",
       neon: "네온: 어두운 바탕에 빛나는 경계선.",
       dots: "도트: 지역 안을 같은 간격의 점으로 채웁니다. 점 색은 지역·데이터 색을 따릅니다. 점 개수는 통계 수량을 뜻하지 않습니다. 이름을 양옆으로 빼면 참고 이미지처럼 정리됩니다.",
-      regionDots: "지역별 점: 표시한 지역 하나를 대표점 하나로 나타냅니다. 단위를 읍면동으로 고르고 동별 표를 연결하면 점 색으로 동별 차이를 볼 수 있습니다. 점은 실제 사건·거주 위치가 아닙니다. 리 단위는 내장되어 있지 않습니다.",
+      regionDots: "지역별 점: 주변 지역 보기에서는 선택한 도·시군구 안의 읍면동을 기본으로 표시합니다. ‘안쪽 나누기’에서 시군구·읍면동을 바꿀 수 있습니다. 동별 표를 연결하면 점 색으로 차이를 봅니다. 점은 실제 사건·거주 위치가 아니며 리 단위는 지원하지 않습니다.",
     };
     $("lookNote").hidden = !LOOK_NOTE[S.look];
     $("lookNote").textContent = LOOK_NOTE[S.look] || "";
@@ -526,8 +527,8 @@
     $("zoomIn").onclick=()=>{if(lastScene){viewBox=V.zoom(viewFrame(),viewBox,1.25);showView();}};
     $("zoomOut").onclick=()=>{if(lastScene){viewBox=V.zoom(viewFrame(),viewBox,.8);showView();}};
     $("zoomFit").onclick=()=>{if(lastScene){viewBox=V.full(lastScene);showView();}};
-    $("zoomTarget").onclick=()=>{if(lastScene){viewBox=V.focus(lastScene,targetBounds(lastScene));showView();}};
-    $("map").addEventListener("wheel",e=>{
+    $("zoomTarget").onclick=()=>{if(lastScene){viewBox=V.focus(S.look==='regionDots'?viewFrame():lastScene,targetBounds(lastScene));showView();}};
+    $("slide").addEventListener("wheel",e=>{
       if (!(e.ctrlKey || e.metaKey) || !lastScene) return;
       const svg=$("map").querySelector("svg"), matrix=svg?.getScreenCTM();
       if (!matrix) return;
@@ -535,7 +536,25 @@
       const p=new DOMPoint(e.clientX,e.clientY).matrixTransform(matrix.inverse());
       viewBox=V.zoom(viewFrame(),viewBox,e.deltaY<0?1.15:1/1.15,[(p.x-viewBox[0])/viewBox[2],(p.y-viewBox[1])/viewBox[3]]);
       showView();
-    },{passive:false});
+    },{passive:false,capture:true});
+    const mapPan=$("map");let pan=null;
+    mapPan.style.touchAction='none';
+    mapPan.addEventListener('pointerdown',e=>{
+      if(e.button!==0||!viewBox||!lastScene||e.target.closest('button,a'))return;
+      if(S.clickAction==='edit'&&e.target.closest('[data-id]'))return;
+      const matrix=mapPan.querySelector('svg')?.getScreenCTM();if(!matrix)return;
+      pan={id:e.pointerId,x:e.clientX,y:e.clientY,box:viewBox.slice(),k:1/matrix.a,moved:false};
+    });
+    mapPan.addEventListener('pointermove',e=>{
+      if(!pan||e.pointerId!==pan.id)return;
+      const dx=e.clientX-pan.x,dy=e.clientY-pan.y;
+      if(!pan.moved&&Math.hypot(dx,dy)<4)return;
+      if(!pan.moved)mapPan.setPointerCapture(e.pointerId);
+      pan.moved=true;e.preventDefault();mapPan.classList.add('panning');
+      viewBox=[pan.box[0]-dx*pan.k,pan.box[1]-dy*pan.k,pan.box[2],pan.box[3]];showView();
+    });
+    const endPan=e=>{if(!pan||e.pointerId!==pan.id)return;if(pan.moved)suppressMapClickUntil=Date.now()+400;pan=null;mapPan.classList.remove('panning');if(mapPan.hasPointerCapture(e.pointerId))mapPan.releasePointerCapture(e.pointerId);};
+    mapPan.addEventListener('pointerup',endPan);mapPan.addEventListener('pointercancel',endPan);
     window.addEventListener("resize",()=>{if(lastScene)showView();});
     seg("mode", () => S.mode, (v) => {
       if (v === "pick" && !S.pick.ids.length && S.mode === "around") {
@@ -664,6 +683,7 @@
 
     // 지도 클릭
     $("map").addEventListener("click", (e) => {
+      if(Date.now()<suppressMapClickUntil)return;
       const p = e.target.closest("[data-id]");
       if (!p) return;
       const lv = p.dataset.lv, id = p.dataset.id;
@@ -1487,7 +1507,7 @@
     const h = (location.hash || "").slice(1);
     if (h === "all" || h === "pick") { S.mode = h; return; }
     const m = h.match(/^(sido|si|sgg|emd)-(\d+)$/);
-    if (m && (m[1] === "emd" || D[m[1]][m[2]])) S.target = { lv: m[1], id: m[2] };
+    if (m && (m[1] === "emd" || D[m[1]][m[2]])) {S.mode='around';S.target = { lv: m[1], id: m[2] };}
   }
   let advancedUI = null;
   function start() {
@@ -1500,6 +1520,7 @@
       } catch (e) { /* 저장소를 못 쓰는 환경 */ }
     }
     readHash();
+    window.addEventListener('hashchange',()=>{readHash();viewKey='';render();});
     bindControls();
     advancedUI = window.KRMapAdvancedUI.bind({S,ctx,getD:()=>D,render,saveFile,toast,waitEmd, getDeck:()=>deck,saveDeck});
     $("credit").innerHTML =

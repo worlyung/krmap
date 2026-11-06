@@ -107,6 +107,7 @@ const SPEC_HELP = `지도 설정(spec). 자주 쓰는 칸:
 - 디자인: look "기본"|"유리"(글라스모피즘)|"입체"|"소프트"(뉴모피즘)|"네온"
 - 통계 MCP 결과: data={rows:[{지역:"광진구", 값:31.2}, ...], by:"값"}, source="통계청 KOSIS, 표이름(DT_…)" (출처 문구로 들어감)
 - 인포그래픽: infographic={arrows:{enabled:true,first:"후보 A",second:"후보 B",scale:1,unit:"%p"},bars:{enabled:true,columns:["후보 A","후보 B"],sort:"value",unit:"%"}}. 배경색(data.by)과 독립. 화살표는 차이의 방향·길이, 막대는 0 이상 실제 값. docs/infographic.md 참고.
+- 지도 옆 차트: charts=true | ["rank","distribution"] | [{type:"rank",top:10,takeaway:"…"}], chartHighlight="화성시". 숫자로 칠한 지도에서만. 지도와 같은 값·색으로 순위 막대와 전국 분포(ztd-charts)를 오른쪽에 붙인다
 - 기타: sido17(광주·전남 나눔), splitGu(일반구 나눔), fontScale, lineScale, shadow, background
 - 추가: cuts=[10,20,30](고정 색 경계), mappings={"별칭":"sido:30"}, statuses=true, excluded=["sido:11"], compare={before:"2024",after:"2025",difference:true}, timeline={columns:["2024","2025"],index:0}, report={title:"요약",summary:"설명"}, annotations=[{type:"text",region:"sido:30",text:"설명"},{type:"arrow",region:"sido:30",to:"sido:36"},{type:"radius",region:"sido:30",km:10}]. 비교와 연도는 하나씩 사용. data.file은 xlsx도 지원하며 sheet,regionColumn,valueColumns로 선택.
 웹 도구에서 "작업 저장"한 파일 내용({state, fileText})을 그대로 넣어도 된다. 모든 칸은 map_spec_reference 로 볼 수 있다.`;
@@ -132,9 +133,9 @@ server.registerTool("render_map", {
     delete res.preview;
     return ok(res, img);
   }
-  const { S, bigText } = await K.specToState(D, spec, { stats, baseDir: base });
+  const { S, bigText, charts } = await K.specToState(D, spec, { stats, baseDir: base });
   const res = await K.renderState(D, stats, S, bigText, {
-    formats: formats || spec.formats, width: width || spec.width, name: name || spec.name,
+    charts, formats: formats || spec.formats, width: width || spec.width, name: name || spec.name,
     out: path.resolve(base, out_dir || spec.out || "out"), preview: preview !== false, previewWidth: 900,
   });
   const img = res.preview ? [{ type: "image", data: Buffer.from(res.preview).toString("base64"), mimeType: "image/png" }] : [];

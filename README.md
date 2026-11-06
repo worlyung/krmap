@@ -6,7 +6,13 @@
 
 웹에서든 Claude Code·Codex에서든 유용하게 쓰셨다면 **[GitHub Star로 응원해 주세요 ⭐](https://github.com/worlyung/krmap)**. 다음 개선을 이어가는 데 큰 힘이 됩니다.
 
-## 최근 업데이트 · 2026-10-23
+## 최근 업데이트 · 2026-11-06
+
+- **지도 옆 차트 (ztd-charts 연동):** 숫자로 칠한 지도에 `"charts": true` 를 넣으면 같은 값으로 그린 **순위 막대**와 **전국 속 위치(분포)** 차트를 지도 오른쪽에 붙여 한 장으로 만듭니다. 색 · 단위 · 소수 자리는 지도와 같고, 차트 아래 한 줄 결론("서천군 55.1%, 아산시의 2.4배")을 자동으로 씁니다. SVG · PNG · PPTX(지도는 도형, 차트는 그림)와 슬라이드 묶음, 명령줄(`--charts all`) · MCP 에서 쓸 수 있습니다. 차트는 [ztd-charts](https://github.com/Junhan2/ztd-charts)(MIT)로 그립니다. [사용법](docs/automation.md#지도-옆-차트-ztd-charts)
+
+![충남 시군별 60세 이상 인구 비율 지도와 순위 · 분포 차트](docs/images/charts.png)
+
+### 이전 업데이트 · 2026-10-23
 
 - **지도 이동·확대 조작 수정:** 좌클릭 드래그로 지도 전체를 이동합니다. ‘하나씩 꾸미기’에서는 지역을 끌면 개별 이동, 빈 곳을 끌면 지도 이동입니다. Ctrl/⌘+휠은 지도 여백에서도 확대·축소하며, 전국 도트의 기본 색을 선명하게 조정했습니다. 업데이트된 화면 코드를 바로 받도록 캐시 버전도 갱신했습니다.
 
@@ -59,6 +65,7 @@
 - **지도 모양**: 실제 지도, 지역끼리 벌려 놓기, 네모 · 육각 **타일 지도**, 지역 하나씩 색 · 이름 · 위치 바꾸기.
 - **지역 이름**: 모두 넣기 / 모두 빼기 / 고른 것만. 지역 안에 안 들어가는 이름은 **밖으로 빼서 지시선으로** 잇고, 원하면 이름을 모두 **지도 양옆 줄**에 세웁니다(인포그래픽식).
 - **원 크기(버블) 지도**: 인구 · 매출 · 지점 수처럼 개수인 값은 원 넓이로 나타냅니다.
+- **지도 옆 차트**: 같은 값으로 순위 막대 · 전국 분포 차트를 지도 옆에 붙여 한 장으로 (명령줄 · MCP).
 - **확대 상자**: 전국 시군구 지도에서 서울 · 부산 · 대구 · 인천 · 광주 · 대전 · 울산을 옆에 크게 그립니다.
 - **슬라이드 여러 장**: "시도마다 한 장", "충남 시군마다 한 장"처럼 여러 지도를 PPTX 하나로 만듭니다.
 - **색 하나로 색 조합**: 기준 색 하나(또는 "추천 조합")로 대상 · 주변 · 바탕 · 글자색과 데이터 색 단계를 맞춰 만듭니다.
@@ -274,13 +281,14 @@ args = ["/절대/경로/tools/mcp-server.mjs"]
 
 ### 예시 그림 다시 만들기
 
-맨 위 그림 세 장은 이렇게 만들었습니다.
+맨 위 그림들은 이렇게 만들었습니다.
 
 ```bash
 K="node tools/krmap.mjs render --format png --width 1000 --png-scale 1 --background --aspect 4:3"
 $K --out docs/images/around.png --region 대전광역시 --stat old60R --stat-labels old60R --title "대전과 주변 시군" --subtitle "60세 이상 인구 비율" --source --theme 코랄
 $K --out docs/images/national.png --national 시군구 --stat youngR --labels none --title "전국 시군구 20~39세 비율" --source
 $K --out docs/images/tiles.png --regions 경기도 --unit 시군구 --layout 육각 --stat yoyR --palette diverge --title "경기도 시군 1년 인구 증감률"
+node tools/krmap.mjs render --format png --width 1000 --png-scale 1 --out docs/images/charts.png --regions 충청남도 --unit 시군구 --stat old60R --charts all --title "충남 시군별 60세 이상 인구 비율" --source
 ```
 
 ---

@@ -16,6 +16,7 @@ const St = require("../web/state.js");
 const Px = require("../web/pptx.js");
 const Cl = require("../web/colors.js");
 const A = require("../web/advanced.js");
+import { parseCharts, chartSpecs, composeBoard } from "./charts.mjs";
 export { R, X, Pn, St, Cl };
 
 export const LEVEL_KO = { sido: "시도", si: "시군구", sgg: "시군구(일반구)", emd: "읍면동" };
@@ -248,7 +249,7 @@ export async function specToState(D, spec, opts = {}) {
   if (spec.state) {
     St.mergeState(S, spec.state);
     R.useSido17(D, !!S.sido17);
-    return { S, bigText: spec.fileText || "" };
+    return { S, bigText: spec.fileText || "", charts: chartsOf(D, spec) };
   }
   const keyOf = (q, lv) => { const r = resolveRegion(D, q); return lv ? convert(D, r.lv, r.id, lv).map((id) => lv + ":" + id) : [r.key]; };
 
@@ -398,7 +399,14 @@ export async function specToState(D, spec, opts = {}) {
     if (spec.colorByPins) { S.data.source = "pins"; S.data.by = null; }
   }
   if (S.data.source && S.legend.pos === "none" && spec.legend == null) S.legend.pos = "br";
-  return { S, bigText };
+  return { S, bigText, charts: chartsOf(D, spec) };
+}
+
+/** spec.charts · chartHighlight → {list, highlight}. 없으면 null */
+function chartsOf(D, spec) {
+  const list = parseCharts(spec.charts);
+  if (!list.length) return null;
+  return { list, highlight: spec.chartHighlight ? resolveRegion(D, spec.chartHighlight).key : null };
 }
 
 // ---------- 만들기 ----------
@@ -436,15 +444,31 @@ export function svgToPng(svg, width, opts = {}) {
   });
   return r.render().asPng();
 }
-export async function sceneToPptx(scene, footnote, title) {
+export async function sceneToPptx(scene, footnote, title, boards) {
   const PptxGenJS = require("pptxgenjs");
   // 유리 · 네온처럼 그라데이션 바탕이면 슬라이드 크기 그림으로 깐다
   const backgrounds = [].concat(scene).map((sc) => {
     const svg = R.backdropSVG(sc, 1600, 900);
     return svg ? "image/png;base64," + Buffer.from(svgToPng(svg, 1600)).toString("base64") : null;
   });
-  const pptx = Px.buildPptx(PptxGenJS, scene, { footnote, title, backgrounds });
+  const pptx = Px.buildPptx(PptxGenJS, scene, { footnote, title, backgrounds, boards: boards && [].concat(boards).map(pptxBoard) });
   return pptx.write({ outputType: "nodebuffer" });
+}
+/** 차트 붙인 한 장 → PPTX 용: 지도는 도형 그대로, 차트는 그림으로 */
+function pptxBoard(b) {
+  if (!b) return null;
+  return {
+    width: b.width, height: b.height, mapX: b.map.x, mapY: b.map.y,
+    images: b.charts.map((c) => ({ data: "image/png;base64," + Buffer.from(svgToPng(c.svg, c.w * 2)).toString("base64"), x: c.x, y: c.y, w: c.w, h: c.h, name: "차트" })),
+  };
+}
+/** 지도 scene + charts → 한 장(board). charts 가 없으면 null */
+export async function chartBoard(D, S, ctx, scene, charts) {
+  if (!charts) return null;
+  const { specs, summary, theme } = chartSpecs(D, S, ctx, charts.list, { highlight: charts.highlight, bg: scene.bg || "#FFFFFF" });
+  const board = await composeBoard(R.toSVG(scene), scene, specs, theme);
+  board.summary = summary;
+  return board;
 }
 const safeName = (t) => String(t).replace(/[\\/:*?"<>|]/g, "").replace(/[\s,]+/g, "_").slice(0, 80) || "지도";
 
@@ -466,14 +490,16 @@ export async function renderState(D, stats, S, bigText, opts = {}) {
   fs.mkdirSync(dir, { recursive: true });
   const files = [];
   if(formats.includes("html")) {const f=path.join(dir,name+".html");fs.writeFileSync(f,A.html(St.htmlFrames(D,S,ctx,opts.width || 1600),scene.title));files.push(f);}
-  const svg = R.toSVG(scene);
+  const board = await chartBoard(D, S, ctx, scene, opts.charts);
+  const svg = board ? board.svg : R.toSVG(scene);
+  const W = board ? board.width : scene.width;
   if (formats.includes("svg")) { const f = path.join(dir, name + ".svg"); fs.writeFileSync(f, svg); files.push(f); }
   let png = null;
-  if (formats.includes("png") || opts.preview) png = svgToPng(svg, scene.width * (opts.pngScale || 2), { fontFile: opts.fontFile, background: scene.bg || undefined });
+  if (formats.includes("png") || opts.preview) png = svgToPng(svg, W * (opts.pngScale || 2), { fontFile: opts.fontFile, background: scene.bg || undefined });
   if (formats.includes("png")) { const f = path.join(dir, name + ".png"); fs.writeFileSync(f, png); files.push(f); }
   if (formats.includes("pptx")) {
     const f = path.join(dir, name + ".pptx");
-    fs.writeFileSync(f, await sceneToPptx(scene, S.heading.note ? "" : `${St.sourceNote(D, S, ctx)} · github.com/vuski/admdongkor`));
+    fs.writeFileSync(f, await sceneToPptx(scene, S.heading.note ? "" : `${St.sourceNote(D, S, ctx)} · github.com/vuski/admdongkor`, undefined, board));
     files.push(f);
   }
   const dr = St.dataResult(D, S, ctx);
@@ -481,14 +507,15 @@ export async function renderState(D, stats, S, bigText, opts = {}) {
   return {
     files,
     title: St.regionTitle(D, S, S.heading.title) || scene.title,
-    size: [scene.width, scene.height],
+    size: board ? [board.width, board.height] : [scene.width, scene.height],
     colored: dr ? Object.keys(dr.fills).length : 0,
     unmatched: dr ? dr.unmatched.slice(0, 20) : [],
     ambiguous: dr ? dr.ambiguous.slice(0, 20) : [],
     legend: ex.legend ? { title: ex.legend.title, items: ex.legend.items.map((i) => i.label) } : null,
     pins: S.pins.items.map((p) => ({ name: p.name, quality: p.q })),
     warnings: scene.warning ? [scene.warning] : [],
-    preview: opts.preview ? svgToPng(svg, Math.min(opts.previewWidth || 900, scene.width), { fontFile: opts.fontFile, background: scene.bg || "#FFFFFF" }) : null,
+    charts: board ? board.summary : undefined,
+    preview: opts.preview ? svgToPng(svg, Math.min(opts.previewWidth || 900, W), { fontFile: opts.fontFile, background: scene.bg || "#FFFFFF" }) : null,
     source: St.sourceNote(D, S, ctx),
   };
 }
@@ -545,27 +572,29 @@ export async function renderDeck(spec, opts = {}) {
     else name = safeName(deckTitle);
   }
   fs.mkdirSync(dir, { recursive: true });
-  const files = [], scenes = [], notes = [], items = [];
+  const files = [], scenes = [], notes = [], items = [], boards = [];
   let preview = null;
   for (let i = 0; i < slides.length; i++) {
-    const { S, bigText } = await specToState(D, slides[i], { stats, baseDir: opts.baseDir });
+    const { S, bigText, charts } = await specToState(D, slides[i], { stats, baseDir: opts.baseDir });
     const ctx = St.createContext({ stats, bigText, emdReady: !!D.emd });
     const scene = St.buildScene(D, S, ctx, opts.width || spec.width || 1600);
+    const board = await chartBoard(D, S, ctx, scene, charts);
     scenes.push(scene);
+    boards.push(board);
     notes.push(S.heading.note ? "" : `${St.sourceNote(D, S, ctx)} · github.com/vuski/admdongkor`);
     const dr = St.dataResult(D, S, ctx);
     items.push({ slide: i + 1, title: S.heading.title || scene.title, colored: dr ? Object.keys(dr.fills).length : 0, unmatched: dr ? dr.unmatched.slice(0, 10) : [], ambiguous: dr ? dr.ambiguous.slice(0, 20) : [], warnings: scene.warning ? [scene.warning] : [] });
     const tag = String(i + 1).padStart(2, "0");
     if (formats.includes("svg") || formats.includes("png") || (opts.preview && i === 0)) {
-      const svg = R.toSVG(scene);
+      const svg = board ? board.svg : R.toSVG(scene), W = board ? board.width : scene.width;
       if (formats.includes("svg")) { const f = path.join(dir, `${name}_${tag}.svg`); fs.writeFileSync(f, svg); files.push(f); }
-      if (formats.includes("png")) { const f = path.join(dir, `${name}_${tag}.png`); fs.writeFileSync(f, svgToPng(svg, scene.width * (opts.pngScale || 2), { fontFile: opts.fontFile, background: scene.bg || undefined })); files.push(f); }
-      if (opts.preview && i === 0) preview = svgToPng(svg, Math.min(opts.previewWidth || 900, scene.width), { fontFile: opts.fontFile, background: scene.bg || "#FFFFFF" });
+      if (formats.includes("png")) { const f = path.join(dir, `${name}_${tag}.png`); fs.writeFileSync(f, svgToPng(svg, W * (opts.pngScale || 2), { fontFile: opts.fontFile, background: scene.bg || undefined })); files.push(f); }
+      if (opts.preview && i === 0) preview = svgToPng(svg, Math.min(opts.previewWidth || 900, W), { fontFile: opts.fontFile, background: scene.bg || "#FFFFFF" });
     }
   }
   if (formats.includes("pptx")) {
     const f = path.join(dir, name + ".pptx");
-    fs.writeFileSync(f, await sceneToPptx(scenes, notes, deckTitle));
+    fs.writeFileSync(f, await sceneToPptx(scenes, notes, deckTitle, boards.some(Boolean) ? boards : undefined));
     files.unshift(f);
   }
   R.useSido17(D, false);
@@ -577,8 +606,8 @@ export async function renderDeck(spec, opts = {}) {
 export async function renderSpec(spec, opts = {}) {
   if (isDeck(spec)) return renderDeck(spec, opts);
   const { D, stats } = loadData();
-  const { S, bigText } = await specToState(D, spec, { stats, baseDir: opts.baseDir });
-  return renderState(D, stats, S, bigText, Object.assign({ formats: spec.formats, width: spec.width, name: spec.name }, opts, { out: opts.out || spec.out }));
+  const { S, bigText, charts } = await specToState(D, spec, { stats, baseDir: opts.baseDir });
+  return renderState(D, stats, S, bigText, Object.assign({ formats: spec.formats, width: spec.width, name: spec.name, charts }, opts, { out: opts.out || spec.out }));
 }
 export { isDeck };
 export const tmpDir = () => fs.mkdtempSync(path.join(os.tmpdir(), "krmap-"));

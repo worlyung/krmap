@@ -17,14 +17,17 @@
     pptx.layout = "LAYOUT_WIDE";
     pptx.title = opt.title || list[0].title;
     // backgrounds[i]: 그라데이션 바탕 그림 ("image/png;base64,…", 슬라이드 비율로 그린 것)
-    list.forEach((scene, i) => addSlide(pptx, scene, Array.isArray(opt.footnote) ? opt.footnote[i] : opt.footnote, opt.backgrounds && opt.backgrounds[i]));
+    // boards[i]: 지도 옆에 차트 그림을 붙인 한 장 {width, height, mapX, mapY, images: [{data, x, y, w, h}]}
+    list.forEach((scene, i) => addSlide(pptx, scene, Array.isArray(opt.footnote) ? opt.footnote[i] : opt.footnote, opt.backgrounds && opt.backgrounds[i], opt.boards && opt.boards[i]));
     return pptx;
   }
-  function addSlide(pptx, scene, footnote, bgImage) {
+  function addSlide(pptx, scene, footnote, bgImage, board) {
     const slide = pptx.addSlide();
     const SW = 13.333, SH = 7.5, M = 0.35;
-    const k = Math.min((SW - 2 * M) / scene.width, (SH - 2 * M - 0.2) / scene.height); // px → inch
-    const ox = (SW - scene.width * k) / 2, oy = (SH - 0.2 - scene.height * k) / 2;
+    const bw = board ? board.width : scene.width, bh = board ? board.height : scene.height;
+    const k = Math.min((SW - 2 * M) / bw, (SH - 2 * M - 0.2) / bh); // px → inch
+    const bx = (SW - bw * k) / 2, by = (SH - 0.2 - bh * k) / 2;
+    const ox = bx + (board ? board.mapX * k : 0), oy = by + (board ? board.mapY * k : 0);
     const hex = (c) => c.replace("#", "").toUpperCase();
     const r3 = (v) => Math.round(v * 10000) / 10000;
     if (bgImage) slide.background = { data: bgImage };
@@ -95,6 +98,7 @@
         objectName: (t.callout ? "지시선 이름 " : "지명 ") + t.text,
       });
     }
+    if (board) board.images.forEach((im, i) => slide.addImage({ data: im.data, x: r3(bx + im.x * k), y: r3(by + im.y * k), w: r3(im.w * k), h: r3(im.h * k), altText: im.name || "차트", objectName: (im.name || "차트") + " " + (i + 1) }));
     if (footnote) slide.addText(footnote, {
       x: SW - 6.2, y: SH - 0.32, w: 6, h: 0.22, fontFace: "맑은 고딕", fontSize: 7, color: "8A96A3", align: "right", margin: 0,
     });

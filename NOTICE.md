@@ -33,3 +33,5 @@
 | `pretendard` | OFL-1.1 |
 | `zod` | MIT |
 | `read-excel-file` | MIT |
+| `ztd-charts` (선택: 지도 옆 차트) | MIT |
+| `react` · `react-dom` (선택: ztd-charts 가 씀) | MIT |

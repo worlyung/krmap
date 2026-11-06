@@ -24,7 +24,7 @@
   "scripts": {
     "krmap": "node tools/krmap.mjs",
     "mcp": "node tools/mcp-server.mjs",
-    "test": "node tools/test.mjs && node tools/test-advanced.mjs && node tools/test-snap.mjs && node tools/test-context.mjs && node tools/test-viewport.mjs && node tools/test-infographic.mjs"
+    "test": "node tools/test.mjs && node tools/test-advanced.mjs && node tools/test-snap.mjs && node tools/test-context.mjs && node tools/test-viewport.mjs && node tools/test-infographic.mjs && node tools/test-charts.mjs"
   },
   "engines": {
     "node": ">=20"
@@ -44,5 +44,10 @@
   },
   "devDependencies": {
     "pngjs": "7.0.0"
+  },
+  "optionalDependencies": {
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "ztd-charts": "0.2.1"
   }
 }

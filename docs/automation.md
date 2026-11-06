@@ -245,6 +245,27 @@ JSON 하나로 지도 한 장을 정합니다. 칸은 전부 고를 수 있고, 
 | `splitGu` | 일반구가 있는 시(수원 · 성남 …)를 구로 나눠 고르기 |
 | `formats` · `out` · `name` · `width` | 만들 파일, 저장 위치, 파일 이름, 그림 폭(px) |
 
+### 지도 옆 차트 (ztd-charts)
+
+숫자 값으로 칠한 지도(`stat` · `data.by` · `data.ratio`) 오른쪽에 같은 값으로 그린 차트 카드를 붙여 한 장으로 만듭니다. 차트는 [ztd-charts](https://github.com/Junhan2/ztd-charts)(MIT)로 그립니다. 선택 의존성이라 `npm install` 때 함께 설치되며, 없으면 `npm install ztd-charts react react-dom` 안내가 나옵니다.
+
+```json
+{"regions": ["충청남도"], "unit": "시군구", "stat": "old60R", "charts": ["rank", "distribution"]}
+{"region": "대전광역시", "stat": "old60R", "charts": true}
+{"nationalUnit": "시군구", "stat": "yoyR", "charts": [{"type": "rank", "top": 10}, "분포"], "chartHighlight": "화성시"}
+```
+
+| 칸 | 뜻 |
+|---|---|
+| `charts` | `true`(순위 · 분포 둘 다) 또는 목록 (세 개까지). 글자로 `"rank"`·`"순위"`, `"distribution"`·`"분포"` 또는 `{type, title, subtitle, takeaway, top, compare}` |
+| `chartHighlight` | 차트에서 강조할 지역. 없으면 주변 지도의 대상 지역, 그다음 값이 가장 큰 곳 |
+
+- **순위(rank)**: 지역별 가로 막대, 값 순. 20곳이 넘으면 상위 15곳(`top` 으로 바꿈)이고, 강조 지역은 순위 밖이어도 끝에 붙입니다. 아래 한 줄 결론은 "서천군 55.1%, 아산시의 2.4배"처럼 자동으로 씁니다.
+- **분포(distribution)**: 지도 속 지역과 지도 밖 같은 단위 지역(전국)을 점으로 나란히 놓고 중앙값을 비교합니다. 전국 지도이거나 `compare: false` 면 지도 속 지역만.
+- 색은 지도의 데이터 색 단계를 따릅니다 (강조는 가장 진한 단계, 나머지는 옅은 단계). 단위와 소수 자리도 지도 값과 같습니다.
+- SVG · PNG 는 지도와 차트가 한 그림, PPTX 는 지도는 지금처럼 편집할 수 있는 도형이고 차트는 그림으로 들어갑니다. 슬라이드 묶음도 장마다 차트를 붙입니다.
+- 결과 JSON 의 `charts: [{type, takeaway}]` 로 차트 결론을 볼 수 있습니다. 웹 도구에는 아직 없습니다.
+
 ### 여러 장 (슬라이드 묶음)
 
 PPTX 하나에 슬라이드를 여러 장 넣습니다. 바깥 칸은 모든 장에 공통이고, 제목의 `{지역}` 은 장마다 지역 이름으로 바뀝니다 (없으면 이름을 앞에 붙임).
@@ -306,6 +327,7 @@ PPTX 하나에 슬라이드를 여러 장 넣습니다. 바깥 칸은 모든 장
   "legend": {"title": "60세 이상 비율", "items": ["…"]},
   "pins": [],
   "warnings": [],
+  "charts": [{"type": "rank", "takeaway": "…"}],
   "source": "출처: 경계: 통계청 SGIS(2026.10.01), 인구: 행정안전부 주민등록 인구통계(2026.07)"
 }
 ```

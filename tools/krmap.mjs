@@ -45,6 +45,8 @@ render 옵션
   --label-place side         이름 자리: auto(지역 안, 안 들어가면 지시선) / side(양옆 줄)
   --no-leaders               안 들어가는 이름을 지시선으로 빼지 않고 생략
   --bubbles                  색 대신 원 크기로 (인구·매출 같은 개수)
+  --charts all               지도 옆에 순위 막대 · 분포 차트 (rank / distribution 하나만도)
+  --chart-highlight 화성시    차트에서 강조할 지역
   --distinct                 이웃끼리 색 다르게
   --aspect 16:9              그림 비율: 16:9 / 4:3 / 1:1
   --sido17                   광주·전남 나눠 보기 (17개 시도)
@@ -74,7 +76,7 @@ const opts = {
   palette: { type: "string" }, steps: { type: "string" }, method: { type: "string" },
   pins: { type: "string" }, "no-geocode": { type: "boolean" }, "color-by-pins": { type: "boolean" }, "pin-shape": { type: "string" }, "pin-color": { type: "string" },
   title: { type: "string" }, subtitle: { type: "string" }, source: { type: "boolean" }, legend: { type: "string" }, "legend-title": { type: "string" },
-  labels: { type: "string" }, "label-place": { type: "string" }, bubbles: { type: "boolean" }, "no-leaders": { type: "boolean" }, aspect: { type: "string" }, sido17: { type: "boolean" }, "split-gu": { type: "boolean" },
+  labels: { type: "string" }, "label-place": { type: "string" }, bubbles: { type: "boolean" }, charts: { type: "string" }, "chart-highlight": { type: "string" }, "no-leaders": { type: "boolean" }, aspect: { type: "string" }, sido17: { type: "boolean" }, "split-gu": { type: "boolean" },
   format: { type: "string" }, out: { type: "string" }, width: { type: "string" }, "png-scale": { type: "string" }, font: { type: "string" },
   depth: { type: "string" }, each: { type: "string" }, "each-unit": { type: "string" }, indicators: { type: "string" }, in: { type: "string" }, limit: { type: "string" },
 };
@@ -124,6 +126,8 @@ function specFromFlags(v) {
   if (v.labels) spec.labels = ["all", "none", "side"].includes(v.labels) ? v.labels : list(v.labels);
   if (v["label-place"]) spec.labelPlace = v["label-place"];
   if (v.bubbles) spec.bubbles = true;
+  if (v.charts != null) spec.charts = ["true", "all", "전부"].includes(v.charts) ? true : list(v.charts);
+  if (v["chart-highlight"]) spec.chartHighlight = v["chart-highlight"];
   if (v["no-leaders"]) spec.leaders = false;
   if (v.aspect) spec.aspect = v.aspect;
   if (v.sido17) spec.sido17 = true;
